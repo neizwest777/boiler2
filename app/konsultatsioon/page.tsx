@@ -1,7 +1,6 @@
 // @ts-nocheck
 "use client";
 
-import { useState } from "react";
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import { Button } from '@/components/shared/ui/button';
