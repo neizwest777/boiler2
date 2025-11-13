@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/shared/ui/dialog";
+
 import { Button } from "@/components/shared/ui/button";
 
 type Props = {
@@ -102,7 +104,9 @@ export function ContactFormDialog({ open, onOpenChange }: Props) {
               />
             </div>
 
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && (
+              <p className="text-sm text-red-600">{error}</p>
+            )}
 
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Saadan..." : "Saada"}
