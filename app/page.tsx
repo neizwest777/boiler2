@@ -1,8 +1,6 @@
 // @ts-nocheck
 "use client";
 
-import { useState } from "react";
-
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 
@@ -27,9 +25,6 @@ import Link from 'next/link';
 import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
 
 export default function Page() {
-
-  const [contactOpen, setContactOpen] = useState(false);
-
   return (
     <>
       <Header className="mb-4" />
@@ -48,9 +43,9 @@ export default function Page() {
         <Button
           size="xl"
           variant="outlinePrimary"
-          onClick={() => setContactOpen(true)}
+          asChild
         >
-          Tasuta konsultatsioon
+          <Link href="/konsultatsioon">Tasuta konsultatsioon</Link>
         </Button>
       </LandingPrimaryImageCtaSection>
 
@@ -58,7 +53,7 @@ export default function Page() {
       {/* PARTNERS */}
       <LandingShowcase
         title="Usaldusväärne partner"
-        description="Töötame koos juhtivate tootjate ja partneritega"
+        description="Töötame koos juhtivating tootjate ja partneritega"
         textPosition="center"
         withBackground
         variant="primary"
@@ -172,9 +167,9 @@ export default function Page() {
         <Button
           size="xl"
           variant="outlinePrimary"
-          onClick={() => setContactOpen(true)}
+          asChild
         >
-          Saada päring
+          <Link href="/vorm">Saada päring</Link>
         </Button>
       </LandingSaleCtaSection>
 
@@ -194,83 +189,6 @@ export default function Page() {
 
 
       <Footer className="mt-8" />
-
-
-      {/* MODAL */}
-      {contactOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-          onClick={() => setContactOpen(false)}
-        >
-          <div
-            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold">Võta ühendust</h2>
-              <button
-                className="text-sm text-gray-500 hover:text-gray-700"
-                onClick={() => setContactOpen(false)}
-              >
-                ✕
-              </button>
-            </div>
-
-            <form
-              action="https://formsubmit.co/prismestonia@gmail.com"
-              method="POST"
-              className="space-y-4"
-            >
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_subject" value="Uus boileri teenuse päring" />
-              <input type="hidden" name="_autoresponse" value="Täname Teid päringu eest! Võtame Teiega peagi ühendust." />
-
-              <div>
-                <label className="text-sm">Nimi *</label>
-                <input 
-                  name="name" 
-                  required 
-                  className="w-full mt-1 border rounded-md px-3 py-2" 
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">E-post</label>
-                <input 
-                  name="email" 
-                  type="email" 
-                  className="w-full mt-1 border rounded-md px-3 py-2" 
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">Telefon *</label>
-                <input 
-                  name="phone" 
-                  required 
-                  className="w-full mt-1 border rounded-md px-3 py-2" 
-                />
-              </div>
-
-              <div>
-                <label className="text-sm">Sõnum *</label>
-                <textarea 
-                  name="message" 
-                  required 
-                  rows={4} 
-                  className="w-full mt-1 border rounded-md px-3 py-2"
-                  placeholder="Kirjeldage oma probleemi või teenusevajadust..."
-                />
-              </div>
-
-              <Button type="submit" className="w-full">
-                Saada
-              </Button>
-            </form>
-          </div>
-        </div>
-      )}
     </>
   );
 }
