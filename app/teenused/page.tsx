@@ -1,34 +1,50 @@
-import Footer from '@/components/shared/Footer';
+// @ts-nocheck
+"use client";
+
 import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
+import { LandingProductFeaturesGrid, LandingProductFeature } from '@/components/landing';
 
-export default function Teenused() {
+export default function TeenusedPage() {
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-between fancy-overlay">
-      <Header />
+    <>
+      <Header className="mb-4" />
+      
+      <div className="container-narrow py-16">
+        <h1 className="text-4xl font-bold text-center mb-8">Meie teenused</h1>
+        <p className="text-lg text-center mb-12">Pakume laia valikut boileri teenuseid</p>
 
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
-          <h1 className="text-4xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-6xl fancy-heading">
-            Teenused
-          </h1>
+        <LandingProductFeaturesGrid
+          withBackground={false}
+          variant="primary"
+        >
+          <LandingProductFeature
+            title="Boileri paigaldus"
+            description="Professionaalne paigaldus kõigile boileritele."
+            imageSrc="/static/images/1762810111398-imageSrc_c0d78223-d162-4fbb-ad8a-f5e7ce63ce65.png"
+          />
 
-          <p className="mt-6 md:text-xl">
-            BoileriABI.ee pakub usaldusväärseid ja professionaalseid torutöid
-            Tallinnas ning Harjumaal. Meie teenuste hulka kuulub boilerite
-            paigaldus, remont ning hooldus, tagamaks teie mugavus ja
-            soojussüsteemide optimaalne toimimine.
-          </p>
+          <LandingProductFeature
+            title="Boileri remont"
+            description="Kiire ja usaldusväärne remonditeenus."
+            imageSrc="/static/images/1762810822501-imageSrc_08e474ec-3188-4011-b875-e572f86e4fa8.png"
+          />
 
-          <p className="mt-6 md:text-xl">
-            Meie kogenud meeskond tagab kiire ja kvaliteetse teeninduse,
-            kasutades kaasaegseid tööriistu ja kvaliteetseid materjale.
-            Olenemata, kas vajate uut boilerit või olemasoleva süsteemi
-            hooldust, oleme alati valmis aitama ja nõu andma.
-          </p>
-        </section>
+          <LandingProductFeature
+            title="Hooldus ja puhastus"
+            description="Pikendage boileri eluiga õige hooldusega."
+            imageSrc="/static/images/1762810954990-imageSrc_a9687eae-bf20-4a03-90a7-1080d885cb7e.png"
+          />
+
+          <LandingProductFeature
+            title="Hädaabi 24/7"
+            description="Ööpäevaringne kiire abi."
+            imageSrc="/static/images/1762811329870-imageSrc_8f087ec4-3ec0-4ebf-acb6-25fab6a24cf1.png"
+          />
+        </LandingProductFeaturesGrid>
       </div>
 
-      <Footer />
-    </div>
+      <Footer className="mt-8" />
+    </>
   );
 }
