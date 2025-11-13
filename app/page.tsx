@@ -1,6 +1,8 @@
 // @ts-nocheck
 "use client";
 
+import { useState } from "react";
+
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 
@@ -25,6 +27,9 @@ import Link from 'next/link';
 import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
 
 export default function Page() {
+
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <>
       <Header className="mb-4" />
@@ -53,7 +58,7 @@ export default function Page() {
       {/* PARTNERS */}
       <LandingShowcase
         title="Usaldusväärne partner"
-        description="Töötame koos juhtivating tootjate ja partneritega"
+        description="Töötame koos juhtivate tootjate ja partneritega"
         textPosition="center"
         withBackground
         variant="primary"
