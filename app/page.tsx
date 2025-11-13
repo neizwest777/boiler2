@@ -3,8 +3,8 @@
 
 import { useState } from "react";
 
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 import {
   LandingShowcase,
@@ -16,18 +16,18 @@ import {
   LandingProductSteps,
   LandingTestimonialGrid,
   LandingSaleCtaSection,
-  LandingBandSection
-} from '@/components/landing';
+  LandingBandSection,
+} from "@/components/landing";
 
 import { LandingPrimaryImageCtaSection } from "@/components/landing/LandingPrimaryImageCtaSection";
 
-import { Button } from '@/components/shared/ui/button';
-import Link from 'next/link';
+import { Button } from "@/components/shared/ui/button";
+import Link from "next/link";
 
 import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
+import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
 
 export default function Page() {
-
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
@@ -45,15 +45,15 @@ export default function Page() {
           <Link href="/kontakt">Telli torumees kohe!</Link>
         </Button>
 
+        {/* Открывает модалку формы */}
         <Button
           size="xl"
           variant="outlinePrimary"
-          asChild
+          onClick={() => setContactOpen(true)}
         >
-          <Link href="/konsultatsioon">Tasuta konsultatsioon</Link>
+          Tasuta konsultatsioon
         </Button>
       </LandingPrimaryImageCtaSection>
-
 
       {/* PARTNERS */}
       <LandingShowcase
@@ -63,12 +63,19 @@ export default function Page() {
         withBackground
         variant="primary"
       >
-        <LandingShowcaseItem><Wrench className="w-8 h-8" /></LandingShowcaseItem>
-        <LandingShowcaseItem><Droplets className="w-8 h-8" /></LandingShowcaseItem>
-        <LandingShowcaseItem><Sparkles className="w-8 h-8" /></LandingShowcaseItem>
-        <LandingShowcaseItem><Phone className="w-8 h-8" /></LandingShowcaseItem>
+        <LandingShowcaseItem>
+          <Wrench className="w-8 h-8" />
+        </LandingShowcaseItem>
+        <LandingShowcaseItem>
+          <Droplets className="w-8 h-8" />
+        </LandingShowcaseItem>
+        <LandingShowcaseItem>
+          <Sparkles className="w-8 h-8" />
+        </LandingShowcaseItem>
+        <LandingShowcaseItem>
+          <Phone className="w-8 h-8" />
+        </LandingShowcaseItem>
       </LandingShowcase>
-
 
       {/* SERVICES */}
       <LandingProductFeaturesGrid
@@ -102,20 +109,24 @@ export default function Page() {
         />
       </LandingProductFeaturesGrid>
 
-
-      {/* FAQ */}
+      {/* FAQ – teenused */}
       <LandingFaqCollapsibleSection
         title="Teenuste detailid"
         description="Vaadake lähemalt meie pakutavaid teenuseid"
         faqItems={[
           { question: "Boileri paigaldus", answer: "Professionaalne paigaldus." },
-          { question: "Boileri remont", answer: "Kogenud meistrid lahendavad kiiresti." },
-          { question: "Hooldus", answer: "Regulaarne hooldus pikendab eluiga." },
+          {
+            question: "Boileri remont",
+            answer: "Kogenud meistrid lahendavad kiiresti.",
+          },
+          {
+            question: "Hooldus",
+            answer: "Regulaarne hooldus pikendab eluiga.",
+          },
           { question: "Hädaabi", answer: "24/7 kiire reageerimine." },
         ]}
         withBackground
       />
-
 
       {/* ABOUT */}
       <LandingAboutSection
@@ -123,7 +134,6 @@ export default function Page() {
         description="Oleme litsentseeritud torumehed Tallinnas ja Harjumaal."
         imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
       />
-
 
       {/* STEPS */}
       <LandingProductSteps
@@ -150,7 +160,6 @@ export default function Page() {
         />
       </LandingProductSteps>
 
-
       {/* TESTIMONIALS */}
       <LandingTestimonialGrid
         title="Klientide arvustused"
@@ -158,8 +167,7 @@ export default function Page() {
         testimonialItems={[]}
       />
 
-
-      {/* CTA */}
+      {/* CTA – нижний блок */}
       <LandingSaleCtaSection
         title="Saage tasuta hinnapakkumine täna!"
         description="Võtame ühendust mõne minuti jooksul."
@@ -169,22 +177,22 @@ export default function Page() {
           <Link href="tel:+37253684587">Helista kohe</Link>
         </Button>
 
+        {/* Открывает ту же модалку */}
         <Button
           size="xl"
           variant="outlinePrimary"
-          asChild
+          onClick={() => setContactOpen(true)}
         >
-          <Link href="/vorm">Saada päring</Link>
+          Saada päring
         </Button>
       </LandingSaleCtaSection>
-
 
       <LandingBandSection
         title="Tallinn ja Harjumaa"
         description="Kiire reageerimine kogu piirkonnas."
       />
 
-
+      {/* FAQ – üldine */}
       <LandingFaqCollapsibleSection
         title="Korduma kippuvad küsimused"
         description="Kõige levinumad küsimused"
@@ -192,6 +200,11 @@ export default function Page() {
         withBackground
       />
 
+      {/* Модалка формы – одна на всю страницу */}
+      <ContactFormDialog
+        open={contactOpen}
+        onOpenChange={setContactOpen}
+      />
 
       <Footer className="mt-8" />
     </>
