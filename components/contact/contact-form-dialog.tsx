@@ -54,8 +54,12 @@ export function ContactFormDialog({ open, onOpenChange }: Props) {
         onOpenChange(false);
       }, 2000);
 
-    } catch (err: any) {
-      setError(err.message || "Saatmine ebaõnnestus.");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Saatmine ebaõnnestus.");
+      }
     }
 
     setLoading(false);
