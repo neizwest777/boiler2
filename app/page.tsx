@@ -21,9 +21,6 @@ import { Button } from '@/components/shared/ui/button';
 import Link from 'next/link';
 import { Droplets, Phone, Sparkles, Wrench } from 'lucide-react';
 
-// Контактная форма (подключаем ПРИ ЦЕЛИ – модалка)
-import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
-
 export default function Page() {
   const [contactOpen, setContactOpen] = useState(false);
 
@@ -48,7 +45,7 @@ export default function Page() {
           <Link href="/kontakt">{'Telli torumees kohe!'}</Link>
         </Button>
 
-        {/* ПОДКЛЮЧАЕМ МОДАЛКУ К КНОПКЕ */}
+        {/* КНОПКА ОТКРЫВАЕТ ФОРМУ, НИКУДА НЕ ВЕДЁТ */}
         <Button
           size="xl"
           variant="outlinePrimary"
@@ -117,10 +114,10 @@ export default function Page() {
         title="Teenuste detailid"
         description="Vaadake lähemalt meie pakutavaid teenuseid"
         faqItems={[
-          { question: 'Boileri paigaldus', answer: '...' },
-          { question: 'Boileri remont', answer: '...' },
-          { question: 'Boileri puhastus ja hooldus', answer: '...' },
-          { question: 'Hädaabi torustikule', answer: '...' },
+          { question: 'Boileri paigaldus', answer: 'Pakume professionaalset boileri paigaldust kõikidele tüüpidele.' },
+          { question: 'Boileri remont', answer: 'Kiire ja usaldusväärne remonditeenus kõikidele boileri tüüpidele.' },
+          { question: 'Boileri puhastus ja hooldus', answer: 'Regulaarne hooldus pikendab boileri eluiga ja tagab efektiivse töö.' },
+          { question: 'Hädaabi torustikule', answer: '24/7 hädaabi teenus lekete ja muude probleemide korral.' },
         ]}
         withBackground
       />
@@ -128,7 +125,7 @@ export default function Page() {
       {/* --- ABOUT SECTION --- */}
       <LandingAboutSection
         title="Meist"
-        description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte..."
+        description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaal."
         imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
       />
 
@@ -140,7 +137,7 @@ export default function Page() {
       >
         <LandingProductFeature
           title="1. Võtke meiega ühendust"
-          description="Helistage või kirjutage meile."
+          description="Helistage või kirjutage meile. Meie meeskond vastab kiiresti."
           imageSrc="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=500&q=80"
         />
 
@@ -174,7 +171,7 @@ export default function Page() {
           <Link href="tel:+3725551234">Helista kohe</Link>
         </Button>
 
-        {/* ВТОРАЯ КНОПКА → МОДАЛКА */}
+        {/* ВТОРАЯ КНОПКА -> ТА ЖЕ ФОРМА */}
         <Button
           size="xl"
           variant="outlinePrimary"
@@ -199,11 +196,87 @@ export default function Page() {
 
       <Footer className="mt-8" />
 
-      {/* --- ВСТАВЛЯЕМ МОДАЛКУ --- */}
-      <ContactFormDialog
-        open={contactOpen}
-        onOpenChange={setContactOpen}
-      />
+      {/* --- МОДАЛКА С ФОРМОЙ ОБРАТНОЙ СВЯЗИ --- */}
+      {contactOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+          onClick={() => setContactOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">
+                Võta meiega ühendust
+              </h2>
+              <button
+                className="text-sm text-gray-500 hover:text-gray-700"
+                onClick={() => setContactOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <form
+              action="https://formsubmit.co/prismestonia@gmail.com"
+              method="POST"
+              className="space-y-4"
+            >
+              {/* Настройки FormSubmit */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              {/* Можно вернуть пользователя на главную после отправки */}
+              {/* <input type="hidden" name="_next" value="https://www.boileriabi.ee/" /> */}
+
+              <div>
+                <label className="text-sm font-medium">Nimi *</label>
+                <input
+                  name="name"
+                  required
+                  className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
+                  placeholder="Teie nimi"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">E-post</label>
+                <input
+                  name="email"
+                  type="email"
+                  className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
+                  placeholder="email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Telefon *</label>
+                <input
+                  name="phone"
+                  required
+                  className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
+                  placeholder="+372..."
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Sõnum *</label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  className="w-full mt-1 border rounded-md px-3 py-2 text-sm"
+                  placeholder="Kirjeldage oma muret..."
+                />
+              </div>
+
+              <Button type="submit" className="w-full">
+                Saada
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
