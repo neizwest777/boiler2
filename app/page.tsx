@@ -22,7 +22,6 @@ import {
 import { LandingPrimaryImageCtaSection } from "@/components/landing/LandingPrimaryImageCtaSection";
 
 import { Button } from "@/components/shared/ui/button";
-import Link from "next/link";
 
 import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
 import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
@@ -41,11 +40,12 @@ export default function Page() {
         imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.png"
         imageAlt="Boiler"
       >
-        <Button size="xl" asChild>
-          <Link href="/kontakt">Telli torumees kohe!</Link>
+        {/* Открывает форму */}
+        <Button size="xl" onClick={() => setContactOpen(true)}>
+          Telli torumees kohe!
         </Button>
 
-        {/* Открывает модалку формы */}
+        {/* Открывает форму */}
         <Button
           size="xl"
           variant="outlinePrimary"
@@ -109,7 +109,7 @@ export default function Page() {
         />
       </LandingProductFeaturesGrid>
 
-      {/* FAQ – teenused */}
+      {/* FAQ — teenused */}
       <LandingFaqCollapsibleSection
         title="Teenuste detailid"
         description="Vaadake lähemalt meie pakutavaid teenuseid"
@@ -167,17 +167,17 @@ export default function Page() {
         testimonialItems={[]}
       />
 
-      {/* CTA – нижний блок */}
+      {/* CTA — нижний блок */}
       <LandingSaleCtaSection
         title="Saage tasuta hinnapakkumine täna!"
         description="Võtame ühendust mõne minuti jooksul."
         withBackground
       >
         <Button size="xl" asChild>
-          <Link href="tel:+37253684587">Helista kohe</Link>
+          <a href="tel:+37253684587">Helista kohe</a>
         </Button>
 
-        {/* Открывает ту же модалку */}
+        {/* Открывает форму */}
         <Button
           size="xl"
           variant="outlinePrimary"
@@ -192,7 +192,7 @@ export default function Page() {
         description="Kiire reageerimine kogu piirkonnas."
       />
 
-      {/* FAQ – üldine */}
+      {/* FAQ — üldine */}
       <LandingFaqCollapsibleSection
         title="Korduma kippuvad küsimused"
         description="Kõige levinumad küsimused"
@@ -200,11 +200,8 @@ export default function Page() {
         withBackground
       />
 
-      {/* Модалка формы – одна на всю страницу */}
-      <ContactFormDialog
-        open={contactOpen}
-        onOpenChange={setContactOpen}
-      />
+      {/* Модалка формы */}
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
 
       <Footer className="mt-8" />
     </>

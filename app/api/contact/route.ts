@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 export async function POST(req: Request) {
   try {
@@ -15,10 +15,16 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: process.env.CONTACT_FROM_EMAIL || "info@prism.ee",
+      // От кого уходит письмо — через домен Resend
+      from:
+        process.env.CONTACT_FROM_EMAIL ||
+        "BoileriABI <onboarding@resend.dev>",
+
+      // Куда уходит — на твой Gmail
       to: process.env.CONTACT_TO_EMAIL || "prismestonia@gmail.com",
+
       subject: "Uus päring Prismist veebilehelt",
-      reply_to: email || undefined,
+      replyTo: email || undefined,
       html: `
         <h2>Uus päring kodulehelt</h2>
         <p><b>Nimi:</b> ${name}</p>
