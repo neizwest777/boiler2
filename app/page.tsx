@@ -223,25 +223,45 @@ export default function Page() {
             >
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="Uus boileri teenuse päring" />
+              <input type="hidden" name="_autoresponse" value="Täname Teid päringu eest! Võtame Teiega peagi ühendust." />
 
               <div>
                 <label className="text-sm">Nimi *</label>
-                <input name="name" required className="w-full mt-1 border rounded-md px-3 py-2" />
+                <input 
+                  name="name" 
+                  required 
+                  className="w-full mt-1 border rounded-md px-3 py-2" 
+                />
               </div>
 
               <div>
                 <label className="text-sm">E-post</label>
-                <input name="email" type="email" className="w-full mt-1 border rounded-md px-3 py-2" />
+                <input 
+                  name="email" 
+                  type="email" 
+                  className="w-full mt-1 border rounded-md px-3 py-2" 
+                />
               </div>
 
               <div>
                 <label className="text-sm">Telefon *</label>
-                <input name="phone" required className="w-full mt-1 border rounded-md px-3 py-2" />
+                <input 
+                  name="phone" 
+                  required 
+                  className="w-full mt-1 border rounded-md px-3 py-2" 
+                />
               </div>
 
               <div>
                 <label className="text-sm">Sõnum *</label>
-                <textarea name="message" required rows={4} className="w-full mt-1 border rounded-md px-3 py-2" />
+                <textarea 
+                  name="message" 
+                  required 
+                  rows={4} 
+                  className="w-full mt-1 border rounded-md px-3 py-2"
+                  placeholder="Kirjeldage oma probleemi või teenusevajadust..."
+                />
               </div>
 
               <Button type="submit" className="w-full">
