@@ -40,10 +40,13 @@ export default function Page() {
         imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.png"
         imageAlt="Boiler"
       >
-        {/* Открывает форму */}
-        <Button size="xl" onClick={() => setContactOpen(true)}>
-          Telli torumees kohe!
-        </Button>
+        {/* 🔥 КРАСНАЯ НЕКЛИКАБЕЛЬНАЯ КНОПКА */}
+        <div
+          className="bg-red-600 text-white text-lg font-semibold px-6 py-3 rounded-xl cursor-default select-none shadow-md"
+          style={{ pointerEvents: "none" }}
+        >
+          Helista: 53684587
+        </div>
 
         {/* Открывает форму */}
         <Button
