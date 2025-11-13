@@ -34,24 +34,31 @@ export function ContactFormDialog({ open, onOpenChange }: Props) {
       message: formData.get("message") as string,
     };
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    setLoading(false);
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Midagi läks valesti.");
+      }
 
-    if (!res.ok) {
-      setError("Midagi läks valesti. Palun proovi uuesti.");
-      return;
+      // success
+      setSent(true);
+
+      setTimeout(() => {
+        setSent(false);
+        onOpenChange(false);
+      }, 2000);
+
+    } catch (err: any) {
+      setError(err.message || "Saatmine ebaõnnestus.");
     }
 
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      onOpenChange(false);
-    }, 2000);
+    setLoading(false);
   }
 
   return (
