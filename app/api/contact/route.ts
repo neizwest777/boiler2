@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       // Куда уходит — на твой Gmail
       to: process.env.CONTACT_TO_EMAIL || "prismestonia@gmail.com",
 
-      subject: "Uus päring Prismist veebilehelt",
+      subject: "Uus päring Boileriabi.ee",
       replyTo: email || undefined,
       html: `
         <h2>Uus päring kodulehelt</h2>
