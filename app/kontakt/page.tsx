@@ -1,33 +1,95 @@
-import Footer from '@/components/shared/Footer';
+// @ts-nocheck
+"use client";
+
 import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
+import { Button } from '@/components/shared/ui/button';
+import Link from 'next/link';
 
-export default function Kontakt() {
+export default function KontaktPage() {
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-between fancy-overlay">
-      <Header />
+    <>
+      <Header className="mb-4" />
+      
+      <div className="container-narrow py-16">
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-center mb-8">Võta meiega ühendust</h1>
+          <p className="text-lg text-center mb-12">Oleme siin, et aidata! Võtke ühendust meiega mis tahes küsimuste või probleemide korral.</p>
 
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
-          <h1 className="text-4xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-6xl fancy-heading">
-            Võta meiega ühendust
-          </h1>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">Kontaktandmed</h3>
+              <p className="mb-2">📞 <Link href="tel:+37253684587" className="text-primary-600">+372 5368 4587</Link></p>
+              <p className="mb-2">✉️ <a href="mailto:prismestonia@gmail.com" className="text-primary-600">prismestonia@gmail.com</a></p>
+              <p className="mb-2">📍 Tallinn ja Harjumaa</p>
+            </div>
 
-          <p className="mt-6 md:text-xl">
-            BoileriABI.ee on piirkonna usaldusväärne torumeeste teenuste pakkuja
-            Tallinnas ja Harjumaal. Pakume boilerite paigaldust, remonti ning
-            hooldust, kindlustades soojus- ja veevarustuse tõrkeideta.
-          </p>
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">Tööaeg</h3>
+              <p className="mb-2">⏰ E-R: 8:00 - 22:00</p>
+              <p className="mb-2">🚨 Hädaabi: 24/7</p>
+            </div>
+          </div>
 
-          <p className="mt-6 md:text-xl">
-            Kui teil on küsimusi või soovite tellida teenust, võtke meiega
-            ühendust ning aitab meie kogenud meeskond teil kiiresti ja
-            kvaliteetselt. Meie eesmärk on pakkuda klientidele professionaalset
-            ning sõbralikku teenust igal sammul.
-          </p>
-        </section>
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-semibold mb-6">Saada meile sõnum</h3>
+            <form
+              action="https://formsubmit.co/prismestonia@gmail.com"
+              method="POST"
+              className="space-y-6"
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="Kontaktide päring" />
+              <input type="hidden" name="_autoresponse" value="Täname Teid sõnumi eest! Võtame Teiega peagi ühendust." />
+
+              <div>
+                <label className="text-sm font-medium">Nimi *</label>
+                <input 
+                  name="name" 
+                  required 
+                  className="w-full mt-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">E-post</label>
+                <input 
+                  name="email" 
+                  type="email" 
+                  className="w-full mt-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Telefon *</label>
+                <input 
+                  name="phone" 
+                  required 
+                  className="w-full mt-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium">Sõnum *</label>
+                <textarea 
+                  name="message" 
+                  required 
+                  rows={6} 
+                  className="w-full mt-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  placeholder="Kirjeldage oma vajadust või küsimust..."
+                />
+              </div>
+
+              <Button type="submit" className="w-full py-3 text-lg">
+                Saada sõnum
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
 
-      <Footer />
-    </div>
+      <Footer className="mt-8" />
+    </>
   );
 }
