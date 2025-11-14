@@ -4,22 +4,18 @@ import { useState } from "react";
 
 import {
   LandingPrimaryImageCtaSection,
-  LandingShowcase,
-  LandingShowcaseItem,
   LandingProductFeaturesGrid,
   LandingProductFeature,
   LandingFaqCollapsibleSection,
   LandingAboutSection,
   LandingProductSteps,
-  LandingTestimonialGrid,
   LandingSaleCtaSection,
   LandingBandSection,
 } from "@/components/landing";
 
 import { Button } from "@/components/shared/ui/button";
 import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
-
-import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
+import LogoCarousel from "@/components/LogoCarousel";
 
 export default function ClientWrapper() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -49,10 +45,21 @@ export default function ClientWrapper() {
         </Button>
       </LandingPrimaryImageCtaSection>
 
-      {/* ❌ ===================== PARTNERS (REMOVED) ===================== */}
-      {/* Блок полностью удалён */}
+      {/* ===================== PARTNERITE KARUSELL – СРАЗУ ПОСЛЕ БОЙЛЕРА ===================== */}
+      <section className="w-full py-16 bg-[#E4FAFF]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Usaldusväärne partner
+          </h2>
+          <p className="text-gray-700 mt-2 mb-10">
+            Töötame koos juhtivate tootjate ja partneritega
+          </p>
 
-      {/* ===================== SERVICES ===================== */}
+          <LogoCarousel />
+        </div>
+      </section>
+
+      {/* ===================== TEENUSED ===================== */}
       <LandingProductFeaturesGrid
         title="Meie teenused"
         description="Pakume laia valikut boileri ja torustiku teenuseid"
@@ -84,14 +91,14 @@ export default function ClientWrapper() {
         />
       </LandingProductFeaturesGrid>
 
-      {/* ===================== ABOUT ===================== */}
+      {/* ===================== MEIST ===================== */}
       <LandingAboutSection
         title="Meist"
         description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaa."
         imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
       />
 
-      {/* ===================== STEPS ===================== */}
+      {/* ===================== SAMMUD ===================== */}
       <LandingProductSteps
         title="Kuidas see töötab"
         description="Lihtne protsess kvaliteetse teenuse saamiseks"
@@ -126,7 +133,7 @@ export default function ClientWrapper() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* testimonials */}
+            {/* …тут твои 3 отзыва как были… */}
           </div>
         </div>
       </section>
@@ -170,7 +177,8 @@ export default function ClientWrapper() {
           },
           {
             question: "Kas pakute garantiid?",
-            answer: "Jah, kõikidele tehtud töödele anname ametliku garantii.",
+            answer:
+              "Jah, kõikidele tehtud töödele anname ametliku garantii.",
           },
           {
             question: "Kas töötate nädalavahetusel?",
