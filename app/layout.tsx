@@ -92,6 +92,12 @@ export default function RootLayout({
         `}
         </style>
 
+        {/* ✅ GOOGLE SEARCH CONSOLE */}
+        <meta
+          name="google-site-verification"
+          content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc"
+        />
+
         <link
           rel="apple-touch-icon"
           sizes="76x76"
