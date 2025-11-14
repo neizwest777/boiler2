@@ -196,8 +196,8 @@ export default function ClientWrapper() {
             className="w-12 h-12 rounded-full object-cover"
           />
           <div className="flex flex-col text-left">
-            <span className="font-semibold">Kertu M.</span>
-            <span className="text-sm text-gray-500">@kertum</span>
+            <span className="font-semibold">Joel R.</span>
+            <span className="text-sm text-gray-500">@joel</span>
           </div>
         </div>
       </div>
