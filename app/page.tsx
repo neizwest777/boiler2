@@ -3,6 +3,7 @@ import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
 import LogoCarousel from "@/components/LogoCarousel";
+import Link from 'next/link'; // ← ДОБАВЬ ЭТОТ ИМПОРТ
 
 export const metadata: Metadata = {
   title: "Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee",
@@ -208,12 +209,12 @@ export default function Page() {
               >
                 📞 Helista kohe: +372 5368 4587
               </a>
-              <a 
+              <Link 
                 href="/kontakt" 
                 className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
               >
                 📝 Tasuta konsultatsioon
-              </a>
+              </Link>
             </div>
             <p className="text-gray-600 mt-4 text-sm">
               ⚡ <strong>Hädaabi:</strong> Saame kohale 1-2 tunni jooksul Tallinnas
