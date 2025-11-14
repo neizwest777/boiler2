@@ -1,105 +1,111 @@
-// @ts-nocheck
-"use client";
+import { LandingHeader, LandingHeaderMenuItem } from "@/components/landing";
+import ThemeSwitch from "@/components/shared/ThemeSwitch";
+import SearchButton from "@/components/search/SearchButton";
+import Image from "next/image";
+import Link from "next/link";
 
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
-import { PhoneCall, AlertTriangle, Flame, Droplets } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
-export default function Hadaabi() {
+export const Header = ({ className }: { className?: string }) => {
   return (
-    <div className="flex flex-col w-full min-h-screen fancy-overlay">
-      {/* ✔️ Нормальный Header */}
-      <Header />
+    <LandingHeader
+      className={`${className} px-6`}
+      fixed
+      withBackground={false}
+      variant="primary"
+      logoComponent={
+        <div className="flex items-center gap-3 text-primary-900 dark:text-primary-100">
+          <Image
+            src="/static/images/logo.png"
+            alt="BoileriABI.ee logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full"
+          />
+          <span className="font-semibold text-lg">BoileriABI.ee</span>
+        </div>
+      }
+    >
 
-      {/* HERO BLOCK */}
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
+      {/* ----------- ЦЕНТРАЛЬНЫЙ БЛОК МЕНЮ ----------- */}
+      <div className="flex-1 flex justify-center items-center gap-6">
 
-          {/* Title */}
-          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold">
-            Boileri hädaabi 24/7 Tallinnas ja Harjumaal
-          </h1>
+        {/* DROPDOWN: TEENUSED */}
+        <DropdownMenu>
+          <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
+            Teenused ▾
+          </DropdownMenuTrigger>
 
-          <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
-            Kui boiler lekib, ei kuumuta vett, tekitab lühiseid või ülekuumeneb,
-            vajate kohest ja professionaalset abi.{" "}
-            <strong>BoileriABI.ee</strong> pakub kiiret 24/7 hädaabiteenust kogu Tallinnas ja Harjumaal.
-          </p>
+          <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
+            <DropdownMenuItem asChild>
+              <Link href="/paigaldus">Boileri paigaldus</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/remont">Boileri remont</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hooldus">Hooldus</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hadaabi">Hädaabi 24/7</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hinnad">Hinnad</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/garantii">Garantii</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
-          {/* CTA BLOCK */}
-          <div className="mt-10 p-6 bg-red-50 border border-red-200 rounded-xl shadow-md 
-                          flex flex-col sm:flex-row items-center justify-between gap-4">
-
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="text-red-600 w-8 h-8" />
-              <p className="text-lg font-semibold text-red-700">
-                Kiire reageerimine – tuleme esimesel võimalusel!
-              </p>
-            </div>
-
-            <a
-              href="tel:+37253684587"
-              className="bg-red-600 text-white px-6 py-3 rounded-lg shadow 
-                         hover:bg-red-700 transition text-lg font-semibold flex items-center gap-2"
-            >
-              <PhoneCall className="w-5 h-5" />
-              Helista: 53684587
-            </a>
-          </div>
-
-          {/* CONTENT SECTIONS */}
-          <div className="mt-12 space-y-16 text-lg text-gray-800 leading-relaxed">
-
-            {/* WHEN TO CALL */}
-            <div>
-              <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
-                <Droplets className="w-7 h-7 text-blue-500" /> Millal kutsuda hädaabi?
-              </h2>
-
-              <ul className="list-disc ml-6 space-y-2">
-                <li>Boiler lekib või tilgub tugevalt</li>
-                <li>Kuum vesi puudub täielikult</li>
-                <li>Tunda on kõrbelõhna või kuuldub ebatavalist põrinat</li>
-                <li>Kaitselüliti lööb pidevalt välja</li>
-                <li>Pruunikas, must või mudane vesi</li>
-                <li>Boiler kuumeneb ohtlikult üle</li>
-              </ul>
-            </div>
-
-            {/* FAST RESPONSE */}
-            <div>
-              <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
-                <Flame className="w-7 h-7 text-orange-500" /> Kiire reageerimine 24/7
-              </h2>
-
-              <p>
-                Saabume võimalusel <strong>sama tunni jooksul</strong>.  
-                Tõsiste rikete korral reageerime <strong>koheselt</strong>.  
-                Meie hädaabimeeskond on alati valmis kiireks tegutsemiseks.
-              </p>
-            </div>
-
-            {/* WHAT WE DO */}
-            <div>
-              <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-7 h-7 text-yellow-500" /> Mida teeme kohapeal?
-              </h2>
-
-              <ul className="list-disc ml-6 space-y-2">
-                <li>Rikke tuvastamine ja olukorra hindamine</li>
-                <li>Ajutine ohu kõrvaldamine (lekete peatamine, elektri isoleerimine)</li>
-                <li>Remont, tihendite või varuosade vahetus</li>
-                <li>Veekahjustuste ennetamine</li>
-                <li>Elektrilise ohu kõrvaldamine ja süsteemi kontroll</li>
-              </ul>
-            </div>
-
-          </div>
-        </section>
+        <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
+        <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
       </div>
 
-      {/* ✔️ Нормальный Footer */}
-      <Footer />
-    </div>
+      {/* ----------- ПРАВЫЙ БЛОК (кнопки) ----------- */}
+      <div className="flex items-center gap-4">
+
+        {/* Телефон */}
+        <Link
+          href="tel:+37253684587"
+          className="flex items-center gap-2 px-4 py-2 text-lg font-semibold border border-red-500 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 transition-all"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.359 4.077a1 1 0 01-.26 1.01l-1.6 1.6a16 16 0 006.364 6.364l1.6-1.6a1 1 0 011.01-.26l4.077 1.359A1 1 0 0121 18.72V21a2 2 0 01-2 2h-1C9.82 23 1 14.18 1 4V3a2 2 0 012-2h1z"
+            />
+          </svg>
+          53684587
+        </Link>
+
+        {/* WhatsApp */}
+        <LandingHeaderMenuItem
+          href="https://wa.me/37253684587"
+          type="button"
+        >
+          Whatsapp
+        </LandingHeaderMenuItem>
+
+        {/* Search + Theme */}
+        <SearchButton />
+        <ThemeSwitch />
+      </div>
+    </LandingHeader>
   );
-}
+};
+
+export default Header;
