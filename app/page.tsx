@@ -24,6 +24,43 @@ import { Button } from "@/components/shared/ui/button";
 import Link from "next/link";
 import { Droplets, Phone, Sparkles, Wrench } from "lucide-react";
 import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
+import type { Metadata } from "next";
+
+/* ===========================================================
+   🔥 SEO metadata
+=========================================================== */
+export const metadata: Metadata = {
+  title: "Boileri hooldus, paigaldus ja remont Tallinnas | BoileriABI.ee",
+  description:
+    "Boileri paigaldus, hooldus ja remont Tallinnas ja Harjumaal. Kiire abi, 24/7 hädaabi, professionaalne teenus ja garantiiga tööd. Helista 53684587.",
+  alternates: {
+    canonical: "https://www.boileriabi.ee/",
+  },
+  openGraph: {
+    title: "Boileri hooldus ja paigaldus Tallinnas – Kiire abi | BoileriABI.ee",
+    description:
+      "Boileri paigaldus, hooldus ja remont Tallinnas ja Harjumaal. Kiire tulek, garantiiga tööd, 24/7 hädaabi.",
+    url: "https://www.boileriabi.ee/",
+    siteName: "BoileriABI.ee",
+    images: [
+      {
+        url: "https://www.boileriabi.ee/static/images/og-main.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Boileri hooldus Tallinnas",
+      },
+    ],
+    locale: "et_EE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Boileri hooldus ja paigaldus Tallinnas | BoileriABI.ee",
+    description:
+      "Kiire ja professionaalne boileri hooldus, remont ja paigaldus Tallinnas ja Harjumaal.",
+    images: ["https://www.boileriabi.ee/static/images/og-main.jpg"],
+  },
+};
 
 export default function Page() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -33,7 +70,7 @@ export default function Page() {
       <Header className="mb-4" />
 
       {/* =====================================================
-          JSON-LD LocalBusiness
+          🔥 JSON-LD SCHEMA (LocalBusiness)
       ====================================================== */}
       <script
         type="application/ld+json"
@@ -62,7 +99,7 @@ export default function Page() {
       />
 
       {/* =====================================================
-          JSON-LD FAQ
+          🔥 JSON-LD SCHEMA (FAQ)
       ====================================================== */}
       <script
         type="application/ld+json"
@@ -101,7 +138,6 @@ export default function Page() {
         imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.png"
         imageAlt="Plumber working on boiler"
         imagePosition="right"
-        imageShadow="hard"
         textPosition="left"
         withBackground={false}
         variant="primary"
@@ -124,7 +160,7 @@ export default function Page() {
       </LandingPrimaryImageCtaSection>
 
       {/* =====================================================
-          SHOWCASE
+          PARTNERS
       ====================================================== */}
       <LandingShowcase
         title="Usaldusväärne partner"
@@ -144,9 +180,6 @@ export default function Page() {
         </LandingShowcaseItem>
         <LandingShowcaseItem>
           <Phone className="w-8 h-8" />
-        </LandingShowcaseItem>
-        <LandingShowcaseItem>
-          <Wrench className="w-8 h-8" />
         </LandingShowcaseItem>
       </LandingShowcase>
 
@@ -182,7 +215,7 @@ export default function Page() {
       </LandingProductFeaturesGrid>
 
       {/* =====================================================
-          FAQ teenuste detailid
+          FAQ – teenuste detailid
       ====================================================== */}
       <LandingFaqCollapsibleSection
         title="Teenuste detailid"
@@ -245,6 +278,67 @@ export default function Page() {
       </LandingProductSteps>
 
       {/* =====================================================
+          ⭐ PROFESSIONAL TESTIMONIALS
+      ====================================================== */}
+      <LandingTestimonialGrid
+        title="Klientide arvustused"
+        description="Vaadake, mida meie kliendid meie teenuse kohta ütlevad"
+        withBackground={false}
+        variant="primary"
+        withBackgroundGlow={false}
+        testimonialItems={[
+          {
+            url: "#",
+            text: "Tuli kohale 30 minutiga. Väga professionaalne ja kiire töö!",
+            imageSrc: "/static/images/review/star.png",
+            name: "Jaan T.",
+            handle: "★★★★★",
+            featured: true,
+          },
+          {
+            url: "#",
+            text: "Parandas boileri samal õhtul. Teenus oli kiire ja kvaliteetne.",
+            imageSrc: "/static/images/review/star.png",
+            name: "Kertu M.",
+            handle: "★★★★★",
+            featured: false,
+          },
+          {
+            url: "#",
+            text: "Aus hind ja super kvaliteet. Soovitan kõigile!",
+            imageSrc: "/static/images/review/star.png",
+            name: "Andrus R.",
+            handle: "★★★★★",
+            featured: false,
+          },
+          {
+            url: "#",
+            text: "Väga meeldiv kogemus. Töö teostati kiiresti ja korralikult.",
+            imageSrc: "/static/images/review/star.png",
+            name: "Maarja L.",
+            handle: "★★★★★",
+            featured: false,
+          },
+          {
+            url: "#",
+            text: "Spetsialist selgitas kõik detailid ilusti ära. Väga professionaalne.",
+            imageSrc: "/static/images/review/star.png",
+            name: "Roman S.",
+            handle: "★★★★★",
+            featured: false,
+          },
+          {
+            url: "#",
+            text: "Soovitan soojalt! Kiire, viisakas ja kvaliteetne teenus.",
+            imageSrc: "/static/images/review/star.png",
+            name: "Helena P.",
+            handle: "★★★★★",
+            featured: false,
+          },
+        ]}
+      />
+
+      {/* =====================================================
           CTA
       ====================================================== */}
       <LandingSaleCtaSection
@@ -266,7 +360,7 @@ export default function Page() {
       </LandingSaleCtaSection>
 
       {/* =====================================================
-          BAND SECTION
+          BAND
       ====================================================== */}
       <LandingBandSection
         title="Tallinn ja Harjumaa"
@@ -274,7 +368,7 @@ export default function Page() {
       />
 
       {/* =====================================================
-          BOTTOM FAQ
+          GLOBAALNE FAQ
       ====================================================== */}
       <LandingFaqCollapsibleSection
         title="Korduma kippuvad küsimused"
@@ -283,6 +377,7 @@ export default function Page() {
         withBackground
       />
 
+      {/* FORM MODAL */}
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
 
       <Footer className="mt-8" />
