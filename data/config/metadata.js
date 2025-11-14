@@ -1,14 +1,14 @@
 const metadata = {
-  title: 'Boileri paigaldus ja remont Tallinnas | BoileriAbI.ee',
-  description: 'BoileriABI.ee – Torumees Tallinnas & Harjumaa piirkonnas: boilerite paigaldus, remont ja hooldus.',
+  title: 'Boileri paigaldus, remont ja hooldus Tallinnas | Boileriabi.ee',
+  description: 'Boileriabi.ee – professionaalne boilerite paigaldus, remont ja hooldus Tallinnas ja Harjumaal. Kiire hädaabi 24/7, kogenud torumehed ja töögarantii. Tasuta konsultatsioon!',
   domain: 'boileriabi.ee',
   logoTitle: '',
-  businessName: 'BoileriABI.ee',
+  businessName: 'Boileriabi.ee',
   siteUrl: 'https://boileriabi.ee',
   siteRepo: '',
   socialBanner: '/api/og',
-  supportEmail: '',
-  email: '',
+  supportEmail: 'info@boileriabi.ee',
+  email: 'info@boileriabi.ee',
   twitter: '',
   instagram: '',
   tiktok: '',
@@ -18,10 +18,9 @@ const metadata = {
   facebook: '',
   threads: '',
   mastodon: '',
-  author: 'BoileriABI.ee',
-  language: 'en-us',
-  theme: 'system',
-  locale: 'en-US'
+  author: 'Boileriabi.ee',
+  language: 'et',
+  locale: 'et-EE',
 };
 
 module.exports = { metadata };
