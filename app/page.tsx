@@ -40,7 +40,7 @@ export default function Page() {
     <>
       <Header />
 
-      {/* JSON-LD */}
+      {/* JSON-LD LocalBusiness */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -50,16 +50,25 @@ export default function Page() {
             name: "BoileriABI.ee",
             telephone: "+37253684587",
             url: "https://www.boileriabi.ee/",
+            image: "https://www.boileriabi.ee/static/images/og-main.jpg",
             address: {
               "@type": "PostalAddress",
               addressLocality: "Tallinn",
               addressRegion: "Harjumaa",
               addressCountry: "EE",
             },
+            areaServed: ["Tallinn", "Harjumaa"],
+            priceRange: "€€",
           }),
         }}
       />
 
+      {/* 🔥 ЛОГО-КАРУСЕЛЬ — блок партнёров */}
+      <div className="mt-10 mb-16">
+        <LogoCarousel />
+      </div>
+
+      {/* Основной клиентский контент */}
       <ClientWrapper />
 
       <Footer />
