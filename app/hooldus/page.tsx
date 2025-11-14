@@ -3,29 +3,71 @@ import Header from '@/components/shared/Header';
 
 export default function Hooldus() {
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-between fancy-overlay">
+    <div className="flex flex-col w-full min-h-screen fancy-overlay">
       <Header />
 
       <div className="w-full flex flex-col items-center my-12">
         <section className="w-full p-6 container-narrow">
-          <h1 className="text-4xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-6xl fancy-heading">
-            Hooldus ja Kontrollid Boilerite jaoks
+
+          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold">
+            Boileri hooldus Tallinnas ja Harjumaal
           </h1>
 
-          <p className="mt-6 md:text-xl">
-            BoileriABI.ee pakub usaldusväärset boilerite hooldust ja
-            regulaartseid kontrolli Tallinnas ning Harjumaa piirkonnas. Meie
-            kogenud torumehed tagavad, et teie küttesüsteem töötab tõrkeideta
-            ning säilitab optimaalse jõudluse ning energiatõhususe.
+          <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
+            Regulaarne boileri hooldus tagab seadme pika eluea, madalama energiakulu ja ohutu töö.
+            BoileriABI.ee pakub professionaalset hooldusteenust Tallinnas ja Harjumaal, eemaldades katlakivi,
+            setted ning kontrollides kõiki olulisi komponente nagu anood, küttespiraal, termostaat ja kaitselüliti.
           </p>
 
-          <p className="mt-6 md:text-xl">
-            Regulaarne hooldus aitab ennetada ootamatuid torustiku rikkeid ning
-            pikendab boilerite tööiga. Meie teenus hõlmab põhjalikke
-            inspekteeringuid, puhastust ja vajadusel komponentide vahetust.
-            Usaldage oma küttesüsteemid professionaalsele meeskonnale ning
-            tagage oma mugavus aastaringselt.
-          </p>
+          <div className="mt-12 space-y-12 text-lg text-gray-800 leading-relaxed">
+
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Miks boiler vajab regulaarset hooldust?</h2>
+              <p>
+                Eesti vesi sisaldab palju lubjakivi, mis koguneb boileri põhja ja seintele. Selle tulemusena
+                väheneb vee maht, suureneb elektrikulu, küttespiraal kuumeneb üle ja tekivad lekked.
+                Regulaarne hooldus hoiab süsteemi stabiilsena ja ohutuna.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Mis kuulub hoolduse sisse?</h2>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Boileri sisemine puhastus (katlakivi ja muda eemaldamine)</li>
+                <li>Anoodi kontroll ja vajadusel vahetus</li>
+                <li>Küttespiraali testimine ja hindamine</li>
+                <li>Tihendite ja ühenduste kontroll</li>
+                <li>Kaitseklapi ja rõhusüsteemi kontroll</li>
+                <li>Elektriühenduste ülevaatus</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Kui tihti hooldust teha?</h2>
+              <p>
+                Soovitame hooldust 1–2 aasta tagant. Suurema veetarbimise või lubjase vee korral isegi sagedamini.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Hoolduse eelised</h2>
+              <ul className="list-disc ml-6 space-y-2">
+                <li>Madal elektrikulu</li>
+                <li>Parem veekvaliteet</li>
+                <li>Pikem eluiga</li>
+                <li>Väiksem oht riketele ja ülekuumenemisele</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Piirkonnad</h2>
+              <p>
+                Teenindame Tallinnat ja kogu Harjumaad: Viimsi, Rae, Peetri, Tabasalu, Saku, Saue, Harku, Laagri,
+                Maardu, Keila ja palju muud.
+              </p>
+            </div>
+
+          </div>
         </section>
       </div>
 
