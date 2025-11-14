@@ -7,7 +7,7 @@ import { PhoneCall, AlertTriangle, Flame, Droplets } from "lucide-react";
 
 export default function HadaabiPage() {
   return (
-    <div className="flex flex-col w-full min-h-screen fancy-overlay">
+    <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
       <Header />
 
       {/* HERO SECTION */}
@@ -26,7 +26,8 @@ export default function HadaabiPage() {
           </p>
 
           {/* CTA */}
-          <div className="mt-10 p-6 bg-red-50 border border-red-200 rounded-xl shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-10 p-6 bg-red-50 border border-red-200 rounded-xl shadow-md 
+                          flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <AlertTriangle className="text-red-600 w-8 h-8" />
               <p className="text-lg font-semibold text-red-700">
@@ -36,14 +37,15 @@ export default function HadaabiPage() {
 
             <a
               href="tel:+37253684587"
-              className="bg-red-600 text-white px-6 py-3 rounded-lg shadow hover:bg-red-700 transition text-lg font-semibold flex items-center gap-2"
+              className="bg-red-600 text-white px-6 py-3 rounded-lg shadow hover:bg-red-700 
+                         transition text-lg font-semibold flex items-center gap-2"
             >
               <PhoneCall className="w-5 h-5" />
               Helista: 53684587
             </a>
           </div>
 
-          {/* CONTENT */}
+          {/* CONTENT BLOCK */}
           <div className="mt-12 space-y-16 text-lg text-gray-800 leading-relaxed">
 
             {/* WHEN TO CALL */}
