@@ -1,0 +1,37 @@
+{/* --- BRAND LOGOS SECTION --- */}
+<section className="w-full py-16 bg-[#e6faff] flex flex-col items-center">
+  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+    Usaldusväärne partner
+  </h2>
+  <p className="text-lg text-gray-700 mb-10 text-center">
+    Töötame koos juhtivate tootjate ja partneritega
+  </p>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center opacity-90">
+    <img
+      src="/static/brands/ariston.png"
+      alt="Ariston"
+      className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition"
+    />
+    <img
+      src="/static/brands/atlantic.png"
+      alt="Atlantic"
+      className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition"
+    />
+    <img
+      src="/static/brands/bosch.png"
+      alt="Bosch"
+      className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition"
+    />
+    <img
+      src="/static/brands/stiebel.png"
+      alt="Stiebel Eltron"
+      className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition"
+    />
+    <img
+      src="/static/brands/onninen.png"
+      alt="Onninen"
+      className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition"
+    />
+  </div>
+</section>
