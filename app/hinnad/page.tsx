@@ -4,13 +4,14 @@ import { Wrench, Droplets, AlertTriangle, CheckCircle } from "lucide-react";
 
 export default function Page() {
   return (
-    <div className="flex flex-col w-full min-h-screen fancy-overlay">
+    <div className="flex flex-col w-full min-h-screen fancy-overlay pt-32">
+      {/* FIXED HEADER */}
       <Header />
 
       <div className="w-full flex flex-col items-center my-12">
         <section className="w-full p-6 container-narrow">
 
-          {/* TITLE */}
+          {/* --- TITLE --- */}
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center">
             Boileri teenuste hinnad
           </h1>
@@ -20,9 +21,10 @@ export default function Page() {
             Kõik tööd teostatakse professionaalselt, kiirelt ja garantii alusel.
           </p>
 
-          {/* PRICE GRID */}
+          {/* --- PRICE GRID --- */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
 
+            {/* Paigaldus */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <Wrench className="w-10 h-10 text-primary-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri paigaldus</h2>
@@ -32,6 +34,7 @@ export default function Page() {
               <p className="text-3xl font-bold text-primary-600">120–250 €</p>
             </div>
 
+            {/* Hooldus */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <Droplets className="w-10 h-10 text-blue-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri hooldus</h2>
@@ -41,6 +44,7 @@ export default function Page() {
               <p className="text-3xl font-bold text-primary-600">80–150 €</p>
             </div>
 
+            {/* Remont */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <AlertTriangle className="w-10 h-10 text-red-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri remont</h2>
@@ -50,6 +54,7 @@ export default function Page() {
               <p className="text-3xl font-bold text-primary-600">50–200 €</p>
             </div>
 
+            {/* Hädaabi */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <AlertTriangle className="w-10 h-10 text-yellow-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Hädaabi 24/7</h2>
@@ -59,6 +64,7 @@ export default function Page() {
               <p className="text-3xl font-bold text-primary-600">90–150 €</p>
             </div>
 
+            {/* Anoodi vahetus */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <CheckCircle className="w-10 h-10 text-green-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Anoodi vahetus</h2>
@@ -68,6 +74,7 @@ export default function Page() {
               <p className="text-3xl font-bold text-primary-600">30–90 €</p>
             </div>
 
+            {/* Küttespiraal */}
             <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
               <Wrench className="w-10 h-10 text-primary-700 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Küttespiraali vahetus</h2>
@@ -79,10 +86,12 @@ export default function Page() {
 
           </div>
 
+          {/* --- EXTRA INFO --- */}
           <div className="mt-16 text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl font-bold">Kuidas kujuneb hind?</h2>
             <p>
               Lõplik hind sõltub boileri mahust, tüübist, asukohast ning vajalikest lisatöödest.
+              Enne töö alustamist anname alati selge ja läbipaistva hinnapakkumise.
             </p>
 
             <h2 className="text-3xl font-bold mt-10">Miks valida BoileriABI.ee?</h2>
