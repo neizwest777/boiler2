@@ -1,56 +1,188 @@
+"use client";
+
+import { useState } from 'react';
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
 import LogoCarousel from "@/components/LogoCarousel";
 import Link from 'next/link';
+import { Button } from '@/components/shared/ui/button';
 
-export const metadata: Metadata = {
-  title: "Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee",
-  description: "Kogenud torumees Tallinnas - boileri paigaldus, remont, hooldus ja 24/7 hädaabi. Tasuta hindamine, kiire reageerimine ja töögarantii. Helista +37253684587",
-  keywords: [
-    "boileri paigaldus",
-    "boileri remont", 
-    "boileri hooldus",
-    "torumees Tallinnas",
-    "hädaabi boiler",
-    "boileri teenused Tallinnas",
-    "veesoojendi paigaldus",
-    "boileri parandus",
-    "24/7 boileriabi"
-  ],
-  alternates: {
-    canonical: "https://boileriabi.ee/",
-  },
-  openGraph: {
-    title: "Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee",
-    description: "Kogenud torumees Tallinnas - boileri paigaldus, remont, hooldus ja 24/7 hädaabi. Tasuta hindamine, kiire reageerimine ja töögarantii.",
-    url: "https://boileriabi.ee/",
-    siteName: "Boileriabi.ee",
-    images: [
-      {
-        url: "https://boileriabi.ee/api/og",
-        width: 1200,
-        height: 630,
-        alt: "Boileriabi.ee - Boileri paigaldus, remont ja hooldus Tallinnas",
-      },
-    ],
-    locale: "et_EE",
-    type: "website",
-    emails: ["info@boileriabi.ee"],
-    phoneNumbers: ["+37253684587"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee",
-    description: "Kogenud torumees Tallinnas - boileri paigaldus, remont, hooldus ja 24/7 hädaabi.",
-    images: ["https://boileriabi.ee/api/og"],
-    site: "@boileriabi",
-    creator: "@boileriabi",
-  },
-};
+// Компонент модального окна
+function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/prismestonia@gmail.com', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        (e.target as HTMLFormElement).reset();
+        
+        // Автозакрытие через 3 секунды после успеха
+        setTimeout(() => {
+          onClose();
+        }, 3000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-bold">Tasuta Boileri Konsultatsioon</h3>
+            <button 
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Статус сообщения */}
+          {submitStatus === 'success' && (
+            <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <p className="text-green-800 font-semibold">
+                ✅ Täname päringu eest! Võtame Teiega peagi ühendust.
+              </p>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 font-semibold">
+                ❌ Viga saatmisel. Palun proovige uuesti või helistage meile: {' '}
+                <a href="tel:+37253684587" className="underline">+372 5368 4587</a>
+              </p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_subject" value="Tasuta konsultatsioon päring - Boileriabi.ee" />
+            <input type="hidden" name="_autoresponse" value="Täname Teid tasuta konsultatsiooni päringu eest! Võtame Teiega peagi ühendust." />
+            <input type="hidden" name="_cc" value="info@boileriabi.ee" />
+
+            <div>
+              <label className="text-sm font-medium block mb-1">
+                Nimi *
+              </label>
+              <input 
+                name="name" 
+                required 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                placeholder="Sisestage oma nimi"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block mb-1">
+                Telefon *
+              </label>
+              <input 
+                name="phone" 
+                required 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                placeholder="Sisestage oma telefoninumber"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block mb-1">
+                E-post
+              </label>
+              <input 
+                name="email" 
+                type="email" 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" 
+                placeholder="Sisestage oma e-posti aadress"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block mb-1">
+                Millist teenust vajate?
+              </label>
+              <select 
+                name="service"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                disabled={isSubmitting}
+              >
+                <option value="">Valige teenus</option>
+                <option value="paigaldus">Boileri paigaldus</option>
+                <option value="remont">Boileri remont</option>
+                <option value="hooldus">Boileri hooldus</option>
+                <option value="konsultatsioon">Tasuta konsultatsioon</option>
+                <option value="muu">Muu teenus</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium block mb-1">
+                Kirjeldage oma vajadust
+              </label>
+              <textarea 
+                name="message" 
+                rows={3} 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                placeholder="Kirjeldage lühidalt oma boileri probleemi või vajadust..."
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <Button 
+              type="submit" 
+              className="w-full py-3"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Saadetan...' : '📩 Saada päring'}
+            </Button>
+          </form>
+
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-600">
+              Või helistage otse: {' '}
+              <a href="tel:+37253684587" className="text-blue-600 font-semibold hover:underline">
+                +372 5368 4587
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <Header />
@@ -214,12 +346,12 @@ export default function Page() {
               >
                 📞 Helista kohe: +372 5368 4587
               </a>
-              <Link 
-                href="/kontakt" 
+              <button 
+                onClick={() => setIsModalOpen(true)}
                 className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
               >
                 📝 Tasuta konsultatsioon
-              </Link>
+              </button>
             </div>
             <p className="text-gray-600 mt-4 text-sm">
               ⚡ <strong>Hädaabi:</strong> Saame kohale 1-2 tunni jooksul Tallinnas
@@ -270,6 +402,12 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Модальное окно */}
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
 
       {/* 🔽 FOOTER */}
       <Footer />
