@@ -44,7 +44,7 @@ export default function ClientWrapper() {
         </Button>
       </LandingPrimaryImageCtaSection>
 
-      {/* ❗❗❗ БЛОК PARTNERITE — ПОЛНОСТЬЮ УДАЛЁН ❗❗❗ */}
+      {/* ❗❗❗ БЛОК «PARTNERS» ОТСЮДА УДАЛЁН */}
 
       {/* TEENUSED */}
       <LandingProductFeaturesGrid
@@ -111,7 +111,7 @@ export default function ClientWrapper() {
         />
       </LandingProductSteps>
 
-      {/* FAQ + CTA и остальные секции */}
+      {/* CTA */}
       <LandingSaleCtaSection
         title="Saage tasuta hinnapakkumine täna!"
         description="Täitke vorm ja võtame teiega ühendust."
@@ -119,12 +119,14 @@ export default function ClientWrapper() {
         variant="primary"
       />
 
+      {/* BAND (оставляем — это не партнёры) */}
       <LandingBandSection
         title="Tallinn ja Harjumaa"
         description="Kiire reageerimine üle piirkonna."
         withBackground={false}
       />
 
+      {/* FAQ */}
       <LandingFaqCollapsibleSection
         title="Korduma kippuvad küsimused"
         description="Leiate vastused kõige sagedamini esitatud küsimustele"
