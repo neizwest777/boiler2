@@ -15,14 +15,13 @@ import {
 
 import { Button } from "@/components/shared/ui/button";
 import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
-import LogoCarousel from "@/components/LogoCarousel";
 
 export default function ClientWrapper() {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
     <>
-      {/* ===================== HERO ===================== */}
+      {/* HERO */}
       <LandingPrimaryImageCtaSection
         title="Boileri hooldus, paigaldus ja remont Tallinnas"
         description="Kutsuge kogenud torumees! Kiire ja usaldusväärne teenus üle Tallinna ja Harjumaa."
@@ -32,7 +31,7 @@ export default function ClientWrapper() {
         withBackground={false}
         variant="primary"
       >
-        <div className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md select-none">
+        <div className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md">
           Helista: 53684587
         </div>
 
@@ -45,21 +44,9 @@ export default function ClientWrapper() {
         </Button>
       </LandingPrimaryImageCtaSection>
 
-      {/* ===================== PARTNERITE KARUSELL – СРАЗУ ПОСЛЕ БОЙЛЕРА ===================== */}
-      <section className="w-full py-16 bg-[#E4FAFF]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Usaldusväärne partner
-          </h2>
-          <p className="text-gray-700 mt-2 mb-10">
-            Töötame koos juhtivate tootjate ja partneritega
-          </p>
+      {/* ❗❗❗ БЛОК PARTNERITE — ПОЛНОСТЬЮ УДАЛЁН ❗❗❗ */}
 
-          <LogoCarousel />
-        </div>
-      </section>
-
-      {/* ===================== TEENUSED ===================== */}
+      {/* TEENUSED */}
       <LandingProductFeaturesGrid
         title="Meie teenused"
         description="Pakume laia valikut boileri ja torustiku teenuseid"
@@ -91,14 +78,14 @@ export default function ClientWrapper() {
         />
       </LandingProductFeaturesGrid>
 
-      {/* ===================== MEIST ===================== */}
+      {/* ABOUT */}
       <LandingAboutSection
         title="Meist"
         description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaa."
         imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
       />
 
-      {/* ===================== SAMMUD ===================== */}
+      {/* STEPS */}
       <LandingProductSteps
         title="Kuidas see töötab"
         description="Lihtne protsess kvaliteetse teenuse saamiseks"
@@ -124,66 +111,27 @@ export default function ClientWrapper() {
         />
       </LandingProductSteps>
 
-      {/* ===================== TESTIMONIALS ===================== */}
-      <section className="w-full py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Klientide arvustused</h2>
-          <p className="text-lg text-gray-600 mb-14">
-            Vaadake, mida meie kliendid meist arvavad
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* …тут твои 3 отзыва как были… */}
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== CTA ===================== */}
+      {/* FAQ + CTA и остальные секции */}
       <LandingSaleCtaSection
         title="Saage tasuta hinnapakkumine täna!"
         description="Täitke vorm ja võtame teiega ühendust."
         withBackground
         variant="primary"
-      >
-        <Button size="xl" asChild>
-          <a href="tel:+37253684587">Helista kohe</a>
-        </Button>
+      />
 
-        <Button
-          size="xl"
-          variant="outlinePrimary"
-          onClick={() => setContactOpen(true)}
-        >
-          Saada päring
-        </Button>
-      </LandingSaleCtaSection>
-
-      {/* ===================== BAND ===================== */}
       <LandingBandSection
         title="Tallinn ja Harjumaa"
         description="Kiire reageerimine üle piirkonna."
         withBackground={false}
       />
 
-      {/* ===================== FAQ ===================== */}
       <LandingFaqCollapsibleSection
         title="Korduma kippuvad küsimused"
         description="Leiate vastused kõige sagedamini esitatud küsimustele"
         faqItems={[
-          {
-            question: "Kui kiiresti saate kohale tulla?",
-            answer:
-              "Tavaliselt saame kohale tulla 24 tunni jooksul. Hädaolukordades reageerime kohe.",
-          },
-          {
-            question: "Kas pakute garantiid?",
-            answer:
-              "Jah, kõikidele tehtud töödele anname ametliku garantii.",
-          },
-          {
-            question: "Kas töötate nädalavahetusel?",
-            answer: "Jah, pakume teenust 7 päeva nädalas, 24/7.",
-          },
+          { question: "Kui kiiresti saate kohale tulla?", answer: "24h." },
+          { question: "Kas pakute garantiid?", answer: "Jah." },
+          { question: "Kas töötate nädalavahetusel?", answer: "Jah, 24/7." },
         ]}
         withBackground
         variant="primary"
