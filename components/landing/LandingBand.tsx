@@ -1,12 +1,6 @@
 import React from 'react';
 import { clsx } from 'clsx';
 
-/**
- * A component meant to be used in the landing page.
- * A fullscreen, brand-colored section that displays a title, description and some product logos.
- *
- * It should be used to 'break' page flow & highlight content such as the product's tech features or an important selling point.
- */
 export const LandingBandSection = ({
   children,
   className,
@@ -48,16 +42,8 @@ export const LandingBandSection = ({
             withBackground ? 'text-black' : '',
           )}
         >
-          {titleComponent || (title && (
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              {title}
-            </h2>
-          ))}
-
-          {descriptionComponent || (description && (
-            <p className="text-lg">{description}</p>
-          ))}
-
+          {/* ⛔ Title removed */}
+          {/* ⛔ Description removed */}
           {children}
         </div>
 
