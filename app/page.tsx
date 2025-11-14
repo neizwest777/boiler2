@@ -63,20 +63,17 @@ export default function Page() {
         }}
       />
 
-      {/* 🔥 STATISTIKA BLOKK */}
+      {/* 🔥 1) STATISTIKA */}
       <section className="w-full py-20 bg-[#E4FAFF]">
         <div className="max-w-5xl mx-auto px-6">
-
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
             Statistika meie töödest
           </h2>
-
           <p className="text-gray-600 text-center mb-12 text-lg">
             Kliendid usaldavad meid — tulemused räägivad enda eest.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
-
             <div>
               <p className="text-4xl font-bold text-primary-600">430+</p>
               <p className="text-gray-700 text-lg font-medium mt-1">
@@ -106,28 +103,27 @@ export default function Page() {
                 Rahulolevat klienti
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 🔧 HERO-БЛОК – текст + бойлер */}
+      {/* 🔥 2) HERO-БЛОК — картинка + текст */}
       <ClientWrapper />
 
-      {/* 🔥 Партнёры — СРАЗУ ПОСЛЕ CLIENTWRAPPER */}
+      {/* 🔥 3) СРАЗУ ПОСЛЕ БОЙЛЕРА — ПАРТНЁРЫ */}
       <section className="w-full py-16 bg-[#E4FAFF]">
         <div className="max-w-4xl mx-auto text-center">
-
           <h2 className="text-3xl font-bold text-gray-900">Usaldusväärne partner</h2>
           <p className="text-gray-700 mt-2 mb-10">
             Töötame koos juhtivate tootjate ja partneritega
           </p>
 
           <LogoCarousel />
-
         </div>
       </section>
 
+      {/* ❌ НЕТ партнёров внизу — удалено */}
+      {/* 🔽 FOOTER */}
       <Footer />
     </>
   );
