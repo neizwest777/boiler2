@@ -110,6 +110,16 @@
     box-shadow: var(--hard-shadow-left);
   }
 
+  /* Стили для скрытия scrollbar */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .faq li h3 {
     @apply font-semibold text-lg;
   }
