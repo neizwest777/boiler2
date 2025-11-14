@@ -87,8 +87,6 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
-      // ДОБАВИЛ NOIMAGEINDEX ЕСЛИ НЕТ ВАЖНЫХ ИЗОБРАЖЕНИЙ
-      'max-image-preview': 'standard',
     },
   },
   twitter: {
