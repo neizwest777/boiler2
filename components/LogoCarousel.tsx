@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 
 const logos = [
   "/static/brands/ariston.png",
-  "/static/brands/atlantic.png",
+  "/static/brands/atlantic.svg",
   "/static/brands/bauhof.png",
   "/static/brands/bosch.png",
   "/static/brands/gustavsberg.png",
@@ -18,35 +18,48 @@ const logos = [
 
 export default function LogoCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>(0);
+  const isPausedRef = useRef(false);
 
   useEffect(() => {
-    let el = scrollRef.current;
+    const el = scrollRef.current;
     if (!el) return;
 
     let x = 0;
-    let frameId: number;
+    const speed = 0.7;
 
     const tick = () => {
-      // Защита от null для Vercel
-      if (!el) return;
+      if (!el || isPausedRef.current) {
+        animationRef.current = requestAnimationFrame(tick);
+        return;
+      }
 
-      x += 0.7;
+      x += speed;
+      
+      // Сбрасываем позицию когда дошли до середины (до конца оригинального набора)
       if (x >= el.scrollWidth / 2) {
         x = 0;
       }
 
       el.scrollLeft = x;
-
-      frameId = requestAnimationFrame(tick);
+      animationRef.current = requestAnimationFrame(tick);
     };
 
-    frameId = requestAnimationFrame(tick);
+    animationRef.current = requestAnimationFrame(tick);
 
     return () => {
-      cancelAnimationFrame(frameId);
-      el = null; // защита от утечек
+      cancelAnimationFrame(animationRef.current);
     };
   }, []);
+
+  // Функции для паузы при наведении
+  const handleMouseEnter = () => {
+    isPausedRef.current = true;
+  };
+
+  const handleMouseLeave = () => {
+    isPausedRef.current = false;
+  };
 
   return (
     <div className="w-full bg-[#e8fcff] py-10 overflow-hidden">
@@ -59,23 +72,22 @@ export default function LogoCarousel() {
 
       <div
         ref={scrollRef}
-        className="relative flex gap-10 overflow-x-scroll no-scrollbar whitespace-nowrap px-10"
-        style={{
-          scrollBehavior: "smooth",
-        }}
+        className="relative flex gap-10 overflow-x-hidden no-scrollbar whitespace-nowrap px-10"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Чтобы была бесконечная карусель — удваиваем список */}
+        {/* Удваиваем список для бесконечного эффекта */}
         {[...logos, ...logos].map((src, i) => (
           <div
             key={i}
-            className="min-w-[180px] h-[100px] flex items-center justify-center bg-white shadow rounded-xl p-4"
+            className="min-w-[180px] h-[100px] flex items-center justify-center bg-white shadow rounded-xl p-4 flex-shrink-0 transition-transform hover:scale-105"
           >
             <Image
               src={src}
               alt={`logo-${i}`}
               width={200}
               height={80}
-              className="object-contain"
+              className="object-contain max-h-full"
             />
           </div>
         ))}
