@@ -1,114 +1,121 @@
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
-import { Wrench, Droplets, AlertTriangle, CheckCircle } from "lucide-react";
+import { LandingHeader, LandingHeaderMenuItem } from "@/components/landing";
+import ThemeSwitch from "@/components/shared/ThemeSwitch";
+import SearchButton from "@/components/search/SearchButton";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Hinnad() {
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+
+export const Header = ({ className }: { className?: string }) => {
   return (
-    <div className="flex flex-col w-full min-h-screen fancy-overlay">
-      <Header />
+    <LandingHeader
+      className={`w-full flex items-center justify-between px-6 ${className}`}
+      fixed
+      logoComponent={
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/static/images/logo.png"
+            alt="BoileriABI.ee logo"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full"
+          />
+          <span className="text-primary-900 font-semibold text-lg">
+            BoileriABI.ee
+          </span>
+        </Link>
+      }
+      withBackground={false}
+      variant="primary"
+    >
+      {/* ---------------- CENTER MENU ---------------- */}
+      <div className="flex items-center gap-6 mx-auto">
 
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
+        {/* DROPDOWN: TEENUSED */}
+        <DropdownMenu>
+          <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
+            Teenused ▾
+          </DropdownMenuTrigger>
 
-          {/* --- TITLE --- */}
-          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center">
-            Boileri teenuste hinnad
-          </h1>
+          <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
+            <DropdownMenuItem asChild>
+              <Link href="/paigaldus">Boileri paigaldus</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/remont">Boileri remont</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hooldus">Hooldus</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hadaabi">Hädaabi 24/7</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/hinnad">Hinnad</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/garantii">Garantii</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
-          <p className="mt-6 md:text-xl text-gray-700 text-center max-w-3xl mx-auto">
-            Siit leiate ülevaate meie kõige populaarsemate teenuste hindadest. 
-            Kõik tööd teostatakse professionaalselt, kiirelt ja garantii alusel.
-          </p>
-
-
-          {/* --- PRICE GRID --- */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
-
-            {/* Paigaldus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <Wrench className="w-10 h-10 text-primary-500 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Boileri paigaldus</h2>
-              <p className="text-gray-700 mb-6">
-                Professionaalne paigaldus uutele ja olemasolevatele süsteemidele.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">120–250 €</p>
-            </div>
-
-            {/* Hooldus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <Droplets className="w-10 h-10 text-blue-500 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Boileri hooldus</h2>
-              <p className="text-gray-700 mb-6">
-                Katlakivi eemaldamine, anoodi kontroll ja üldine ülevaatus.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">80–150 €</p>
-            </div>
-
-            {/* Remont */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <AlertTriangle className="w-10 h-10 text-red-500 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Boileri remont</h2>
-              <p className="text-gray-700 mb-6">
-                Kiire rikke tuvastamine ja kvalitatiivne parandamine.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">50–200 €</p>
-            </div>
-
-            {/* Hädaabi */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <AlertTriangle className="w-10 h-10 text-yellow-500 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Hädaabi 24/7</h2>
-              <p className="text-gray-700 mb-6">
-                Kiire reageerimine lekete, lühiste või ohtlike olukordade korral.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">90–150 €</p>
-            </div>
-
-            {/* Anoodi vahetus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <CheckCircle className="w-10 h-10 text-green-500 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Anoodi vahetus</h2>
-              <p className="text-gray-700 mb-6">
-                Kaitseb boilerit rooste ja korrosiooni eest.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">30–90 €</p>
-            </div>
-
-            {/* Küttespiraal */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
-              <Wrench className="w-10 h-10 text-primary-700 mb-4" />
-              <h2 className="text-2xl font-bold mb-2">Küttespiraali vahetus</h2>
-              <p className="text-gray-700 mb-6">
-                Vajalik, kui boiler ei kuumuta vett või lülitab kaitse välja.
-              </p>
-              <p className="text-3xl font-bold text-primary-600">60–150 €</p>
-            </div>
-
-          </div>
-
-
-          {/* --- EXTRA INFO --- */}
-          <div className="mt-16 text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl font-bold">Kuidas kujuneb hind?</h2>
-            <p>
-              Lõplik hind sõltub boileri mahust, tüübist, asukohast ning vajalikest lisatöödest.
-              Enne töö alustamist anname alati selge ja läbipaistva hinnapakkumise.
-            </p>
-
-            <h2 className="text-3xl font-bold mt-10">Miks valida BoileriABI.ee?</h2>
-            <ul className="list-disc ml-6 space-y-2">
-              <li>Sertifitseeritud ja kogenud torumehed</li>
-              <li>Kiire reageerimine kogu Tallinnas ja Harjumaal</li>
-              <li>Kvaliteetne töö ja garantii</li>
-              <li>Aus ja läbipaistev hinnastamine</li>
-              <li>Hädaabi 24/7</li>
-            </ul>
-          </div>
-
-        </section>
+        <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
+        <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
       </div>
 
-      <Footer />
-    </div>
+      {/* ---------------- RIGHT SIDE ---------------- */}
+      <div className="flex items-center gap-3">
+
+        {/* PHONE BUTTON */}
+        <Link
+          href="tel:+37253684587"
+          className="
+            hidden md:flex items-center gap-2 
+            px-4 py-2 
+            text-lg font-semibold
+            border border-red-500 
+            text-red-600 
+            rounded-xl 
+            hover:bg-red-50 
+            transition-all whitespace-nowrap
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.359 4.077a1 1 0 01-.26 1.01l-1.6 1.6a16 16 0 006.364 6.364l1.6-1.6a1 1 0 011.01-.26l4.077 1.359A1 1 0 0121 18.72V21a2 2 0 01-2 2h-1C9.82 23 1 14.18 1 4V3a2 2 0 012-2h1z"
+            />
+          </svg>
+          53684587
+        </Link>
+
+        {/* WHATSAPP */}
+        <LandingHeaderMenuItem
+          href="https://wa.me/37253684587"
+          type="button"
+        >
+          Whatsapp
+        </LandingHeaderMenuItem>
+
+        {/* SEARCH + THEME */}
+        <SearchButton />
+        <ThemeSwitch />
+      </div>
+    </LandingHeader>
   );
-}
+};
+
+export default Header;
