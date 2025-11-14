@@ -19,7 +19,6 @@ const logos = [
 export default function LogoCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Автопрокрутка
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -27,7 +26,7 @@ export default function LogoCarousel() {
     let x = 0;
 
     function tick() {
-      x += 1;
+      x += 0.7; // скорость
       if (x >= el.scrollWidth / 2) x = 0;
       el.scrollLeft = x;
       requestAnimationFrame(tick);
@@ -37,21 +36,37 @@ export default function LogoCarousel() {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden py-10 bg-white">
+    <div className="w-full overflow-hidden py-14 bg-[#eafbff]">
+      <h2 className="text-center text-3xl font-semibold mb-2">
+        Usaldusväärne partner
+      </h2>
+      <p className="text-center mb-10 text-gray-700">
+        Töötame koos juhtivate tootjate ja partneritega
+      </p>
+
       <div
         ref={scrollRef}
-        className="flex gap-12 whitespace-nowrap overflow-hidden"
-        style={{ scrollBehavior: "smooth" }}
+        className="flex gap-10 whitespace-nowrap overflow-hidden px-10"
       >
         {[...logos, ...logos].map((src, i) => (
-          <Image
+          <div
             key={i}
-            src={src}
-            alt="brand logo"
-            width={160}
-            height={60}
-            className="object-contain opacity-70 hover:opacity-100 transition"
-          />
+            className="
+            bg-white shadow-md rounded-xl
+            flex items-center justify-center
+            w-[200px] h-[100px]
+            p-4
+            shrink-0
+            "
+          >
+            <Image
+              src={src}
+              alt="brand"
+              width={180}
+              height={70}
+              className="object-contain w-full h-full"
+            />
+          </div>
         ))}
       </div>
     </div>
