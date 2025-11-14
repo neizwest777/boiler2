@@ -1,4 +1,5 @@
-import { LandingHeaderMenuItem } from "@/components/landing";
+"use client";
+
 import ThemeSwitch from "@/components/shared/ThemeSwitch";
 import SearchButton from "@/components/search/SearchButton";
 import Image from "next/image";
@@ -11,11 +12,9 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
-export const Header = () => {
+export default function Header() {
   return (
     <header className="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
-
-      {/* GRID → 3 зоны */}
       <div
         className="
           max-w-7xl mx-auto 
@@ -26,8 +25,7 @@ export const Header = () => {
           w-full
         "
       >
-
-        {/* ---------- LOGO LEFT ---------- */}
+        {/* ---------- LOGO ---------- */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -43,10 +41,10 @@ export const Header = () => {
           </Link>
         </div>
 
-        {/* ---------- MENU CENTER (идеальный центр!) ---------- */}
+        {/* ---------- CENTER MENU ---------- */}
         <nav className="flex items-center gap-6 justify-center">
 
-          {/* Дропдаун */}
+          {/* TEENUSED DROPDOWN */}
           <DropdownMenu>
             <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
               Teenused ▾
@@ -74,14 +72,20 @@ export const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
-          <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
+          {/* Simple Links */}
+          <Link href="/meist" className="hover:text-primary-600 transition">
+            Meist
+          </Link>
+
+          <Link href="/kontakt" className="hover:text-primary-600 transition">
+            Kontakt
+          </Link>
         </nav>
 
-        {/* ---------- RIGHT BUTTONS ---------- */}
+        {/* ---------- RIGHT SIDE ---------- */}
         <div className="flex justify-end items-center gap-3">
 
-          {/* PHONE */}
+          {/* PHONE BUTTON */}
           <Link
             href="tel:+37253684587"
             className="
@@ -99,21 +103,20 @@ export const Header = () => {
           </Link>
 
           {/* WHATSAPP */}
-          <LandingHeaderMenuItem
+          <Link
             href="https://wa.me/37253684587"
-            type="button"
+            className="
+              px-4 py-2 bg-primary-600 text-white rounded-xl
+              hover:bg-primary-700 transition
+            "
           >
             Whatsapp
-          </LandingHeaderMenuItem>
+          </Link>
 
-          {/* SEARCH + THEME */}
           <SearchButton />
           <ThemeSwitch />
         </div>
-
       </div>
     </header>
   );
-};
-
-export default Header;
+}
