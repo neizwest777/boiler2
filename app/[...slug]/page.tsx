@@ -66,7 +66,7 @@ export async function generateMetadata(props: {
       title: post.title,
       description: post.summary,
       siteName: siteConfig.title,
-      locale: 'en_US',
+      locale: 'et_EE', // Изменено на эстонскую локаль
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
@@ -80,19 +80,47 @@ export async function generateMetadata(props: {
       description: post.summary,
       images: imageList,
     },
+    keywords: post.tags?.join(', '), // Добавлены ключевые слова
     ...(post.canonicalUrl
       ? {
           alternates: {
             canonical: post.canonicalUrl,
           },
         }
-      : {}),
+      : {
+          alternates: {
+            canonical: `${siteConfig.siteUrl}/${post.path}`,
+          },
+        }),
   };
 }
 
 export const generateStaticParams = async () => {
   const paths = allBlogs.map((p) => ({ slug: p.path.split('/') }));
   return paths;
+};
+
+// JSON-LD для организации на странице статьи
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': siteConfig.businessName,
+  'url': siteConfig.siteUrl,
+  'logo': `${siteConfig.siteUrl}/static/favicons/favicon-32x32.png`,
+  'description': 'Boileri paigaldus, remont ja hooldus Tallinnas ja Harjumaal',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'Tallinn',
+    'addressCountry': 'EE'
+  },
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'telephone': '+37253684587',
+    'contactType': 'customer service',
+    'areaServed': ['EE'],
+    'availableLanguage': ['et']
+  },
+  'sameAs': []
 };
 
 export default async function Page(props: {
@@ -110,19 +138,40 @@ export default async function Page(props: {
 
         <div className="mt-24 text-center min-h-[40vh]">
           <PageTitle>
-            Under Construction{' '}
+            Lehte Ei Leitud{' '}
             <span role="img" aria-label="roadwork sign">
               🚧
             </span>
           </PageTitle>
 
-          <p className="mt-4">
-            Oops, you've hit a page that doesn't seem to exist anymore.
+          <p className="mt-4 text-lg">
+            Vabandame, seda lehte ei eksisteeri või on see eemaldatud.
           </p>
+          
+          <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4 max-w-md mx-auto">
+            <p className="text-sm text-yellow-800">
+              Kas otsite boileri teenuseid? Tutvuge meie{' '}
+              <Link href="/teenused" className="font-semibold hover:underline">
+                teenustega
+              </Link>{' '}
+              või{' '}
+              <Link href="/kontakt" className="font-semibold hover:underline">
+                võtke ühendust
+              </Link>.
+            </p>
+          </div>
 
-          <Button asChild className="mt-8">
-            <Link href="/">Back to Home</Link>
-          </Button>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button asChild className="bg-blue-600 hover:bg-blue-700">
+              <Link href="/">Avalehele</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/all-articles">Kõik Artiklid</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/kontakt">Kontakt</Link>
+            </Button>
+          </div>
         </div>
 
         <Footer />
@@ -147,14 +196,57 @@ export default async function Page(props: {
     };
   });
 
+  // Добавляем информацию об организации в JSON-LD статьи
+  if (jsonLd['publisher'] === undefined) {
+    jsonLd['publisher'] = {
+      '@type': 'Organization',
+      'name': siteConfig.businessName,
+      'logo': {
+        '@type': 'ImageObject',
+        'url': `${siteConfig.siteUrl}/static/favicons/favicon-32x32.png`
+      }
+    };
+  }
+
   const Layout = layouts[post.layout || defaultLayout];
 
   return (
     <>
+      {/* JSON-LD для статьи */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      
+      {/* Дополнительный JSON-LD для организации */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
+      {/* SEO-улучшения для статьи */}
+      <div className="hidden" aria-hidden="true">
+        <link rel="canonical" href={`${siteConfig.siteUrl}/${post.path}`} />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content={post.tags?.join(', ') || 'boileri paigaldus, boileri remont, boileri hooldus, Tallinn'} />
+      </div>
+
+      {/* Breadcrumb navigation */}
+      <nav className="container-narrow py-4 text-sm text-gray-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap items-center space-x-2">
+          <li>
+            <Link href="/" className="hover:text-blue-600">Avaleht</Link>
+          </li>
+          <li className="text-gray-400">/</li>
+          <li>
+            <Link href="/all-articles" className="hover:text-blue-600">Blogi</Link>
+          </li>
+          <li className="text-gray-400">/</li>
+          <li className="text-gray-900 font-medium truncate" aria-current="page">
+            {post.title}
+          </li>
+        </ol>
+      </nav>
 
       <Layout
         content={mainContent}
@@ -168,6 +260,46 @@ export default async function Page(props: {
           toc={post.toc}
         />
       </Layout>
+
+      {/* Дополнительный SEO-контент после статьи */}
+      <div className="container-narrow py-8 mt-12 border-t border-gray-200">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 text-center">
+          <h3 className="text-xl font-bold mb-4">Kas Olid See Artikkel Kasulik?</h3>
+          <p className="text-gray-700 mb-6">
+            Kui vajad professionaalset boileri abi, võta meiega julgelt ühendust. 
+            Pakume tasuta konsultatsiooni ja täpset hinnapakkumist.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild className="bg-blue-600 hover:bg-blue-700">
+              <Link href="/kontakt">Küsi Pakkumist</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/hadaabi">Hädaabi (24/7)</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/teenused">Vaata Teenuseid</Link>
+            </Button>
+          </div>
+        </div>
+        
+        {/* Связанные теги */}
+        {post.tags && post.tags.length > 0 && (
+          <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h4 className="text-lg font-semibold mb-4 text-center">Seotud Teemad</h4>
+            <div className="flex flex-wrap justify-center gap-2">
+              {post.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="bg-gray-100 px-3 py-1 rounded-full text-sm hover:bg-blue-100 hover:text-blue-700 transition-colors"
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 }
