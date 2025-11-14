@@ -5,6 +5,7 @@ import ListLayout from '@/layouts/ListLayoutWithTags';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import { genPageMetadata } from 'app/seo';
+import Link from 'next/link'; // 🔥 ДОЛЖЕН БЫТЬ
 
 export const generateStaticParams = async () => {
   const totalPages = Math.ceil(allBlogs.length / POSTS_PER_PAGE);
@@ -20,7 +21,7 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const page = Number(params.page || 1);
-  
+
   return genPageMetadata({
     title: `Boileri Artiklid - Leht ${page} | Boileriabi.ee`,
     description: `Boileri paigalduse, remondi ja hoolduse artiklid - leht ${page}. Lugege kasulikke nõuandeid boilerite kohta Tallinnas ja Harjumaal.`,
@@ -31,32 +32,38 @@ export async function generateMetadata(props: {
   });
 }
 
-// JSON-LD для пагинации
 function getBlogPageJsonLd(pageNumber: number, totalPages: number) {
   const baseUrl = 'https://boileriabi.ee';
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': `Boileri Artiklid - Leht ${pageNumber}`,
-    'description': `Boileri paigalduse, remondi ja hoolduse artiklid - leht ${pageNumber}`,
-    'url': pageNumber === 1 
-      ? `${baseUrl}/all-articles` 
-      : `${baseUrl}/all-articles/page/${pageNumber}`,
-    'isPartOf': {
+    name: `Boileri Artiklid - Leht ${pageNumber}`,
+    description: `Boileri paigalduse, remondi ja hoolduse artiklid - leht ${pageNumber}`,
+    url:
+      pageNumber === 1
+        ? `${baseUrl}/all-articles`
+        : `${baseUrl}/all-articles/page/${pageNumber}`,
+    isPartOf: {
       '@type': 'Blog',
-      'name': 'Boileriabi.ee Blogi',
-      'description': 'Boileri paigalduse, remondi ja hoolduse artiklid'
+      name: 'Boileriabi.ee Blogi',
+      description: 'Boileri paigalduse, remondi ja hoolduse artiklid',
     },
-    'pagination': {
+    pagination: {
       '@type': 'Pagination',
-      'currentPage': pageNumber,
-      'totalPages': totalPages,
-      'firstPage': `${baseUrl}/all-articles`,
-      'previousPage': pageNumber > 1 ? `${baseUrl}/all-articles/page/${pageNumber - 1}` : undefined,
-      'nextPage': pageNumber < totalPages ? `${baseUrl}/all-articles/page/${pageNumber + 1}` : undefined,
-      'lastPage': `${baseUrl}/all-articles/page/${totalPages}`
-    }
+      currentPage: pageNumber,
+      totalPages: totalPages,
+      firstPage: `${baseUrl}/all-articles`,
+      previousPage:
+        pageNumber > 1
+          ? `${baseUrl}/all-articles/page/${pageNumber - 1}`
+          : undefined,
+      nextPage:
+        pageNumber < totalPages
+          ? `${baseUrl}/all-articles/page/${pageNumber + 1}`
+          : undefined,
+      lastPage: `${baseUrl}/all-articles/page/${totalPages}`,
+    },
   };
 }
 
@@ -69,8 +76,9 @@ export default async function Page(props: {
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
-    POSTS_PER_PAGE * pageNumber,
+    POSTS_PER_PAGE * pageNumber
   );
+
   const pagination = {
     currentPage: pageNumber,
     totalPages: totalPages,
@@ -80,47 +88,48 @@ export default async function Page(props: {
 
   return (
     <div className="flex flex-col w-full items-center justify-between">
-      {/* JSON-LD структура для пагинации */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageJsonLd) }}
       />
-      
+
       <Header />
-      
-      {/* SEO-заголовок для пагинации */}
+
       <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
         <div className="container-narrow text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Boileri Artiklid - Leht {pageNumber}
           </h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Jätkake boileri paigalduse, remondi ja hoolduse artiklite lugemist. 
-            Leht {pageNumber} {totalPages}-st.
+            Jätkake boileri paigalduse, remondi ja hoolduse artiklite lugemist.
+            Leht {pageNumber} / {totalPages}
           </p>
-          
-          {/* Навигация по страницам для SEO */}
+
           <div className="mt-6 flex justify-center items-center space-x-4 text-sm">
             {pageNumber > 1 && (
-              <a 
-                href={pageNumber === 2 ? "/all-articles" : `/all-articles/page/${pageNumber - 1}`}
+              <Link
+                href={
+                  pageNumber === 2
+                    ? '/all-articles'
+                    : `/all-articles/page/${pageNumber - 1}`
+                }
                 className="bg-white px-4 py-2 rounded-lg border border-gray-300 hover:border-blue-500 transition-colors"
               >
                 ← Eelmine leht
-              </a>
+              </Link>
             )}
-            
+
             <span className="bg-blue-600 text-white px-4 py-2 rounded-lg">
               Leht {pageNumber} / {totalPages}
             </span>
-            
+
             {pageNumber < totalPages && (
-              <a 
+              <Link
                 href={`/all-articles/page/${pageNumber + 1}`}
                 className="bg-white px-4 py-2 rounded-lg border border-gray-300 hover:border-blue-500 transition-colors"
               >
                 Järgmine leht →
-              </a>
+              </Link>
             )}
           </div>
         </div>
@@ -132,12 +141,13 @@ export default async function Page(props: {
         pagination={pagination}
         title={`Artiklid - Leht ${pageNumber}`}
       />
-      
-      {/* Дополнительный SEO-контент для пагинации */}
+
       <div className="container-narrow py-8">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold mb-4 text-center">Boileri Teemade Kogu</h2>
-          
+          <h2 className="text-2xl font-bold mb-4 text-center">
+            Boileri Teemade Kogu
+          </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="p-4">
               <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -148,7 +158,7 @@ export default async function Page(props: {
                 Professionaalsed nõuanded boileri paigalduseks ja remondiks
               </p>
             </div>
-            
+
             <div className="p-4">
               <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <span className="text-green-600 font-bold text-xl">⚡</span>
@@ -158,7 +168,7 @@ export default async function Page(props: {
                 Kuidas säästa energiat ja vähendada kulusid
               </p>
             </div>
-            
+
             <div className="p-4">
               <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <span className="text-purple-600 font-bold text-xl">🛡️</span>
@@ -169,23 +179,26 @@ export default async function Page(props: {
               </p>
             </div>
           </div>
-          
-          {/* SEO-ссылки на основные страницы */}
+
           <div className="mt-8 pt-6 border-t border-gray-200">
             <h3 className="font-semibold text-center mb-4">Kas Teadsid?</h3>
+
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <a href="/paigaldus" className="text-blue-600 hover:underline">
+              <Link href="/paigaldus" className="text-blue-600 hover:underline">
                 Boileri Paigaldus Tallinnas →
-              </a>
-              <a href="/remont" className="text-blue-600 hover:underline">
+              </Link>
+
+              <Link href="/remont" className="text-blue-600 hover:underline">
                 Boileri Remonditeenused →
-              </a>
-              <a href="/hooldus" className="text-blue-600 hover:underline">
+              </Link>
+
+              <Link href="/hooldus" className="text-blue-600 hover:underline">
                 Boileri Hooldus ja Profülaktika →
-              </a>
-              <a href="/hadaabi" className="text-blue-600 hover:underline">
+              </Link>
+
+              <Link href="/hadaabi" className="text-blue-600 hover:underline">
                 24/7 Hädaabi Teenused →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
