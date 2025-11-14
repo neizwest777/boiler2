@@ -9,7 +9,7 @@ export default function Page() {
       <Header />
 
       <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
+        <section className="w-full p-6 max-w-6xl mx-auto">
 
           {/* --- TITLE --- */}
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center">
@@ -22,10 +22,10 @@ export default function Page() {
           </p>
 
           {/* --- PRICE GRID --- */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14 place-items-center">
 
             {/* Paigaldus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <Wrench className="w-10 h-10 text-primary-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri paigaldus</h2>
               <p className="text-gray-700 mb-6">
@@ -35,7 +35,7 @@ export default function Page() {
             </div>
 
             {/* Hooldus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <Droplets className="w-10 h-10 text-blue-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri hooldus</h2>
               <p className="text-gray-700 mb-6">
@@ -45,7 +45,7 @@ export default function Page() {
             </div>
 
             {/* Remont */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <AlertTriangle className="w-10 h-10 text-red-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Boileri remont</h2>
               <p className="text-gray-700 mb-6">
@@ -55,7 +55,7 @@ export default function Page() {
             </div>
 
             {/* Hädaabi */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <AlertTriangle className="w-10 h-10 text-yellow-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Hädaabi 24/7</h2>
               <p className="text-gray-700 mb-6">
@@ -65,7 +65,7 @@ export default function Page() {
             </div>
 
             {/* Anoodi vahetus */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <CheckCircle className="w-10 h-10 text-green-500 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Anoodi vahetus</h2>
               <p className="text-gray-700 mb-6">
@@ -75,7 +75,7 @@ export default function Page() {
             </div>
 
             {/* Küttespiraal */}
-            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition">
+            <div className="rounded-2xl shadow-xl p-8 border border-gray-200 bg-white hover:shadow-2xl transition w-full max-w-sm">
               <Wrench className="w-10 h-10 text-primary-700 mb-4" />
               <h2 className="text-2xl font-bold mb-2">Küttespiraali vahetus</h2>
               <p className="text-gray-700 mb-6">
@@ -87,7 +87,7 @@ export default function Page() {
           </div>
 
           {/* --- EXTRA INFO --- */}
-          <div className="mt-16 text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto space-y-6">
+          <div className="mt-24 text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto space-y-6">
             <h2 className="text-3xl font-bold">Kuidas kujuneb hind?</h2>
             <p>
               Lõplik hind sõltub boileri mahust, tüübist, asukohast ning vajalikest lisatöödest.
