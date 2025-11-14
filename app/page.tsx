@@ -110,19 +110,13 @@ export default function Page() {
       {/* 🔥 2) HERO-БЛОК — картинка + текст */}
       <ClientWrapper />
 
-      {/* 🔥 3) СРАЗУ ПОСЛЕ БОЙЛЕРА — ПАРТНЁРЫ */}
+      {/* 🔥 3) ПАРТНЁРЫ */}
       <section className="w-full py-16 bg-[#E4FAFF]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Usaldusväärne partner</h2>
-          <p className="text-gray-700 mt-2 mb-10">
-            Töötame koos juhtivate tootjate ja partneritega
-          </p>
-
           <LogoCarousel />
         </div>
       </section>
 
-      {/* ❌ НЕТ партнёров внизу — удалено */}
       {/* 🔽 FOOTER */}
       <Footer />
     </>
