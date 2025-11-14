@@ -111,13 +111,22 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 🔧 Основной клиентский контент */}
+      {/* 🔧 HERO-БЛОК – текст + бойлер */}
       <ClientWrapper />
 
-      {/* 🔥 Партнёры — КАРУСЕЛЬ ВНИЗУ */}
-      <div className="mt-20 mb-20">
-        <LogoCarousel />
-      </div>
+      {/* 🔥 Партнёры — СРАЗУ ПОСЛЕ CLIENTWRAPPER */}
+      <section className="w-full py-16 bg-[#E4FAFF]">
+        <div className="max-w-4xl mx-auto text-center">
+
+          <h2 className="text-3xl font-bold text-gray-900">Usaldusväärne partner</h2>
+          <p className="text-gray-700 mt-2 mb-10">
+            Töötame koos juhtivate tootjate ja partneritega
+          </p>
+
+          <LogoCarousel />
+
+        </div>
+      </section>
 
       <Footer />
     </>
