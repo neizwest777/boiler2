@@ -2,7 +2,6 @@ import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
-import LogoCarousel from "@/components/LogoCarousel";
 
 export const metadata: Metadata = {
   title: "Boileri hooldus, paigaldus ja remont Tallinnas | BoileriABI.ee",
@@ -63,10 +62,53 @@ export default function Page() {
         }}
       />
 
-      {/* 🔥 ЛОГО-КАРУСЕЛЬ — блок партнёров */}
-      <div className="mt-10 mb-16">
-        <LogoCarousel />
-      </div>
+      {/* 🔥 Новый блок STATISTIKA вместо LogoCarousel */}
+      <section className="w-full py-20 bg-[#E4FAFF]">
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+            Statistika meie töödest
+          </h2>
+
+          <p className="text-gray-600 text-center mb-12 text-lg">
+            Kliendid usaldavad meid — tulemused räägivad enda eest.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
+
+            <div>
+              <p className="text-4xl font-bold text-primary-600">430+</p>
+              <p className="text-gray-700 text-lg font-medium mt-1">
+                Boileri remonti
+              </p>
+            </div>
+
+            <div>
+              <p className="text-3xl font-bold text-yellow-500 flex items-center justify-center gap-2">
+                ⭐ <span className="text-gray-900">4.9</span>
+              </p>
+              <p className="text-gray-700 text-lg font-medium mt-1">
+                Klientide hinnang
+              </p>
+            </div>
+
+            <div>
+              <p className="text-4xl font-bold text-primary-600">24/7</p>
+              <p className="text-gray-700 text-lg font-medium mt-1">
+                Saadavus & tugi
+              </p>
+            </div>
+
+            <div>
+              <p className="text-4xl font-bold text-primary-600">3000+</p>
+              <p className="text-gray-700 text-lg font-medium mt-1">
+                Rahulolevat klienti
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* Основной клиентский контент */}
       <ClientWrapper />
