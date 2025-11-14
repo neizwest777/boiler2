@@ -39,13 +39,20 @@ export default function Page() {
         description="Kutsuge kogenud torumees! Kiire ja usaldusväärne teenus üle Tallinna ja Harjumaa."
         imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.png"
         imageAlt="Boiler"
+        minHeight={350}
+        textPosition="left"
+        withBackground={false}
+        imagePosition="right"
       >
-        {/* Открывает форму */}
-        <Button size="xl" onClick={() => setContactOpen(true)}>
-          Telli torumees kohe!
-        </Button>
+        {/* 🔥 КРАСНАЯ НЕКЛИКАБЕЛЬНАЯ КНОПКА */}
+        <div
+          className="bg-red-600 text-white text-lg font-semibold px-6 py-3 rounded-xl shadow-md cursor-default select-none"
+          style={{ pointerEvents: "none" }}
+        >
+          Helista: 53684587
+        </div>
 
-        {/* Открывает форму */}
+        {/* 🔵 Рабочая кнопка — открывает форму */}
         <Button
           size="xl"
           variant="outlinePrimary"
@@ -177,7 +184,6 @@ export default function Page() {
           <a href="tel:+37253684587">Helista kohe</a>
         </Button>
 
-        {/* Открывает форму */}
         <Button
           size="xl"
           variant="outlinePrimary"
