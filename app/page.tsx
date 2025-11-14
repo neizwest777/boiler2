@@ -3,7 +3,7 @@ import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
 import LogoCarousel from "@/components/LogoCarousel";
-import Link from 'next/link'; // ← ДОБАВЬ ЭТОТ ИМПОРТ
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee",
@@ -84,7 +84,6 @@ export default function Page() {
             ],
             openingHours: "Mo-Su 00:00-23:59",
             priceRange: "€€",
-            // ✅ АГГРЕГАТНЫЕ ОТЗЫВЫ ДЛЯ ЗВЕЗДОЧЕК В ПОИСКЕ
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "4.9",
@@ -92,13 +91,11 @@ export default function Page() {
               bestRating: "5",
               worstRating: "1",
             },
-            // ✅ GEO КООРДИНАТЫ ДЛЯ ЛОКАЛЬНОГО SEO
             geo: {
               "@type": "GeoCoordinates",
               latitude: "59.4370",
               longitude: "24.7536",
             },
-            // ✅ ОСНОВНЫЕ УСЛУГИ С ЦЕНАМИ
             makesOffer: [
               {
                 "@type": "Offer",
@@ -133,7 +130,7 @@ export default function Page() {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Kui kiiresti saab boileri remondi teha?",
+                "name": "Kui kiiresti saate kohale tulla?",
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Hädaabijuhul saame Tallinnas kohale olla juba 1-2 tunni jooksul. Tavaremondid planeerime klientiga kokkuleppel."
@@ -141,17 +138,25 @@ export default function Page() {
               },
               {
                 "@type": "Question", 
-                "name": "Kas andsite töödele garantii?",
+                "name": "Kas pakute garantiid?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Jah, kõikidele meie tehtud töödele anname garantii - paigaldustele 2 aastat, remonditöödele 1 aasta."
+                  "text": "Jah, kõikidele meie tehtud töödele anname garantiid - paigaldustele 2 aastat, remonditöödele 1 aasta."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Kas töötate nädalavahetustel?",
+                "acceptedAnswer": {
+                  "@type": "Answer", 
+                  "text": "Jah, töötame iga päev, sealhulgas nädalavahetustel. Hädaabi on saadaval 24/7."
                 }
               },
               {
                 "@type": "Question",
                 "name": "Millised piirkonnad teenindate?",
                 "acceptedAnswer": {
-                  "@type": "Answer", 
+                  "@type": "Answer",
                   "text": "Teenindame kogu Tallinnat ja Harjumaad. Tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel."
                 }
               }
@@ -229,7 +234,9 @@ export default function Page() {
       {/* 🔥 3) ПАРТНЁРЫ */}
       <section className="w-full py-16 bg-[#E4FAFF]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Meie Usaldusvärted Partnerid</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Meie Usaldusvärted Partnerid</h2>
+          <p className="text-gray-600 mb-2">Usaldusväärne partner</p>
+          <p className="text-gray-700 mb-8">Töötame koos juhtivate tootjate ja partneritega</p>
           <LogoCarousel />
         </div>
       </section>
@@ -237,17 +244,24 @@ export default function Page() {
       {/* ✅ FAQ БЛОК ДЛЯ ПОИСКОВИКОВ */}
       <section className="w-full py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
             Korduma Kippuvad Küsimused
           </h2>
+          <p className="text-gray-600 text-center mb-12 text-lg">
+            Leiate vastused kõige sagedamini esitatud küsimustele
+          </p>
           <div className="space-y-6">
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kui kiiresti saab boileri remondi teha?</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kui kiiresti saate kohale tulla?</h3>
               <p className="text-gray-700">Hädaabijuhul saame Tallinnas kohale olla juba 1-2 tunni jooksul. Tavaremondid planeerime klientiga kokkuleppel.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kas andsite töödele garantii?</h3>
-              <p className="text-gray-700">Jah, kõikidele meie tehtud töödele anname garantii - paigaldustele 2 aastat, remonditöödele 1 aasta.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kas pakute garantiid?</h3>
+              <p className="text-gray-700">Jah, kõikidele meie tehtud töödele anname garantiid - paigaldustele 2 aastat, remonditöödele 1 aasta.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kas töötate nädalavahetustel?</h3>
+              <p className="text-gray-700">Jah, töötame iga päev, sealhulgas nädalavahetustel. Hädaabi on saadaval 24/7.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Millised piirkonnad teenindate?</h3>
