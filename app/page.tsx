@@ -2,6 +2,7 @@ import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
+import LogoCarousel from "@/components/LogoCarousel";
 
 export const metadata: Metadata = {
   title: "Boileri hooldus, paigaldus ja remont Tallinnas | BoileriABI.ee",
