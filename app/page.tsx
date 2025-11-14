@@ -2,6 +2,7 @@ import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
+import LogoCarousel from "@/components/LogoCarousel";
 
 export const metadata: Metadata = {
   title: "Boileri hooldus, paigaldus ja remont Tallinnas | BoileriABI.ee",
@@ -62,7 +63,7 @@ export default function Page() {
         }}
       />
 
-      {/* 🔥 Новый блок STATISTIKA вместо LogoCarousel */}
+      {/* 🔥 STATISTIKA BLOKK */}
       <section className="w-full py-20 bg-[#E4FAFF]">
         <div className="max-w-5xl mx-auto px-6">
 
@@ -110,8 +111,13 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Основной клиентский контент */}
+      {/* 🔧 Основной клиентский контент */}
       <ClientWrapper />
+
+      {/* 🔥 Партнёры — КАРУСЕЛЬ ВНИЗУ */}
+      <div className="mt-20 mb-20">
+        <LogoCarousel />
+      </div>
 
       <Footer />
     </>
