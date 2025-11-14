@@ -1,25 +1,8 @@
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
-import {
-  LandingPrimaryImageCtaSection,
-  LandingShowcase,
-  LandingShowcaseItem,
-  LandingProductFeaturesGrid,
-  LandingProductFeature,
-  LandingFaqCollapsibleSection,
-  LandingAboutSection,
-  LandingProductSteps,
-  LandingTestimonialGrid,
-  LandingSaleCtaSection,
-  LandingBandSection,
-} from "@/components/landing";
-
-import ClientWrapper from "./client-wrapper"; // 👈 новый файл
+import ClientWrapper from "./client-wrapper";
 import type { Metadata } from "next";
 
-/* ===========================================================
-   🔥 SEO Метаданные (теперь РАБОТАЮТ)
-=========================================================== */
 export const metadata: Metadata = {
   title: "Boileri hooldus, paigaldus ja remont Tallinnas | BoileriABI.ee",
   description:
@@ -51,9 +34,6 @@ export const metadata: Metadata = {
   },
 };
 
-/* ===========================================================
-   🔥 СТАТИЧНАЯ СТРАНИЦА (server component)
-=========================================================== */
 export default function Page() {
   return (
     <>
@@ -79,7 +59,6 @@ export default function Page() {
         }}
       />
 
-      {/* ВСЁ, ЧТО ТРЕБУЕТ use client */}
       <ClientWrapper />
 
       <Footer />
