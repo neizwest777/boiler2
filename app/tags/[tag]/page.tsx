@@ -10,6 +10,15 @@ import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 import Link from '@/components/shared/Link';
 
+// Определяем тип для поста в JSON-LD
+interface JsonLdPost {
+  title: string;
+  summary: string;
+  slug: string;
+  date: string;
+  lastmod?: string;
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>;
 }): Promise<Metadata> {
@@ -41,7 +50,7 @@ export const generateStaticParams = async () => {
 };
 
 // JSON-LD для страницы тега
-function getTagPageJsonLd(tag: string, posts: any[]) {
+function getTagPageJsonLd(tag: string, posts: JsonLdPost[]) {
   const tagDisplay = tag.split('-').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(' ');
@@ -111,7 +120,16 @@ export default async function TagPage(props: {
   const tagCounts = tagData as Record<string, number>;
   const relatedTags = getRelatedTags(tag, tagCounts);
   
-  const tagPageJsonLd = getTagPageJsonLd(tag, filteredPosts);
+  // Преобразуем посты в тип для JSON-LD
+  const jsonLdPosts: JsonLdPost[] = filteredPosts.map(post => ({
+    title: post.title,
+    summary: post.summary || '',
+    slug: post.slug,
+    date: post.date,
+    lastmod: post.lastmod,
+  }));
+  
+  const tagPageJsonLd = getTagPageJsonLd(tag, jsonLdPosts);
 
   return (
     <div className="flex flex-col w-full items-center justify-between">
