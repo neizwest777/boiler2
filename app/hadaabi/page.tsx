@@ -1,20 +1,21 @@
 // @ts-nocheck
 "use client";
 
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
 import { PhoneCall, AlertTriangle, Flame, Droplets } from "lucide-react";
 
 export default function Hadabi() {
   return (
-    <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      <Header />
+    <div className="flex flex-col w-full min-h-screen items-center">
+      {/* Временно убираем Header и Footer для тестирования */}
+      <div className="w-full bg-blue-100 py-4 text-center">
+        Header Placeholder
+      </div>
 
       {/* HERO-BLOCK */}
       <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
+        <section className="w-full p-6 max-w-4xl">
 
-          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold">
+          <h1 className="text-4xl md:text-6xl font-semibold">
             Boileri hädaabi 24/7 Tallinnas ja Harjumaal
           </h1>
 
@@ -90,7 +91,9 @@ export default function Hadabi() {
         </section>
       </div>
 
-      <Footer />
+      <div className="w-full bg-gray-100 py-4 text-center mt-auto">
+        Footer Placeholder
+      </div>
     </div>
   );
 }
