@@ -49,27 +49,8 @@ export default function ClientWrapper() {
         </Button>
       </LandingPrimaryImageCtaSection>
 
-      {/* ===================== PARTNERS ===================== */}
-      <LandingShowcase
-        title="Usaldusväärne partner"
-        description="Töötame koos juhtivate tootjate ja partneritega"
-        textPosition="center"
-        withBackground
-        variant="primary"
-      >
-        <LandingShowcaseItem>
-          <Wrench className="w-8 h-8" />
-        </LandingShowcaseItem>
-        <LandingShowcaseItem>
-          <Droplets className="w-8 h-8" />
-        </LandingShowcaseItem>
-        <LandingShowcaseItem>
-          <Sparkles className="w-8 h-8" />
-        </LandingShowcaseItem>
-        <LandingShowcaseItem>
-          <Phone className="w-8 h-8" />
-        </LandingShowcaseItem>
-      </LandingShowcase>
+      {/* ❌ ===================== PARTNERS (REMOVED) ===================== */}
+      {/* Блок полностью удалён */}
 
       {/* ===================== SERVICES ===================== */}
       <LandingProductFeaturesGrid
@@ -106,7 +87,7 @@ export default function ClientWrapper() {
       {/* ===================== ABOUT ===================== */}
       <LandingAboutSection
         title="Meist"
-        description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaal."
+        description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaa."
         imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
       />
 
@@ -136,75 +117,19 @@ export default function ClientWrapper() {
         />
       </LandingProductSteps>
 
-      {/* ===================== TESTIMONIALS (FIXED + BEAUTIFUL) ===================== */}
+      {/* ===================== TESTIMONIALS ===================== */}
+      <section className="w-full py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-4">Klientide arvustused</h2>
+          <p className="text-lg text-gray-600 mb-14">
+            Vaadake, mida meie kliendid meist arvavad
+          </p>
 
-<section className="w-full py-24 bg-white">
-  <div className="max-w-6xl mx-auto px-4 text-center">
-    <h2 className="text-4xl font-bold mb-4">Klientide arvustused</h2>
-    <p className="text-lg text-gray-600 mb-14">
-      Vaadake, mida meie kliendid meist arvavad
-    </p>
-
-    {/* GRID */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      {/* ITEM 1 */}
-      <div className="bg-white border shadow-sm rounded-2xl p-6 flex flex-col justify-between hover:shadow-md transition">
-        <p className="text-gray-700 text-lg leading-relaxed mb-6">
-          “Tuli kohale 30 minutiga. Väga professionaalne ja kiire töö!”
-        </p>
-        <div className="flex items-center gap-3 mt-auto">
-          <img
-            src="/static/images/people/1.webp"
-            alt="Jaan"
-            className="w-12 h-12 rounded-full object-cover"
-          />
-          <div className="flex flex-col text-left">
-            <span className="font-semibold">Jaan T.</span>
-            <span className="text-sm text-gray-500">@jaantamm</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* testimonials */}
           </div>
         </div>
-      </div>
-
-      {/* ITEM 2 */}
-      <div className="bg-white border shadow-sm rounded-2xl p-6 flex flex-col justify-between hover:shadow-md transition">
-        <p className="text-gray-700 text-lg leading-relaxed mb-6">
-          “Aus hind ja super kvaliteet. Soovitan kõigile!”
-        </p>
-        <div className="flex items-center gap-3 mt-auto">
-          <img
-            src="/static/images/people/3.webp"
-            alt="Andrus"
-            className="w-12 h-12 rounded-full object-cover"
-          />
-          <div className="flex flex-col text-left">
-            <span className="font-semibold">Andrus R.</span>
-            <span className="text-sm text-gray-500">@andrus</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ITEM 3 */}
-      <div className="bg-white border shadow-sm rounded-2xl p-6 flex flex-col justify-between hover:shadow-md transition">
-        <p className="text-gray-700 text-lg leading-relaxed mb-6">
-          “Parandas boileri samal õhtul. Väga rahul teenusega.”
-        </p>
-        <div className="flex items-center gap-3 mt-auto">
-          <img
-            src="/static/images/people/2.webp"
-            alt="Kertu"
-            className="w-12 h-12 rounded-full object-cover"
-          />
-          <div className="flex flex-col text-left">
-            <span className="font-semibold">Joel R.</span>
-            <span className="text-sm text-gray-500">@joel</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* ===================== CTA ===================== */}
       <LandingSaleCtaSection
@@ -245,8 +170,7 @@ export default function ClientWrapper() {
           },
           {
             question: "Kas pakute garantiid?",
-            answer:
-              "Jah, kõikidele tehtud töödele anname ametliku garantii.",
+            answer: "Jah, kõikidele tehtud töödele anname ametliku garantii.",
           },
           {
             question: "Kas töötate nädalavahetusel?",
