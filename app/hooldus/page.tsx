@@ -1,9 +1,12 @@
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
+// @ts-nocheck
+"use client";
+
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 
 export default function Hooldus() {
   return (
-    <div className="flex flex-col w-full min-h-screen fancy-overlay">
+    <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
       <Header />
 
       <div className="w-full flex flex-col items-center my-12">
@@ -24,9 +27,9 @@ export default function Hooldus() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Miks boiler vajab regulaarset hooldust?</h2>
               <p>
-                Eesti vesi sisaldab palju lubjakivi, mis koguneb boileri põhja ja seintele. Selle tulemusena
-                väheneb vee maht, suureneb elektrikulu, küttespiraal kuumeneb üle ja tekivad lekked.
-                Regulaarne hooldus hoiab süsteemi stabiilsena ja ohutuna.
+                Eesti vesi sisaldab palju lubjakivi, mis koguneb boileri põhja ja seintele.
+                Selle tulemusena väheneb vee maht, suureneb elektrikulu, küttespiraal kuumeneb üle
+                ja võivad tekkida lekked. Regulaarne hooldus hoiab süsteemi stabiilsena ja ohutuna.
               </p>
             </div>
 
@@ -45,7 +48,7 @@ export default function Hooldus() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Kui tihti hooldust teha?</h2>
               <p>
-                Soovitame hooldust 1–2 aasta tagant. Suurema veetarbimise või lubjase vee korral isegi sagedamini.
+                Soovitame hooldust teha iga 1–2 aasta tagant. Suurema veetarbimise või lubjase vee korral isegi sagedamini.
               </p>
             </div>
 
@@ -62,8 +65,8 @@ export default function Hooldus() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Piirkonnad</h2>
               <p>
-                Teenindame Tallinnat ja kogu Harjumaad: Viimsi, Rae, Peetri, Tabasalu, Saku, Saue, Harku, Laagri,
-                Maardu, Keila ja palju muud.
+                Teenindame Tallinnat ja kogu Harjumaad: Viimsi, Rae, Peetri, Tabasalu, Saku, Saue,
+                Harku, Laagri, Maardu, Keila ja paljud teised piirkonnad.
               </p>
             </div>
 
