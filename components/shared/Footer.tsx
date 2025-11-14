@@ -9,7 +9,14 @@ export const Footer = ({ className }: { className?: string }) => {
   return (
     <LandingFooter
       className={className}
-      title={
+      title="BoileriABI.ee"
+      description="Boilerite remont, hooldus ja paigaldus Tallinnas ja Harjumaal."
+      withBackground={false}
+      withBackgroundGlow={false}
+      withBackgroundGradient={false}
+      variant="primary"
+      backgroundGlowVariant="primary"
+      logoComponent={
         <div className="flex items-center gap-3">
           <Image
             src="/static/images/logo.png"
@@ -23,16 +30,6 @@ export const Footer = ({ className }: { className?: string }) => {
           </span>
         </div>
       }
-      description={
-        <p className="text-gray-600 text-lg mt-2">
-          Boilerite remont, hooldus ja paigaldus Tallinnas ja Harjumaal.
-        </p>
-      }
-      withBackground={false}
-      withBackgroundGlow={false}
-      withBackgroundGradient={false}
-      variant="primary"
-      backgroundGlowVariant="primary"
       footnote={
         <div className="text-center p-6 text-gray-500 text-sm border-t border-gray-200">
           © {new Date().getFullYear()} BoileriABI.ee — Kõik õigused kaitstud.
