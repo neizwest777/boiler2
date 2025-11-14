@@ -50,7 +50,7 @@ export const Header = ({ className }: { className?: string }) => {
             <Link href="/hooldus">Hooldus</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/hadabi">Hädaabi 24/7</Link>
+            <Link href="/hadaabi">Hädaabi 24/7</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/hinnad">Hinnad</Link>
