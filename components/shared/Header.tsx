@@ -1,8 +1,15 @@
-import { LandingHeader, LandingHeaderMenuItem } from '@/components/landing';
-import ThemeSwitch from '@/components/shared/ThemeSwitch';
-import SearchButton from '@/components/search/SearchButton';
-import Image from 'next/image';
-import Link from 'next/link';
+import { LandingHeader, LandingHeaderMenuItem } from "@/components/landing";
+import ThemeSwitch from "@/components/shared/ThemeSwitch";
+import SearchButton from "@/components/search/SearchButton";
+import Image from "next/image";
+import Link from "next/link";
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 export const Header = ({ className }: { className?: string }) => {
   return (
@@ -18,14 +25,43 @@ export const Header = ({ className }: { className?: string }) => {
             height={32}
             className="h-8 w-8 rounded-full"
           />
-          {'BoileriABI.ee'}
+          {"BoileriABI.ee"}
         </div>
       }
       withBackground={false}
       variant="primary"
     >
-      {/* LEFT MENU */}
-      <LandingHeaderMenuItem href="/teenused">Teenused</LandingHeaderMenuItem>
+      {/* ---------------------- */}
+      {/* 🔥 DROPDOWN: TEENUSED */}
+      {/* ---------------------- */}
+      <DropdownMenu>
+        <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
+          Teenused ▾
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
+          <DropdownMenuItem asChild>
+            <Link href="/paigaldus">Boileri paigaldus</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/remont">Boileri remont</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/hooldus">Hooldus</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/hadabi">Hädaabi 24/7</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/hinnad">Hinnad</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/garantii">Garantii</Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      {/* ОСНОВНОЕ МЕНЮ */}
       <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
       <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
 
@@ -33,20 +69,20 @@ export const Header = ({ className }: { className?: string }) => {
       <Link
         href="tel:+37253684587"
         className="
-          flex items-center gap-2 
-          px-4 py-2 
-          text-lg font-semibold
-          border border-red-500 
-          text-red-600 
-          dark:text-red-400 
-          rounded-xl 
-          hover:bg-red-50 
-          dark:hover:bg-red-900/20
-          transition-all
-          whitespace-nowrap
+            flex items-center gap-2 
+            px-4 py-2 
+            text-lg font-semibold
+            border border-red-500 
+            text-red-600 
+            dark:text-red-400 
+            rounded-xl 
+            hover:bg-red-50 
+            dark:hover:bg-red-900/20
+            transition-all
+            whitespace-nowrap
         "
       >
-        {/* Phone Icon */}
+        {/* phone icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -65,7 +101,7 @@ export const Header = ({ className }: { className?: string }) => {
         53684587
       </Link>
 
-      {/* Whatsapp */}
+      {/* WHATSAPP */}
       <LandingHeaderMenuItem
         href="https://wa.me/37253684587"
         type="button"
