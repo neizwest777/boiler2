@@ -9,38 +9,60 @@ import LogoCarousel from "@/components/LogoCarousel";
 import Link from 'next/link';
 import { Button } from '@/components/shared/ui/button';
 
-// Компонент модального окна
+// ✅ ИСПРАВЛЕННЫЙ КОМПОНЕНТ МОДАЛЬНОГО ОКНА - использует тот же API что и рабочая форма
 function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setError(null);
 
     const formData = new FormData(e.currentTarget);
     
+    // Формируем payload как в рабочем ContactFormDialog
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      message: `Teenus: ${formData.get("service")}\nKirjeldus: ${formData.get("message")}`
+    };
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/prismestonia@gmail.com', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData,
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        (e.target as HTMLFormElement).reset();
-        
-        // Автозакрытие через 3 секунды после успеха
-        setTimeout(() => {
-          onClose();
-        }, 3000);
-      } else {
-        throw new Error('Form submission failed');
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error || 'Midagi läks valesti.');
       }
+
+      // Успех
+      setSubmitStatus('success');
+      (e.target as HTMLFormElement).reset();
+      
+      // Автозакрытие через 3 секунды после успеха
+      setTimeout(() => {
+        onClose();
+        setSubmitStatus('idle');
+      }, 3000);
+      
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('Saatmine ebaõnnestus.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -57,6 +79,7 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
             <button 
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700"
+              disabled={isSubmitting}
             >
               ✕
             </button>
@@ -74,19 +97,14 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
           {submitStatus === 'error' && (
             <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
               <p className="text-red-800 font-semibold">
-                ❌ Viga saatmisel. Palun proovige uuesti või helistage meile: {' '}
-                <a href="tel:+37253684587" className="underline">+372 5368 4587</a>
+                ❌ {error || "Viga saatmisel. Palun proovige uuesti või helistage meile: +372 5368 4587"}
               </p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_subject" value="Tasuta konsultatsioon päring - Boileriabi.ee" />
-            <input type="hidden" name="_autoresponse" value="Täname Teid tasuta konsultatsiooni päringu eest! Võtame Teiega peagi ühendust." />
-            <input type="hidden" name="_cc" value="info@boileriabi.ee" />
-
+            {/* ✅ УДАЛЕНЫ formsubmit.co скрытые поля */}
+            
             <div>
               <label className="text-sm font-medium block mb-1">
                 Nimi *
@@ -134,6 +152,7 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                 name="service"
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 disabled={isSubmitting}
+                required
               >
                 <option value="">Valige teenus</option>
                 <option value="paigaldus">Boileri paigaldus</option>
@@ -154,6 +173,7 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="Kirjeldage lühidalt oma boileri probleemi või vajadust..."
                 disabled={isSubmitting}
+                required
               />
             </div>
 
@@ -368,7 +388,7 @@ export default function Page() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Meie Usaldusvärted Partnerid</h2>
           <p className="text-gray-600 mb-2">Usaldusväärne partner</p>
-          <p className="text-gray-700 mb-8">Töötame koos juhtivate tootjate ja partneritega</p>
+          <p className="text-gray-700 mb-8">Töötame koos juhtivating tootjate ja partneritega</p>
           <LogoCarousel />
         </div>
       </section>
@@ -403,7 +423,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Модальное окно */}
+      {/* ✅ ИСПРАВЛЕННОЕ МОДАЛЬНОЕ ОКНО */}
       <ConsultationModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
