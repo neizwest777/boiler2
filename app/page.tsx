@@ -158,7 +158,7 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                 <option value="paigaldus">Boileri paigaldus</option>
                 <option value="remont">Boileri remont</option>
                 <option value="hooldus">Boileri hooldus</option>
-                <option value="konsultatsioon">Tasuta konsultatsioon</option>
+                <option value="konsultatsioon">Tee päring</option>
                 <option value="muu">Muu teenus</option>
               </select>
             </div>
