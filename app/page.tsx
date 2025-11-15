@@ -75,7 +75,7 @@ function ConsultationModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =
       <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-bold">Tasuta Boileri Konsultatsioon</h3>
+            <h3 className="text-xl font-bold">tasuta Boileri Konsultatsioon</h3>
             <button 
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700"
@@ -309,7 +309,7 @@ export default function Page() {
                 "name": "Millised piirkonnad teenindate?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Teenindame kogu Tallinnat ja Harjumaad. Tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel."
+                  "text": "Teenindame kogu Tallinnat ja Harjumaad. tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel."
                 }
               }
             ]
@@ -370,7 +370,7 @@ export default function Page() {
                 onClick={() => setIsModalOpen(true)}
                 className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
               >
-                📝 Tasuta konsultatsioon
+                📝 Tee päring
               </button>
             </div>
             <p className="text-gray-600 mt-4 text-sm">
@@ -417,7 +417,7 @@ export default function Page() {
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Millised piirkonnad teenindate?</h3>
-              <p className="text-gray-700">Teenindame kogu Tallinnat ja Harjumaad. Tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel.</p>
+              <p className="text-gray-700">Teenindame kogu Tallinnat ja Harjumaad. tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel.</p>
             </div>
           </div>
         </div>
