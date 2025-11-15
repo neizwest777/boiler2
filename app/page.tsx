@@ -280,18 +280,13 @@ export default function Page() {
       {/* 🔥 2) HERO IMAGE */}
       <ClientWrapper />
 
-      {/* 🔥 3) ПАРТНЁРЫ — ВЕРХНИЙ ЗАГОЛОВОК УДАЛЁН */}
+      {/* 🔥 3) ПАРТНЁРЫ - УДАЛЕНЫ ТЕКСТЫ */}
       <section className="w-full py-16 bg-[#E4FAFF]">
         <div className="max-w-4xl mx-auto text-center">
-
-          {/* ❌ УДАЛЁННЫЙ H2
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Meie Usaldusvärted Partnerid</h2>
-          */}
-
-          {/* Оставлены только эти два правильных текста */}
+          {/* ❌ УДАЛЕНЫ ФРАГМЕНТЫ:
           <p className="text-gray-600 mb-2">Usaldusväärne partner</p>
           <p className="text-gray-700 mb-8">Töötame koos juhtivate tootjate ja partneritega</p>
-
+          */}
           <LogoCarousel />
         </div>
       </section>
