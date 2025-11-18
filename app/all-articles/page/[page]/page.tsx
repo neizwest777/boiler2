@@ -8,6 +8,10 @@ import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
 import { genPageMetadata } from 'app/seo';
 
+// -----------------------------------------------------------
+// STATIC PARAMS
+// -----------------------------------------------------------
+
 export function generateStaticParams() {
   const totalPages = Math.ceil(allBlogs.length / POSTS_PER_PAGE);
 
@@ -16,13 +20,14 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ page: string }>;
-}) {
-  const resolvedParams = await params;
-  const page = Number(resolvedParams.page || 1);
+// -----------------------------------------------------------
+// FIXED METADATA (NO PROMISE)
+// -----------------------------------------------------------
+
+export async function generateMetadata(
+  { params }: { params: { page: string } }
+) {
+  const page = Number(params.page || 1);
 
   return genPageMetadata({
     title: `Boileri Artiklid - Leht ${page} | Boileriabi.ee`,
@@ -33,6 +38,10 @@ export async function generateMetadata({
         : `https://boileriabi.ee/all-articles/page/${page}`,
   });
 }
+
+// -----------------------------------------------------------
+// JSON-LD
+// -----------------------------------------------------------
 
 function getBlogPageJsonLd(pageNumber: number, totalPages: number) {
   const baseUrl = 'https://boileriabi.ee';
@@ -66,31 +75,28 @@ function getBlogPageJsonLd(pageNumber: number, totalPages: number) {
   };
 }
 
-export default async function BlogPage({
+// -----------------------------------------------------------
+// PAGE COMPONENT
+// -----------------------------------------------------------
+
+export default function BlogPaginationPage({
   params,
 }: {
-  params: Promise<{ page: string }>;
+  params: { page: string };
 }) {
-  const resolvedParams = await params;
+  const pageNumber = Number(params.page) || 1;
+
   const posts = allCoreContent(sortPosts(allBlogs));
-  const pageNumber = parseInt(resolvedParams.page);
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
-  const initialDisplayPosts = posts.slice(
-    POSTS_PER_PAGE * (pageNumber - 1),
-    POSTS_PER_PAGE * pageNumber
-  );
-
-  const pagination = {
-    currentPage: pageNumber,
-    totalPages: totalPages,
-  };
+  const start = (pageNumber - 1) * POSTS_PER_PAGE;
+  const end = start + POSTS_PER_PAGE;
+  const pagePosts = posts.slice(start, end);
 
   const jsonLd = getBlogPageJsonLd(pageNumber, totalPages);
 
   return (
-    <div className="flex flex-col w-full items-center justify-between">
-      {/* JSON-LD */}
+    <div className="min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -98,12 +104,13 @@ export default async function BlogPage({
 
       <Header />
 
-      {/* HERO */}
+      {/* HERO / TITLE BLOCK */}
       <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
         <div className="container-narrow text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Boileri Artiklid – Leht {pageNumber}
           </h1>
+
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Lugege boileri paigalduse, remondi ja hoolduse kasulikke nõuandeid.
           </p>
@@ -140,42 +147,38 @@ export default async function BlogPage({
       </div>
 
       {/* LIST */}
-      <ListLayout
-        posts={posts}
-        initialDisplayPosts={initialDisplayPosts}
-        pagination={pagination}
-        title={`Artiklid - Leht ${pageNumber}`}
-      />
+      <div className="container py-12">
+        <ListLayout posts={pagePosts} title="" />
+      </div>
 
-      {/* CTA BOX */}
-      <div className="container-narrow py-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Kas vajad boileri abi?</h2>
+      {/* PAGINATION BOTTOM */}
+      <div className="w-full bg-gray-50 py-8">
+        <div className="container flex justify-center space-x-8">
+          {pageNumber > 1 && (
+            <Link
+              href={
+                pageNumber === 2
+                  ? '/all-articles'
+                  : `/all-articles/page/${pageNumber - 1}`
+              }
+              className="bg-white px-4 py-2 rounded-lg border border-gray-300 hover:border-blue-500 transition-colors"
+            >
+              ← Eelmine leht
+            </Link>
+          )}
 
-          <p className="text-gray-700 mb-6">
-            Professionaalne paigaldus, remont ja hooldus Tallinnas ja Harjumaal.
-          </p>
+          <span className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+            {pageNumber} / {totalPages}
+          </span>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          {pageNumber < totalPages && (
             <Link
-              href="/kontakt"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              href={`/all-articles/page/${pageNumber + 1}`}
+              className="bg-white px-4 py-2 rounded-lg border border-gray-300 hover:border-blue-500 transition-colors"
             >
-              Võta Ühendust
+              Järgmine leht →
             </Link>
-            <Link
-              href="/hadaabi"
-              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
-            >
-              24/7 Hädaabi
-            </Link>
-            <Link
-              href="/hinnad"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
-            >
-              Hinnapakkumine
-            </Link>
-          </div>
+          )}
         </div>
       </div>
 
