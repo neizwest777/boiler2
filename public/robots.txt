@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# ❗Ничего не блокируем, так как Next.js сам всё отдает корректно
+# 🚫 НЕ блокируем параметры URL
+
+# Файлы, которые можно сканировать
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Sitemap (ТОЛЬКО если он реально существует)
+Sitemap: https://boileriabi.ee/sitemap.xml
+
+# Дополнительные правила для отдельных поисковиков
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+Host: boileriabi.ee
