@@ -113,11 +113,7 @@ export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="et"
@@ -128,60 +124,28 @@ export default function RootLayout({
         {/* CSS Variables */}
         <style>{`:root{${style.join('')}}`}</style>
 
-        {/* Preload Fonts */}
-        <link
-          rel="preload"
-          href="/fonts/playfair-display-latin-400-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/playfair-display-latin-700-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/lato-latin-400-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/lato-latin-700-normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* PRELOAD FONTS */}
+        <link rel="preload" href="/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/lato-latin-700-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         {/* Google Search Console */}
-        <meta
-          name="google-site-verification"
-          content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc"
-        />
+        <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
 
-        {/* GEO Tags */}
+        {/* GEO TAGS */}
         <meta name="geo.region" content="EE-37" />
         <meta name="geo.placename" content="Tallinn, Harjumaa" />
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
-      </head>
 
-      {/* Ahrefs Web Analytics injected as raw HTML */}
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `
-            <script src="https://analytics.ahrefs.com/analytics.js"
-              data-key="bomHtA+1BUw6NPo2b0TTrg"
-              async>
-            </script>
-          `,
-        }}
-      />
+        {/* AHREFS WEB ANALYTICS – RAW HTML SCRIPT */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="bomHtA+1BUw6NPo2b0TTrg"
+          async
+        ></script>
+      </head>
 
       <body className="bg-white text-slate-900 antialiased">
 
@@ -198,18 +162,10 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
 
             gtag('js', new Date());
-            gtag('config', 'G-6BZJEP1SLG', {
-              anonymize_ip: true
-            });
+            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
 
             window.sendGAEvent = function(action, params = {}) {
-              try {
-                if (typeof gtag !== 'undefined') {
-                  gtag('event', action, params);
-                }
-              } catch (e) {
-                console.warn('GA4 event error:', e);
-              }
+              try { gtag('event', action, params); } catch (e) {}
             };
           `}
         </Script>
@@ -223,17 +179,10 @@ export default function RootLayout({
 
               gtag('consent', 'default', {
                 ad_storage: 'denied',
-                ad_user_data: 'denied',
-                ad_personalization: 'denied',
-                analytics_storage: 'denied',
-                wait_for_update: 500
+                analytics_storage: 'denied'
               });
 
-              function updateConsent(consent) {
-                gtag('consent', 'update', consent);
-              }
-
-              window.__updateConsent = updateConsent;
+              window.__updateConsent = function(c){ gtag('consent', 'update', c); };
             })();
           `}
         </Script>
@@ -241,12 +190,9 @@ export default function RootLayout({
         <ThemeProviders>
           <AnalyticsWrapper />
           <CookieConsent />
-
           <div className="w-full flex flex-col items-center font-sans">
             <SearchProvider>
-              <main className="w-full flex flex-col items-center mb-auto">
-                {children}
-              </main>
+              <main className="w-full flex flex-col items-center mb-auto">{children}</main>
             </SearchProvider>
           </div>
         </ThemeProviders>
