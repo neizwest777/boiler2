@@ -9,6 +9,12 @@ import {
 } from '@/components/landing';
 import Link from 'next/link';
 
+// ✅ ДОБАВЛЕНЫ МЕТАДАННЫЕ
+export const metadata = {
+  title: 'Boileri Teenused | Paigaldus, Remont, Hooldus | Boileriabi',
+  description: 'Professionaalsed boileri teenused: paigaldus, remont, hooldus Tallinnas. Kiire reaktsioon, kvaliteetne töö ja garantiiaeg. Tasuta hindamine!',
+};
+
 export default function TeenusedPage() {
   const services = [
     {
@@ -45,7 +51,7 @@ export default function TeenusedPage() {
     <>
       <Header className="mb-4" />
 
-      {/* HERO */}
+      {/* ✅ HERO С ОДНИМ H1 */}
       <div className="container-narrow py-16">
         <h1 className="text-4xl font-bold text-center mb-6">
           Boileri Teenused Tallinnas & Harjumaal
