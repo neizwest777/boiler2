@@ -1,49 +1,39 @@
 "use client";
 
-import Script from "next/script";
 import { useEffect, useState } from "react";
 
 export function AnalyticsWrapper() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const check = () => {
+    const update = () => {
       try {
         const prefs = JSON.parse(
           localStorage.getItem("cookie_preferences") || "{}"
         );
-        setAllowed(prefs.analytics === true);
-      } catch (e) {}
+
+        const enabled = prefs.analytics === true;
+        setAllowed(enabled);
+
+        // Если пользователь дал согласие — обновляем Consent Mode
+        if (enabled && typeof window.__updateConsent === "function") {
+          window.__updateConsent({
+            analytics_storage: "granted",
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied"
+          });
+        }
+      } catch (_) {}
     };
 
-    check();
-
-    // слушаем изменения выбора
-    window.addEventListener("cookie_preferences_updated", check);
+    update();
+    window.addEventListener("cookie_preferences_updated", update);
 
     return () => {
-      window.removeEventListener("cookie_preferences_updated", check);
+      window.removeEventListener("cookie_preferences_updated", update);
     };
   }, []);
 
-  if (!allowed) return null;
-
-  return (
-    <>
-      {/* GA4 */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-000000000"
-        strategy="afterInteractive"
-      />
-
-      <Script id="ga4" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-000000000');
-        `}
-      </Script>
-    </>
-  );
+  return null; // важное изменение: НИЧЕГО НЕ РЕНДЕРИМ
 }
