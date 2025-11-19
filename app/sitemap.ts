@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
   const currentDate = new Date();
 
-  // ✅ ТОЛЬКО СУЩЕСТВУЮЩИЕ СТРАНИЦЫ (проверь какие реально работают)
+  // ✅ ТОЛЬКО СУЩЕСТВУЮЩИЕ СТРАНИЦЫ (без редиректов)
   return [
     {
       url: `${baseUrl}/`,
