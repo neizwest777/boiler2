@@ -9,12 +9,6 @@ import LogoCarousel from "@/components/LogoCarousel";
 import Link from 'next/link';
 import { Button } from '@/components/shared/ui/button';
 
-// ✅ ДОБАВЛЕНЫ МЕТАДАННЫЕ ДЛЯ SEO
-export const metadata = {
-  title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi',
-  description: 'Kogenud torumehed boileri paigalduseks, remondiks ja hoolduseks Tallinnas. Kiire 24/7 hädaabi, töögarantii ja tasuta hindamine. Helista: +37253684587',
-};
-
 /* ===========================================================
    ✅ GA4 tracking (ВСТАВЛЕНО)
    Без any, безопасно, работает везде
