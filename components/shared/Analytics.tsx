@@ -1,8 +1,8 @@
 // Добавляем глобальные типы, чтобы TS не ругался
 declare global {
   interface Window {
-    __updateConsent?: (consent: Record<string, any>) => void;
-    sendGAEvent?: (action: string, params?: Record<string, any>) => void;
+    __updateConsent?: (consent: Record<string, string>) => void;
+    sendGAEvent?: (action: string, params?: Record<string, string | number>) => void;
   }
 }
 
