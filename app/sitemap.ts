@@ -5,8 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
   const currentDate = new Date();
 
-  // ✅ ВСЕ URL ДОЛЖНЫ ВОЗВРАЩАТЬ 200 STATUS (без редиректов)
-  const routes = [
+  // ✅ ТОЛЬКО СУЩЕСТВУЮЩИЕ СТРАНИЦЫ (проверь какие реально работают)
+  return [
     {
       url: `${baseUrl}/`,
       lastModified: currentDate,
@@ -37,25 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/paigaldus`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/hooldus`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/remont`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
+    // ❗ УБРАЛ paigaldus, hooldus, remont - они могут не существовать
   ];
-
-  return routes;
 }
