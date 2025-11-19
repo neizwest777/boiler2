@@ -171,12 +171,16 @@ export default function RootLayout({
         <meta name="ICBM" content="59.4370, 24.7536" />
       </head>
 
-      {/* Ahrefs Web Analytics */}
-      <Script
-        src="https://analytics.ahrefs.com/analytics.js"
-        data-key="bomHtA+1BUw6NPo2b0TTrg"
-        strategy="afterInteractive"
-        async
+      {/* Ahrefs Web Analytics injected as raw HTML */}
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+            <script src="https://analytics.ahrefs.com/analytics.js"
+              data-key="bomHtA+1BUw6NPo2b0TTrg"
+              async>
+            </script>
+          `,
+        }}
       />
 
       <body className="bg-white text-slate-900 antialiased">
@@ -187,7 +191,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* GA4 Config + Global Event Sender */}
+        {/* GA4 Config */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -237,6 +241,7 @@ export default function RootLayout({
         <ThemeProviders>
           <AnalyticsWrapper />
           <CookieConsent />
+
           <div className="w-full flex flex-col items-center font-sans">
             <SearchProvider>
               <main className="w-full flex flex-col items-center mb-auto">
