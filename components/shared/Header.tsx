@@ -40,19 +40,19 @@ export const Header = ({ className }: { className?: string }) => {
         <div className="flex items-center text-primary-900 dark:text-primary-100 gap-3">
           <Image
             src="/static/images/logo.png"
-            alt="BoileriABI.ee logo"
+            alt="Boileriabi - Boileri paigaldus ja remont Tallinnas"
             width={32}
             height={32}
             className="h-8 w-8 rounded-full"
           />
-          {"BoileriABI.ee"}
+          {"BoileriABI"}
         </div>
       }
       withBackground={false}
       variant="primary"
     >
       {/* ---------------------- */}
-      {/* DROPDOWN MENU */}
+      {/* ✅ ИСПРАВЛЕННОЕ ВЫПАДАЮЩЕЕ МЕНЮ - только существующие URL */}
       {/* ---------------------- */}
       <DropdownMenu>
         <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
@@ -61,22 +61,19 @@ export const Header = ({ className }: { className?: string }) => {
 
         <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
           <DropdownMenuItem asChild>
-            <Link href="/paigaldus">Boileri paigaldus</Link>
+            <Link href="/teenused/boilerite-paigaldus">Boileri paigaldus</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/remont">Boileri remont</Link>
+            <Link href="/teenused/boilerite-remont">Boileri remont</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/hooldus">Hooldus</Link>
+            <Link href="/teenused/boilerite-hooldus">Hooldus</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/hadaabi">Hädaabi 24/7</Link>
+            <Link href="/kontakt">Hädaabi 24/7</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/hinnad">Hinnad</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/garantii">Garantii</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -120,7 +117,7 @@ export const Header = ({ className }: { className?: string }) => {
         53684587
       </a>
 
-      {/* WHATSAPP — КЛИЕНТСКИЙ ЭЛЕМЕНТ (исправлено!) */}
+      {/* WHATSAPP — КЛИЕНТСКИЙ ЭЛЕМЕНТ */}
       <a
         href="https://wa.me/37253684587"
         target="_blank"
