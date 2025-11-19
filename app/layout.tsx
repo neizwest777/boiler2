@@ -139,12 +139,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
-        {/* AHREFS WEB ANALYTICS – RAW HTML SCRIPT */}
-        <script
+        {/* AHREFS WEB ANALYTICS - CORRECTED DATA-KEY */}
+        <Script
           src="https://analytics.ahrefs.com/analytics.js"
-          data-key="bomHtA+1BUw6NPo2b0TTrg"
-          async
-        ></script>
+          data-key="bomHtA+1BUw6NP0zbOTTrg"
+          strategy="afterInteractive"
+        />
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
