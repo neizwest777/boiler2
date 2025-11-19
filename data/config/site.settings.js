@@ -5,8 +5,8 @@ const siteConfig = {
   ...metadata,
   theme: 'system',
 
-  // ✅ ДОБАВЛЕНЫ ОТСУТСТВУЮЩИЕ ПОЛЯ ДЛЯ LAYOUT.TSX
-  siteUrl: metadata.siteUrl, // Явно указываем siteUrl
+  // ✅ ЯВНО УКАЗАНЫ ВСЕ ПОЛЯ ДЛЯ LAYOUT.TSX
+  siteUrl: metadata.siteUrl,
   businessName: metadata.businessName,
   title: metadata.title,
   description: metadata.description,
