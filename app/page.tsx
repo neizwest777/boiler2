@@ -8,7 +8,12 @@ import Script from 'next/script';
 import LogoCarousel from "@/components/LogoCarousel";
 import Link from 'next/link';
 import { Button } from '@/components/shared/ui/button';
-import { Wrench, AlertTriangle, GaugeCircle, Zap } from "lucide-react";
+
+// ✅ ДОБАВЛЕНЫ МЕТАДАННЫЕ ДЛЯ SEO
+export const metadata = {
+  title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi',
+  description: 'Kogenud torumehed boileri paigalduseks, remondiks ja hoolduseks Tallinnas. Kiire 24/7 hädaabi, töögarantii ja tasuta hindamine. Helista: +37253684587',
+};
 
 /* ===========================================================
    ✅ GA4 tracking (ВСТАВЛЕНО)
@@ -176,22 +181,32 @@ export default function Page() {
     <>
       <Header />
 
-      {/* JSON-LD (оставил как в твоём файле) */}
+      {/* ✅ ИСПРАВЛЕННЫЙ JSON-LD */}
       <Script id="local-business-json-ld" type="application/ld+json" strategy="beforeInteractive">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "name": "Boileriabi.ee",
+          "name": "Boileriabi",
           "description": "Boileri paigaldus, remont ja hooldus Tallinnas ja Harjumaal.",
           "telephone": "+37253684587",
           "email": "info@boileriabi.ee",
-          "url": "https://boileriabi.ee/"
+          "url": "https://boileriabi.ee/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tallinn",
+            "addressRegion": "Harjumaa",
+            "addressCountry": "EE"
+          },
+          "openingHours": "Mo-Su 00:00-23:59",
+          "areaServed": "Tallinn, Harjumaa",
+          "serviceType": "Boiler installation, repair, maintenance"
         })}
       </Script>
 
       {/* 🔥 HERO */}
       <section className="w-full py-20 bg-[#E4FAFF]">
         <div className="max-w-5xl mx-auto px-6">
+          {/* ✅ ТОЛЬКО ОДИН H1 НА СТРАНИЦЕ */}
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Boileri Paigaldus, Remont ja Hooldus Tallinnas
           </h1>
