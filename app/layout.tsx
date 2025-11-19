@@ -1,7 +1,7 @@
 import { Lato, Playfair_Display } from 'next/font/google';
 import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
-import { Metadata, Viewport } from 'next'; // ✅ Добавьте Viewport импорт
+import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 
 import { colors } from '@/data/config/colors.js';
@@ -102,14 +102,13 @@ export const metadata: Metadata = {
   },
 
   manifest: '/site.webmanifest',
-  // ❌ УДАЛИТЬ themeColor отсюда
+
   other: {
     'application-name': siteConfig.businessName,
     'msapplication-TileColor': '#ffffff',
   },
 };
 
-// ✅ ДОБАВИТЬ этот экспорт
 export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
@@ -173,23 +172,39 @@ export default function RootLayout({
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-        {/* Остальной код без изменений */}
+
+        {/* GA4 Loader */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
         />
-        
+
+        {/* GA4 Config + Global Event Sender */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+
+            // Initialize GA4
             gtag('js', new Date());
             gtag('config', 'G-6BZJEP1SLG', {
-              'anonymize_ip': true
+              anonymize_ip: true
             });
+
+            // GLOBAL EVENT SENDER
+            window.sendGAEvent = function(action, params = {}) {
+              try {
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', action, params);
+                }
+              } catch (e) {
+                console.warn('GA4 event error:', e);
+              }
+            };
           `}
         </Script>
 
+        {/* Consent Mode */}
         <Script id="consent-mode" strategy="beforeInteractive">
           {`
             (function() {
@@ -197,11 +212,11 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
 
               gtag('consent', 'default', {
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'analytics_storage': 'denied',
-                'wait_for_update': 500
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied',
+                wait_for_update: 500
               });
 
               function updateConsent(consent) {
