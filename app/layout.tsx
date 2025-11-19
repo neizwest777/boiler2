@@ -70,11 +70,12 @@ export const metadata: Metadata = {
     phoneNumbers: [siteConfig.telephone],
   },
 
+  // ✅ ИСПРАВЛЕННЫЙ CANONICAL - без trailing slash
   alternates: {
-    canonical: siteConfig.siteUrl,
+    canonical: `${siteConfig.siteUrl.replace(/\/$/, '')}`,
     languages: {
-      et: siteConfig.siteUrl,
-      'x-default': siteConfig.siteUrl,
+      et: `${siteConfig.siteUrl.replace(/\/$/, '')}`,
+      'x-default': `${siteConfig.siteUrl.replace(/\/$/, '')}`,
     },
   },
 
@@ -139,7 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
-        {/* AHREFS WEB ANALYTICS - CORRECTED DATA-KEY */}
+        {/* ✅ AHREFS WEB ANALYTICS - CORRECTED */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="bomHtA+1BUw6NP0zbOTTrg"
@@ -149,28 +150,39 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="bg-white text-slate-900 antialiased">
 
-        {/* GA4 Loader */}
+        {/* ✅ GA4 Loader */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
         />
 
-        {/* GA4 Config */}
+        {/* ✅ GA4 Config */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
 
             gtag('js', new Date());
-            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
+            gtag('config', 'G-6BZJEP1SLG', { 
+              anonymize_ip: true,
+              page_title: document.title,
+              page_location: window.location.href
+            });
 
             window.sendGAEvent = function(action, params = {}) {
-              try { gtag('event', action, params); } catch (e) {}
+              try { 
+                gtag('event', action, {
+                  ...params,
+                  send_to: 'G-6BZJEP1SLG'
+                }); 
+              } catch (e) {
+                console.log('GA Event error:', e);
+              }
             };
           `}
         </Script>
 
-        {/* Consent Mode */}
+        {/* ✅ Consent Mode */}
         <Script id="consent-mode" strategy="beforeInteractive">
           {`
             (function() {
@@ -179,10 +191,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               gtag('consent', 'default', {
                 ad_storage: 'denied',
-                analytics_storage: 'denied'
+                analytics_storage: 'denied',
+                functionality_storage: 'denied',
+                personalization_storage: 'denied',
+                security_storage: 'granted'
               });
 
-              window.__updateConsent = function(c){ gtag('consent', 'update', c); };
+              window.__updateConsent = function(consent) { 
+                gtag('consent', 'update', consent);
+              };
             })();
           `}
         </Script>
