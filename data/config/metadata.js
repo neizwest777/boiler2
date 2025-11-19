@@ -1,10 +1,11 @@
 const metadata = {
-  title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi.ee',
-  description: 'Kogenud torumees Tallinnas - boileri paigaldus, remont, hooldus ja 24/7 hädaabi. Tasuta hindamine, kiire reageerimine ja töögarantii. Boileriabi.ee - usaldusväline torumeesteenus Harjumaal.',
+  // ✅ SEO-ОПТИМИЗИРОВАННЫЕ МЕТАДАННЫЕ
+  title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi',
+  description: 'Kogenud torumehed boileri paigalduseks, remondiks ja hoolduseks Tallinnas. Kiire 24/7 hädaabi, töögarantii ja tasuta hindamine. Helista: +37253684587',
   domain: 'boileriabi.ee',
-  logoTitle: 'Boileriabi.ee - Boileriteenused Tallinnas',
-  businessName: 'Boileriabi.ee',
-  siteUrl: 'https://boileriabi.ee',
+  logoTitle: 'Boileriabi - Boileriteenused Tallinnas',
+  businessName: 'Boileriabi',
+  siteUrl: 'https://boileriabi.ee', // ✅ БЕЗ СЛЕША В КОНЦЕ
   siteRepo: '',
   socialBanner: '/api/og',
   supportEmail: 'info@boileriabi.ee',
@@ -32,7 +33,7 @@ const metadata = {
   facebook: '',
   threads: '',
   mastodon: '',
-  author: 'Boileriabi.ee',
+  author: 'Boileriabi',
   language: 'et',
   locale: 'et-EE',
   keywords: [
