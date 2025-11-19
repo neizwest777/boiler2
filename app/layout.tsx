@@ -1,16 +1,14 @@
 import { Lato, Playfair_Display } from 'next/font/google';
 import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
-import { Metadata } from 'next';
-import Script from 'next/script'; // ✅ Используем next/script вместо встроенного script
+import { Metadata, Viewport } from 'next'; // ✅ Добавьте Viewport импорт
+import Script from 'next/script';
 
 import { colors } from '@/data/config/colors.js';
 
 import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
-
-// Cookie Banner
 import CookieConsent from "@/components/shared/CookieConsent";
 
 const displayFont = Playfair_Display({
@@ -104,11 +102,16 @@ export const metadata: Metadata = {
   },
 
   manifest: '/site.webmanifest',
-  themeColor: '#ffffff',
+  // ❌ УДАЛИТЬ themeColor отсюда
   other: {
     'application-name': siteConfig.businessName,
     'msapplication-TileColor': '#ffffff',
   },
+};
+
+// ✅ ДОБАВИТЬ этот экспорт
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({
@@ -170,7 +173,7 @@ export default function RootLayout({
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-        {/* ✅ GOOGLE ANALYTICS с next/script */}
+        {/* Остальной код без изменений */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
@@ -187,7 +190,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* ✅ CONSENT MODE V2 с next/script */}
         <Script id="consent-mode" strategy="beforeInteractive">
           {`
             (function() {
@@ -213,10 +215,7 @@ export default function RootLayout({
 
         <ThemeProviders>
           <AnalyticsWrapper />
-
-          {/* COOKIE CONSENT */}
           <CookieConsent />
-
           <div className="w-full flex flex-col items-center font-sans">
             <SearchProvider>
               <main className="w-full flex flex-col items-center mb-auto">
