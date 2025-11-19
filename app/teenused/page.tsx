@@ -1,6 +1,3 @@
-// @ts-nocheck
-"use client";
-
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import {
@@ -8,12 +5,6 @@ import {
   LandingProductFeature
 } from '@/components/landing';
 import Link from 'next/link';
-
-// ✅ ДОБАВЛЕНЫ МЕТАДАННЫЕ
-export const metadata = {
-  title: 'Boileri Teenused | Paigaldus, Remont, Hooldus | Boileriabi',
-  description: 'Professionaalsed boileri teenused: paigaldus, remont, hooldus Tallinnas. Kiire reaktsioon, kvaliteetne töö ja garantiiaeg. Tasuta hindamine!',
-};
 
 export default function TeenusedPage() {
   const services = [
