@@ -1,60 +1,61 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/data/config/site.settings";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
+  const currentDate = new Date();
 
-  return [
+  // ✅ ВСЕ URL ДОЛЖНЫ ВОЗВРАЩАТЬ 200 STATUS (без редиректов)
+  const routes = [
     {
       url: `${baseUrl}/`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
       priority: 1.0,
     },
-
     {
       url: `${baseUrl}/teenused`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
-
     {
       url: `${baseUrl}/kontakt`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-
     {
       url: `${baseUrl}/meist`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
-
     {
       url: `${baseUrl}/hinnad`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
-
-    // Добавляем разделы услуг (паигалдус, hooldus, remont)
     {
       url: `${baseUrl}/paigaldus`,
-      lastModified: new Date(),
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/hooldus`,
-      lastModified: new Date(),
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/remont`,
-      lastModified: new Date(),
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
   ];
+
+  return routes;
 }
