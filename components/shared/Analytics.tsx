@@ -1,3 +1,11 @@
+// Добавляем глобальные типы, чтобы TS не ругался
+declare global {
+  interface Window {
+    __updateConsent?: (consent: Record<string, any>) => void;
+    sendGAEvent?: (action: string, params?: Record<string, any>) => void;
+  }
+}
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -35,5 +43,5 @@ export function AnalyticsWrapper() {
     };
   }, []);
 
-  return null; // важное изменение: НИЧЕГО НЕ РЕНДЕРИМ
+  return null; // Ничего не рендерим — GA подключён в layout.tsx
 }
