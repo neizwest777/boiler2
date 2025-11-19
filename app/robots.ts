@@ -16,6 +16,5 @@ export default function robots(): MetadataRoute.Robots {
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
-    // ✅ Host больше не поддерживается современными ботами
   };
 }
