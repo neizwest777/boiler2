@@ -25,17 +25,18 @@ export function generateStaticParams() {
 // -----------------------------------------------------------
 
 export async function generateMetadata(
-  { params }: { params: { page: string } }
+  { params }: { params: Promise<{ page: string }> }
 ) {
-  const page = Number(params.page || 1);
+  const { page } = await params;
+  const pageNumber = Number(page || 1);
 
   return genPageMetadata({
-    title: `Boileri Artiklid - Leht ${page} | Boileriabi.ee`,
-    description: `Boileri paigalduse, remondi ja hoolduse artiklid - leht ${page}. Kasulik info boileri teenustest Tallinnas ja Harjumaal.`,
+    title: `Boileri Artiklid - Leht ${pageNumber} | Boileriabi.ee`,
+    description: `Boileri paigalduse, remondi ja hoolduse artiklid - leht ${pageNumber}. Kasulik info boileri teenustest Tallinnas ja Harjumaal.`,
     canonical:
-      page === 1
+      pageNumber === 1
         ? `https://boileriabi.ee/all-articles`
-        : `https://boileriabi.ee/all-articles/page/${page}`,
+        : `https://boileriabi.ee/all-articles/page/${pageNumber}`,
   });
 }
 
@@ -76,15 +77,16 @@ function getBlogPageJsonLd(pageNumber: number, totalPages: number) {
 }
 
 // -----------------------------------------------------------
-// PAGE COMPONENT
+// PAGE COMPONENT (UPDATED FOR NEXT.JS 15)
 // -----------------------------------------------------------
 
-export default function BlogPaginationPage({
+export default async function BlogPaginationPage({
   params,
 }: {
-  params: { page: string };
+  params: Promise<{ page: string }>;
 }) {
-  const pageNumber = Number(params.page) || 1;
+  const { page } = await params;
+  const pageNumber = Number(page) || 1;
 
   const posts = allCoreContent(sortPosts(allBlogs));
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
