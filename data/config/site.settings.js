@@ -1,42 +1,33 @@
-const { metadata } = require('./metadata');
-
-/** @typedef {import("siteSettingsInterface.ts").SiteConfig } */
 const siteConfig = {
-  ...metadata,
-  theme: 'system', // ← ДОБАВИЛ ТЕМУ
+  // ✅ ОСНОВНЫЕ НАСТРОЙКИ САЙТА
+  siteUrl: 'https://boileriabi.ee', // БЕЗ слеша в конце!
+  businessName: 'Boileriabi',
+  title: 'Boileri paigaldus ja hooldus Tallinnas | Boileriabi',
+  description: 'Professionaalne boileri paigaldus, hooldus ja remont Tallinnas. Kiire ja kvaliteetne teenus. Tasuta läbivaatus!',
+  keywords: 'boileri paigaldus, boileri hooldus, boileri remont, boiler Tallinnas',
+  author: 'Boileriabi',
+  email: 'info@boileriabi.ee',
+  telephone: '+3721234567',
+  socialBanner: '/images/social-banner.jpg',
 
-  blogPath: '', // The location of all blog pages under 'data'. Empty string means 'data' (default). Best for SEO is to have articles under the root path.
-  allArticlesPath: '/all-articles', // The name of the page where you can see a list of all articles (needs to match app/all-articles/page.tsx)
+  // ✅ ТЕМА И НАСТРОЙКИ
+  theme: 'system',
 
-  // Configure analytics
-  disableAnalytics: false, // Disable all analytics on the site
+  // ✅ ПУТИ
+  blogPath: '',
+  allArticlesPath: '/all-articles',
+
+  // ✅ АНАЛИТИКА
+  disableAnalytics: false,
   analytics: {
-    // By default Vercel analytics is enabled.
-    //
-    // If you want to use an analytics provider you have to add it to the
-    // content security policy in the `next.config.js` file.
-    // supports Plausible, Simple Analytics, Umami, Posthog or Google Analytics.
-    // umamiAnalytics: {
-    //   // We use an env variable for this site to avoid other users cloning our analytics ID
-    //   umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    // },
-    // plausibleAnalytics: {
-    //   plausibleDataDomain: '', // e.g. insert-business-name.vercel.app
-    // },
-    // simpleAnalytics: {},
-    // posthogAnalytics: {
-    //   posthogProjectApiKey: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    // },
-    // googleAnalytics: {
-    //   googleAnalyticsId: '', // e.g. G-XXXXXXX
-    // },
+    // Настройки аналитики
   },
 
   newsletter: {
-    // Optional: enable newsletter
     // provider: 'emailoctopus',
   },
-  search: true, // Enable or disable search
+  
+  search: true,
 };
 
 module.exports = { siteConfig };
