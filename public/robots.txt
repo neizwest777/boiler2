@@ -2,10 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /search  # 🔥 ДОБАВЛЕНО: запрет сканирования поиска
+Disallow: /search
 
-# 🔥 ИСПРАВЛЕНО: sitemap с www
-Sitemap: https://www.boileriabi.ee/sitemap.xml
-
-# 🔥 ДОБАВЛЕНО: Указание основного хоста
-Host: https://www.boileriabi.ee
+Sitemap: https://boileriabi.ee/sitemap.xml
