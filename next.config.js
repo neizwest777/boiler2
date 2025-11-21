@@ -94,10 +94,10 @@ module.exports = () => {
         },
       ],
     },
-    // 🔥 ОБНОВЛЕННЫЕ РЕДИРЕКТЫ для решения всех проблем
+    // 🔥 ПОЛНОСТЬЮ ОБНОВЛЕННЫЕ РЕДИРЕКТЫ для решения всех проблем
     async redirects() {
       return [
-        // Редирект с версии без www на версию с www
+        // Основной редирект с версии без www на версию с www
         {
           source: '/:path*',
           has: [
@@ -115,7 +115,19 @@ module.exports = () => {
           has: [
             {
               type: 'host',
-              value: 'boileriabl.ee',
+              value: 'boileriabi.ee',
+            },
+          ],
+          destination: 'https://www.boileriabi.ee/:path*',
+          permanent: true,
+        },
+        // 🔥 ДОБАВЛЕНО: Редирект для опечатки bolleriabl.ee (из нового отчета)
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'bolleriabl.ee',
             },
           ],
           destination: 'https://www.boileriabi.ee/:path*',
@@ -127,6 +139,11 @@ module.exports = () => {
           destination: '/',
           permanent: false,
         },
+        {
+          source: '/search/:path*',
+          destination: '/',
+          permanent: false,
+        },
         // Редирект для проблемных URL из отчетов
         {
           source: '/feed.xml',
@@ -135,6 +152,17 @@ module.exports = () => {
         },
         {
           source: '/api/cg',
+          destination: '/',
+          permanent: false,
+        },
+        {
+          source: '/api/:path*',
+          destination: '/',
+          permanent: false,
+        },
+        // 🔥 ДОБАВЛЕНО: Редирект для /overview если эта страница не существует
+        {
+          source: '/overview',
           destination: '/',
           permanent: false,
         },
