@@ -94,9 +94,10 @@ module.exports = () => {
         },
       ],
     },
-    // 🔥 ДОБАВЛЕНЫ РЕДИРЕКТЫ для решения проблемы с www
+    // 🔥 ОБНОВЛЕННЫЕ РЕДИРЕКТЫ для решения всех проблем
     async redirects() {
       return [
+        // Редирект с версии без www на версию с www
         {
           source: '/:path*',
           has: [
@@ -106,7 +107,36 @@ module.exports = () => {
             },
           ],
           destination: 'https://www.boileriabi.ee/:path*',
-          permanent: true, // 301 редирект вместо 307
+          permanent: true,
+        },
+        // Редирект для опечатанного домена (из отчетов GSC)
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'boileriabl.ee',
+            },
+          ],
+          destination: 'https://www.boileriabi.ee/:path*',
+          permanent: true,
+        },
+        // Редирект для поисковых запросов (решает проблему 404)
+        {
+          source: '/search',
+          destination: '/',
+          permanent: false,
+        },
+        // Редирект для проблемных URL из отчетов
+        {
+          source: '/feed.xml',
+          destination: '/rss.xml', // или укажите правильный путь к RSS
+          permanent: true,
+        },
+        {
+          source: '/api/cg',
+          destination: '/',
+          permanent: false,
         },
       ];
     },
