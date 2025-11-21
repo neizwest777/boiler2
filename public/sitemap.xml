@@ -1,73 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- 🔥 ИСПРАВЛЕНО: Все URL теперь с www -->
   <url>
-    <loc>https://boileriabi.ee/</loc>
+    <loc>https://www.boileriabi.ee/</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/teenused</loc>
+    <loc>https://www.boileriabi.ee/teenused</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/teenused" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/kontakt</loc>
+    <loc>https://www.boileriabi.ee/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/kontakt" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/meist</loc>
+    <loc>https://www.boileriabi.ee/meist</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/meist" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/hinnad</loc>
+    <loc>https://www.boileriabi.ee/hinnad</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/hinnad" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/paigaldus</loc>
+    <loc>https://www.boileriabi.ee/paigaldus</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/paigaldus" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/hooldus</loc>
+    <loc>https://www.boileriabi.ee/hooldus</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/hooldus" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/remont</loc>
+    <loc>https://www.boileriabi.ee/remont</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/remont" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/hadaabi</loc>
+    <loc>https://www.boileriabi.ee/hadaabi</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/hadaabi" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/garantii</loc>
+    <loc>https://www.boileriabi.ee/garantii</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/garantii" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/konsultatsioon</loc>
+    <loc>https://www.boileriabi.ee/konsultatsioon</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/konsultatsioon" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://boileriabi.ee/all-articles</loc>
+    <loc>https://www.boileriabi.ee/all-articles</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.boileriabi.ee/all-articles" />
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
