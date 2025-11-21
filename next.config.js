@@ -94,77 +94,32 @@ module.exports = () => {
         },
       ],
     },
-    // 🔥 ПОЛНОСТЬЮ ОБНОВЛЕННЫЕ РЕДИРЕКТЫ для решения всех проблем
+    // 🔥 УПРОЩЕННЫЕ РЕДИРЕКТЫ - только для вашего домена boileriabi.ee
     async redirects() {
       return [
-        // Основной редирект с версии без www на версию с www
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'boileriabi.ee',
-            },
-          ],
-          destination: 'https://www.boileriabi.ee/:path*',
-          permanent: true,
-        },
-        // Редирект для опечатанного домена (из отчетов GSC)
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'boileriabi.ee',
-            },
-          ],
-          destination: 'https://www.boileriabi.ee/:path*',
-          permanent: true,
-        },
-        // 🔥 ДОБАВЛЕНО: Редирект для опечатки bolleriabl.ee (из нового отчета)
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'bolleriabl.ee',
-            },
-          ],
-          destination: 'https://www.boileriabi.ee/:path*',
-          permanent: true,
-        },
         // Редирект для поисковых запросов (решает проблему 404)
         {
           source: '/search',
           destination: '/',
           permanent: false,
         },
-        {
-          source: '/search/:path*',
-          destination: '/',
-          permanent: false,
-        },
-        // Редирект для проблемных URL из отчетов
+        // Редирект для RSS если нужно
         {
           source: '/feed.xml',
-          destination: '/rss.xml', // или укажите правильный путь к RSS
+          destination: '/rss.xml', // измените на правильный путь если у вас есть RSS
           permanent: true,
         },
+        // Редирект для несуществующих API endpoints
         {
           source: '/api/cg',
           destination: '/',
           permanent: false,
         },
-        {
-          source: '/api/:path*',
-          destination: '/',
-          permanent: false,
-        },
-        // 🔥 ДОБАВЛЕНО: Редирект для /overview если эта страница не существует
+        // Редирект для /overview если эта страница не существует
         {
           source: '/overview',
           destination: '/',
-          permanent: false,
+          permanent: true,
         },
       ];
     },
