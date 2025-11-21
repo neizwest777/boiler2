@@ -94,6 +94,22 @@ module.exports = () => {
         },
       ],
     },
+    // 🔥 ДОБАВЛЕНЫ РЕДИРЕКТЫ для решения проблемы с www
+    async redirects() {
+      return [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'boileriabi.ee',
+            },
+          ],
+          destination: 'https://www.boileriabi.ee/:path*',
+          permanent: true, // 301 редирект вместо 307
+        },
+      ];
+    },
     async headers() {
       return [
         {
