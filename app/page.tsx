@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
 import ClientWrapper from "./client-wrapper";
 import Script from 'next/script';
 import LogoCarousel from "@/components/LogoCarousel";
@@ -31,8 +29,6 @@ export default function Page() {
 
   return (
     <>
-      <Header />
-
       {/* ✅ РАСШИРЕННЫЙ JSON-LD ДЛЯ ЛУЧШЕГО SEO */}
       <Script id="local-business-json-ld" type="application/ld+json" strategy="beforeInteractive">
         {JSON.stringify({
@@ -305,8 +301,6 @@ export default function Page() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
-
-      <Footer />
     </>
   );
 }
