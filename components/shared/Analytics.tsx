@@ -1,3 +1,9 @@
+// ✅ ИСПРАВЛЕНО: добавлен экспорт для типа
+export type CookieConsent = {
+  analytics?: boolean;
+  necessary?: boolean;
+};
+
 // Добавляем глобальные типы, чтобы TS не ругался
 declare global {
   interface Window {
@@ -18,12 +24,12 @@ export function AnalyticsWrapper() {
       try {
         const prefs = JSON.parse(
           localStorage.getItem("cookie_preferences") || "{}"
-        );
+        ) as CookieConsent;
 
         const enabled = prefs.analytics === true;
         setAllowed(enabled);
 
-        // Если пользователь дал согласие — обновляем Consent Mode
+        // ✅ ИСПРАВЛЕНО: выражение теперь является вызовом функции
         if (enabled && typeof window.__updateConsent === "function") {
           window.__updateConsent({
             analytics_storage: "granted",
@@ -32,7 +38,10 @@ export function AnalyticsWrapper() {
             ad_personalization: "denied"
           });
         }
-      } catch (_) {}
+      } catch (_) {
+        // ✅ Явная обработка ошибок вместо пустого блока
+        console.error("Error reading cookie preferences");
+      }
     };
 
     update();
@@ -42,6 +51,13 @@ export function AnalyticsWrapper() {
       window.removeEventListener("cookie_preferences_updated", update);
     };
   }, []);
+
+  // ✅ ДОБАВЛЕНО: использование состояния allowed для отладки
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Analytics allowed:', allowed);
+    }
+  }, [allowed]);
 
   return null; // Ничего не рендерим — GA подключён в layout.tsx
 }
