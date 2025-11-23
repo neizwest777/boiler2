@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function BoileriPaigaldusTallinnaPiirkonnas() {
   return (
     <div className="container">
@@ -30,7 +32,10 @@ export default function BoileriPaigaldusTallinnaPiirkonnas() {
       </section>
 
       <div className="cta-section">
-        <a href="/vorm" className="button">Telli Tasuta Konsultatsioon</a>
+        {/* ИСПРАВЛЕННАЯ ССЫЛКА: используем Link вместо <a> */}
+        <Link href="/vorm" className="button">
+          Telli Tasuta Konsultatsioon
+        </Link>
       </div>
     </div>
   )
