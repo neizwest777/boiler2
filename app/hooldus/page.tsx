@@ -1,5 +1,3 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
 import { Wrench, ShieldCheck, Flame, Droplets, PhoneCall, Clock, Zap, CheckCircle, AlertTriangle } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -42,8 +40,6 @@ export const metadata: Metadata = {
 export default function Hooldus() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      <Header />
-
       {/* ✅ JSON-LD SCHEMA FOR MAINTENANCE SERVICE */}
       <script
         type="application/ld+json"
@@ -400,7 +396,7 @@ export default function Hooldus() {
 
                 <div className="bg-white border border-gray-200 rounded-lg p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Kas hooldus tagab garantiid?</h3>
-                  <p className="text-gray-700">Jah, kõikidele hooldustöödele anname 6 kuuse garanti. See kattab hooldusel tehtud tööd ja vahetatud komponendid.</p>
+                  <p className="text-gray-700">Jah, kõikidele hooldustöödele anname 6 kuuse garanti. See kattub hooldusel tehtud tööd ja vahetatud komponendid.</p>
                 </div>
               </div>
             </section>
@@ -467,8 +463,6 @@ export default function Hooldus() {
 
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
