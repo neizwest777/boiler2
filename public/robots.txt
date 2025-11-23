@@ -1,18 +1,7 @@
 User-agent: *
 Allow: /
 
-# Запрещенные директории
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /cgi-bin/
-
-# Запрещенные параметры (если используются)
-Disallow: /*?*
-Disallow: /*&*
-
-# Разрешаем индексировать важные страницы
+# Разрешаем все основные страницы
 Allow: /paigaldus
 Allow: /remont
 Allow: /hooldus
@@ -25,18 +14,10 @@ Allow: /meist
 Allow: /garantii
 Allow: /kontakt
 
-# Указание sitemap
+# Запрещаем технические директории
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Указываем sitemap
 Sitemap: https://www.boileriabi.ee/sitemap.xml
-
-# Для конкретных поисковых систем
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexBot
-Allow: /
-Crawl-delay: 3
