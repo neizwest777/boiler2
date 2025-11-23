@@ -5,8 +5,8 @@ Allow: /
 Disallow: /api/
 Disallow: /api/og
 Disallow: /admin/
-Disallow: /search
-Disallow: /overview
+Disallow: /search/
+Disallow: /overview/
 Disallow: /feed.xml
 
 Sitemap: https://boileriabi.ee/sitemap.xml
