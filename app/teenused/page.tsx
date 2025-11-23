@@ -1,5 +1,3 @@
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
 import {
   LandingProductFeaturesGrid,
   LandingProductFeature
@@ -40,8 +38,6 @@ export default function TeenusedPage() {
 
   return (
     <>
-      <Header className="mb-4" />
-
       {/* ✅ HERO С ОДНИМ H1 */}
       <div className="container-narrow py-16">
         <h1 className="text-4xl font-bold text-center mb-6">
@@ -174,8 +170,6 @@ export default function TeenusedPage() {
           </div>
         </div>
       </div>
-
-      <Footer className="mt-8" />
     </>
   );
 }
