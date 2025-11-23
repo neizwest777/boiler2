@@ -32,13 +32,13 @@ export default function BoileriHooldusTallinnaPiirkonnas() {
               href="/vorm" 
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-            Broneeri Hooldus
+              Broneeri Hooldus
             </Link>
             <a 
-              href="tel:+37212345678" 
+              href="tel:+37253684587" 
               className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
             >
-              Küsige Hinda
+              📞 5368 4587
             </a>
           </div>
         </div>
@@ -142,12 +142,20 @@ export default function BoileriHooldusTallinnaPiirkonnas() {
           <p className="text-xl mb-8 opacity-90">
             Broneeri ennetav hooldus ja säästa raha
           </p>
-          <Link 
-            href="/vorm" 
-            className="inline-block bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 transform hover:scale-105"
-          >
-            Broneeri Hooldus
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link 
+              href="/vorm" 
+              className="inline-block bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 transform hover:scale-105"
+            >
+              Broneeri Hooldus
+            </Link>
+            <a 
+              href="tel:+37253684587" 
+              className="inline-block border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-8 py-4 rounded-lg text-xl font-semibold transition-all duration-300"
+            >
+              📞 5368 4587
+            </a>
+          </div>
         </div>
       </section>
     </div>
