@@ -1,7 +1,12 @@
 User-agent: *
 Allow: /
+
+# Закрываем служебные и ненужные страницы
 Disallow: /api/
+Disallow: /api/og
 Disallow: /admin/
 Disallow: /search
+Disallow: /overview
+Disallow: /feed.xml
 
 Sitemap: https://boileriabi.ee/sitemap.xml
