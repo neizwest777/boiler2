@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
 import { PhoneCall, Mail, MapPin, Clock, ShieldCheck, Star, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -40,8 +38,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <Header />
-
       {/* ✅ JSON-LD SCHEMA FOR CONTACTS */}
       <script
         type="application/ld+json"
@@ -338,8 +334,6 @@ export default function Page() {
 
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }
