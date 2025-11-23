@@ -1,5 +1,3 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
 import { 
   Wrench, 
   Flame, 
@@ -54,8 +52,6 @@ export const metadata: Metadata = {
 export default function Paigaldus() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      <Header />
-
       {/* JSON-LD SCHEMA */}
       <script
         type="application/ld+json"
@@ -449,8 +445,6 @@ export default function Paigaldus() {
           </section>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
