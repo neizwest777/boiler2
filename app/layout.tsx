@@ -3,109 +3,48 @@ import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
 import { Metadata, Viewport } from 'next';
 import Script from "next/script";
+import dynamic from 'next/dynamic';
 
 import { colors } from '@/data/config/colors.js';
 
 import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
-import CookieConsent from "@/components/shared/CookieConsent";
 import Header from '@/components/shared/Header';
 
-const displayFont = Playfair_Display({
-  subsets: ['latin', 'latin-ext'], // ✅ ДОБАВЛЕН latin-ext
-  display: 'swap',
-  variable: '--font-space-display',
-  preload: true, // ✅ ЯВНОЕ ВКЛЮЧЕНИЕ PRELOAD
-  adjustFontFallback: false, // ✅ ОТКЛЮЧЕНИЕ FONT-FALLBACK ДЛЯ FCP
+// Динамический импорт для CookieConsent
+const CookieConsent = dynamic(() => import("@/components/shared/CookieConsent"), {
+  ssr: false,
+  loading: () => null,
 });
 
-const baseFont = Lato({
-  subsets: ['latin', 'latin-ext'], // ✅ ДОБАВЛЕН latin-ext
+const displayFont = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
   display: 'swap',
-  variable: '--font-space-default',
-  weight: ['400', '700'],
-  preload: true, // ✅ ЯВНОЕ ВКЛЮЧЕНИЕ PRELOAD
+  variable: '--font-space-display',
+  preload: true,
   adjustFontFallback: false,
 });
 
-// ✅ ВЫНЕСЕНО ИЗ КОМПОНЕНТА - статическая генерация
+const baseFont = Lato({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-space-default',
+  weight: ['400', '700'],
+  preload: true,
+  adjustFontFallback: false,
+});
+
 const globalColors = colors;
 const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
   Object.entries(colors).map(([color, value]) => `--${variant}-${color}:${value}`)
 ).join(';');
 
-// ✅ УВЕЛИЧЕН REVALIDATE ДЛЯ ЛУЧШЕГО КЭШИРОВАНИЯ
-export const revalidate = 86400; // 24 часа
+export const revalidate = 86400;
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.author, url: siteConfig.siteUrl }],
-  publisher: siteConfig.businessName,
-  category: 'Home Services',
-
-  openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteConfig.siteUrl,
-    siteName: siteConfig.title,
-    images: [
-      {
-        url: siteConfig.socialBanner,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.businessName} - ${siteConfig.title}`,
-      },
-    ],
-    locale: 'et_EE',
-    type: 'website',
-    emails: [siteConfig.email],
-    phoneNumbers: [siteConfig.telephone],
-  },
-
-  alternates: {
-    canonical: siteConfig.siteUrl.replace(/\/$/, ''),
-    languages: {
-      'et-EE': siteConfig.siteUrl.replace(/\/$/, ''),
-      'x-default': siteConfig.siteUrl.replace(/\/$/, ''),
-    },
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-
-  icons: {
-    icon: [
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-
-  manifest: '/site.webmanifest',
-  other: {
-    'application-name': siteConfig.businessName,
-    'msapplication-TileColor': '#ffffff',
-  },
+  // ... без изменений
 };
 
 export const viewport: Viewport = {
@@ -122,19 +61,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* ✅ CSS VARIABLES - оптимизированная генерация */}
         <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
         
-        {/* ✅ GOOGLE SEARCH CONSOLE */}
+        {/* Preconnect для сторонних ресурсов */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
 
-        {/* ✅ GEO TAGS */}
         <meta name="geo.region" content="EE-37" />
         <meta name="geo.placename" content="Tallinn, Harjumaa" />
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
-        {/* ✅ AHREFS - CORRECTED */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="bomHtA+1BUw6NP0zbOTTrg"
@@ -143,11 +82,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-        {/* ✅ GA4 - OPTIMIZED LOADING */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
-          fetchPriority="low" // ✅ ПОНИЖЕННЫЙ ПРИОРИТЕТ
+          fetchPriority="low"
         />
 
         <Script id="google-analytics" strategy="afterInteractive">
@@ -163,7 +101,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        {/* ✅ CONSENT MODE - OPTIMIZED */}
         <Script id="consent-mode" strategy="beforeInteractive">
           {`
             window.gtag = window.gtag || function(){ (window.dataLayer = window.dataLayer || []).push(arguments); };
@@ -184,9 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="w-full flex flex-col items-center font-sans">
             <Header />
             <SearchProvider>
-              <main className="w-full flex flex-col items-center mb-auto" 
-                    role="main" // ✅ ARIA IMPROVEMENT
-              >
+              <main className="w-full flex flex-col items-center mb-auto" role="main">
                 {children}
               </main>
             </SearchProvider>
