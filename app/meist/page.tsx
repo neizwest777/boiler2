@@ -1,5 +1,3 @@
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
 import { LandingAboutSection } from '@/components/landing';
 import { PhoneCall, ShieldCheck, Clock, Users, Award, CheckCircle, MapPin, Wrench } from "lucide-react";
 import type { Metadata } from "next";
@@ -70,8 +68,6 @@ export default function MeistPage() {
           }),
         }}
       />
-
-      <Header className="mb-6" />
 
       {/* ✅ ENHANCED HERO ABOUT */}
       <div className="container-narrow py-16">
@@ -174,7 +170,7 @@ export default function MeistPage() {
           <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
             <h3 className="text-2xl font-semibold mb-4 flex items-center gap-3">
               <CheckCircle className="w-6 h-6 text-blue-600" />
-              Miks Kliendid Valivad Meid?
+              Miksi Kliendid Valivad Meid?
             </h3>
             <ul className="space-y-3 text-blue-700">
               <li className="flex items-start gap-2">
@@ -322,8 +318,6 @@ export default function MeistPage() {
           </p>
         </div>
       </section>
-
-      <Footer className="mt-8" />
     </>
   );
 }
