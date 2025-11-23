@@ -10,6 +10,7 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import CookieConsent from "@/components/shared/CookieConsent";
+import Header from '@/components/shared/Header'; // ✅ ДОБАВЛЕН ИМПОРТ HEADER
 
 const displayFont = Playfair_Display({
   subsets: ['latin'],
@@ -208,6 +209,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AnalyticsWrapper />
           <CookieConsent />
           <div className="w-full flex flex-col items-center font-sans">
+            {/* ✅ ДОБАВЛЕН HEADER КОМПОНЕНТ */}
+            <Header />
             <SearchProvider>
               <main className="w-full flex flex-col items-center mb-auto">{children}</main>
             </SearchProvider>
