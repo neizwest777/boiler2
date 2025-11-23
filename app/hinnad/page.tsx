@@ -1,5 +1,3 @@
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
 import { Wrench, Droplets, AlertTriangle, CheckCircle, PhoneCall, Shield, Clock, Euro, Info } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -92,8 +90,6 @@ export default function Page() {
           }),
         }}
       />
-
-      <Header className="mb-6" />
 
       <div className="w-full flex flex-col items-center py-12 px-4">
         <div className="w-full max-w-6xl bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-gray-200">
@@ -408,8 +404,6 @@ export default function Page() {
 
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }
