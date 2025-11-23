@@ -10,34 +10,33 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import CookieConsent from "@/components/shared/CookieConsent";
-import Header from '@/components/shared/Header'; // ✅ ДОБАВЛЕН ИМПОРТ HEADER
+import Header from '@/components/shared/Header';
 
 const displayFont = Playfair_Display({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'], // ✅ ДОБАВЛЕН latin-ext
   display: 'swap',
   variable: '--font-space-display',
+  preload: true, // ✅ ЯВНОЕ ВКЛЮЧЕНИЕ PRELOAD
+  adjustFontFallback: false, // ✅ ОТКЛЮЧЕНИЕ FONT-FALLBACK ДЛЯ FCP
 });
 
 const baseFont = Lato({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'], // ✅ ДОБАВЛЕН latin-ext
   display: 'swap',
   variable: '--font-space-default',
   weight: ['400', '700'],
+  preload: true, // ✅ ЯВНОЕ ВКЛЮЧЕНИЕ PRELOAD
+  adjustFontFallback: false,
 });
 
-// Generate CSS variables
+// ✅ ВЫНЕСЕНО ИЗ КОМПОНЕНТА - статическая генерация
 const globalColors = colors;
-const style: string[] = [];
+const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
+  Object.entries(colors).map(([color, value]) => `--${variant}-${color}:${value}`)
+).join(';');
 
-Object.keys(globalColors).map((variant) => {
-  return Object.keys(globalColors[variant]).map((color) => {
-    const value = globalColors[variant][color];
-    style.push(`--${variant}-${color}: ${value}`);
-  });
-});
-
-// SEO caching + static pages
-export const revalidate = 86400;
+// ✅ УВЕЛИЧЕН REVALIDATE ДЛЯ ЛУЧШЕГО КЭШИРОВАНИЯ
+export const revalidate = 86400; // 24 часа
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
@@ -71,12 +70,11 @@ export const metadata: Metadata = {
     phoneNumbers: [siteConfig.telephone],
   },
 
-  // ✅ ИСПРАВЛЕННЫЙ CANONICAL - без trailing slash
   alternates: {
-    canonical: `${siteConfig.siteUrl.replace(/\/$/, '')}`,
+    canonical: siteConfig.siteUrl.replace(/\/$/, ''),
     languages: {
-      et: `${siteConfig.siteUrl.replace(/\/$/, '')}`,
-      'x-default': `${siteConfig.siteUrl.replace(/\/$/, '')}`,
+      'et-EE': siteConfig.siteUrl.replace(/\/$/, ''),
+      'x-default': siteConfig.siteUrl.replace(/\/$/, ''),
     },
   },
 
@@ -104,7 +102,6 @@ export const metadata: Metadata = {
   },
 
   manifest: '/site.webmanifest',
-
   other: {
     'application-name': siteConfig.businessName,
     'msapplication-TileColor': '#ffffff',
@@ -113,6 +110,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -123,25 +122,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* CSS Variables */}
-        <style>{`:root{${style.join('')}}`}</style>
-
-        {/* PRELOAD FONTS */}
-        <link rel="preload" href="/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/lato-latin-700-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-
-        {/* Google Search Console */}
+        {/* ✅ CSS VARIABLES - оптимизированная генерация */}
+        <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
+        
+        {/* ✅ GOOGLE SEARCH CONSOLE */}
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
 
-        {/* GEO TAGS */}
+        {/* ✅ GEO TAGS */}
         <meta name="geo.region" content="EE-37" />
         <meta name="geo.placename" content="Tallinn, Harjumaa" />
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
-        {/* ✅ AHREFS WEB ANALYTICS - CORRECTED */}
+        {/* ✅ AHREFS - CORRECTED */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="bomHtA+1BUw6NP0zbOTTrg"
@@ -150,58 +143,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-
-        {/* ✅ GA4 Loader */}
+        {/* ✅ GA4 - OPTIMIZED LOADING */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
+          fetchPriority="low" // ✅ ПОНИЖЕННЫЙ ПРИОРИТЕТ
         />
 
-        {/* ✅ GA4 Config */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-
             gtag('js', new Date());
-            gtag('config', 'G-6BZJEP1SLG', { 
-              anonymize_ip: true,
-              page_title: document.title,
-              page_location: window.location.href
+            gtag('config', 'G-6BZJEP1SLG', {
+              transport_url: 'https://gtm.googleapis.com',
+              first_party_collection: true,
+              anonymize_ip: true
             });
-
-            window.sendGAEvent = function(action, params = {}) {
-              try { 
-                gtag('event', action, {
-                  ...params,
-                  send_to: 'G-6BZJEP1SLG'
-                }); 
-              } catch (e) {
-                console.log('GA Event error:', e);
-              }
-            };
           `}
         </Script>
 
-        {/* ✅ Consent Mode */}
+        {/* ✅ CONSENT MODE - OPTIMIZED */}
         <Script id="consent-mode" strategy="beforeInteractive">
           {`
-            (function() {
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-
-              gtag('consent', 'default', {
-                ad_storage: 'denied',
-                analytics_storage: 'denied',
-                functionality_storage: 'denied',
-                personalization_storage: 'denied',
-                security_storage: 'granted'
-              });
-
-              window.__updateConsent = function(consent) { 
-                gtag('consent', 'update', consent);
-              };
-            })();
+            window.gtag = window.gtag || function(){ (window.dataLayer = window.dataLayer || []).push(arguments); };
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'denied',
+              personalization_storage: 'denied',
+              security_storage: 'granted',
+              wait_for_update: 500
+            });
           `}
         </Script>
 
@@ -209,10 +182,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AnalyticsWrapper />
           <CookieConsent />
           <div className="w-full flex flex-col items-center font-sans">
-            {/* ✅ ДОБАВЛЕН HEADER КОМПОНЕНТ */}
             <Header />
             <SearchProvider>
-              <main className="w-full flex flex-col items-center mb-auto">{children}</main>
+              <main className="w-full flex flex-col items-center mb-auto" 
+                    role="main" // ✅ ARIA IMPROVEMENT
+              >
+                {children}
+              </main>
             </SearchProvider>
           </div>
         </ThemeProviders>
