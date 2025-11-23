@@ -1,5 +1,3 @@
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
 import { ShieldCheck, CheckCircle, BadgeCheck, Wrench, Clock, PhoneCall, AlertTriangle, FileText } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -41,8 +39,6 @@ export const metadata: Metadata = {
 export default function Garantii() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center justify-between fancy-overlay">
-      <Header />
-
       {/* ✅ JSON-LD SCHEMA FOR WARRANTY */}
       <script
         type="application/ld+json"
@@ -422,8 +418,6 @@ export default function Garantii() {
 
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
