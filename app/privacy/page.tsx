@@ -1,6 +1,4 @@
 import { genPageMetadata } from 'app/seo';
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
 
 export const metadata = genPageMetadata({
   title: 'Privaatsuspoliitika | Boileriabi.ee - Boileri paigaldus, remont ja hooldus Tallinnas',
@@ -34,8 +32,6 @@ const privacyPolicyJsonLd = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">
-      <Header />
-
       {/* JSON-LD структура */}
       <script
         type="application/ld+json"
@@ -277,8 +273,6 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
