@@ -1,12 +1,42 @@
 User-agent: *
 Allow: /
 
-# Закрываем служебные и ненужные страницы
+# Запрещенные директории
 Disallow: /api/
-Disallow: /api/og
 Disallow: /admin/
-Disallow: /search/
-Disallow: /overview/
-Disallow: /feed.xml
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
 
-Sitemap: https://boileriabi.ee/sitemap.xml
+# Запрещенные параметры (если используются)
+Disallow: /*?*
+Disallow: /*&*
+
+# Разрешаем индексировать важные страницы
+Allow: /paigaldus
+Allow: /remont
+Allow: /hooldus
+Allow: /boileri-paigaldus-tallinna-piirkonnas
+Allow: /boileri-remont-tallinna-piirkonnas
+Allow: /boileri-hooldus-tallinna-piirkonnas
+Allow: /hadaabi
+Allow: /hinnad
+Allow: /meist
+Allow: /garantii
+Allow: /kontakt
+
+# Указание sitemap
+Sitemap: https://www.boileriabi.ee/sitemap.xml
+
+# Для конкретных поисковых систем
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 3
