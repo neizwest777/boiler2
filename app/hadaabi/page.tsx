@@ -1,5 +1,3 @@
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
 import { PhoneCall, AlertTriangle, Flame, Droplets, Clock, Shield, Zap, MapPin, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -42,8 +40,6 @@ export const metadata: Metadata = {
 export default function HadaabiPage() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      <Header />
-
       {/* ✅ JSON-LD SCHEMA FOR EMERGENCY SERVICE */}
       <script
         type="application/ld+json"
@@ -197,7 +193,7 @@ export default function HadaabiPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt=2 flex-shrink-0"></div>
                       <div>
                         <p className="font-semibold text-red-900">Elektrilised probleemid</p>
                         <p className="text-red-700 text-sm">Lühis, sädemed, põlemislõhn</p>
@@ -434,8 +430,6 @@ export default function HadaabiPage() {
 
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
