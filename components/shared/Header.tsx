@@ -52,34 +52,70 @@ export const Header = ({ className }: { className?: string }) => {
       variant="primary"
     >
       {/* ---------------------- */}
-      {/* ✅ ИСПРАВЛЕННОЕ ВЫПАДАЮЩЕЕ МЕНЮ - только существующие URL */}
+      {/* ✅ ОБНОВЛЕННОЕ ВЫПАДАЮЩЕЕ МЕНЮ - все страницы */}
       {/* ---------------------- */}
       <DropdownMenu>
         <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
           Teenused ▾
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
+        <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[240px]">
+          {/* Старые страницы (общая информация) */}
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-paigaldus">Boileri paigaldus</Link>
+            <Link href="/teenused/boilerite-paigaldus" className="block px-3 py-2 hover:bg-gray-100 rounded-lg">
+              Boileri Paigaldus - Üldinfo
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-remont">Boileri remont</Link>
+            <Link href="/teenused/boilerite-remont" className="block px-3 py-2 hover:bg-gray-100 rounded-lg">
+              Boileri Remont - Üldinfo
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-hooldus">Hooldus</Link>
+            <Link href="/teenused/boilerite-hooldus" className="block px-3 py-2 hover:bg-gray-100 rounded-lg">
+              Boileri Hooldus - Üldinfo
+            </Link>
+          </DropdownMenuItem>
+          
+          <div className="border-t border-gray-200 my-2"></div>
+          
+          {/* Новые страницы (гео-таргетинг) */}
+          <DropdownMenuItem asChild>
+            <Link href="/boileri-paigaldus-tallinna-piirkonnas" className="block px-3 py-2 hover:bg-blue-50 rounded-lg text-blue-600 font-semibold">
+              🎯 Paigaldus Tallinnas
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/kontakt">Hädaabi 24/7</Link>
+            <Link href="/boileri-remont-tallinna-piirkonnas" className="block px-3 py-2 hover:bg-red-50 rounded-lg text-red-600 font-semibold">
+              🚨 Remont Tallinnas
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/hinnad">Hinnad</Link>
+            <Link href="/boileri-hooldus-tallinna-piirkonnas" className="block px-3 py-2 hover:bg-green-50 rounded-lg text-green-600 font-semibold">
+              🛡️ Hooldus Tallinnas
+            </Link>
+          </DropdownMenuItem>
+          
+          <div className="border-t border-gray-200 my-2"></div>
+          
+          {/* Другие услуги */}
+          <DropdownMenuItem asChild>
+            <Link href="/hadaabi" className="block px-3 py-2 hover:bg-orange-50 rounded-lg text-orange-600">
+              🆘 Hädaabi 24/7
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/hinnad" className="block px-3 py-2 hover:bg-gray-100 rounded-lg">
+              💰 Hinnad
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
       {/* Основное меню */}
       <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
+      <LandingHeaderMenuItem href="/hinnad">Hinnad</LandingHeaderMenuItem>
+      <LandingHeaderMenuItem href="/garantii">Garantii</LandingHeaderMenuItem>
       <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
 
       {/* КНОПКА ТЕЛЕФОНА */}
