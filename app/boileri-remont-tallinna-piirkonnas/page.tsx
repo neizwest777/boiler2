@@ -38,7 +38,7 @@ export default function BoileriRemontTallinnaPiirkonnas() {
               href="tel:+37253684587"
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              🚨 Häiretelefon: +372 5368 4587
+              🚨 Häiretelefon: 5368 4587
             </a>
             <Link 
               href="/vorm" 
@@ -270,7 +270,7 @@ export default function BoileriRemontTallinnaPiirkonnas() {
               href="tel:+37253684587"
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
             >
-              🚨 Häiretelefon: +372 5368 4587
+              🚨 Häiretelefon: 5368 4587
             </a>
             
             <Link
