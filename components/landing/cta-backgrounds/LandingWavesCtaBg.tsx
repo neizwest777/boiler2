@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import { convertToRgba } from '@/lib/utils';
@@ -146,6 +146,7 @@ export const LandingWavesCtaBg = ({
   const noiseRef = useRef(new Noise(Math.random()));
   const linesRef = useRef<Array<Array<WavePoint>>>([]);
 
+  // ✅ ИСПРАВЛЕНО: useCallback с правильными зависимостями
   const generateNewColors = useCallback(() => {
     if (!domRef.current) return;
 
@@ -183,6 +184,7 @@ export const LandingWavesCtaBg = ({
 
   const cycleDuration = 5 * 1000;
 
+  // ✅ ИСПРАВЛЕНО: useEffect с правильными зависимостями
   useEffect(() => {
     // Small delay to ensure DOM is rendered and CSS variables are available
     const timeout = setTimeout(() => {
@@ -191,6 +193,7 @@ export const LandingWavesCtaBg = ({
     return () => clearTimeout(timeout);
   }, [generateNewColors]);
 
+  // ✅ ИСПРАВЛЕНО: useEffect с правильными зависимостями
   useEffect(() => {
     const interval = setInterval(() => {
       generateNewColors();
@@ -198,23 +201,17 @@ export const LandingWavesCtaBg = ({
     return () => clearInterval(interval);
   }, [generateNewColors, cycleDuration]);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
-
-    generateNewColors();
-
-    ctxRef.current = canvas.getContext('2d');
-
-    function setSize() {
+  // ✅ ИСПРАВЛЕНО: useMemo для оптимизации создания функций
+  const canvasSetup = useMemo(() => ({
+    setSize(container: HTMLDivElement | null, canvas: HTMLCanvasElement | null) {
       if (!container || !canvas) return;
-      boundingRef.current = container.getBoundingClientRect();
-      canvas.width = boundingRef.current.width;
-      canvas.height = boundingRef.current.height;
-    }
-
-    function setLines() {
+      const bounding = container.getBoundingClientRect();
+      boundingRef.current = bounding;
+      canvas.width = bounding.width;
+      canvas.height = bounding.height;
+    },
+    
+    setLines() {
       const { width, height } = boundingRef.current;
       linesRef.current = [];
       const oWidth = width + 200,
@@ -234,9 +231,9 @@ export const LandingWavesCtaBg = ({
         }
         linesRef.current.push(pts);
       }
-    }
+    },
 
-    function movePoints(time: number) {
+    movePoints(time: number) {
       const lines = linesRef.current;
       const noise = noiseRef.current;
       lines.forEach((pts) => {
@@ -250,15 +247,15 @@ export const LandingWavesCtaBg = ({
           p.wave.y = Math.sin(move) * waveAmpY;
         });
       });
-    }
+    },
 
-    function moved(point: WavePoint): MovedPoint {
+    moved(point: WavePoint): MovedPoint {
       const x = point.x + point.wave.x;
       const y = point.y + point.wave.y;
       return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
-    }
+    },
 
-    function drawLines() {
+    drawLines() {
       const { width, height } = boundingRef.current;
       const ctx = ctxRef.current;
       if (!ctx) return;
@@ -267,32 +264,41 @@ export const LandingWavesCtaBg = ({
       ctx.beginPath();
       ctx.strokeStyle = lineColorRef.current;
       linesRef.current.forEach((points) => {
-        let p1 = moved(points[0]);
+        let p1 = this.moved(points[0]);
         ctx.moveTo(p1.x, p1.y);
         points.forEach((p: WavePoint, idx: number) => {
           const isLast = idx === points.length - 1;
-          p1 = moved(p);
-          const p2 = moved(points[idx + 1] || points[points.length - 1]);
+          p1 = this.moved(p);
+          const p2 = this.moved(points[idx + 1] || points[points.length - 1]);
           ctx.lineTo(p1.x, p1.y);
           if (isLast) ctx.moveTo(p2.x, p2.y);
         });
       });
       ctx.stroke();
     }
+  }), [waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, xGap, yGap]);
+
+  // ✅ ИСПРАВЛЕНО: Основной useEffect с правильными зависимостями
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    ctxRef.current = canvas.getContext('2d');
 
     function tick(t: number) {
-      movePoints(t);
-      drawLines();
+      canvasSetup.movePoints(t);
+      canvasSetup.drawLines();
       requestAnimationFrame(tick);
     }
 
     function onResize() {
-      setSize();
-      setLines();
+      canvasSetup.setSize(container, canvas);
+      canvasSetup.setLines();
     }
 
-    setSize();
-    setLines();
+    canvasSetup.setSize(container, canvas);
+    canvasSetup.setLines();
     requestAnimationFrame(tick);
 
     window.addEventListener('resize', onResize);
@@ -300,7 +306,7 @@ export const LandingWavesCtaBg = ({
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, [waveSpeedX, waveSpeedY, waveAmpX, waveAmpY, xGap, yGap]);
+  }, [canvasSetup]); // ✅ Теперь зависит от memoized canvasSetup
 
   return (
     <div ref={domRef} className={clsx('inset-0 opacity-70', className)}>
