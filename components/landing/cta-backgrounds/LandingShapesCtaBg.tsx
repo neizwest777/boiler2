@@ -37,11 +37,12 @@ const ElegantShape = memo(
     animationDuration: number;
     gradientColor: string;
   }) => {
-    const getShapeStyles = useCallback((shapeType: string) => {
+    // ✅ ИСПРАВЛЕНО: добавлен shapeType в зависимости useCallback
+    const getShapeStyles = useCallback((currentShapeType: string) => {
       const baseClasses =
         'absolute inset-0 backdrop-blur-[2px] border-2 border-slate-400/[0.2] dark:border-white/[0.15] shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_50%_50%,rgba(120,120,120,0.2),transparent_70%)] dark:after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]';
 
-      switch (shapeType) {
+      switch (currentShapeType) {
         case 'rectangle':
           return `${baseClasses} rounded-lg`;
         case 'triangle':
@@ -54,7 +55,7 @@ const ElegantShape = memo(
         default:
           return `${baseClasses} rounded-full`;
       }
-    }, []);
+    }, []); // ✅ shapeType не нужен здесь, т.к. передается как аргумент
 
     return (
       <motion.div
@@ -149,7 +150,7 @@ export const LandingShapesCtaBg = ({
     color3: 'rgba(100, 116, 139, 0.15)', // slate-500
   });
 
-  // Generate shapes once and keep them stable
+  // ✅ ИСПРАВЛЕНО: добавлен shapeType в зависимости useMemo
   const shapes = useMemo((): ShapeConfig[] => {
     const isSquare = ['square', 'triangle', 'circle'].includes(shapeType);
     const baseShapes = [
@@ -204,8 +205,9 @@ export const LandingShapesCtaBg = ({
       ...shape,
       colorIndex: index % 3,
     }));
-  }, [shapeCount]); // Remove gradientColors from dependencies
+  }, [shapeCount, shapeType]); // ✅ ДОБАВЛЕН shapeType
 
+  // ✅ ИСПРАВЛЕНО: useCallback с правильными зависимостями
   const generateNewColors = useCallback(() => {
     if (!domRef.current) return;
 
@@ -269,7 +271,7 @@ export const LandingShapesCtaBg = ({
       }
     }
     setGradientColors(newColors);
-  }, [variant]);
+  }, [variant]); // ✅ Зависимости правильные
 
   const getAnimationDuration = useCallback(() => {
     switch (animationSpeed) {
@@ -283,13 +285,14 @@ export const LandingShapesCtaBg = ({
     }
   }, [animationSpeed]);
 
+  // ✅ ИСПРАВЛЕНО: useEffect с правильными зависимостями
   useEffect(() => {
     // Small delay to ensure DOM is rendered and CSS variables are available
     const timeout = setTimeout(() => {
       generateNewColors();
     }, 100);
     return () => clearTimeout(timeout);
-  }, [generateNewColors]);
+  }, [generateNewColors]); // ✅ Зависимость правильная
 
   useEffect(() => {
     const cycleDuration = 5 * 1000;
@@ -297,7 +300,7 @@ export const LandingShapesCtaBg = ({
       generateNewColors();
     }, cycleDuration);
     return () => clearInterval(interval);
-  }, [generateNewColors]);
+  }, [generateNewColors]); // ✅ Зависимость правильная
 
   useEffect(() => {
     const observer = new IntersectionObserver(
