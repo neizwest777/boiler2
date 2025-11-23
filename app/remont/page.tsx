@@ -1,5 +1,3 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
 import { Wrench, AlertTriangle, Flame, GaugeCircle, PhoneCall, Clock, Shield, CheckCircle, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -42,8 +40,6 @@ export const metadata: Metadata = {
 export default function Remont() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      <Header />
-
       {/* ✅ JSON-LD SCHEMA FOR REPAIR SERVICE */}
       <script
         type="application/ld+json"
@@ -433,8 +429,6 @@ export default function Remont() {
 
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
