@@ -1,5 +1,31 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import type { Metadata } from 'next'
+
+// Метаданные для SEO - Гугл будет в восторге!
+export const metadata: Metadata = {
+  title: "Boileri Paigaldus Tallinnas | Professionaalne Teenus | Boileriabi.ee",
+  description: "Professionaalne boileri paigaldus Tallinna piirkonnas. Kiire paigaldus, 2 aastat garantii, 500+ paigaldatud boilerit. Tasuta konsultatsioon!",
+  keywords: "boileri paigaldus tallinnas, boileri installimine, boileri montaaž, soojusvestlus, tallinna boileriteenused, boileri hind, boileri paigaldamine tallinnas",
+  openGraph: {
+    title: "Boileri Paigaldus Tallinnas | Boileriabi.ee",
+    description: "Professionaalne boileri paigaldus kogu Tallinna piirkonnas. Kiire ja odav lahendus teie kodusoojuseks.",
+    type: "website",
+    locale: "et_EE",
+    url: "https://boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
+    siteName: "Boileriabi.ee",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Boileri Paigaldus Tallinnas",
+      },
+    ],
+  },
+  robots: "index, follow",
+  authors: [{ name: "Boileriabi.ee" }],
+  publisher: "Boileriabi.ee",
+}
 
 export default function BoileriPaigaldusTallinnaPiirkonnas() {
   return (
