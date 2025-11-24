@@ -1,3 +1,4 @@
+const path = require('path');
 const { withContentlayer } = require('next-contentlayer2');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
@@ -125,11 +126,13 @@ module.exports = withContentlayer({
   },
 
   webpack: (config, { dev, isServer }) => {
+    // SVG loader
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
 
+    // Case sensitive paths plugin
     config.plugins.push(new CaseSensitivePathsPlugin());
 
     config.ignoreWarnings = [
@@ -137,9 +140,16 @@ module.exports = withContentlayer({
       { file: /node_modules\/punycode/ },
     ];
 
+    // Critters fallback
     config.resolve.fallback = {
       ...config.resolve.fallback,
       critters: require.resolve('critters'),
+    };
+
+    // ⭐ ГЛАВНОЕ: Добавляем alias '@' -> корень проекта
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@': path.resolve(__dirname),
     };
 
     if (!dev && !isServer) {
