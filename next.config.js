@@ -1,7 +1,16 @@
 const { withContentlayer } = require('next-contentlayer2');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+
+// ✅ БЕЗОПАСНАЯ ЗАГРУЗКА BUNDLE ANALYZER
+let withBundleAnalyzer;
+try {
+  withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
+} catch (error) {
+  // Если bundle-analyzer не установлен, используем заглушку
+  console.warn('@next/bundle-analyzer not found, skipping bundle analysis');
+  withBundleAnalyzer = (config) => config;
+}
 
 // Плагин для ошибок регистра файлов
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -66,7 +75,7 @@ const securityHeaders = [
 ];
 
 /**
- * @type {import('next/dist/next-server/server/config').NextConfig}
+ * @type {import('next').NextConfig}
  **/
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer];
@@ -80,16 +89,16 @@ module.exports = () => {
     
     // ✅ ОПТИМИЗАЦИИ ДЛЯ ПРОИЗВОДИТЕЛЬНОСТИ
     experimental: {
-      optimizeCss: true, // Включение оптимизации CSS
+      optimizeCss: true,
     },
     compiler: {
-      removeConsole: process.env.NODE_ENV === 'production', // Удаление console.log в продакшене
+      removeConsole: process.env.NODE_ENV === 'production',
     },
     
     // ✅ ОПТИМИЗАЦИЯ ИЗОБРАЖЕНИЙ
     images: {
-      formats: ['image/avif', 'image/webp'], // Современные форматы
-      deviceSizes: [640, 750, 828, 1080, 1200, 1920], // Оптимизированные размеры
+      formats: ['image/avif', 'image/webp'],
+      deviceSizes: [640, 750, 828, 1080, 1200, 1920],
       imageSizes: [16, 32, 48, 64, 96, 128, 256],
       remotePatterns: [
         {
@@ -110,7 +119,7 @@ module.exports = () => {
       ],
     },
     
-    // ✅ КЭШИРОВАНИЕ И ОПТИМИЗАЦИЯ
+    // ✅ КЭШИРОВАНИЕ
     headers: async () => {
       return [
         {
@@ -118,7 +127,6 @@ module.exports = () => {
           headers: securityHeaders,
         },
         {
-          // Кэширование статических ресурсов
           source: '/_next/static/(.*)',
           headers: [
             {
@@ -128,7 +136,6 @@ module.exports = () => {
           ],
         },
         {
-          // Кэширование CSS и JS
           source: '/_next/static/chunks/(.*)',
           headers: [
             {
@@ -140,7 +147,7 @@ module.exports = () => {
       ];
     },
 
-    // 🔥 УПРОЩЕННЫЕ РЕДИРЕКТЫ
+    // 🔥 РЕДИРЕКТЫ
     async redirects() {
       return [
         {
@@ -166,7 +173,7 @@ module.exports = () => {
       ];
     },
 
-    // ✅ ОПТИМИЗАЦИЯ WEBPACK - ИСПРАВЛЕННАЯ ВЕРСИЯ
+    // ✅ ОПТИМИЗАЦИЯ WEBPACK
     webpack: (config, { dev, isServer }) => {
       config.module.rules.push({
         test: /\.svg$/,
@@ -175,13 +182,13 @@ module.exports = () => {
 
       config.plugins.push(new CaseSensitivePathsPlugin());
 
-      // ✅ ИГНОРИРОВАНИЕ ПРЕДУПРЕЖДЕНИЙ PUNYCODE
+      // ✅ ИГНОРИРОВАНИЕ ПРЕДУПРЕЖДЕНИЙ
       config.ignoreWarnings = [
         { module: /node_modules\/punycode/ },
         { file: /node_modules\/punycode/ }
       ];
 
-      // ✅ ФИКС ДЛЯ CRITTERS - добавляем fallback для node_modules
+      // ✅ ФИКС ДЛЯ CRITTERS
       config.resolve.fallback = {
         ...config.resolve.fallback,
         critters: require.resolve('critters'),
@@ -189,50 +196,14 @@ module.exports = () => {
 
       // ✅ ОПТИМИЗАЦИЯ БАНДЛА
       if (!dev && !isServer) {
-        // Отключаем source maps в продакшене для клиентского кода
         config.devtool = false;
-        
-        // Оптимизация размера бандла
-        config.optimization = {
-          ...config.optimization,
-          splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-              default: false,
-              vendors: false,
-              commons: {
-                name: 'commons',
-                chunks: 'all',
-                minChunks: 2,
-                reuseExistingChunk: true,
-              },
-              react: {
-                name: 'react',
-                test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                chunks: 'all',
-                priority: 20,
-              },
-            },
-          },
-        };
       }
 
       return config;
     },
 
-    // ✅ ОПТИМИЗАЦИЯ ДЛЯ СОВРЕМЕННЫХ БРАУЗЕРОВ
     env: {
       customKey: 'my-value',
-    },
-
-    // ✅ ДОБАВЛЕНО: Отключение проверки типов во время билда для ускорения
-    typescript: {
-      ignoreBuildErrors: false,
-    },
-    
-    // ✅ ДОБАВЛЕНО: Отключение ESLint во время билда для ускорения
-    eslint: {
-      ignoreDuringBuilds: false,
     },
   });
 };
