@@ -292,7 +292,7 @@ export default function Page() {
       {/* Логотипы партнеров */}
       <section className="w-full py-16 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Usaldavad meid</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-8">Saa meie partneriks</h3>
           <LogoCarousel />
         </div>
       </section>
