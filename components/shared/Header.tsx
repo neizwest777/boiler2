@@ -52,7 +52,7 @@ export const Header = ({ className }: { className?: string }) => {
       variant="primary"
     >
       {/* ---------------------- */}
-      {/* ✅ ИСПРАВЛЕННЫЕ ССЫЛКИ - правильные URL */}
+      {/* ✅ ОБНОВЛЕННОЕ ВЫПАДАЮЩЕЕ МЕНЮ "TEENUSED" */}
       {/* ---------------------- */}
       <DropdownMenu>
         <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
@@ -78,8 +78,9 @@ export const Header = ({ className }: { className?: string }) => {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Основное меню */}
+      {/* ОСНОВНОЕ МЕНЮ */}
       <LandingHeaderMenuItem href="/meist">Meist</LandingHeaderMenuItem>
+      <LandingHeaderMenuItem href="/garantii">Garantii</LandingHeaderMenuItem>
       <LandingHeaderMenuItem href="/kontakt">Kontakt</LandingHeaderMenuItem>
 
       {/* КНОПКА ТЕЛЕФОНА */}
@@ -117,7 +118,7 @@ export const Header = ({ className }: { className?: string }) => {
         53684587
       </a>
 
-      {/* WHATSAPP — КЛИЕНТСКИЙ ЭЛЕМЕНТ */}
+      {/* WHATSAPP */}
       <a
         href="https://wa.me/37253684587"
         target="_blank"
