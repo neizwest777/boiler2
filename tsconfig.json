@@ -17,13 +17,14 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/css/*": ["css/*"],
-      "@/lib/*": ["lib/*"],
-      "@/theme/*": ["theme/*"],
-      "@/app/*": ["app/*"],
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/data/*": ["./data/*"],
+      "@/layouts/*": ["./layouts/*"],
+      "@/css/*": ["./css/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/theme/*": ["./theme/*"],
+      "@/app/*": ["./app/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
