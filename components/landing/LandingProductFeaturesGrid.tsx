@@ -1,6 +1,24 @@
 import { GlowBg } from '@/components/shared/ui/glow-bg';
 import clsx from 'clsx';
-import { Children } from 'react';
+import { Children, ReactNode } from 'react';
+
+type GridVariant = 'primary' | 'secondary';
+type GridContainer = 'narrow' | 'wide' | 'ultrawide';
+
+interface LandingProductFeaturesGridProps {
+  className?: string;
+  children?: ReactNode;
+  title?: string | ReactNode;
+  titleComponent?: ReactNode;
+  description?: string | ReactNode;
+  descriptionComponent?: ReactNode;
+  withBackground?: boolean;
+  withBackgroundGlow?: boolean;
+  variant?: GridVariant;
+  backgroundGlowVariant?: GridVariant;
+  containerType?: GridContainer;
+  numberOfColumns?: number;
+}
 
 export const LandingProductFeaturesGrid = ({
   className,
@@ -15,7 +33,8 @@ export const LandingProductFeaturesGrid = ({
   backgroundGlowVariant = 'primary',
   containerType = 'wide',
   numberOfColumns,
-}) => {
+}: LandingProductFeaturesGridProps) => {
+
   const childrenCount = Children.count(children);
 
   // стабильная сетка без пересчётов
