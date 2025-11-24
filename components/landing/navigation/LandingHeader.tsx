@@ -35,50 +35,57 @@ export const LandingHeader = ({
   return (
     <nav
       className={clsx(
-        'flex items-center justify-between gap-6 p-4 w-full max-w-full container-narrow lg:rounded-lg',
-        fixed
-          ? 'sticky top-4 left-auto right-auto z-50 bg-white/50 dark:bg-black/20 backdrop-blur-xl'
-          : '',
-        withBackground ? 'lg:m-4 justify-self-center' : '',
-        withBackground && variant === 'primary'
-          ? 'bg-primary-100/20 dark:bg-primary-900/10 border border-primary-100/30 dark:border-primary-900/30'
-          : '',
-        withBackground && variant === 'secondary'
-          ? 'bg-secondary-100/20 dark:bg-secondary-900/10 border border-secondary-100/30 dark:border-secondary-900/30'
-          : '',
+        'w-full', // Растягиваем на всю ширину
+        fixed ? 'sticky top-0 left-0 right-0 z-50' : '', // Исправляем позиционирование для fixed режима
         className,
       )}
     >
-      <div className="flex items-center">
-        <Link href="/" className="text-2xl font-bold">
-          <div className="flex items-center gap-3 justify-between">
-            {logoComponent || (
-              <>
-                <OrbitIcon className="h-8 w-8 text-primary-900 dark:text-primary-100" />
+      <div
+        className={clsx(
+          'flex items-center justify-between gap-6 p-4 w-full max-w-7xl mx-auto lg:rounded-lg', // Добавляем mx-auto и ограничиваем ширину
+          withBackground ? 'lg:m-4 justify-self-center' : '',
+          withBackground && variant === 'primary'
+            ? 'bg-primary-100/20 dark:bg-primary-900/10 border border-primary-100/30 dark:border-primary-900/30'
+            : '',
+          withBackground && variant === 'secondary'
+            ? 'bg-secondary-100/20 dark:bg-secondary-900/10 border border-secondary-100/30 dark:border-secondary-900/30'
+            : '',
+          fixed
+            ? 'bg-white/50 dark:bg-black/20 backdrop-blur-xl' // Переносим стили fixed во внутренний контейнер
+            : '',
+        )}
+      >
+        <div className="flex items-center">
+          <Link href="/" className="text-2xl font-bold">
+            <div className="flex items-center gap-3 justify-between">
+              {logoComponent || (
+                <>
+                  <OrbitIcon className="h-8 w-8 text-primary-900 dark:text-primary-100" />
 
-                <div className="hidden text-2xl font-semibold font-display sm:flex gap-2 h-full">
-                  Page <span className="font-bold">UI</span>
-                </div>
-              </>
-            )}
-          </div>
-        </Link>
-      </div>
+                  <div className="hidden text-2xl font-semibold font-display sm:flex gap-2 h-full">
+                    Page <span className="font-bold">UI</span>
+                  </div>
+                </>
+              )}
+            </div>
+          </Link>
+        </div>
 
-      <div className="hidden md:flex items-center gap-6">{children}</div>
+        <div className="hidden md:flex items-center gap-6">{children}</div>
 
-      <div className="md:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button variant="outline" className="px-3">
-              <MenuIcon className="h-6 w-6 mr-2" />
-              Menu
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="flex flex-col gap-4 mt-8">{children}</nav>
-          </SheetContent>
-        </Sheet>
+        <div className="md:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="px-3">
+                <MenuIcon className="h-6 w-6 mr-2" />
+                Menu
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="flex flex-col gap-4 mt-8">{children}</nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
