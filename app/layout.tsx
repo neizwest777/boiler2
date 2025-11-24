@@ -3,7 +3,6 @@ import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
 import { Metadata, Viewport } from 'next';
 import Script from "next/script";
-import dynamicImport from 'next/dynamic'; // ✅ ИЗМЕНЕНО ИМЯ ИМПОРТА
 
 import { colors } from '@/data/config/colors.js';
 
@@ -11,12 +10,7 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
-
-// ✅ ИСПОЛЬЗУЕМ ИЗМЕНЕННОЕ ИМЯ
-const CookieConsent = dynamicImport(() => import("@/components/shared/CookieConsent"), {
-  ssr: false,
-  loading: () => null,
-});
+import CookieConsent from "@/components/shared/CookieConsent"; // ✅ ПРЯМОЙ ИМПОРТ
 
 const displayFont = Playfair_Display({
   subsets: ['latin', 'latin-ext'],
@@ -41,7 +35,7 @@ const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
 ).join(';');
 
 export const revalidate = 86400;
-export const dynamic = 'force-static'; // ✅ Теперь нет конфликта имен
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
