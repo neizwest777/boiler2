@@ -11,6 +11,9 @@ import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
 import CookieConsent from "@/components/shared/CookieConsent";
 
+/* ==========================
+   ШРИФТЫ
+========================== */
 const displayFont = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
@@ -29,6 +32,9 @@ const baseFont = Lato({
   adjustFontFallback: false,
 });
 
+/* ==========================
+   CSS VARIABLES
+========================== */
 const globalColors = colors;
 const style = Object.entries(globalColors)
   .flatMap(([variant, colors]) =>
@@ -36,6 +42,9 @@ const style = Object.entries(globalColors)
   )
   .join(';');
 
+/* ==========================
+   SEO STATIC
+========================== */
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
@@ -80,6 +89,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/* ==========================
+   ROOT LAYOUT (ИСПРАВЛЕННЫЙ)
+========================== */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -88,7 +100,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        {/* CSS VARIABLES */}
         <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
+
+        {/* КРИТИЧЕСКИЙ CSS */}
         <style dangerouslySetInnerHTML={{ __html: `
           .bg-white { background:#fff; }
           .text-slate-900 { color:#0f172a; }
@@ -102,27 +117,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG" strategy="lazyOnload" />
+
+        {/* GA4 (lazy) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
+          strategy="lazyOnload"
+        />
 
         <Script id="ga-config" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){ dataLayer.push(arguments); }
             gtag('js', new Date());
-            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip:true });
+            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
           `}
         </Script>
 
         <ThemeProviders>
+
           <AnalyticsWrapper />
           <CookieConsent />
+
+          {/* ⛔ ВАЖНО: БОЛЬШЕ НЕТ flex items-center ВОКРУГ HEADER */}
           <Header />
+
           <SearchProvider>
             <main className="w-full flex flex-col items-center mb-auto">
               {children}
             </main>
           </SearchProvider>
+
         </ThemeProviders>
+
       </body>
     </html>
   );
