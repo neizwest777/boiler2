@@ -434,3 +434,225 @@ input:-webkit-autofill:focus {
   background-color: var(--primary-darker);
   color: white;
 }
+
+/* ===== ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ ===== */
+
+/* Отключение анимаций для пользователей, которые их не хотят */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Оптимизация рендеринга для крупных секций */
+.lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
+}
+
+/* Улучшение производительности скролла */
+* {
+  box-sizing: border-box;
+}
+
+/* Оптимизация загрузки изображений */
+img {
+  content-visibility: auto;
+}
+
+/* Скелетон-загрузка для плавного UX */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Улучшение производительности трансформаций */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Оптимизация для Retina дисплеев */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .retina-optimized {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Уменьшение размера текста на мобильных */
+@media (max-width: 640px) {
+  .text-mobile-optimized {
+    font-size: calc(1rem + 0.5vw);
+    line-height: 1.4;
+  }
+}
+
+/* Оптимизация фокуса для доступности */
+.focus-optimized:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Отключение подсветки тапов на мобильных */
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Оптимизация анимаций с GPU ускорением */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Минимальные стили для критического контента */
+.critical-content {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}
+
+/* Оптимизация для медленных сетей */
+@media (prefers-reduced-data: reduce) {
+  .data-saving * {
+    animation: none !important;
+  }
+  
+  .data-saving img {
+    loading: lazy;
+  }
+}
+
+/* Улучшение производительности для больших списков */
+.optimized-list {
+  content-visibility: auto;
+  contain-intrinsic-size: 50px;
+}
+
+/* Оптимизация шрифтов для быстрой загрузки */
+.font-loading-optimized {
+  font-display: swap;
+}
+
+/* Предотвращение layout shift для изображений */
+.aspect-ratio-box {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.aspect-ratio-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Оптимизация для темной темы */
+@media (prefers-color-scheme: dark) {
+  .dark-optimized {
+    color-scheme: dark;
+  }
+}
+
+/* Улучшение производительности анимаций */
+.performance-optimized {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Оптимизация для старых устройств */
+.legacy-optimized {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Минимальные стили для скелетон-загрузки */
+.skeleton-minimal {
+  background: #f0f0f0;
+  background-image: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Оптимизация для печати */
+@media print {
+  .print-optimized {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* Улучшение производительности скролла на iOS */
+.ios-scroll-optimized {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Оптимизация для высокочастотных анимаций */
+.high-performance {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Оптимизация производительности для анимаций */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+}
+
+/* Улучшение CLS (Cumulative Layout Shift) */
+.content-stable {
+  contain: layout style paint;
+}
+
+/* Оптимизация загрузки веб-шрифтов */
+.font-loading-priority {
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Предотвращение скачков контента */
+.prevent-layout-shift {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
