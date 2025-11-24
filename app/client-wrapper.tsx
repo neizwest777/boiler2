@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 import {
@@ -14,7 +12,13 @@ import {
 } from "@/components/landing";
 
 import { Button } from "@/components/shared/ui/button";
-import { ContactFormDialog } from "@/components/contact/contact-form-dialog";
+import dynamic from "next/dynamic";
+
+// ❗ Делаем только модалку клиентской, а не весь лендинг
+const ContactFormDialog = dynamic(
+  () => import("@/components/contact/contact-form-dialog").then(m => m.ContactFormDialog),
+  { ssr: false }
+);
 
 export default function ClientWrapper() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -43,8 +47,6 @@ export default function ClientWrapper() {
           Tasuta konsultatsioon
         </Button>
       </LandingPrimaryImageCtaSection>
-
-      {/* ❗❗❗ БЛОК «PARTNERS» ОТСЮДА УДАЛЁН */}
 
       {/* TEENUSED */}
       <LandingProductFeaturesGrid
@@ -119,7 +121,7 @@ export default function ClientWrapper() {
         variant="primary"
       />
 
-      {/* BAND (оставляем — это не партнёры) */}
+      {/* BAND */}
       <LandingBandSection
         title="Tallinn ja Harjumaa"
         description="Kiire reageerimine üle piirkonna."
