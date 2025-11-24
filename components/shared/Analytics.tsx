@@ -20,7 +20,7 @@ export function AnalyticsWrapper() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const update = () => {
+    const updateConsent = () => {
       try {
         const prefs = JSON.parse(
           localStorage.getItem("cookie_preferences") || "{}"
@@ -38,17 +38,19 @@ export function AnalyticsWrapper() {
             ad_personalization: "denied"
           });
         }
-      } catch (_) {
-        // ✅ Явная обработка ошибок вместо пустого блока
-        console.error("Error reading cookie preferences");
+      } catch (error) {
+        // ✅ Улучшенная обработка ошибок
+        console.error("Error reading cookie preferences:", error);
       }
     };
 
-    update();
-    window.addEventListener("cookie_preferences_updated", update);
+    updateConsent();
+    
+    const handleCookieUpdate = () => updateConsent();
+    window.addEventListener("cookie_preferences_updated", handleCookieUpdate);
 
     return () => {
-      window.removeEventListener("cookie_preferences_updated", update);
+      window.removeEventListener("cookie_preferences_updated", handleCookieUpdate);
     };
   }, []);
 
