@@ -12,7 +12,7 @@ const ContentSecurityPolicy = `
     *.vercel-analytics.com
     *.vercel-scripts.com
     *.cloudflareinsights.com;
-    
+
   connect-src 'self'
     https://www.google-analytics.com
     https://region1.google-analytics.com
@@ -116,8 +116,34 @@ module.exports = withContentlayer({
     },
   ],
 
+  // 🔥 Правильная канонизация домена → https://www.boileriabi.ee
   async redirects() {
     return [
+      // 1) http://boileriabi.ee → https://www.boileriabi.ee
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'boileriabi.ee' }],
+        destination: 'https://www.boileriabi.ee/:path*',
+        permanent: true,
+      },
+
+      // 2) http://www.boileriabi.ee → https://www.boileriabi.ee
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.boileriabi.ee' }],
+        destination: 'https://www.boileriabi.ee/:path*',
+        permanent: true,
+      },
+
+      // 3) https://boileriabi.ee → https://www.boileriabi.ee
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'boileriabi.ee' }],
+        destination: 'https://www.boileriabi.ee/:path*',
+        permanent: true,
+      },
+
+      // ⭐ Старые редиректы
       { source: '/search', destination: '/', permanent: false },
       { source: '/feed.xml', destination: '/rss.xml', permanent: true },
       { source: '/api/cg', destination: '/', permanent: false },
@@ -146,7 +172,7 @@ module.exports = withContentlayer({
       critters: require.resolve('critters'),
     };
 
-    // ⭐ ГЛАВНОЕ: Добавляем alias '@' -> корень проекта
+    // ⭐ Alias '@' → корень проекта
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       '@': path.resolve(__dirname),
