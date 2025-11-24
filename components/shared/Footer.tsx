@@ -78,6 +78,41 @@ export const Footer = ({ className }: { className?: string }) => {
         </Link>
       </LandingFooterColumn>
 
+      {/* === TEENUSED PIIRKONNAS === */}
+      <LandingFooterColumn
+        title="Teenused piirkonnas"
+        className="space-y-3 [&>h3]:bg-gradient-to-r [&>h3]:from-green-600 [&>h3]:to-green-800 [&>h3]:bg-clip-text [&>h3]:text-transparent [&>h3]:font-semibold"
+      >
+        <Link 
+          href="/boileri-paigaldus-tallinna-piirkonnas" 
+          className="group flex items-center gap-2 transition-all duration-200 hover:translate-x-1 text-gray-700 hover:text-gray-900"
+        >
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Paigaldus Tallinnas
+        </Link>
+        <Link 
+          href="/boileri-remont-tallinna-piirkonnas" 
+          className="group flex items-center gap-2 transition-all duration-200 hover:translate-x-1 text-gray-700 hover:text-gray-900"
+        >
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Remont Tallinnas
+        </Link>
+        <Link 
+          href="/boileri-hooldus-tallinna-piirkonnas" 
+          className="group flex items-center gap-2 transition-all duration-200 hover:translate-x-1 text-gray-700 hover:text-gray-900"
+        >
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Hooldus Tallinnas
+        </Link>
+        <Link 
+          href="/hinnad" 
+          className="group flex items-center gap-2 transition-all duration-200 hover:translate-x-1 text-gray-700 hover:text-gray-900"
+        >
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+          Hinnakiri
+        </Link>
+      </LandingFooterColumn>
+
       {/* === ETTEVÕTE === */}
       <LandingFooterColumn
         title="Ettevõte"
@@ -85,7 +120,6 @@ export const Footer = ({ className }: { className?: string }) => {
       >
         {[ 
           { href: "/meist", label: "Meist" },
-          { href: "/hinnad", label: "Hinnad" },
           { href: "/garantii", label: "Garantii" },
           { href: "/kontakt", label: "Kontakt" }
         ].map((item) => (
@@ -99,7 +133,7 @@ export const Footer = ({ className }: { className?: string }) => {
       {/* === KONTAKT === */}
       <LandingFooterColumn
         title="Kontakt"
-        className="space-y-4 [&>h3]:bg-gradient-to-r [&>h3]:from-green-600 [&>h3]:to-green-800 [&>h3]:bg-clip-text [&>h3]:text-transparent [&>h3]:font-semibold"
+        className="space-y-4 [&>h3]:bg-gradient-to-r [&>h3]:from-purple-600 [&>h3]:to-purple-800 [&>h3]:bg-clip-text [&>h3]:text-transparent [&>h3]:font-semibold"
       >
 
         {/* Телефон */}
@@ -160,7 +194,7 @@ export const Footer = ({ className }: { className?: string }) => {
       {/* === SOTSIAALMEEDIA === */}
       <LandingFooterColumn
         title="Jälgi meid"
-        className="space-y-4 [&>h3]:bg-gradient-to-r [&>h3]:from-purple-600 [&>h3]:to-pink-600 [&>h3]:bg-clip-text [&>h3]:text-transparent [&>h3]:font-semibold"
+        className="space-y-4 [&>h3]:bg-gradient-to-r [&>h3]:from-orange-600 [&>h3]:to-pink-600 [&>h3]:bg-clip-text [&>h3]:text-transparent [&>h3]:font-semibold"
       >
         {[
           { href: "https://www.facebook.com/boileriabi.ee", label: "Facebook", emoji: "📘", color: "blue", event: "click_facebook" },
