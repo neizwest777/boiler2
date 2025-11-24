@@ -10,18 +10,19 @@ import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
-import CookieConsent from "@/components/shared/CookieConsent"; // ✅ ПРЯМОЙ ИМПОРТ
+import CookieConsent from "@/components/shared/CookieConsent";
 
 const displayFont = Playfair_Display({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-display',
   preload: true,
   adjustFontFallback: false,
+  weight: ['400', '700'],
 });
 
 const baseFont = Lato({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-default',
   weight: ['400', '700'],
@@ -122,9 +123,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
         
-        {/* Preconnect для сторонних ресурсов */}
+        {/* ✅ Критический CSS для быстрой загрузки */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .bg-white { background: #fff; }
+          .text-slate-900 { color: #0f172a; }
+          .antialiased { -webkit-font-smoothing: antialiased; }
+          .above-the-fold { opacity: 1; visibility: visible; }
+        `}} />
+
+        {/* ✅ Preconnect для внешних ресурсов */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
 
@@ -133,14 +144,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
+        {/* ✅ Ahrefs с отложенной загрузкой */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="bomHtA+1BUw6NP0zbOTTrg"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
+        {/* ✅ Google Analytics с оптимизацией */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
