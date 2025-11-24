@@ -6,12 +6,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // Плагин для ошибок регистра файлов
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
-// ⚡ ОБНОВЛЁННАЯ CSP — Google Analytics ДОБАВЛЕН
+// ⚡ ОПТИМИЗИРОВАННАЯ CSP 
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline'
     https://www.googletagmanager.com
     https://www.google-analytics.com
+    https://analytics.ahrefs.com
     *.vercel-analytics.com
     *.vercel-scripts.com
     *.cloudflareinsights.com;
@@ -20,6 +21,7 @@ const ContentSecurityPolicy = `
     https://www.google-analytics.com
     https://region1.google-analytics.com
     https://www.googletagmanager.com
+    https://analytics.ahrefs.com
     *;
 
   img-src 'self' data: blob:
@@ -28,14 +30,14 @@ const ContentSecurityPolicy = `
     *.supabase.co *;
 
   style-src 'self' 'unsafe-inline';
-  font-src 'self';
+  font-src 'self' data:;
   media-src *.s3.amazonaws.com *.shipixen.com;
 `;
 
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, ' '),
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
   },
   {
     key: 'Referrer-Policy',
@@ -75,7 +77,20 @@ module.exports = () => {
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
+    
+    // ✅ ОПТИМИЗАЦИИ ДЛЯ ПРОИЗВОДИТЕЛЬНОСТИ
+    experimental: {
+      optimizeCss: true, // Включение оптимизации CSS
+    },
+    compiler: {
+      removeConsole: process.env.NODE_ENV === 'production', // Удаление console.log в продакшене
+    },
+    
+    // ✅ ОПТИМИЗАЦИЯ ИЗОБРАЖЕНИЙ
     images: {
+      formats: ['image/avif', 'image/webp'], // Современные форматы
+      deviceSizes: [640, 750, 828, 1080, 1200, 1920], // Оптимизированные размеры
+      imageSizes: [16, 32, 48, 64, 96, 128, 256],
       remotePatterns: [
         {
           protocol: 'https',
@@ -94,28 +109,55 @@ module.exports = () => {
         },
       ],
     },
-    // 🔥 УПРОЩЕННЫЕ РЕДИРЕКТЫ - только для вашего домена boileriabi.ee
+    
+    // ✅ КЭШИРОВАНИЕ И ОПТИМИЗАЦИЯ
+    headers: async () => {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+        {
+          // Кэширование статических ресурсов
+          source: '/_next/static/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+        {
+          // Кэширование CSS и JS
+          source: '/_next/static/chunks/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+      ];
+    },
+
+    // 🔥 УПРОЩЕННЫЕ РЕДИРЕКТЫ
     async redirects() {
       return [
-        // Редирект для поисковых запросов (решает проблему 404)
         {
           source: '/search',
           destination: '/',
           permanent: false,
         },
-        // Редирект для RSS если нужно
         {
           source: '/feed.xml',
-          destination: '/rss.xml', // измените на правильный путь если у вас есть RSS
+          destination: '/rss.xml',
           permanent: true,
         },
-        // Редирект для несуществующих API endpoints
         {
           source: '/api/cg',
           destination: '/',
           permanent: false,
         },
-        // Редирект для /overview если эта страница не существует
         {
           source: '/overview',
           destination: '/',
@@ -123,15 +165,9 @@ module.exports = () => {
         },
       ];
     },
-    async headers() {
-      return [
-        {
-          source: '/(.*)',
-          headers: securityHeaders,
-        },
-      ];
-    },
-    webpack: (config) => {
+
+    // ✅ ОПТИМИЗАЦИЯ WEBPACK
+    webpack: (config, { dev, isServer }) => {
       config.module.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
@@ -139,7 +175,24 @@ module.exports = () => {
 
       config.plugins.push(new CaseSensitivePathsPlugin());
 
+      // ✅ ИГНОРИРОВАНИЕ ПРЕДУПРЕЖДЕНИЙ PUNYCODE
+      config.ignoreWarnings = [
+        { module: /node_modules\/punycode/ },
+        { file: /node_modules\/punycode/ }
+      ];
+
+      // ✅ ОПТИМИЗАЦИЯ БАНДЛА
+      if (!dev && !isServer) {
+        // Отключаем source maps в продакшене для клиентского кода
+        config.devtool = false;
+      }
+
       return config;
+    },
+
+    // ✅ ОПТИМИЗАЦИЯ ДЛЯ СОВРЕМЕННЫХ БРАУЗЕРОВ
+    env: {
+      customKey: 'my-value',
     },
   });
 };
