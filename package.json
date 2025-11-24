@@ -97,7 +97,8 @@
     "tailwindcss-animate": "^1.0.7",
     "unist-util-visit": "^5.0.0",
     "vaul": "^1.1.2",
-    "zod": "^4.1.8"
+    "zod": "^4.1.8",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -106,7 +107,6 @@
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
     "autoprefixer": "^10.4.20",
-    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.35.0",
     "eslint-config-next": "^15.5.3",
