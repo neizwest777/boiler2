@@ -12,6 +12,9 @@ import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
 import CookieConsent from "@/components/shared/CookieConsent";
 
+/* ======================================================
+   ШРИФТЫ (Next Font) — корректно, preload не дублируется
+====================================================== */
 const displayFont = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
@@ -30,11 +33,17 @@ const baseFont = Lato({
   adjustFontFallback: false,
 });
 
+/* ======================================================
+   ГЛОБАЛЬНЫЕ CSS-ПЕРЕМЕННЫЕ
+====================================================== */
 const globalColors = colors;
 const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
   Object.entries(colors).map(([color, value]) => `--${variant}-${color}:${value}`)
 ).join(';');
 
+/* ======================================================
+   STATIC SEO CONFIG
+====================================================== */
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
@@ -113,6 +122,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/* ======================================================
+   ROOT LAYOUT
+====================================================== */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -121,30 +133,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        {/* CSS Variables */}
         <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
-        
-        {/* ✅ Критический CSS для быстрой загрузки */}
+
+        {/* Критический CSS */}
         <style dangerouslySetInnerHTML={{ __html: `
-          .bg-white { background: #fff; }
-          .text-slate-900 { color: #0f172a; }
+          .bg-white { background:#fff; }
+          .text-slate-900 { color:#0f172a; }
           .antialiased { -webkit-font-smoothing: antialiased; }
-          .above-the-fold { opacity: 1; visibility: visible; }
         `}} />
 
-        {/* ✅ Preconnect для внешних ресурсов */}
+        {/* Preconnect */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
+        {/* Google Verification */}
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
 
+        {/* GEO Tags */}
         <meta name="geo.region" content="EE-37" />
         <meta name="geo.placename" content="Tallinn, Harjumaa" />
         <meta name="geo.position" content="59.4370;24.7536" />
         <meta name="ICBM" content="59.4370, 24.7536" />
 
-        {/* ✅ Ahrefs с отложенной загрузкой */}
+        {/* Ahrefs — lazy */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="bomHtA+1BUw6NP0zbOTTrg"
@@ -153,22 +167,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-        {/* ✅ Google Analytics с оптимизацией */}
+
+        {/* GA4 — полностью оптимизированная загрузка */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
-          strategy="afterInteractive"
-          fetchPriority="low"
+          strategy="lazyOnload"
         />
 
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="ga-config" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){ dataLayer.push(arguments); }
+
             gtag('js', new Date());
             gtag('config', 'G-6BZJEP1SLG', {
+              anonymize_ip: true,
               transport_url: 'https://gtm.googleapis.com',
-              first_party_collection: true,
-              anonymize_ip: true
+              first_party_collection: true
             });
           `}
         </Script>
@@ -199,6 +214,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </SearchProvider>
           </div>
         </ThemeProviders>
+
       </body>
     </html>
   );
