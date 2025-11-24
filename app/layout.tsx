@@ -3,7 +3,7 @@ import { siteConfig } from '@/data/config/site.settings';
 import { ThemeProviders } from './theme-providers';
 import { Metadata, Viewport } from 'next';
 import Script from "next/script";
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic'; // ✅ ИЗМЕНЕНО ИМЯ ИМПОРТА
 
 import { colors } from '@/data/config/colors.js';
 
@@ -12,8 +12,8 @@ import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
 
-// Динамический импорт для CookieConsent
-const CookieConsent = dynamic(() => import("@/components/shared/CookieConsent"), {
+// ✅ ИСПОЛЬЗУЕМ ИЗМЕНЕННОЕ ИМЯ
+const CookieConsent = dynamicImport(() => import("@/components/shared/CookieConsent"), {
   ssr: false,
   loading: () => null,
 });
@@ -41,10 +41,75 @@ const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
 ).join(';');
 
 export const revalidate = 86400;
-export const dynamic = 'force-static';
+export const dynamic = 'force-static'; // ✅ Теперь нет конфликта имен
 
 export const metadata: Metadata = {
-  // ... без изменений
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author, url: siteConfig.siteUrl }],
+  publisher: siteConfig.businessName,
+  category: 'Home Services',
+
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.title,
+    images: [
+      {
+        url: siteConfig.socialBanner,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.businessName} - ${siteConfig.title}`,
+      },
+    ],
+    locale: 'et_EE',
+    type: 'website',
+    emails: [siteConfig.email],
+    phoneNumbers: [siteConfig.telephone],
+  },
+
+  alternates: {
+    canonical: siteConfig.siteUrl.replace(/\/$/, ''),
+    languages: {
+      'et-EE': siteConfig.siteUrl.replace(/\/$/, ''),
+      'x-default': siteConfig.siteUrl.replace(/\/$/, ''),
+    },
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+
+  manifest: '/site.webmanifest',
+  other: {
+    'application-name': siteConfig.businessName,
+    'msapplication-TileColor': '#ffffff',
+  },
 };
 
 export const viewport: Viewport = {
