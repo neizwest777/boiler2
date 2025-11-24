@@ -18,7 +18,6 @@ export function convertToRgba({
 
   color = color.trim();
 
-  // If already rgba, extract rgb part and apply new opacity
   if (color.startsWith('rgba(')) {
     const match = color.match(/rgba?\(([^)]+)\)/);
     if (match) {
@@ -29,7 +28,6 @@ export function convertToRgba({
     }
   }
 
-  // If rgb, just add opacity
   if (color.startsWith('rgb(')) {
     const match = color.match(/rgb\(([^)]+)\)/);
     if (match) {
@@ -37,7 +35,6 @@ export function convertToRgba({
     }
   }
 
-  // If hex color
   if (color.startsWith('#')) {
     const hex = color.slice(1);
     let r: number, g: number, b: number;
@@ -57,11 +54,9 @@ export function convertToRgba({
     return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   }
 
-  // If plain rgb values like "255, 255, 255"
   if (/^\d+,\s*\d+,\s*\d+$/.test(color)) {
     return `rgba(${color}, ${opacity})`;
   }
 
-  // Fallback
   return `rgba(177, 177, 177, ${opacity})`;
 }
