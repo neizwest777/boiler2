@@ -108,6 +108,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .bg-white { background:#fff; }
           .text-slate-900 { color:#0f172a; }
           .antialiased { -webkit-font-smoothing: antialiased; }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          html, body { width: 100%; overflow-x: hidden; }
         `}} />
 
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -116,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
       </head>
 
-      <body className="bg-white text-slate-900 antialiased">
+      <body className="bg-white text-slate-900 antialiased min-h-screen flex flex-col w-full">
 
         {/* GA4 (lazy) */}
         <Script
@@ -138,11 +140,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AnalyticsWrapper />
           <CookieConsent />
 
-          {/* ⛔ ВАЖНО: БОЛЬШЕ НЕТ flex items-center ВОКРУГ HEADER */}
+          {/* Header теперь занимает всю ширину */}
           <Header />
 
           <SearchProvider>
-            <main className="w-full flex flex-col items-center mb-auto">
+            {/* ⛔ УБРАНО: items-center и flex-col - это было причиной смещения */}
+            <main className="w-full flex-1">
               {children}
             </main>
           </SearchProvider>
