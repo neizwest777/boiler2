@@ -100,7 +100,6 @@
     "zod": "^4.1.8"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^15.5.3",
     "@svgr/webpack": "^8.1.0",
     "@types/mdx": "^2.0.13",
     "@types/react": "^19.1.13",
@@ -130,12 +129,8 @@
     "next": "^15.5.3"
   },
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
+    "*.+(js|jsx|ts|tsx)": ["eslint --fix"],
+    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": ["prettier --write"]
   },
   "engines": {
     "node": ">=22.0.0"
