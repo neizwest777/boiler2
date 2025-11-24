@@ -9,6 +9,9 @@ export async function GET() {
   <url><loc>https://www.boileriabi.ee/paigaldus</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.boileriabi.ee/remont</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.boileriabi.ee/hooldus</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.boileriabi.ee/boileri-remont-tallinna-piirkonnas</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.boileriabi.ee/boileri-hooldus-tallinna-piirkonnas</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.boileriabi.ee/hadaabi</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.boileriabi.ee/hinnad</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.boileriabi.ee/meist</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
