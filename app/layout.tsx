@@ -5,16 +5,12 @@ import { Metadata, Viewport } from 'next';
 import Script from "next/script";
 
 import { colors } from '@/data/config/colors.js';
-
 import '@/css/globals.css';
 import { SearchProvider } from '@/components/shared/SearchProvider';
 import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
 import CookieConsent from "@/components/shared/CookieConsent";
 
-/* ======================================================
-   ШРИФТЫ (Next Font) — корректно, preload не дублируется
-====================================================== */
 const displayFont = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
@@ -33,86 +29,48 @@ const baseFont = Lato({
   adjustFontFallback: false,
 });
 
-/* ======================================================
-   ГЛОБАЛЬНЫЕ CSS-ПЕРЕМЕННЫЕ
-====================================================== */
 const globalColors = colors;
-const style = Object.entries(globalColors).flatMap(([variant, colors]) =>
-  Object.entries(colors).map(([color, value]) => `--${variant}-${color}:${value}`)
-).join(';');
+const style = Object.entries(globalColors)
+  .flatMap(([variant, colors]) =>
+    Object.entries(colors).map(([color, value]) => `--${variant}-${color}:${value}`)
+  )
+  .join(';');
 
-/* ======================================================
-   STATIC SEO CONFIG
-====================================================== */
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
+  metadataBase: new URL("https://www.boileriabi.ee"),
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.title}`,
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.author, url: siteConfig.siteUrl }],
-  publisher: siteConfig.businessName,
-  category: 'Home Services',
+
+  alternates: {
+    canonical: "https://www.boileriabi.ee",
+    languages: {
+      "et-EE": "https://www.boileriabi.ee",
+      "x-default": "https://www.boileriabi.ee",
+    },
+  },
 
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
-    url: siteConfig.siteUrl,
+    url: "https://www.boileriabi.ee",
     siteName: siteConfig.title,
     images: [
       {
         url: siteConfig.socialBanner,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.businessName} - ${siteConfig.title}`,
+        alt: siteConfig.title,
       },
     ],
     locale: 'et_EE',
     type: 'website',
-    emails: [siteConfig.email],
-    phoneNumbers: [siteConfig.telephone],
-  },
-
-  alternates: {
-    canonical: siteConfig.siteUrl.replace(/\/$/, ''),
-    languages: {
-      'et-EE': siteConfig.siteUrl.replace(/\/$/, ''),
-      'x-default': siteConfig.siteUrl.replace(/\/$/, ''),
-    },
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-
-  icons: {
-    icon: [
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-
-  manifest: '/site.webmanifest',
-  other: {
-    'application-name': siteConfig.businessName,
-    'msapplication-TileColor': '#ffffff',
   },
 };
 
@@ -122,9 +80,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/* ======================================================
-   ROOT LAYOUT
-====================================================== */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -133,88 +88,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* CSS Variables */}
         <style dangerouslySetInnerHTML={{ __html: `:root{${style}}` }} />
-
-        {/* Критический CSS */}
         <style dangerouslySetInnerHTML={{ __html: `
           .bg-white { background:#fff; }
           .text-slate-900 { color:#0f172a; }
           .antialiased { -webkit-font-smoothing: antialiased; }
         `}} />
 
-        {/* Preconnect */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://analytics.ahrefs.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
-        {/* Google Verification */}
         <meta name="google-site-verification" content="CQJJxJWmNzJ0fgOSj3gPL_kKRMEwoQp3wnhXFsT3bRc" />
-
-        {/* GEO Tags */}
-        <meta name="geo.region" content="EE-37" />
-        <meta name="geo.placename" content="Tallinn, Harjumaa" />
-        <meta name="geo.position" content="59.4370;24.7536" />
-        <meta name="ICBM" content="59.4370, 24.7536" />
-
-        {/* Ahrefs — lazy */}
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="bomHtA+1BUw6NP0zbOTTrg"
-          strategy="lazyOnload"
-        />
       </head>
 
       <body className="bg-white text-slate-900 antialiased">
-
-        {/* GA4 — полностью оптимизированная загрузка */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
-          strategy="lazyOnload"
-        />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG" strategy="lazyOnload" />
 
         <Script id="ga-config" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){ dataLayer.push(arguments); }
-
             gtag('js', new Date());
-            gtag('config', 'G-6BZJEP1SLG', {
-              anonymize_ip: true,
-              transport_url: 'https://gtm.googleapis.com',
-              first_party_collection: true
-            });
-          `}
-        </Script>
-
-        <Script id="consent-mode" strategy="beforeInteractive">
-          {`
-            window.gtag = window.gtag || function(){ (window.dataLayer = window.dataLayer || []).push(arguments); };
-            gtag('consent', 'default', {
-              ad_storage: 'denied',
-              analytics_storage: 'denied',
-              functionality_storage: 'denied',
-              personalization_storage: 'denied',
-              security_storage: 'granted',
-              wait_for_update: 500
-            });
+            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip:true });
           `}
         </Script>
 
         <ThemeProviders>
           <AnalyticsWrapper />
           <CookieConsent />
-          <div className="w-full flex flex-col items-center font-sans">
-            <Header />
-            <SearchProvider>
-              <main className="w-full flex flex-col items-center mb-auto" role="main">
-                {children}
-              </main>
-            </SearchProvider>
-          </div>
+          <Header />
+          <SearchProvider>
+            <main className="w-full flex flex-col items-center mb-auto">
+              {children}
+            </main>
+          </SearchProvider>
         </ThemeProviders>
-
       </body>
     </html>
   );
