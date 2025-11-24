@@ -52,7 +52,7 @@ export const Header = ({ className }: { className?: string }) => {
       variant="primary"
     >
       {/* ---------------------- */}
-      {/* ✅ ИСПРАВЛЕННОЕ ВЫПАДАЮЩЕЕ МЕНЮ - только существующие URL */}
+      {/* ✅ ИСПРАВЛЕННЫЕ ССЫЛКИ - правильные URL */}
       {/* ---------------------- */}
       <DropdownMenu>
         <DropdownMenuTrigger className="px-3 py-2 text-md font-medium cursor-pointer hover:text-primary-600 transition">
@@ -61,16 +61,16 @@ export const Header = ({ className }: { className?: string }) => {
 
         <DropdownMenuContent className="bg-white shadow-xl rounded-xl p-2 min-w-[220px]">
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-paigaldus">Boileri paigaldus</Link>
+            <Link href="/paigaldus">Boileri paigaldus</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-remont">Boileri remont</Link>
+            <Link href="/remont">Boileri remont</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/teenused/boilerite-hooldus">Hooldus</Link>
+            <Link href="/hooldus">Hooldus</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/kontakt">Hädaabi 24/7</Link>
+            <Link href="/hadaabi">Hädaabi 24/7</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/hinnad">Hinnad</Link>
