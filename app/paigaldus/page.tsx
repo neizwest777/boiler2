@@ -1,44 +1,59 @@
-import { 
-  Wrench, 
-  Flame, 
-  Layers, 
-  GaugeCircle, 
-  PhoneCall, 
-  CheckCircle, 
-  Clock, 
-  Shield, 
-  MapPin 
+import {
+  Wrench,
+  Flame,
+  Layers,
+  GaugeCircle,
+  PhoneCall,
+  CheckCircle,
+  Clock,
+  Shield,
+  MapPin,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Boileri Paigaldus Tallinnas | Professionaalne Teenus | Boileriabi.ee",
+  metadataBase: new URL("https://boileriabi.ee"),
+  title: "Boileri paigaldus Tallinnas | Hind alates 150 € | Boileriabi.ee",
   description:
-    "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kogenud torumehed, kiire montaaž 1-2h, töögarantii ja tasuta hindamine. Helista +37253684587",
+    "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kogenud torumehed, kiire montaaž 1–2h, töögarantii ja tasuta hindamine. Helista +372 5368 4587.",
   keywords: [
     "boileri paigaldus",
     "boileri paigaldus Tallinnas",
+    "boileri vahetus",
+    "boileri hooldus",
+    "boileri remont",
     "veesoojendi paigaldus",
     "boileri montaaž",
     "elektriboileri paigaldus",
     "mahuboileri paigaldus",
     "torumees boileri paigalduseks",
     "boileri paigaldus hind",
+    "katlakivi eemaldus boilerist",
   ],
   alternates: {
     canonical: "https://boileriabi.ee/paigaldus",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title:
-      "Boileri Paigaldus Tallinnas | Professionaalne Teenus | Boileriabi.ee",
+    title: "Boileri paigaldus Tallinnas | Hind alates 150 € | Boileriabi.ee",
     description:
-      "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kogenud torumehed, kiire montaaž, töögarantii ja tasuta hindamine.",
+      "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kiire montaaž, töögarantii ja tasuta hindamine.",
     url: "https://boileriabi.ee/paigaldus",
     siteName: "Boileriabi.ee",
     images: [
       {
-        url: "https://boileriabi.ee/api/og?title=Boileri%20Paigaldus&description=Professionaalne%20boileri%20paigaldus%20Tallinnas",
+        url: "https://boileriabi.ee/api/og?title=Boileri%20Paigaldus%20Tallinnas&description=Kiire%20montaa%C5%BE%201%E2%80%932h%20%E2%80%A2%20Garantii%202%20aastat%20%E2%80%A2%20Tasuta%20hindamine",
         width: 1200,
         height: 630,
         alt: "Boileriabi.ee - Boileri paigaldus Tallinnas",
@@ -47,41 +62,128 @@ export const metadata: Metadata = {
     locale: "et_EE",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Boileri paigaldus Tallinnas | Hind alates 150 € | Boileriabi.ee",
+    description:
+      "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kiire montaaž, töögarantii ja tasuta hindamine.",
+    images: [
+      "https://boileriabi.ee/api/og?title=Boileri%20Paigaldus%20Tallinnas&description=Kiire%20montaa%C5%BE%201%E2%80%932h%20%E2%80%A2%20Garantii%202%20aastat%20%E2%80%A2%20Tasuta%20hindamine",
+    ],
+  },
+  category: "Plumbing service",
 };
 
+const PHONE_E164 = "+37253684587";
+const PHONE_HUMAN = "+372 5368 4587";
+
+const FAQ = [
+  {
+    q: "Kui kaua aega võtab boileri paigaldus?",
+    a: "Keskmiselt 1–2 tundi, keerukamatel töödel kuni 4 tundi.",
+  },
+  {
+    q: "Kas vana boileri äravedu on võimalik?",
+    a: "Jah — viime vana boileri ära vastavalt nõuetele.",
+  },
+  {
+    q: "Millal peaks boileri välja vahetama?",
+    a: "Kui see lekib, ei hoia temperatuuri või on üle 12–15 aasta vana.",
+  },
+  {
+    q: "Kas pakute töödele garantiid?",
+    a: "Paigaldustöödele 2 aastat, remondile 1 aasta.",
+  },
+  {
+    q: "Kas uus boiler vajab hooldust?",
+    a: "Esimest hooldust soovitame 2 aasta pärast, seejärel iga 1–2 aasta järel.",
+  },
+  {
+    q: "Milline boiler sobib minu koju?",
+    a: "Anname tasuta konsultatsiooni vastavalt teie vajadustele (korter/eramaja, inimeste arv, tarbimine).",
+  },
+];
+
 export default function Paigaldus() {
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://boileriabi.ee/#business",
+        name: "Boileriabi.ee",
+        url: "https://boileriabi.ee",
+        telephone: PHONE_E164,
+        priceRange: "€€",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Tallinn",
+          addressRegion: "Harjumaa",
+          addressCountry: "EE",
+        },
+        areaServed: ["Tallinn", "Harjumaa"],
+        openingHours: "Mo-Su 00:00-23:59",
+        sameAs: [
+          // если есть соцсети/профили — добавь сюда
+        ],
+      },
+      {
+        "@type": "Service",
+        "@id": "https://boileriabi.ee/paigaldus#service",
+        name: "Boileri paigaldus Tallinnas",
+        serviceType: "Boileri paigaldus",
+        description:
+          "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kogenud torumehed, kiire montaaž, töögarantii ja tasuta hindamine.",
+        provider: {
+          "@id": "https://boileriabi.ee/#business",
+        },
+        areaServed: ["Tallinn", "Harjumaa"],
+        offers: {
+          "@type": "Offer",
+          url: "https://boileriabi.ee/paigaldus",
+          priceCurrency: "EUR",
+          price: "150",
+          description:
+            "Boileri paigaldus — hind alates 150 €. Täpne hind selgub tasuta hindamise käigus.",
+          availability: "https://schema.org/InStock",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://boileriabi.ee/paigaldus#breadcrumbs",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Avaleht",
+            item: "https://boileriabi.ee/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Boileri paigaldus",
+            item: "https://boileriabi.ee/paigaldus",
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://boileriabi.ee/paigaldus#faq",
+        mainEntity: FAQ.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
       {/* JSON-LD SCHEMA */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: "Boileri Paigaldus Tallinnas",
-            description:
-              "Professionaalne boileri paigaldus Tallinnas ja Harjumaal. Kogenud torumehed, kiire montaaž, töögarantii.",
-            provider: {
-              "@type": "LocalBusiness",
-              name: "Boileriabi.ee",
-              telephone: "+37253684587",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Tallinn",
-                addressRegion: "Harjumaa",
-                addressCountry: "EE",
-              },
-            },
-            areaServed: ["Tallinn", "Harjumaa"],
-            serviceType: "Boileri paigaldus",
-            offers: {
-              "@type": "Offer",
-              description:
-                "Professionaalne boileri paigaldus koos töögarantiiga",
-            },
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
 
       <div className="w-full flex flex-col items-center my-12">
@@ -93,7 +195,8 @@ export default function Paigaldus() {
 
           <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
             <strong>Professionaalne boileri paigaldus Tallinnas ja Harjumaal</strong> – Boileriabi.ee
-            pakub kvaliteetset ja kiiret boilerite paigaldust, hooldust ja remonti. Meie kogenud torumehed tagavad ohutu ja energiatõhusa lahenduse.
+            pakub kvaliteetset ja kiiret boilerite paigaldust, hooldust ja remonti. Meie kogenud
+            torumehed tagavad ohutu ja energiatõhusa lahenduse.
           </p>
 
           {/* BENEFITS */}
@@ -145,11 +248,12 @@ export default function Paigaldus() {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="tel:+37253684587"
+                href={`tel:${PHONE_E164}`}
                 className="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition text-lg font-semibold flex items-center gap-2"
+                aria-label={`Helista ${PHONE_HUMAN}`}
               >
                 <PhoneCall className="w-5 h-5" />
-                Helista: +372 5368 4587
+                Helista: {PHONE_HUMAN}
               </a>
 
               <Link
@@ -164,7 +268,7 @@ export default function Paigaldus() {
           {/* MAIN CONTENT */}
           <div className="mt-12 space-y-16 text-lg text-gray-800 leading-relaxed">
             {/* INSTALLATION */}
-            <section>
+            <section id="paigaldus">
               <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <Layers className="w-7 h-7 text-blue-500" />
                 Professionaalne Boileri Paigaldus Tallinnas
@@ -188,7 +292,7 @@ export default function Paigaldus() {
             </section>
 
             {/* MAINTENANCE */}
-            <section>
+            <section id="hooldus">
               <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <GaugeCircle className="w-7 h-7 text-green-600" />
                 Boileri Hooldus – Katlakivi Ennetamine
@@ -222,13 +326,13 @@ export default function Paigaldus() {
             </section>
 
             {/* REPAIR */}
-            <section>
+            <section id="remont">
               <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <Flame className="w-7 h-7 text-orange-500" />
                 Boileri Remont ja Hädaabi Tallinnas
               </h2>
 
-              <p>
+              <p id="hadaabi">
                 Kui boiler ei kuumuta, lekib või teeb müra — pakume kiiret hädaabi Tallinnas 1–2h jooksul.
               </p>
 
@@ -249,10 +353,7 @@ export default function Paigaldus() {
 
             {/* TYPES */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">
-                Paigaldame Kõiki Boileritüüpe
-              </h2>
-
+              <h2 className="text-3xl font-bold mb-6">Paigaldame Kõiki Boileritüüpe</h2>
               <div className="space-y-6">
                 <div className="border-l-4 border-blue-500 pl-4">
                   <h3 className="text-xl font-semibold">Elektriboilerid</h3>
@@ -278,14 +379,8 @@ export default function Paigaldus() {
 
             {/* PRICING */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">
-                Boileri Paigalduse Hinnad
-              </h2>
-
-              <p>
-                Hind sõltub boileri tüübist ja paigalduskohast. Pakume tasuta hindamist.
-              </p>
-
+              <h2 className="text-3xl font-bold mb-6">Boileri Paigalduse Hinnad</h2>
+              <p>Hind sõltub boileri tüübist ja paigalduskohast. Pakume tasuta hindamist.</p>
               <div className="bg-gray-50 p-4 rounded-lg mt-3">
                 <ul className="list-disc list-inside space-y-1">
                   <li>Boileri tüüp ja maht</li>
@@ -298,16 +393,19 @@ export default function Paigaldus() {
 
             {/* AREA */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">
-                Teeninduspiirkond: Tallinn ja Harjumaa
-              </h2>
-
+              <h2 className="text-3xl font-bold mb-6">Teeninduspiirkond: Tallinn ja Harjumaa</h2>
               <p>Pakkume paigaldust kogu Harjumaal.</p>
-
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
                 {[
-                  "Tallinn", "Viimsi", "Rae", "Saue",
-                  "Saku", "Maardu", "Keila", "Laagri", "Kogu Harjumaa",
+                  "Tallinn",
+                  "Viimsi",
+                  "Rae",
+                  "Saue",
+                  "Saku",
+                  "Maardu",
+                  "Keila",
+                  "Laagri",
+                  "Kogu Harjumaa",
                 ].map((a) => (
                   <div key={a} className="bg-gray-100 p-2 rounded text-center">
                     {a}
@@ -318,41 +416,10 @@ export default function Paigaldus() {
 
             {/* FAQ */}
             <section>
-              <h2 className="text-3xl font-bold mb-6">
-                Korduma Kippuvad Küsimused
-              </h2>
-
+              <h2 className="text-3xl font-bold mb-6">Korduma Kippuvad Küsimused</h2>
               <div className="space-y-6">
-                {[
-                  {
-                    q: "Kui kaua aega võtab boileri paigaldus?",
-                    a: "Keskmiselt 1–2 tundi, keerukamatel töödel kuni 4h.",
-                  },
-                  {
-                    q: "Kas vana boileri äravedu on võimalik?",
-                    a: "Jah — viime vana boileri ära vastavalt nõuetele.",
-                  },
-                  {
-                    q: "Millal peaks boileri välja vahetama?",
-                    a: "Kui see lekib, ei hoia temperatuuri või on üle 12–15 aasta vana.",
-                  },
-                  {
-                    q: "Kas pakute töödele garantiid?",
-                    a: "Paigaldustöödele 2 aastat, remondile 1 aasta.",
-                  },
-                  {
-                    q: "Kas uus boiler vajab hooldust?",
-                    a: "Esimest hooldust soovitame 2 aasta pärast, seejärel iga 1–2 aasta järel.",
-                  },
-                  {
-                    q: "Milline boiler sobib minu koju?",
-                    a: "Anname tasuta konsultatsiooni vastavalt teie vajadustele.",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="bg-white border border-gray-200 rounded-lg p-6"
-                  >
+                {FAQ.map((item, i) => (
+                  <div key={i} className="bg-white border border-gray-200 rounded-lg p-6">
                     <h3 className="text-xl font-semibold mb-3">{item.q}</h3>
                     <p>{item.a}</p>
                   </div>
@@ -363,20 +430,17 @@ export default function Paigaldus() {
 
           {/* FINAL CTA */}
           <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Valmis boileri paigalduseks?
-            </h2>
-            <p className="text-xl mb-6 opacity-90">
-              Võta ühendust ja saa tasuta hindamine juba täna!
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Valmis boileri paigalduseks?</h2>
+            <p className="text-xl mb-6 opacity-90">Võta ühendust ja saa tasuta hindamine juba täna!</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="tel:+37253684587"
+                href={`tel:${PHONE_E164}`}
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 shadow-lg"
+                aria-label={`Helista ${PHONE_HUMAN}`}
               >
                 <PhoneCall className="w-6 h-6" />
-                Helista: +372 5368 4587
+                Helista: {PHONE_HUMAN}
               </a>
 
               <Link
@@ -387,57 +451,43 @@ export default function Paigaldus() {
               </Link>
             </div>
 
-            <p className="mt-4 text-blue-200 text-sm">
-              ⚡ Hädaabi: Kohal 1–2 tunni jooksul Tallinnas
-            </p>
+            <p className="mt-4 text-blue-200 text-sm">⚡ Hädaabi: Kohal 1–2 tunni jooksul Tallinnas</p>
           </section>
 
           {/* RELATED SERVICES */}
           <section className="mt-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">
-              Seotud Teenused
-            </h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">Seotud Teenused</h2>
 
             <div className="grid md:grid-cols-3 gap-6">
               <Link
-                href="/remont"
+                href="/paigaldus#remont"
                 className="bg-orange-50 p-6 rounded-lg border border-orange-200 hover:shadow-lg transition"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Flame className="w-6 h-6 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-orange-800">
-                    Boileri Remont
-                  </h3>
+                  <h3 className="text-xl font-semibold text-orange-800">Boileri Remont</h3>
                 </div>
-                <p className="text-orange-700">
-                  Kiire ja kvaliteetne boileri remont Tallinnas
-                </p>
+                <p className="text-orange-700">Kiire ja kvaliteetne boileri remont Tallinnas</p>
               </Link>
 
               <Link
-                href="/hooldus"
+                href="/paigaldus#hooldus"
                 className="bg-green-50 p-6 rounded-lg border border-green-200 hover:shadow-lg transition"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <GaugeCircle className="w-6 h-6 text-green-600" />
-                  <h3 className="text-xl font-semibold text-green-800">
-                    Boileri Hooldus
-                  </h3>
+                  <h3 className="text-xl font-semibold text-green-800">Boileri Hooldus</h3>
                 </div>
-                <p className="text-green-700">
-                  Regulaarne hooldus katlakivi ennetamiseks
-                </p>
+                <p className="text-green-700">Regulaarne hooldus katlakivi ennetamiseks</p>
               </Link>
 
               <Link
-                href="/hadaabi"
+                href="/paigaldus#hadaabi"
                 className="bg-red-50 p-6 rounded-lg border border-red-200 hover:shadow-lg transition"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Wrench className="w-6 h-6 text-red-600" />
-                  <h3 className="text-xl font-semibold text-red-800">
-                    Hädaabi
-                  </h3>
+                  <h3 className="text-xl font-semibold text-red-800">Hädaabi</h3>
                 </div>
                 <p className="text-red-700">24/7 hädaabi boileri rikete korral</p>
               </Link>
