@@ -2,5 +2,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Garantii - Boileri Paigaldus ja Remont | Boileriabi',
-  description: 'Boileri paigalduse ja remondi garantii tingimused. Kõikidele töödele anname garantii. Töökindel ja usaldusväärne teenus.',
+  description: 'Boileri paigalduse ja remondi garantii tingimused. Koikidele toodele anname garantii. Tookindel ja usaldusvaarne teenus.',
+  keywords: 'boileri garantii, toogarantii, boileri paigalduse garantii, Tallinn',
+  openGraph: {
+    title: 'Garantii - Boileri Teenused | Boileriabi',
+    description: 'Boileri paigalduse ja remondi garantii tingimused.',
+    url: 'https://boileriabi.ee/garantii',
+    siteName: 'Boileriabi',
+    locale: 'et_EE',
+    type: 'website',
+  },
 };

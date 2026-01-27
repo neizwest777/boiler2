@@ -26,7 +26,7 @@ export function genPageMetadata({
       url: './',
       siteName: siteConfig.title,
       images: image ? [image] : [siteConfig.socialBanner],
-      locale: 'en_US',
+      locale: 'et_EE',
       type: 'website',
     },
     twitter: {
