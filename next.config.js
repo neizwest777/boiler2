@@ -83,6 +83,8 @@ module.exports = withContentlayer({
       { source: '/feed.xml', destination: '/rss.xml', permanent: true },
       { source: '/api/cg', destination: '/', permanent: false },
       { source: '/overview', destination: '/', permanent: true },
+      { source: '/teenused/boilerite-remont', destination: '/remont', permanent: true },
+      { source: '/teenused/boilerite-hooldus', destination: '/hooldus', permanent: true },
     ];
   },
 
