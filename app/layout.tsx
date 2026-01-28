@@ -76,6 +76,9 @@ export const metadata: Metadata = {
     locale: 'et_EE',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://www.boileriabi.ee',
+  },
 };
 
 export const viewport: Viewport = {
@@ -154,3 +157,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+

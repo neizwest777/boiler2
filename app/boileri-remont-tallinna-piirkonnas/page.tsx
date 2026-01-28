@@ -10,7 +10,10 @@ export const metadata: Metadata = {
     description: "Professionaalne boileri remont kogu Tallinna piirkonnas. Kiire ja töökindel lahendus 24/7.",
     type: "website",
     locale: "et_EE",
-    url: "https://boileriabi.ee/boileri-remont-tallinna-piirkonnas",
+    url: "https://www.boileriabi.ee/boileri-remont-tallinna-piirkonnas",
+  },
+  alternates: {
+    canonical: "https://www.boileriabi.ee/boileri-remont-tallinna-piirkonnas",
   },
 }
 
@@ -289,3 +292,4 @@ export default function BoileriRemontTallinnaPiirkonnas() {
     </div>
   )
 }
+

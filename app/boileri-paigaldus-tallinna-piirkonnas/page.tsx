@@ -10,7 +10,10 @@ export const metadata: Metadata = {
     description: "Professionaalne boileri paigaldus kogu Tallinna piirkonnas odava hinnaga. Kiire ja kvaliteetne teenus.",
     type: "website",
     locale: "et_EE",
-    url: "https://boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
+    url: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
+  },
+  alternates: {
+    canonical: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
   },
 }
 
@@ -246,3 +249,4 @@ export default function BoileriPaigaldusTallinnaPiirkonnas() {
     </div>
   )
 }
+
