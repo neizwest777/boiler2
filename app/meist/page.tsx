@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "professionaalne boileriteenus"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/meist",
+    canonical: "https://www.boileriabi.ee/meist",
   },
   openGraph: {
     title: "Meist | Boileriabi.ee - Kogenud Torumehed Tallinnas | 430+ Remonti",

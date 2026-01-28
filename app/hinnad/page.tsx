@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "küttespiraali vahetuse hind"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/hinnad",
+    canonical: "https://www.boileriabi.ee/hinnad",
   },
   openGraph: {
     title: "Boileri Teenuste Hinnad 2024 | Läbipaistvad Hinnad | Boileriabi.ee",

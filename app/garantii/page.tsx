@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "boileri teenuse garantii"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/garantii",
+    canonical: "https://www.boileriabi.ee/garantii",
   },
   openGraph: {
     title: "Boileri Töögarantii | 2 Aastat Paigaldustele | Boileriabi.ee",

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "energiasääst boileriga"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/hooldus",
+    canonical: "https://www.boileriabi.ee/hooldus",
   },
   openGraph: {
     title: "Boileri Hooldus Tallinnas | Ennetav Hooldus | Boileriabi.ee",

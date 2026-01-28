@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "24/7 boileri remont"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/remont",
+    canonical: "https://www.boileriabi.ee/remont",
   },
   openGraph: {
     title: "Boileri Remont Tallinnas | Kiire Hädaabi 24/7 | Boileriabi.ee",

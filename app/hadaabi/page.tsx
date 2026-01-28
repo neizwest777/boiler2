@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "boileri lekke parandus"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/hadaabi",
+    canonical: "https://www.boileriabi.ee/hadaabi",
   },
   openGraph: {
     title: "BOILERI HÄDAABI 24/7 | Kiireim Reageerimine Tallinnas | Boileriabi.ee",

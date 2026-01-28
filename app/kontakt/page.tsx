@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "boileri paigaldus kontakt"
   ],
   alternates: {
-    canonical: "https://boileriabi.ee/kontakt",
+    canonical: "https://www.boileriabi.ee/kontakt",
   },
   openGraph: {
     title: "Kontakt | Boileriabi.ee - Torumees Tallinnas | +37253684587",
