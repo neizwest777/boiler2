@@ -58,13 +58,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
 
-  alternates: {
-    canonical: "https://www.boileriabi.ee",
-    languages: {
-      "et-EE": "https://www.boileriabi.ee",
-      "x-default": "https://www.boileriabi.ee",
-    },
-  },
+  
 
   openGraph: {
     title: siteConfig.title,
