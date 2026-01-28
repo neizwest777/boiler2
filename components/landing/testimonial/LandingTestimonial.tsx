@@ -70,7 +70,7 @@ export const LandingTestimonial = ({
             height={100}
             className="h-10 w-10 flex-none rounded-full bg-gray-50"
             src={imageSrc}
-            alt=""
+            alt={name}
           />
           <div className="flex-auto">
             <div className="font-semibold flex gap-0.5 items-center">

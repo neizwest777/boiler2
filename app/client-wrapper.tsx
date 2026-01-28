@@ -84,7 +84,7 @@ export default function ClientWrapper() {
       <LandingAboutSection
         title="Meist"
         description="Oleme litsentseeritud, kogenud ja kohalik torustikuettevõte, mis pakub tipptasemel boileri teenuseid Tallinnas ja Harjumaa."
-        imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80"
+        imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80" imageAlt="Boileriabi meeskond"
       />
 
       {/* STEPS */}
@@ -97,19 +97,19 @@ export default function ClientWrapper() {
         <LandingProductFeature
           title="1. Võtke meiega ühendust"
           description="Helistage või kirjutage meile. Meie meeskond vastab kiiresti."
-          imageSrc="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=500&q=80"
+          imageSrc="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=500&q=80" imageAlt="Kontakt telefon"
         />
 
         <LandingProductFeature
           title="2. Saage tasuta hinnapakkumine"
           description="Pakume detailset ja ausat hinnapakkumist."
-          imageSrc="/static/images/1762813449770-imageSrc_2a0684a5-ad4d-47fd-acab-45bcf007cdad.png"
+          imageSrc="/static/images/1762813449770-imageSrc_2a0684a5-ad4d-47fd-acab-45bcf007cdad.png" imageAlt="Tasuta hinnapakkumine"
         />
 
         <LandingProductFeature
           title="3. Me parandame boileri"
           description="Professionaalne töö garantii ja kvaliteidiga."
-          imageSrc="/static/images/1762935301324-imageSrc_140ea933-b1b2-45eb-97d6-105c88b0f79f.png"
+          imageSrc="/static/images/1762935301324-imageSrc_140ea933-b1b2-45eb-97d6-105c88b0f79f.png" imageAlt="Boileri remont"
         />
       </LandingProductSteps>
 
