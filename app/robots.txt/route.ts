@@ -15,6 +15,8 @@ Allow: /hinnad
 Allow: /meist
 Allow: /garantii
 Allow: /kontakt
+Allow: /teenused
+Allow: /vorm
 
 Disallow: /api/
 Disallow: /admin/

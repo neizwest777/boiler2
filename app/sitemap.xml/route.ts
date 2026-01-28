@@ -16,6 +16,8 @@ export async function GET() {
   <url><loc>https://www.boileriabi.ee/hinnad</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.boileriabi.ee/meist</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.boileriabi.ee/garantii</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.boileriabi.ee/teenused</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.boileriabi.ee/vorm</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.boileriabi.ee/kontakt</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>`;
 
@@ -27,3 +29,4 @@ export async function GET() {
     },
   });
 }
+
