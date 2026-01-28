@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const PHONE_E164 = "+37253684587";
 const PHONE_HUMAN = "+372 5368 4587";
-const CANONICAL = "https://boileriabi.ee/paigaldus";
+const CANONICAL = "https://www.boileriabi.ee/paigaldus";
 const OG_IMAGE =
   "https://boileriabi.ee/api/og?title=Boileri%20Paigaldus&description=Professionaalne%20boileri%20paigaldus%20Tallinnas";
 

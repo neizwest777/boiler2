@@ -7,7 +7,7 @@ export const metadata = genPageMetadata({
   title: 'Boileri Päringuvorm | Tasuta Konsultatsioon & Hindamine | Boileriabi.ee',
   description:
     'Vajad boileri paigaldust, remonti või hooldust Tallinnas? Täida päringuvorm ja saame 2 tunni jooksul ühendust. Tasuta konsultatsioon, täpne hindamine ja töögarantii!',
-  canonical: 'https://boileriabi.ee/vorm',
+  canonical: 'https://www.boileriabi.ee/vorm',
 });
 
 const formJsonLd = {
@@ -15,7 +15,7 @@ const formJsonLd = {
   '@type': 'ContactPage',
   name: 'Boileri teenuse päringuvorm',
   description: 'Boileri paigalduse, remondi ja hoolduse päringuvorm',
-  url: 'https://boileriabi.ee/vorm',
+  url: 'https://www.boileriabi.ee/vorm',
 };
 
 export default function VormPage() {
