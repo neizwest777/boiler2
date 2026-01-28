@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hadaabi 24/7 - Boileri Remont | Boileriabi',
     description: 'Boileri hadaabi 24/7 Tallinnas. Kiire reageerimine igal ajal!',
-    url: 'https://boileriabi.ee/hadaabi',
+    url: 'https://www.boileriabi.ee/hadaabi',
     siteName: 'Boileriabi',
     locale: 'et_EE',
     type: 'website',

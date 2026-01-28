@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Garantii - Boileri Teenused | Boileriabi',
     description: 'Boileri paigalduse ja remondi garantii tingimused.',
-    url: 'https://boileriabi.ee/garantii',
+    url: 'https://www.boileriabi.ee/garantii',
     siteName: 'Boileriabi',
     locale: 'et_EE',
     type: 'website',

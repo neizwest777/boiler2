@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Meist - Boileriabi Tallinnas',
     description: 'Tutvu meie ettevottega - kogenud torumehed boileri teenustega.',
-    url: 'https://boileriabi.ee/meist',
+    url: 'https://www.boileriabi.ee/meist',
     siteName: 'Boileriabi',
     locale: 'et_EE',
     type: 'website',

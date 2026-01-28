@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Boileri Hooldus Tallinnas | Boileriabi',
     description: 'Boileri hooldus ja puhastus Tallinnas. Pikenda boileri eluiga!',
-    url: 'https://boileriabi.ee/hooldus',
+    url: 'https://www.boileriabi.ee/hooldus',
     siteName: 'Boileriabi',
     locale: 'et_EE',
     type: 'website',

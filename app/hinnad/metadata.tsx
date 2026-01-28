@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hinnad - Boileri Teenused | Boileriabi',
     description: 'Boileri paigalduse, remondi ja hoolduse hinnad Tallinnas.',
-    url: 'https://boileriabi.ee/hinnad',
+    url: 'https://www.boileriabi.ee/hinnad',
     siteName: 'Boileriabi',
     locale: 'et_EE',
     type: 'website',
