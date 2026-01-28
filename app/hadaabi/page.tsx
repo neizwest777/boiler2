@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Boileri Hädaabi 24/7 Tallinnas | Kiire Reageerimine 1-2h | Boileriabi.ee",
+  title: "Hadaabi 24/7 | Boileriabi",
   description: "BOILER LEEKIB VÕI EI TÖÖTA? Hädaabi 24/7 Tallinnas ja Harjumaal. Kiireim reageerimine 1-2 tunni jooksul. Lekete kõrvaldamine, remont, ohutus. HELISTA KOHE: +37253684587",
   keywords: [
     "boileri hädaabi",

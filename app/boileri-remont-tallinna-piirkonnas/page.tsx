@@ -2,11 +2,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Boileri Remont Tallinnas | Kiire Parandus 24/7 | Boileriabi.ee",
+  title: "Boileri Remont Tallinnas 24/7 | Boileriabi",
   description: "Professionaalne boileri remont Tallinna piirkonnas 24/7. Kiire parandus, häireteenus, garanteeritud tulemus. Helista +372 5368 4587",
   keywords: "boileri remont tallinnas, boileri parandus, boileri rike, häireteenus, tallinna boileriremondi, boileri veaotsing, katki boiler",
   openGraph: {
-    title: "Boileri Remont Tallinnas | Kiire Parandus 24/7 | Boileriabi.ee",
+    title: "Boileri Remont Tallinnas 24/7 | Boileriabi",
     description: "Professionaalne boileri remont kogu Tallinna piirkonnas. Kiire ja töökindel lahendus 24/7.",
     type: "website",
     locale: "et_EE",

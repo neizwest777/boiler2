@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Meist | Boileriabi.ee - Kogenud Torumehed Tallinnas | 430+ Remonti",
+  title: "Meist - Kogenud Torumehed | Boileriabi",
   description: "Boileriabi.ee - kogenud torumehed Tallinnas ja Harjumaal. Üle 430 boileri remondi, 24/7 hädaabi, töögarantii. Professionaalne boileriteenus alates 2018.",
   keywords: [
     "torumees Tallinnas",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/meist",
   },
   openGraph: {
-    title: "Meist | Boileriabi.ee - Kogenud Torumehed Tallinnas | 430+ Remonti",
+    title: "Meist - Kogenud Torumehed | Boileriabi",
     description: "Boileriabi.ee - kogenud torumehed Tallinnas ja Harjumaal. Üle 430 boileri remondi, 24/7 hädaabi, töögarantii.",
     url: "https://boileriabi.ee/meist",
     siteName: "Boileriabi.ee",
