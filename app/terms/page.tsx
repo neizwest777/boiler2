@@ -6,7 +6,7 @@ import { genPageMetadata } from 'app/seo';
 export const metadata = genPageMetadata({
   title: 'Kasutustingimused',
   description: 'Boileriabi.ee kasutustingimused. Tutvuge meie teenusetingimustega boileri paigalduse, remondi ja hoolduse osutamisel Tallinnas ja Harjumaal.',
-  canonical: 'https://boileriabi.ee/terms',
+  canonical: 'https://www.boileriabi.ee/terms',
 });
 
 const policyConfig = {
