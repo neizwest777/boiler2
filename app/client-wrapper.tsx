@@ -29,7 +29,7 @@ export default function ClientWrapper() {
       <LandingPrimaryImageCtaSection
         title="Boileri hooldus, paigaldus ja remont Tallinnas"
         description="Kutsuge kogenud torumees! Kiire ja usaldusväärne teenus üle Tallinna ja Harjumaa."
-        imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.png"
+        imageSrc="/static/images/1762809808835-imageSrc_bcf7bf97-5006-48e0-a7ea-0f11b05fc88d.webp"
         imageAlt="Boiler"
         imagePosition="right"
         withBackground={false}
@@ -58,25 +58,25 @@ export default function ClientWrapper() {
         <LandingProductFeature
           title="Boileri paigaldus"
           description="Ekspertide poolt teostatud paigaldus kõikidele boileri tüüpidele."
-          imageSrc="/static/images/1762810111398-imageSrc_c0d78223-d162-4fbb-ad8a-f5e7ce63ce65.png" imageAlt="Boileri paigaldus"
+          imageSrc="/static/images/1762810111398-imageSrc_c0d78223-d162-4fbb-ad8a-f5e7ce63ce65.webp" imageAlt="Boileri paigaldus"
         />
 
         <LandingProductFeature
           title="Boileri remont"
           description="Kiire ja usaldusväärne remonditeenus."
-          imageSrc="/static/images/1762810822501-imageSrc_08e474ec-3188-4011-b875-e572f86e4fa8.png" imageAlt="Boileri remont Tallinnas"
+          imageSrc="/static/images/1762810822501-imageSrc_08e474ec-3188-4011-b875-e572f86e4fa8.webp" imageAlt="Boileri remont Tallinnas"
         />
 
         <LandingProductFeature
           title="Puhastus ja hooldus"
           description="Regulaarne hooldus pikendab boileri eluiga."
-          imageSrc="/static/images/1762810954990-imageSrc_a9687eae-bf20-4a03-90a7-1080d885cb7e.png" imageAlt="Boileri hooldus"
+          imageSrc="/static/images/1762810954990-imageSrc_a9687eae-bf20-4a03-90a7-1080d885cb7e.webp" imageAlt="Boileri hooldus"
         />
 
         <LandingProductFeature
           title="Hädaabi 24/7"
           description="Ööpäevaringne kiire abi."
-          imageSrc="/static/images/1762811329870-imageSrc_8f087ec4-3ec0-4ebf-acb6-25fab6a24cf1.png" imageAlt="Hadaabi boiler 24/7"
+          imageSrc="/static/images/1762811329870-imageSrc_8f087ec4-3ec0-4ebf-acb6-25fab6a24cf1.webp" imageAlt="Hadaabi boiler 24/7"
         />
       </LandingProductFeaturesGrid>
 
@@ -103,13 +103,13 @@ export default function ClientWrapper() {
         <LandingProductFeature
           title="2. Saage tasuta hinnapakkumine"
           description="Pakume detailset ja ausat hinnapakkumist."
-          imageSrc="/static/images/1762813449770-imageSrc_2a0684a5-ad4d-47fd-acab-45bcf007cdad.png" imageAlt="Tasuta hinnapakkumine"
+          imageSrc="/static/images/1762813449770-imageSrc_2a0684a5-ad4d-47fd-acab-45bcf007cdad.webp" imageAlt="Tasuta hinnapakkumine"
         />
 
         <LandingProductFeature
           title="3. Me parandame boileri"
           description="Professionaalne töö garantii ja kvaliteidiga."
-          imageSrc="/static/images/1762935301324-imageSrc_140ea933-b1b2-45eb-97d6-105c88b0f79f.png" imageAlt="Boileri remont"
+          imageSrc="/static/images/1762935301324-imageSrc_140ea933-b1b2-45eb-97d6-105c88b0f79f.webp" imageAlt="Boileri remont"
         />
       </LandingProductSteps>
 

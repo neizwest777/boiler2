@@ -9,14 +9,14 @@ export default function TeenusedPage() {
     {
       title: "Boileri paigaldus",
       description: "Professionaalne paigaldus uutele ja olemasolevatele süsteemidele.",
-      imageSrc: "/static/images/1762810111398-imageSrc_c0d78223-d162-4fbb-ad8a-f5e7ce63ce65.png",
+      imageSrc: "/static/images/1762810111398-imageSrc_c0d78223-d162-4fbb-ad8a-f5e7ce63ce65.webp",
       href: "/teenused/boilerite-paigaldus",
       features: ["Tasuta hindamine", "Garantii töödele", "Kiire paigaldus"]
     },
     {
       title: "Boileri remont",
       description: "Kiire, tõhus ja usaldusväärne remonditeenus Tallinnas ja Harjumaal.",
-      imageSrc: "/static/images/1762810822501-imageSrc_08e474ec-3188-4011-b875-e572f86e4fa8.png",
+      imageSrc: "/static/images/1762810822501-imageSrc_08e474ec-3188-4011-b875-e572f86e4fa8.webp",
       href: "/teenused/boilerite-remont",
       features: ["24h remonditeenus", "Originaalosad", "Kogenud meister"]
     },
