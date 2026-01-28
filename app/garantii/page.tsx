@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Toogarantii 2 Aastat",
+  title: "Toogarantii 2 Aastat Boileri Toodele",
   description: "Ametlik töögarantii boileri paigaldustele (2 aastat), remonditöödele (1 aasta) ja hooldustöödele. Kasutame kvaliteetseid materjale ja järgime Eesti standardeid.",
   keywords: [
     "boileri garantii",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/garantii",
   },
   openGraph: {
-    title: "Toogarantii 2 Aastat",
+    title: "Toogarantii 2 Aastat Boileri Toodele",
     description: "Ametlik töögarantii boileri paigaldustele (2 aastat), remonditöödele (1 aasta) ja hooldustöödele.",
     url: "https://boileriabi.ee/garantii",
     siteName: "Boileriabi.ee",

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Toogarantii 2 Aastat',
+  title: 'Toogarantii 2 Aastat Boileri Toodele',
   description: 'Boileri paigalduse ja remondi garantii tingimused. Koikidele toodele anname garantii. Tookindel ja usaldusvaarne teenus.',
   keywords: 'boileri garantii, toogarantii, boileri paigalduse garantii, Tallinn',
   openGraph: {

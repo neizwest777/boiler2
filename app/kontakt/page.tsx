@@ -3,7 +3,7 @@ import { PhoneCall, Mail, MapPin, Clock, ShieldCheck, Star, Wrench } from "lucid
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kontakt",
+  title: "Kontakt - Boileri Teenused Tallinnas",
   description: "Vajad boileri abi? Helista kohe +37253684587! Teenindame Tallinnat ja Harjumaad 24/7. Kiireim reageerimine, tasuta hindamine ja töögarantii.",
   keywords: [
     "boileri kontakt",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/kontakt",
   },
   openGraph: {
-    title: "Kontakt",
+    title: "Kontakt - Boileri Teenused Tallinnas",
     description: "Vajad boileri abi? Helista kohe +37253684587! Teenindame Tallinnat ja Harjumaad 24/7. Kiireim reageerimine.",
     url: "https://boileriabi.ee/kontakt",
     siteName: "Boileriabi.ee",

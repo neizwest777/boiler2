@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Boileri Remont Tallinnas",
+  title: "Boileri Remont Tallinnas - Kiire Parandus",
   description: "Boileri remont Tallinnas ja Harjumaal. Kiire hädaabi 24/7, diagnostika, küttespiraali vahetus, lekke kõrvaldamine. Garantii töödele. Helista +37253684587",
   keywords: [
     "boileri remont",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/remont",
   },
   openGraph: {
-    title: "Boileri Remont Tallinnas",
+    title: "Boileri Remont Tallinnas - Kiire Parandus",
     description: "Boileri remont Tallinnas ja Harjumaal. Kiire hädaabi 24/7, diagnostika, küttespiraali vahetus, lekke kõrvaldamine. Garantii töödele.",
     url: "https://boileriabi.ee/remont",
     siteName: "Boileriabi.ee",
