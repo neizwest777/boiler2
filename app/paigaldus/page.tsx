@@ -87,7 +87,7 @@ const FAQ = [
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://boileriabi.ee"),
-  title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus | Boileriabi.ee",
+  title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus",
   description:
     "Boileri paigaldus Tallinnas ja Harjumaal: remont, hooldus, boileri vahetus, küttekeha vahetus, termostaadi vahetus. Kiire kohaletulek, tasuta hindamine, garantii. Helista +372 5368 4587.",
   keywords: [
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
   },
   openGraph: {
-    title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus | Boileriabi.ee",
+    title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus",
     description:
       "Professionaalne boilerite paigaldus, remont, hooldus ja vahetus Tallinnas ja Harjumaal. Küttekeha/termostaadi vahetus, tasuta hindamine, garantii.",
     url: CANONICAL,
@@ -131,7 +131,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus | Boileriabi.ee",
+    title: "Boileri paigaldus Tallinnas | Remont, hooldus ja vahetus",
     description:
       "Boileri paigaldus, remont, hooldus ja vahetus Tallinnas/Harjumaal. Küttekeha ja termostaadi vahetus. Helista.",
     images: [OG_IMAGE],

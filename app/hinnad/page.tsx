@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Boileri Hinnad | Boileriabi",
+  title: "Boileri Hinnad",
   description: "Boileri paigalduse, remondi ja hoolduse hinnad 2024. Läbipaistvad hinnad: paigaldus 120-250€, hooldus 80-150€, remont 50-200€. Tasuta hindamine!",
   keywords: [
     "boileri hinnad",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/hinnad",
   },
   openGraph: {
-    title: "Boileri Hinnad | Boileriabi",
+    title: "Boileri Hinnad",
     description: "Boileri paigalduse, remondi ja hoolduse hinnad 2024. Läbipaistvad hinnad koos töögarantiiga.",
     url: "https://boileriabi.ee/hinnad",
     siteName: "Boileriabi.ee",

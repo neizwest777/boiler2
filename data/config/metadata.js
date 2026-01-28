@@ -1,6 +1,6 @@
 const metadata = {
   // ✅ SEO-ОПТИМИЗИРОВАННЫЕ МЕТАДАННЫЕ
-  title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi',
+  title: 'Boileriabi',
   description: 'Kogenud torumehed boileri paigalduseks, remondiks ja hoolduseks Tallinnas. Kiire 24/7 hädaabi, töögarantii ja tasuta hindamine. Helista: +37253684587',
   domain: 'boileriabi.ee',
   logoTitle: 'Boileriabi - Boileriteenused Tallinnas',

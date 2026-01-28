@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Boileri Hooldus Tallinnas | Boileriabi",
+  title: "Boileri Hooldus Tallinnas",
   description: "Professionaalne boileri hooldus Tallinnas ja Harjumaal. Katlakivi eemaldamine, anoodi vahetus, energiasääst kuni 20%. Ennetage rikkeid! Helista +37253684587",
   keywords: [
     "boileri hooldus",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/hooldus",
   },
   openGraph: {
-    title: "Boileri Hooldus Tallinnas | Boileriabi",
+    title: "Boileri Hooldus Tallinnas",
     description: "Professionaalne boileri hooldus Tallinnas ja Harjumaal. Katlakivi eemaldamine, anoodi vahetus, energiasääst kuni 20%. Ennetage rikkeid!",
     url: "https://boileriabi.ee/hooldus",
     siteName: "Boileriabi.ee",

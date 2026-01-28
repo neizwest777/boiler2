@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Meist - Kogenud Torumehed | Boileriabi",
+  title: "Meist - Kogenud Torumehed",
   description: "Boileriabi.ee - kogenud torumehed Tallinnas ja Harjumaal. Üle 430 boileri remondi, 24/7 hädaabi, töögarantii. Professionaalne boileriteenus alates 2018.",
   keywords: [
     "torumees Tallinnas",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/meist",
   },
   openGraph: {
-    title: "Meist - Kogenud Torumehed | Boileriabi",
+    title: "Meist - Kogenud Torumehed",
     description: "Boileriabi.ee - kogenud torumehed Tallinnas ja Harjumaal. Üle 430 boileri remondi, 24/7 hädaabi, töögarantii.",
     url: "https://boileriabi.ee/meist",
     siteName: "Boileriabi.ee",
@@ -46,7 +46,7 @@ export default function MeistPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "Meist | Boileriabi.ee",
+            "name": "Meist",
             "description": "Boileriabi.ee - kogenud torumehed Tallinnas ja Harjumaal. Üle 430 boileri remondi, 24/7 hädaabi, töögarantii.",
             "publisher": {
               "@type": "Organization",

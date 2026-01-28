@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Hadaabi 24/7 | Boileriabi",
+  title: "Hadaabi 24/7",
   description: "BOILER LEEKIB VÕI EI TÖÖTA? Hädaabi 24/7 Tallinnas ja Harjumaal. Kiireim reageerimine 1-2 tunni jooksul. Lekete kõrvaldamine, remont, ohutus. HELISTA KOHE: +37253684587",
   keywords: [
     "boileri hädaabi",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://www.boileriabi.ee/hadaabi",
   },
   openGraph: {
-    title: "BOILERI HÄDAABI 24/7 | Kiireim Reageerimine Tallinnas | Boileriabi.ee",
+    title: "BOILERI HÄDAABI 24/7 | Kiireim Reageerimine Tallinnas",
     description: "BOILER LEEKIB? Hädaabi 24/7 Tallinnas. Kiireim reageerimine 1-2 tunni jooksul. Lekete kõrvaldamine, remont, ohutus. HELISTA KOHE!",
     url: "https://boileriabi.ee/hadaabi",
     siteName: "Boileriabi.ee",

@@ -4,7 +4,7 @@ import { genPageMetadata } from 'app/seo';
 import Form from './Form';
 
 export const metadata = genPageMetadata({
-  title: 'Paringuvorm | Boileriabi',
+  title: 'Paringuvorm',
   description:
     'Vajad boileri paigaldust, remonti või hooldust Tallinnas? Täida päringuvorm ja saame 2 tunni jooksul ühendust. Tasuta konsultatsioon, täpne hindamine ja töögarantii!',
   canonical: 'https://www.boileriabi.ee/vorm',
