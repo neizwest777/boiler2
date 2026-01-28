@@ -1,7 +1,7 @@
 import { genPageMetadata } from 'app/seo';
 
 export const metadata = genPageMetadata({
-  title: 'Privaatsuspoliitika | Boileriabi.ee - Boileri paigaldus, remont ja hooldus Tallinnas',
+  title: 'Privaatsuspoliitika',
   description: 'Boileriabi.ee privaatsuspoliitika. Tutvuge, kuidas kogume ja kasutame Teie isikuandmeid boileri teenuste pakkumisel Tallinnas ja Harjumaal.',
   canonical: 'https://boileriabi.ee/privacy',
 });

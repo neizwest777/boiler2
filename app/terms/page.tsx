@@ -4,7 +4,7 @@ import Header from '@/components/shared/Header';
 import { genPageMetadata } from 'app/seo';
 
 export const metadata = genPageMetadata({
-  title: 'Kasutustingimused | Boileriabi.ee - Boileri paigaldus, remont ja hooldus',
+  title: 'Kasutustingimused',
   description: 'Boileriabi.ee kasutustingimused. Tutvuge meie teenusetingimustega boileri paigalduse, remondi ja hoolduse osutamisel Tallinnas ja Harjumaal.',
   canonical: 'https://boileriabi.ee/terms',
 });

@@ -2,11 +2,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Boileri Hooldus Tallinna Piirkonnas | Boileriabi",
+  title: "Boileri Hooldus Tallinna Piirkonnas",
   description: "Professionaalne boileri hooldus Tallinna piirkonnas. Ennetav hooldus, pikaajaline garantii, energia kokkuhoid. Tasuta hindamine!",
   keywords: "boileri hooldus tallinnas, boileri serviseerimine, ennetav hooldus, boileri puhastamine, tallinna boileriteenindus",
   openGraph: {
-    title: "Boileri Hooldus Tallinna Piirkonnas | Boileriabi",
+    title: "Boileri Hooldus Tallinna Piirkonnas",
     description: "Professionaalne boileri hooldus kogu Tallinna piirkonnas. Ennetage rikkeid ja säästke raha!",
     type: "website",
     locale: "et_EE",
