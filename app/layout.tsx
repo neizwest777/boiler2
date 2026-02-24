@@ -136,14 +136,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Script id="wa-conversion" strategy="lazyOnload">
           {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-17959368156/ACk8CLSNm_wbENzr2PNC',
+                'value': 1.0,
+                'currency': 'EUR',
+                'event_callback': callback
+              });
+              return false;
+            }
             document.addEventListener('click', function(e) {
               var el = e.target.closest('a[href*="wa.me"]');
               if (el && typeof gtag === 'function') {
-                gtag('event', 'conversion', {
-                  'send_to': 'AW-17959368156/ACk8CLSNm_wbENzr2PNC',
-                  'value': 1.0,
-                  'currency': 'EUR'
-                });
+                e.preventDefault();
+                gtag_report_conversion(el.href);
               }
             });
           `}
