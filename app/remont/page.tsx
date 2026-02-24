@@ -1,5 +1,6 @@
 import { Wrench, AlertTriangle, Flame, GaugeCircle, PhoneCall, Clock, Shield, CheckCircle, Zap } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -78,6 +79,18 @@ export default function Remont() {
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-gray-900">
             Boileri Remont Tallinnas | Kiire Hädaabi 24/7
           </h1>
+
+          {/* Hero Image */}
+          <div className="mt-8 rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/static/images/generated/hero-remont.webp"
+              alt="Boileri remont Tallinnas - professionaalne torumees parandab boilerit"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
 
           <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
             <strong>Professionaalne boileri remont Tallinnas ja Harjumaal</strong> - 

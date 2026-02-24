@@ -1,5 +1,6 @@
 import { ShieldCheck, CheckCircle, BadgeCheck, Wrench, Clock, PhoneCall, AlertTriangle, FileText } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -70,6 +71,18 @@ export default function Garantii() {
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center text-gray-900">
             Boileri Töögarantii | 2 Aastat Paigaldustele
           </h1>
+
+          {/* Hero Image */}
+          <div className="mt-8 mb-8 rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto">
+            <Image
+              src="/static/images/generated/hero-garantii.webp"
+              alt="Boileri töögarantii - kvaliteetne teenus garantiiga"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
 
           <p className="mt-6 md:text-xl text-gray-800 leading-relaxed text-center max-w-3xl mx-auto">
             <strong>Boileriabi.ee pakub kõigile klientidele ametlikku töögarantiid</strong> - 

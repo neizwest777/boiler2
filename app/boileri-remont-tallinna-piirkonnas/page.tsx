@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -30,6 +31,18 @@ export default function BoileriRemontTallinnaPiirkonnas() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Boileri <span className="text-red-600">Remont Tallinnas</span> - Kiire 24/7
           </h1>
+          
+          {/* Hero Image */}
+          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+            <Image
+              src="/static/images/generated/hero-remont.webp"
+              alt="Boileri remont Tallinna piirkonnas - kiire 24/7 hädaabi"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
           
           <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
             <strong>Boiler katki?</strong> Pakume kiiret ja usaldusväärset boileri remonti kogu <strong>Tallinna piirkonnas</strong>. 

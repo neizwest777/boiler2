@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -30,6 +31,18 @@ export default function BoileriPaigaldusTallinnaPiirkonnas() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Boileri <span className="text-blue-600">Paigaldus Tallinnas</span> - Odavalt & Kiirelt
           </h1>
+          
+          {/* Hero Image */}
+          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+            <Image
+              src="/static/images/generated/hero-paigaldus.webp"
+              alt="Boileri paigaldus Tallinna piirkonnas - kiire ja soodne teenus"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
           
           <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
             Professionaalne <strong>boileri paigaldus kogu Tallinna piirkonnas</strong> odava hinnaga. 

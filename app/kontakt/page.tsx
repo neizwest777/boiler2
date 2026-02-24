@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, Mail, MapPin, Clock, ShieldCheck, Star, Wrench } from "lucide-react";
 import type { Metadata } from "next";
@@ -77,6 +78,19 @@ export default function Page() {
             <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-gray-900 mb-4">
               Kontakt
             </h1>
+
+            {/* Hero Image */}
+            <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+              <Image
+                src="/static/images/generated/hero-kontakt.webp"
+                alt="Võtke meiega ühendust - Boileriabi professionaalne teenindus"
+                width={800}
+                height={533}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+
             <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
               Vajad kiiret ja professionaalset boileri abi? Oleme sinuga ühenduses mõne minuti jooksul!
             </p>

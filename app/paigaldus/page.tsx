@@ -10,6 +10,7 @@ import {
   MapPin,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const PHONE_E164 = "+37253684587";
@@ -219,6 +220,18 @@ export default function Paigaldus() {
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-gray-900">
             Boileri Paigaldus Tallinnas | Professionaalne Teenus
           </h1>
+
+          {/* Hero Image */}
+          <div className="mt-8 rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/static/images/generated/hero-paigaldus.webp"
+              alt="Professionaalne boileri paigaldus Tallinnas - kogenud torumees paigaldab boilerit"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
 
           <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
             <strong>Professionaalne boileri paigaldus Tallinnas ja Harjumaal</strong> – Boileriabi.ee

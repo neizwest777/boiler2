@@ -1,5 +1,6 @@
 import { PhoneCall, AlertTriangle, Flame, Droplets, Clock, Shield, Zap, MapPin, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -90,6 +91,18 @@ export default function HadaabiPage() {
 
       <div className="w-full flex flex-col items-center my-12">
         <section className="w-full p-6 container-narrow">
+
+          {/* Hero Image */}
+          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/static/images/generated/hero-hadaabi.webp"
+              alt="Boileri hädaabi 24/7 Tallinnas - kiire avariiteenus"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
 
           {/* ✅ EMERGENCY ALERT BANNER */}
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-8">

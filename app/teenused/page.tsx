@@ -3,6 +3,21 @@ import {
   LandingProductFeature
 } from '@/components/landing';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Boileri Teenused Tallinnas - Paigaldus, Remont, Hooldus",
+  description: "Kõik boileri teenused ühest kohast: paigaldus, remont, hooldus, hädaabi 24/7. Professionaalsed torumehed Tallinnas ja Harjumaal. Tasuta hindamine!",
+  keywords: ["boileri teenused", "boileri teenused tallinnas", "torumees tallinn", "boileri paigaldus", "boileri remont", "boileri hooldus"],
+  alternates: { canonical: "https://www.boileriabi.ee/teenused" },
+  openGraph: {
+    title: "Boileri Teenused Tallinnas - Paigaldus, Remont, Hooldus",
+    description: "Kõik boileri teenused ühest kohast: paigaldus, remont, hooldus, hädaabi 24/7.",
+    url: "https://www.boileriabi.ee/teenused",
+    locale: "et_EE",
+    type: "website",
+  },
+};
 
 export default function TeenusedPage() {
   const services = [

@@ -1,10 +1,11 @@
 import { Wrench, Droplets, AlertTriangle, CheckCircle, PhoneCall, Shield, Clock, Euro, Info } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Boileri Hinnad",
-  description: "Boileri paigalduse, remondi ja hoolduse hinnad 2024. Läbipaistvad hinnad: paigaldus 120-250€, hooldus 80-150€, remont 50-200€. Tasuta hindamine!",
+  description: "Boileri paigalduse, remondi ja hoolduse hinnad 2025. Läbipaistvad hinnad: paigaldus 120-250€, hooldus 80-150€, remont 50-200€. Tasuta hindamine!",
   keywords: [
     "boileri hinnad",
     "boileri paigalduse hind",
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Boileri Hinnad",
-    description: "Boileri paigalduse, remondi ja hoolduse hinnad 2024. Läbipaistvad hinnad koos töögarantiiga.",
+    description: "Boileri paigalduse, remondi ja hoolduse hinnad 2025. Läbipaistvad hinnad koos töögarantiiga.",
     url: "https://boileriabi.ee/hinnad",
     siteName: "Boileriabi.ee",
     images: [
       {
-        url: "https://boileriabi.ee/api/og?title=Boileri%20Hinnad&description=L%C3%A4bipaistvad%20hinnad%202024",
+        url: "https://boileriabi.ee/api/og?title=Boileri%20Hinnad&description=L%C3%A4bipaistvad%20hinnad%202025",
         width: 1200,
         height: 630,
         alt: "Boileriabi.ee - Boileri teenuste hinnad",
@@ -96,8 +97,20 @@ export default function Page() {
 
           {/* ✅ OPTIMIZED HERO SECTION */}
           <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center mb-6 text-gray-900">
-            Boileri Teenuste Hinnad 2024
+            Boileri Teenuste Hinnad 2025
           </h1>
+
+          {/* Hero Image */}
+          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto">
+            <Image
+              src="/static/images/generated/hero-hinnad.webp"
+              alt="Boileri teenuste hinnad Tallinnas - läbipaistev hinnakiri"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
 
           <p className="md:text-xl text-gray-700 text-center max-w-3xl mx-auto mb-8">
             <strong>Läbipaistvad hinnad boileri paigaldusele, remondile ja hooldusele.</strong> Kõik tööd teostatakse professionaalselt, kiirelt ja töögarantiiga.

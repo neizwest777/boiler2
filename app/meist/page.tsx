@@ -74,7 +74,7 @@ export default function MeistPage() {
         <LandingAboutSection
           title="Meist - Boileriabi.ee"
           description="Boileriabi.ee on Tallinnas ja Harjumaal tegutsev ettevõte, mis on täielikult keskendunud boilerite hooldusele, remondile ning professionaalsele paigaldusele. Meie tugevuseks on pikaajaline kogemus, süsteemne lähenemine ja praktilised oskused, mis on välja arendatud aastate jooksul töötades erinevate tootjate ja mudelitega – alates väiksematest kodustest boileritest kuni suuremate mahutiteni kortermajades ja ärihoonetes."
-          imageSrc="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80" imageAlt="Boileriabi meeskond Tallinnas"
+          imageSrc="/static/images/generated/hero-meist.webp" imageAlt="Boileriabi meeskond Tallinnas - professionaalsed torumehed"
         />
       </div>
 

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -26,6 +27,19 @@ export default function BoileriHooldusTallinnaPiirkonnas() {
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Boileri <span className="text-green-600">Hooldus</span> Tallinnas
           </h1>
+
+          {/* Hero Image */}
+          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+            <Image
+              src="/static/images/generated/hero-hooldus.webp"
+              alt="Boileri hooldus Tallinna piirkonnas - ennetav hooldusteenus"
+              width={800}
+              height={533}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Professionaalne boileri hooldus, mis säästab teie aega ja raha. 
             Ennetav hooldus väldib kulukaid remonte ja pikendab boileri eluiga.
