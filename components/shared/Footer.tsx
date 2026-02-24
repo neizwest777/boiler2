@@ -35,7 +35,7 @@ export const Footer = ({ className }: { className?: string }) => {
             <div className="flex items-center gap-3 mb-4">
               <div className="relative">
                 <Image
-                  src="/static/images/logo.png"
+                  src="/static/images/logo.webp"
                   alt="BoileriABI logo"
                   width={48}
                   height={48}
