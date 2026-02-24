@@ -130,6 +130,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             function gtag(){ dataLayer.push(arguments); }
             gtag('js', new Date());
             gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
+            gtag('config', 'AW-17959368156');
           `}
         </Script>
 
