@@ -39,410 +39,178 @@ export const metadata: Metadata = {
 };
 
 export default function HadaabiPage() {
+  const EMERGENCIES = [
+    { title: 'Boiler lekib', desc: 'Vee lekke kiire kõrvaldamine ja tihendite vahetus', icon: '💧' },
+    { title: 'Ei kuumuta vett', desc: 'Küttekeha, termostaadi diagnostika ja remont', icon: '🔥' },
+    { title: 'Elektriline rike', desc: 'Kaitsmed, lühis, ohtlikud ühendused', icon: '⚡' },
+    { title: 'Ülekütumine', desc: 'Ohutusklapi ja termostaadi kiire kontroll', icon: '🌡️' },
+    { title: 'Kummalised helid', desc: 'Katlakivi, lahtised osad, pumba rike', icon: '🔊' },
+    { title: 'Põlemislõhn', desc: 'Elektriline rike — helistage kohe!', icon: '⚠️' },
+  ];
+  const AREAS = ['Kesklinn', 'Mustamäe', 'Lasnamäe', 'Õismäe', 'Nõmme', 'Pirita', 'Haabersti', 'Viimsi', 'Rae', 'Saue', 'Saku', 'Kogu Harjumaa'];
+  const FAQ = [
+    { q: 'Kui kiiresti saate kohale?', a: 'Tallinnas 1-2 tunni jooksul, Harjumaal kuni 3 tundi.' },
+    { q: 'Kas hädaabi teenus maksab rohkem?', a: 'Hädaabi väljasõidu tasu on sama. Remondi hind sõltub töö mahust.' },
+    { q: 'Kas töötate öösiti ja nädalavahetusel?', a: 'Jah, meie hädaabi teenus on saadaval 24/7, ka pühade ajal.' },
+    { q: 'Mida teha enne meistri tulekut?', a: 'Lülitage boiler voolust välja ja sulgege veekraan. Ärge proovige ise remontida.' },
+  ];
+
   return (
-    <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      {/* ✅ JSON-LD SCHEMA FOR EMERGENCY SERVICE */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Boileri Hädaabi 24/7 Tallinnas",
-            "description": "Kiireim boileri hädaabi Tallinnas ja Harjumaal. Reageerime 1-2 tunni jooksul lekete, rikete ja ohtlike olukordade korral.",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "Boileriabi.ee",
-              "telephone": "+37253684587",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tallinn",
-                "addressRegion": "Harjumaa",
-                "addressCountry": "EE"
-              }
-            },
-            "areaServed": ["Tallinn", "Harjumaa"],
-            "serviceType": "Boileri hädaabi ja kiire remont",
-            "hoursAvailable": "Mo-Su 00:00-23:59",
-            "offers": {
-              "@type": "Offer",
-              "description": "24/7 hädaabiteenus kohesel reageerimisel"
-            }
-          }),
-        }}
-      />
+    <div className="w-full min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "Service", "name": "Boileri Hädaabi 24/7 Tallinnas",
+        "provider": { "@type": "LocalBusiness", "name": "Boileriabi.ee", "telephone": "+37253684587",
+          "address": { "@type": "PostalAddress", "addressLocality": "Tallinn", "addressRegion": "Harjumaa", "addressCountry": "EE" } },
+        "areaServed": ["Tallinn", "Harjumaa"], "serviceType": "Boileri hädaabi", "hoursAvailable": "Mo-Su 00:00-23:59"
+      }) }} />
 
-      {/* ✅ URGENT HERO SECTION */}
-      <div className="w-full bg-red-600 text-white py-8">
-        <div className="container-narrow text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <AlertTriangle className="w-8 h-8 animate-pulse" />
-            <span className="text-xl font-bold">HÄDAABI - 24/7 - KIIREIM REAGEERIMINE</span>
-            <AlertTriangle className="w-8 h-8 animate-pulse" />
+      {/* HERO */}
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-red-600 via-red-700 to-red-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_60%)]"></div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+              <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+              Hädaabi 24/7 — helistage kohe
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1]">
+              Boileri Hädaabi<br/>
+              <span className="text-yellow-300">24/7 Tallinnas</span>
+            </h1>
+            <p className="text-lg text-red-100 mb-8 leading-relaxed max-w-lg">
+              Boiler lekib, ei kuumuta või on ohtlik rike? Meie meister on kohal 1–2 tunni jooksul. Ööpäevaringne teenus kogu Tallinnas ja Harjumaal.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <a href="tel:+37253684587" className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold py-5 px-10 rounded-xl text-xl shadow-lg shadow-yellow-400/30 transition-all">
+                <PhoneCall className="w-6 h-6" /> +372 5368 4587
+              </a>
+              <a href="https://wa.me/37253684587" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-semibold py-5 px-8 rounded-xl text-lg border border-white/30 transition-all">
+                💬 WhatsApp
+              </a>
+            </div>
+            <div className="flex flex-wrap gap-4 text-sm text-red-200">
+              <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> 1–2h kohaletulek</div>
+              <div className="flex items-center gap-2"><Shield className="w-4 h-4" /> Garantii töödele</div>
+              <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Kogu Tallinn</div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            BOILERI HÄDAABI 24/7 TALLINNAS
-          </h1>
-          <p className="text-xl md:text-2xl mb-6 opacity-90">
-            Kiireim reageerimine - <strong>1-2 tunni jooksul Tallinnas</strong>
-          </p>
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+              <Image src="/static/images/generated/hero-hadaabi.webp" alt="Boileri hädaabi 24/7 Tallinnas" width={800} height={800} className="w-full h-auto object-cover" priority />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
-
-          {/* Hero Image */}
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/static/images/generated/hero-hadaabi.webp"
-              alt="Boileri hädaabi 24/7 Tallinnas - kiire avariiteenus"
-              width={800}
-              height={533}
-              className="w-full h-auto object-cover"
-              priority
-            />
+      <div className="max-w-5xl mx-auto px-6 py-20 space-y-20">
+        {/* EMERGENCIES */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 flex items-center gap-3"><AlertTriangle className="w-7 h-7 text-red-500" /> Hädaolukorrad</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            {EMERGENCIES.map(e => (
+              <div key={e.title} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-2xl mb-3">{e.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-1">{e.title}</h3>
+                <p className="text-sm text-gray-500">{e.desc}</p>
+              </div>
+            ))}
           </div>
+        </section>
 
-          {/* ✅ EMERGENCY ALERT BANNER */}
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <AlertTriangle className="h-6 w-6 text-red-500" />
+        {/* HOW IT WORKS */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Kuidas Hädaabi Toimib</h2>
+          <div className="grid md:grid-cols-4 gap-4">
+            {[
+              { step: '1', title: 'Helistage', desc: 'Kirjeldage probleemi' },
+              { step: '2', title: 'Diagnostika', desc: 'Hindame olukorda telefoni teel' },
+              { step: '3', title: 'Kohaletulek', desc: '1–2 tunni jooksul Tallinnas' },
+              { step: '4', title: 'Remont', desc: 'Kiire parandus ja garantii' },
+            ].map(s => (
+              <div key={s.step} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm text-center">
+                <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center mx-auto mb-3 text-lg font-bold text-red-600">{s.step}</div>
+                <h3 className="font-bold text-gray-900 mb-1">{s.title}</h3>
+                <p className="text-sm text-gray-500">{s.desc}</p>
               </div>
-              <div className="ml-3">
-                <p className="text-red-800 font-semibold">
-                  HÄDAOLUKORD? ÄRA OOTA - HELISTA KOHE!
-                </p>
-                <p className="text-red-700 text-sm mt-1">
-                  Lekiv boiler võib põhjustada suuri kahjustusi. Elektrilised rikked on ohtlikud.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
+        </section>
 
-          <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
-            <strong>BOILER LEEKIB, EI KUMUTA VETT VÕI TEKITAB OHTLIKKU OLUKORDA?</strong> 
-            Meie <strong>24/7 hädaabiteenus</strong> on mõeldud just sellisteks kiireloomulisteks juhtumiteks. 
-            Reageerime <strong>1-2 tunni jooksul Tallinnas</strong> ja kõrvaldame ohu ning parandame rikke.
-          </p>
-
-          {/* ✅ URGENT CTA BLOCK */}
-          <div className="mt-10 p-6 bg-red-50 border-2 border-red-300 rounded-xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="text-red-600 w-10 h-10 animate-pulse" />
-              <div>
-                <p className="text-xl font-bold text-red-900">
-                  HÄDAABI - HELISTA KOHE!
-                </p>
-                <p className="text-red-700">
-                  Kiireim reageerimine Tallinnas - 1-2 tunni jooksul kohal
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="tel:+37253684587"
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg shadow-lg transition text-xl font-bold flex items-center gap-3 text-center justify-center animate-bounce"
-              >
-                <PhoneCall className="w-6 h-6" />
-                HÄDAABI: +372 5368 4587
-              </a>
+        {/* WHAT TO DO */}
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Mida Teha Enne Meistri Tulekut</h2>
+          <div className="bg-yellow-50 p-6 rounded-2xl border border-yellow-100">
+            <div className="grid md:grid-cols-2 gap-3">
+              {['Lülitage boiler voolust välja', 'Sulgege veekraan', 'Koguge lekkinud vesi ämbritesse', 'Ärge proovige ise remontida', 'Tuulutage ruum (põlemislõhna korral)', 'Helistage meile kohe'].map(item => (
+                <div key={item} className="flex items-center gap-2 text-yellow-900"><CheckCircle className="w-4 h-4 text-yellow-600 flex-shrink-0" /> {item}</div>
+              ))}
             </div>
           </div>
+        </section>
 
-          {/* ✅ EMERGENCY FEATURES GRID */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-red-600" />
-                <span className="font-semibold text-red-800">Kiire reageerimine</span>
-              </div>
-              <p className="text-sm text-red-700">1-2h Tallinnas, 24/7</p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-              <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-orange-600" />
-                <span className="font-semibold text-orange-800">Ohu kõrvaldamine</span>
-              </div>
-              <p className="text-sm text-orange-700">Lekked, lühised, ülekuumenemine</p>
-            </div>
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-5 h-5 text-blue-600" />
-                <span className="font-semibold text-blue-800">Kogenud meeskond</span>
-              </div>
-              <p className="text-sm text-blue-700">430+ hädaabikõnet tehtud</p>
-            </div>
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-5 h-5 text-green-600" />
-                <span className="font-semibold text-green-800">Kogu Harjumaa</span>
-              </div>
-              <p className="text-sm text-green-700">Tallinn ja ümbrus</p>
-            </div>
+        {/* AREA */}
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Teeninduspiirkond</h2>
+          <p className="text-lg text-gray-600 mb-6">Hädaabi teenus on saadaval 24/7 kogu Tallinnas ja Harjumaal.</p>
+          <div className="flex flex-wrap gap-2">
+            {AREAS.map(a => <span key={a} className="bg-slate-100 px-4 py-2 rounded-xl text-sm font-medium text-gray-700">{a}</span>)}
           </div>
+        </section>
 
-          {/* ✅ ENHANCED MAIN CONTENT */}
-          <div className="mt-12 space-y-16 text-lg text-gray-800 leading-relaxed">
-
-            {/* 1. URGENT SITUATIONS - OPTIMIZED */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <Droplets className="w-7 h-7 text-red-500" />
-                HÄDAOLUKORRAD - HELISTA KOHE!
-              </h2>
-              
-              <div className="bg-red-50 p-6 rounded-lg border border-red-200">
-                <h3 className="text-xl font-semibold text-red-800 mb-3">Ohtlikud olukorrad - VAJATE KOHET ABi:</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Boiler lekib tugevalt</p>
-                        <p className="text-red-700 text-sm">Vesi tilgub pidevalt, voolab laiali</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt=2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Elektrilised probleemid</p>
-                        <p className="text-red-700 text-sm">Lühis, sädemed, põlemislõhn</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Ülekuumenemine</p>
-                        <p className="text-red-700 text-sm">Boiler on liiga kuum, auru tekkimine</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Tugev müra või põrkamine</p>
-                        <p className="text-red-700 text-sm">Kõva praksumine, pomina</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Gaasi boileri rike</p>
-                        <p className="text-red-700 text-sm">Gaasilõhn, kollane leek</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="font-semibold text-red-900">Vee kvaliteedi probleem</p>
-                        <p className="text-red-700 text-sm">Must vesi, tugev roostelõhn</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* 2. FAST RESPONSE - OPTIMIZED */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <Flame className="w-7 h-7 text-orange-500" />
-                KIIREIM REAGEERIMINE TALLINNAS
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">Meie reageerimisaja lubadus:</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
-                      <Clock className="w-6 h-6 text-green-600" />
-                      <div>
-                        <p className="font-semibold text-green-800">Tallinn - kiireim</p>
-                        <p className="text-green-700">1-2 tunni jooksul kohal</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <Clock className="w-6 h-6 text-blue-600" />
-                      <div>
-                        <p className="font-semibold text-blue-800">Harjumaa - kiire</p>
-                        <p className="text-blue-700">2-4 tunni jooksul kohal</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <Clock className="w-6 h-6 text-orange-600" />
-                      <div>
-                        <p className="font-semibold text-orange-800">Ööaeg ja nädalavahetused</p>
-                        <p className="text-orange-700">24/7 - alati saadaval</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Mida teha enne meie saabumist?</h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Lülitage boiler välja (elekter/gaas)</li>
-                    <li>Sulgege boileri toitevesi (kraan boileri lähedal)</li>
-                    <li>Pühkige lekkinud vesi kuivaks</li>
-                    <li>Hoiduge elektrilistest osadest eemal</li>
-                    <li>Avage aknad ventileerimiseks</li>
-                    <li>Valmistage tee meie meeskonnale</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {/* 3. EMERGENCY SERVICES - OPTIMIZED */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <AlertTriangle className="w-7 h-7 text-yellow-500" />
-                HÄDAABITEENUSED - MIDA PAKUME
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-                  <h3 className="text-xl font-semibold text-yellow-800 mb-3">Kiire ohu kõrvaldamine:</h3>
-                  <ul className="list-disc list-inside space-y-2 text-yellow-700">
-                    <li>Lekete ajutine peatamine</li>
-                    <li>Elektriliste rikete isoleerimine</li>
-                    <li>Gaasilekete kontroll ja kõrvaldamine</li>
-                    <li>Ülekuumenemise peatamine</li>
-                    <li>Vee äravoolu korraldamine</li>
-                    <li>Ohutu seisukorra tagamine</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                  <h3 className="text-xl font-semibold text-blue-800 mb-3">Hädaabi remont:</h3>
-                  <ul className="list-disc list-inside space-y-2 text-blue-700">
-                    <li>Tihendite ja liitmike vahetus</li>
-                    <li>Küttespiraali kiire remont/vahetus</li>
-                    <li>Termostaadi vahetus</li>
-                    <li>Ohutusklapi remont</li>
-                    <li>Elektriühenduste parandus</li>
-                    <li>Ajutine lahendus kuni põhiremontini</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {/* 4. COVERAGE AREA - OPTIMIZED */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">HÄDAABI TEOINDUSPIIRKOND</h2>
-              <p className="mb-4">
-                Pakume <strong>24/7 hädaabiteenust</strong> kogu <strong>Tallinnas ja Harjumaal</strong>. 
-                Kiireim reageerimine Tallinna piirides, Harjumaal vastavalt kaugusele.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-                <div className="bg-red-100 p-2 rounded text-center font-semibold">Tallinn</div>
-                <div className="bg-red-100 p-2 rounded text-center font-semibold">Viimsi</div>
-                <div className="bg-red-100 p-2 rounded text-center font-semibold">Rae</div>
-                <div className="bg-orange-100 p-2 rounded text-center">Saue</div>
-                <div className="bg-orange-100 p-2 rounded text-center">Saku</div>
-                <div className="bg-orange-100 p-2 rounded text-center">Maardu</div>
-                <div className="bg-yellow-100 p-2 rounded text-center">Keila</div>
-                <div className="bg-yellow-100 p-2 rounded text-center">Laagri</div>
-                <div className="bg-yellow-100 p-2 rounded text-center">Kogu Harjumaa</div>
-              </div>
-            </section>
-
-            {/* 5. EMERGENCY FAQ */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">HÄDAABI KÜSIMUSED JA VASTUSED</h2>
-
-              <div className="space-y-6">
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Kas tulete öösel või nädalavahetusel?</h3>
-                  <p className="text-gray-700">JAH! Hädaabiteenus on saadaval 24 tundi päevas, 7 päeva nädalas, sealhulgas öösel ja pühadel.</p>
-                </div>
-
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Kui kiiresti saate kohale tulla?</h3>
-                  <p className="text-gray-700">Tallinnas 1-2 tunni jooksul, Harjumaal 2-4 tunni jooksul. Tõsiste ohtlike olukordade korral proovime tulla veel kiiremini.</p>
-                </div>
-
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Kas hädaabiteenus on kallim?</h3>
-                  <p className="text-gray-700">Jah, hädaabiteenusel on erinev tariif tavateenusest, kuid meie hinnad on ausad ja läbipaistvad. Hind sõltub olukorra tõsidusest.</p>
-                </div>
-
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Mis juhtub, kui boilerit ei saa remontida?</h3>
-                  <p className="text-gray-700">Kõrvaldame ohu ja anname ausa hinnangu. Kui remont ei ole võimalik, pakume uue boileri kiiret paigaldust.</p>
-                </div>
-
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Kas saate gaasiboileritega tegeleda?</h3>
-                  <p className="text-gray-700">Jah, meil on kogenud meeskond, kes tegeleb nii elektriliste kui ka gaasiboilerite hädaabiremondiga.</p>
-                </div>
-
-                <div className="bg-white border border-red-200 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold text-red-900 mb-3">Mida teha, kui boiler lekib ja ma ei tea, kust kraani kinni panna?</h3>
-                  <p className="text-gray-700">HELISTA KOHE! Juhime teid telefoni teel. Tavaliselt on boileri lähedal eraldi sulgeventiil.</p>
-                </div>
-              </div>
-            </section>
-
+        {/* FAQ */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Korduma Kippuvad Küsimused</h2>
+          <div className="space-y-3">
+            {FAQ.map((item, i) => (
+              <details key={i} className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-red-600 transition-colors">
+                  {item.q}
+                  <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl ml-4 flex-shrink-0">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-gray-600">{item.a}</div>
+              </details>
+            ))}
           </div>
-
-          {/* ✅ FINAL EMERGENCY CTA */}
-          <section className="mt-16 bg-gradient-to-r from-red-700 to-red-900 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              HÄDAOLUKORD? ÄRA OOTA - HELISTA KOHE!
-            </h2>
-            <p className="text-xl mb-6 opacity-90">
-              24/7 hädaabi - kiireim reageerimine Tallinnas
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="tel:+37253684587"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-2xl font-bold flex items-center gap-3 transition-colors shadow-lg animate-pulse"
-              >
-                <PhoneCall className="w-6 h-6" />
-                HÄDAABI: +372 5368 4587
-              </a>
-            </div>
-            <p className="mt-4 text-red-200 text-sm">
-              ⚡ Kiireim reageerimine - 1-2 tunni jooksul Tallinnas • 24/7 • Ööd ja nädalavahetused
-            </p>
-          </section>
-
-          {/* ✅ RELATED SERVICES */}
-          <section className="mt-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">Teised Meie Teenused</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/remont" className="bg-orange-50 p-6 rounded-lg border border-orange-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-3">
-                  <Flame className="w-6 h-6 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-orange-800">Boileri Remont</h3>
-                </div>
-                <p className="text-orange-700">Kiire ja kvaliteetne boileri remont</p>
-              </Link>
-              
-              <Link href="/hooldus" className="bg-green-50 p-6 rounded-lg border border-green-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                  <h3 className="text-xl font-semibold text-green-800">Boileri Hooldus</h3>
-                </div>
-                <p className="text-green-700">Ennetav hooldus rikete vältimiseks</p>
-              </Link>
-              
-              <Link href="/paigaldus" className="bg-blue-50 p-6 rounded-lg border border-blue-200 hover:shadow-lg transition-shadow">
-                <div className="flex items-center gap-3 mb-3">
-                  <Zap className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-xl font-semibold text-blue-800">Boileri Paigaldus</h3>
-                </div>
-                <p className="text-blue-700">Professionaalne boileri paigaldus</p>
-              </Link>
-            </div>
-          </section>
-
         </section>
       </div>
+
+      {/* CTA */}
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-red-600 to-red-800 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Hädaolukord?</h2>
+              <p className="text-lg text-red-100 mb-8">Ärge oodake — helistage kohe! Kohal 1–2 tunni jooksul.</p>
+              <a href="tel:+37253684587" className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold py-5 px-10 rounded-xl text-xl shadow-lg transition-all">
+                <PhoneCall className="w-6 h-6" /> +372 5368 4587
+              </a>
+              <p className="mt-6 text-red-200 text-sm">✓ 24/7 · ✓ 1–2h kohaletulek · ✓ Garantii</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RELATED */}
+      <section className="w-full pb-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Seotud Teenused</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link href="/remont" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3"><div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><Flame className="w-5 h-5 text-orange-600" /></div><h3 className="font-bold text-gray-900 group-hover:text-orange-600 transition-colors">Remont</h3></div>
+              <p className="text-sm text-gray-500">Kiire ja kvaliteetne remont</p>
+            </Link>
+            <Link href="/hooldus" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3"><div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><Droplets className="w-5 h-5 text-green-600" /></div><h3 className="font-bold text-gray-900 group-hover:text-green-600 transition-colors">Hooldus</h3></div>
+              <p className="text-sm text-gray-500">Ennetav hooldus katlakivi vastu</p>
+            </Link>
+            <Link href="/paigaldus" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3"><div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center"><Zap className="w-5 h-5 text-blue-600" /></div><h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Paigaldus</h3></div>
+              <p className="text-sm text-gray-500">Uue boileri paigaldus</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
