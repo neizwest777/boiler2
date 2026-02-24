@@ -39,7 +39,7 @@ export const Header = ({ className }: { className?: string }) => {
       logoComponent={
         <div className="flex items-center text-primary-900 dark:text-primary-100 gap-3">
           <Image
-            src="/static/images/logo.png"
+            src="/static/images/logo.webp"
             alt="Boileriabi - Boileri paigaldus ja remont Tallinnas"
             width={32}
             height={32}
