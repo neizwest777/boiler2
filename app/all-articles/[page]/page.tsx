@@ -3,8 +3,8 @@ import { allBlogs } from 'contentlayer/generated';
 import { POSTS_PER_PAGE } from '@/app/all-articles/settings';
 
 import ListLayout from '@/layouts/ListLayoutWithTags';
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
+
+
 import Link from 'next/link';
 import { genPageMetadata } from 'app/seo';
 
@@ -104,7 +104,7 @@ export default async function BlogPaginationPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
+      
 
       {/* HERO / TITLE BLOCK */}
       <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
@@ -184,7 +184,7 @@ export default async function BlogPaginationPage({
         </div>
       </div>
 
-      <Footer />
+      
     </div>
   );
 }

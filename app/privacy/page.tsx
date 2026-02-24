@@ -31,23 +31,21 @@ const privacyPolicyJsonLd = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="flex flex-col w-full items-center fancy-overlay">
-      {/* JSON-LD структура */}
+    <div className="w-full min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyPolicyJsonLd) }}
       />
 
-      <div className="w-full flex flex-col items-center my-16 md:my-24">
-        <div className="mx-auto max-w-4xl px-6 xl:px-8">
-          {/* Заголовок с SEO-оптимизацией */}
-          <div className="mx-auto max-w-3xl sm:text-center mb-12">
-            <h1 className="text-4xl font-bold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-5xl fancy-heading">
-              Privaatsuspoliitika
-            </h1>
-            <p className="text-lg mt-4 text-gray-600">Viimati uuendatud: {policyConfig.lastUpdated}</p>
-            
-            {/* SEO-блок с ключевыми словами */}
+      <section className="w-full pt-24 pb-12 bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Privaatsuspoliitika</h1>
+          <p className="text-slate-300">Viimati uuendatud: {policyConfig.lastUpdated}</p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-emerald-600">
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
                 <strong>Boileriabi.ee</strong> - boileri paigaldus, remont ja hooldus Tallinnas. 
@@ -263,9 +261,9 @@ export default function PrivacyPolicyPage() {
             </section>
 
             {/* SEO-блок для поисковиков */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mt-8 text-center">
-              <h3 className="text-xl font-bold mb-3">Boileriabi.ee - Usaldusväärsed Boileri Teenused</h3>
-              <p className="text-gray-700">
+            <div className="bg-emerald-50 rounded-2xl p-6 mt-8 text-center border border-emerald-100">
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Boileriabi.ee - Usaldusväärsed Boileri Teenused</h3>
+              <p className="text-gray-600">
                 Pakume boileri paigaldust, remonti ja hooldust Tallinnas ja Harjumaal. 
                 24/7 hädaabi, töögarantii ja professionaalsed torumehed.
               </p>

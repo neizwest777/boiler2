@@ -17,8 +17,8 @@ import {
 import { allBlogs, allAuthors } from 'contentlayer/generated'
 import type { Authors, Blog } from 'contentlayer/generated'
 
-import Header from '@/components/shared/Header'
-import Footer from '@/components/shared/Footer'
+
+
 
 import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
@@ -129,7 +129,7 @@ export default async function Page({
   if (postIndex === -1) {
     return (
       <div className="w-full flex flex-col items-center fancy-overlay">
-        <Header />
+        
 
         <div className="mt-24 text-center min-h-[40vh]">
           <PageTitle>
@@ -144,7 +144,7 @@ export default async function Page({
           </div>
         </div>
 
-        <Footer />
+        
       </div>
     )
   }
@@ -165,7 +165,7 @@ export default async function Page({
 
   return (
     <>
-      <Header />
+      
 
       <Layout
         content={mainContent}
@@ -180,7 +180,7 @@ export default async function Page({
         />
       </Layout>
 
-      <Footer />
+      
     </>
   )
 }

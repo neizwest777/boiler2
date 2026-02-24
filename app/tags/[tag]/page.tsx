@@ -8,8 +8,8 @@ import tagData from 'app/tag-data.json';
 
 import { genPageMetadata } from 'app/seo';
 import ListLayout from '@/layouts/ListLayoutWithTags';
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
+
+
 import Link from '@/components/shared/Link';
 
 // Тип поста для JSON-LD
@@ -138,7 +138,7 @@ export default async function TagPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
+      
 
       {/* HERO */}
       <div className="w-full bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
@@ -231,7 +231,7 @@ export default async function TagPage({
         </div>
       </div>
 
-      <Footer />
+      
     </div>
   );
 }
