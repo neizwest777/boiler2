@@ -134,16 +134,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        <Script id="wa-conversion" strategy="lazyOnload">
+        <Script id="conversions" strategy="lazyOnload">
           {`
-            function gtag_report_conversion(url) {
+            function gtag_report_conversion(url, sendTo) {
               var callback = function () {
                 if (typeof(url) != 'undefined') {
                   window.location = url;
                 }
               };
               gtag('event', 'conversion', {
-                'send_to': 'AW-17959368156/ACk8CLSNm_wbENzr2PNC',
+                'send_to': sendTo,
                 'value': 1.0,
                 'currency': 'EUR',
                 'event_callback': callback
@@ -151,10 +151,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               return false;
             }
             document.addEventListener('click', function(e) {
-              var el = e.target.closest('a[href*="wa.me"]');
+              var el;
+              // WhatsApp
+              el = e.target.closest('a[href*="wa.me"]');
               if (el && typeof gtag === 'function') {
                 e.preventDefault();
-                gtag_report_conversion(el.href);
+                gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC');
+                return;
+              }
+              // Phone
+              el = e.target.closest('a[href^="tel:"]');
+              if (el && typeof gtag === 'function') {
+                e.preventDefault();
+                gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC');
+                return;
+              }
+              // Viber
+              el = e.target.closest('a[href*="viber"]');
+              if (el && typeof gtag === 'function') {
+                e.preventDefault();
+                gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC');
+                return;
+              }
+            });
+            // Form submit conversion
+            document.addEventListener('submit', function(e) {
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-17959368156/we1OCNqynPwbENzr2PNC',
+                  'value': 1.0,
+                  'currency': 'EUR'
+                });
               }
             });
           `}
