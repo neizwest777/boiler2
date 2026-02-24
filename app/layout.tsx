@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.boileriabi.ee"),
   title: {
     default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
+    template: `%s | Boileriabi`,
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,

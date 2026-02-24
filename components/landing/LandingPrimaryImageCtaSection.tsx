@@ -14,7 +14,7 @@ export function LandingPrimaryImageCtaSection({
 
         {/* LEFT SIDE — TEXT */}
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold">{title}</h1>
+          <h2 className="text-4xl font-bold">{title}</h2>
           <p className="text-lg text-gray-700">{description}</p>
 
           {/* CTA buttons */}
