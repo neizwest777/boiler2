@@ -45,14 +45,13 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-emerald-600">
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+        <div className="space-y-8">
+            <div className="p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
                 <strong>Boileriabi.ee</strong> - boileri paigaldus, remont ja hooldus Tallinnas. 
                 Meie privaatsuspoliitika kirjeldab, kuidas kogume ja käsitleme Teie isikuandmeid.
               </p>
             </div>
-          </div>
 
           {/* Основное содержание */}
           <div className="space-y-8">
