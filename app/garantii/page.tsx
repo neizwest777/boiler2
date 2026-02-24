@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     locale: "et_EE",
     type: "website",
   },
+};
 
 export default function Garantii() {
   const FAQ = [
