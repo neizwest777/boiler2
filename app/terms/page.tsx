@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
+
 import { genPageMetadata } from 'app/seo';
 
 export const metadata = genPageMetadata({
@@ -36,7 +35,7 @@ const termsJsonLd = {
 export default function TermsPage() {
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">
-      <Header />
+      
 
       {/* JSON-LD структура */}
       <script
@@ -268,7 +267,7 @@ export default function TermsPage() {
         </div>
       </div>
 
-      <Footer />
+      
     </div>
   );
 }

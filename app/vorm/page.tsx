@@ -1,50 +1,37 @@
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
+import { MessageSquare } from "lucide-react";
 import { genPageMetadata } from 'app/seo';
 import Form from './Form';
 
 export const metadata = genPageMetadata({
-  title: 'Paringuvorm',
-  description:
-    'Vajad boileri paigaldust, remonti või hooldust Tallinnas? Täida päringuvorm ja saame 2 tunni jooksul ühendust. Tasuta konsultatsioon, täpne hindamine ja töögarantii!',
+  title: 'Päringuvorm',
+  description: 'Vajad boileri paigaldust, remonti või hooldust Tallinnas? Täida päringuvorm ja saame 2 tunni jooksul ühendust.',
   canonical: 'https://www.boileriabi.ee/vorm',
 });
 
-const formJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ContactPage',
-  name: 'Boileri teenuse päringuvorm',
-  description: 'Boileri paigalduse, remondi ja hoolduse päringuvorm',
-  url: 'https://www.boileriabi.ee/vorm',
-};
-
 export default function VormPage() {
   return (
-    <>
-      <Header className="mb-4" />
+    <div className="w-full min-h-screen bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "ContactPage",
+        "name": "Boileri teenuse päringuvorm", "url": "https://www.boileriabi.ee/vorm"
+      }) }} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(formJsonLd) }}
-      />
-
-      <div className="container-narrow py-16">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-4">
-            Boileri Teenuse Päring - Tasuta Konsultatsioon Tallinnas
+      <section className="w-full pt-24 pb-12 bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.1),transparent_50%)]"></div>
+        <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+            <MessageSquare className="w-4 h-4" /> Tasuta hindamine
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-[1.1]">
+            Boileri Teenuse<br/><span className="text-emerald-400">Päring</span>
           </h1>
-
-          <p className="text-xl text-center mb-6 text-gray-700">
-            Vajad boileri paigaldust, remonti või hooldust? Saada päring ja
-            saame <strong>2 tunni jooksul</strong> ühendust pakkumisega!
-          </p>
-
-          <Form />
-
+          <p className="text-lg text-slate-300">Saada päring ja saame <strong className="text-white">2 tunni jooksul</strong> ühendust pakkumisega!</p>
         </div>
-      </div>
+      </section>
 
-      <Footer className="mt-8" />
-    </>
+      <div className="max-w-2xl mx-auto px-6 py-16">
+        <Form />
+      </div>
+    </div>
   );
 }
