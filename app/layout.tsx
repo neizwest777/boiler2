@@ -134,6 +134,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
+        <Script id="wa-conversion" strategy="lazyOnload">
+          {`
+            document.addEventListener('click', function(e) {
+              var el = e.target.closest('a[href*="wa.me"]');
+              if (el && typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-17959368156/ACk8CLSNm_wbENzr2PNC',
+                  'value': 1.0,
+                  'currency': 'EUR'
+                });
+              }
+            });
+          `}
+        </Script>
+
         <ThemeProviders>
 
           <AnalyticsWrapper />
