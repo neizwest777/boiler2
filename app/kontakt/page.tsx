@@ -37,317 +37,119 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const AREAS = ['Kesklinn', 'Mustamäe', 'Lasnamäe', 'Õismäe', 'Nõmme', 'Pirita', 'Haabersti', 'Viimsi', 'Rae', 'Saue', 'Saku', 'Kogu Harjumaa'];
+
   return (
-    <>
-      {/* ✅ JSON-LD SCHEMA FOR CONTACTS */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Boileriabi.ee",
-            "description": "Professionaalne boileri paigaldus, remont ja hooldus Tallinnas ja Harjumaal",
-            "telephone": "+37253684587",
-            "email": "info@boileriabi.ee",
-            "url": "https://boileriabi.ee",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Tallinn",
-              "addressRegion": "Harjumaa",
-              "addressCountry": "EE"
-            },
-            "areaServed": ["Tallinn", "Harjumaa"],
-            "openingHours": "Mo-Su 00:00-23:59",
-            "serviceType": [
-              "Boileri paigaldus",
-              "Boileri remont", 
-              "Boileri hooldus",
-              "Hädaabi boiler"
-            ],
-            "priceRange": "€€"
-          }),
-        }}
-      />
+    <div className="w-full min-h-screen bg-white">
+      {/* JSON-LD */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Boileriabi.ee",
+        "telephone": "+37253684587", "email": "info@prism.ee", "url": "https://www.boileriabi.ee",
+        "address": { "@type": "PostalAddress", "addressLocality": "Tallinn", "addressRegion": "Harjumaa", "addressCountry": "EE" },
+        "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
+      }) }} />
 
-      <div className="w-full flex flex-col items-center py-12 px-4">
-        <div className="w-full max-w-6xl">
-
-          {/* ✅ HERO CONTACT SECTION */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-gray-900 mb-4">
-              Kontakt
-            </h1>
-
-            {/* Hero Image */}
-            <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
-              <Image
-                src="/static/images/generated/hero-kontakt.webp"
-                alt="Võtke meiega ühendust - Boileriabi professionaalne teenindus"
-                width={800}
-                height={533}
-                className="w-full h-auto object-cover"
-                priority
-              />
-            </div>
-
-            <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-              Vajad kiiret ja professionaalset boileri abi? Oleme sinuga ühenduses mõne minuti jooksul!
-            </p>
-
-            {/* ✅ URGENT CONTACT BADGES */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 bg-red-100 text-red-800 px-4 py-2 rounded-full">
-                <PhoneCall className="w-4 h-4" />
-                <span className="text-sm font-semibold">Hädaabi 24/7</span>
-              </div>
-              <div className="flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
-                <Clock className="w-4 h-4" />
-                <span className="text-sm font-semibold">Kiire reageerimine</span>
-              </div>
-              <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
-                <ShieldCheck className="w-4 h-4" />
-                <span className="text-sm font-semibold">Töögarantii</span>
-              </div>
-              <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm font-semibold">Kogu Harjumaa</span>
-              </div>
-            </div>
+      {/* HERO */}
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-slate-800 via-slate-900 to-gray-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.1),transparent_50%)]"></div>
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+            <PhoneCall className="w-4 h-4" /> Ööpäevaringne teenus
           </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
-
-            {/* ✅ CONTACT INFORMATION CARD */}
-            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-200">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Võta Ühendust</h2>
-              
-              <div className="space-y-6">
-                {/* PHONE */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-red-100 p-3 rounded-full">
-                    <PhoneCall className="w-6 h-6 text-red-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Telefon</h3>
-                    <a 
-                      href="tel:+37253684587" 
-                      className="text-xl font-bold text-red-600 hover:text-red-700 transition-colors"
-                    >
-                      +372 5368 4587
-                    </a>
-                    <p className="text-gray-600 text-sm mt-1">Hädaabi - 24/7 kättesaadav</p>
-                  </div>
-                </div>
-
-                {/* EMAIL */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">E-post</h3>
-                    <a 
-                      href="mailto:info@boileriabi.ee" 
-                      className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
-                    >
-                      info@boileriabi.ee
-                    </a>
-                    <p className="text-gray-600 text-sm mt-1">Vastame 24 tunni jooksul</p>
-                  </div>
-                </div>
-
-                {/* AREA */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-100 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Teeninduspiirkond</h3>
-                    <p className="text-lg font-bold text-gray-900">Tallinn ja Harjumaa</p>
-                    <p className="text-gray-600 text-sm mt-1">Tasuta sõit Tallinna piires</p>
-                  </div>
-                </div>
-
-                {/* WORKING HOURS */}
-                <div className="flex items-start gap-4">
-                  <div className="bg-orange-100 p-3 rounded-full">
-                    <Clock className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">Tööaeg</h3>
-                    <p className="text-lg font-bold text-gray-900">24/7 - iga päev</p>
-                    <p className="text-gray-600 text-sm mt-1">Hädaabi öösel ja nädalavahetustel</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* ✅ URGENT CTA */}
-              <div className="mt-8 p-6 bg-red-50 border border-red-200 rounded-xl">
-                <h3 className="text-xl font-bold text-red-900 mb-2">Hädaolukord?</h3>
-                <p className="text-red-700 mb-4">
-                  Kui boiler lekib või on ohtlik olukord - ära oota, helista kohe!
-                </p>
-                <a
-                  href="tel:+37253684587"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white text-center py-4 px-6 rounded-lg text-xl font-bold flex items-center justify-center gap-3 transition-colors shadow-lg"
-                >
-                  <PhoneCall className="w-6 h-6" />
-                  HÄDAABI: +372 5368 4587
-                </a>
-              </div>
-            </div>
-
-            {/* ✅ SERVICE AREAS CARD */}
-            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-200">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Teeninduspiirkonnad</h2>
-              
-              <div className="mb-6">
-                <p className="text-gray-700 mb-4">
-                  Pakume boileri teenuseid kogu <strong>Tallinnas ja Harjumaal</strong>. 
-                  Tasuta sõit Tallinna piires, Harjumaal sõidutasu kokkuleppel.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div className="bg-gray-100 p-3 rounded text-center font-semibold">🏙️ Tallinn</div>
-                  <div className="bg-gray-100 p-3 rounded text-center font-semibold">🌊 Viimsi</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🏡 Rae</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🔥 Harku</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🏞️ Saue</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🚰 Maardu</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🔧 Keila</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">⚡ Laagri</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">💧 Saku</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🏘️ Peetri</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🌳 Nõmme</div>
-                  <div className="bg-gray-100 p-3 rounded text-center">🌇 Kesklinn</div>
-                </div>
-              </div>
-
-              {/* ✅ SERVICE TYPES */}
-              <div className="border-t pt-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Meie Teenused</h3>
-                <div className="space-y-3">
-                  <Link href="/paigaldus" className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    <Wrench className="w-5 h-5 text-blue-600" />
-                    <span className="font-semibold text-blue-800">Boileri Paigaldus</span>
-                  </Link>
-                  <Link href="/remont" className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
-                    <Wrench className="w-5 h-5 text-orange-600" />
-                    <span className="font-semibold text-orange-800">Boileri Remont</span>
-                  </Link>
-                  <Link href="/hooldus" className="flex items-center gap-3 p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-                    <Wrench className="w-5 h-5 text-green-600" />
-                    <span className="font-semibold text-green-800">Boileri Hooldus</span>
-                  </Link>
-                  <Link href="/hadaabi" className="flex items-center gap-3 p-3 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
-                    <Wrench className="w-5 h-5 text-red-600" />
-                    <span className="font-semibold text-red-800">Hädaabi 24/7</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ✅ REVIEWS SECTION */}
-          <div className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-200 mb-16">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">Klientide Arvamused</h2>
-            <p className="text-gray-600 text-center mb-8">Üle 3000 rahuloleva kliendi kogemus</p>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">
-                  "Tuli kohale 30 minutiga hädaabikõne peale. Väga professionaalne ja kiire töö! Boiler parandatud ja kõik lekked kõrvaldatud."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-blue-600">JT</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-800">Jaan Tamm</div>
-                    <div className="text-sm text-gray-600">Tallinn, Lasnamäe</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">
-                  "Parandas boileri samal õhtul, kui helistasin. Aus hind ja super kvaliteet. Soovitan kõigile oma sõpradele!"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-green-600">KM</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-800">Kertu Mäger</div>
-                    <div className="text-sm text-gray-600">Viimsi</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">
-                  "Uue boileri paigaldus tehti kiirelt ja korralikult. Hind oli läbipaistev ja said kohe hinnapakkumise. Töögarantiiga rahulik."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-purple-600">AR</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-800">Andrus Raud</div>
-                    <div className="text-sm text-gray-600">Tallinn, Nõmme</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ✅ GUARANTEE SECTION */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Töögarantii Annab Kindluse
-            </h2>
-            <p className="text-xl mb-6 opacity-90">
-              Kõikidele meie tehtud töödele anname ametliku garanti - paigaldustele 2 aastat, remonditöödele 1 aasta
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="tel:+37253684587"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-colors shadow-lg"
-              >
-                <PhoneCall className="w-6 h-6" />
-                Kõne garantiiga: +372 5368 4587
-              </a>
-              <Link
-                href="/hinnad"
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-colors shadow-lg"
-              >
-                <ShieldCheck className="w-6 h-6" />
-                Vaata hinnapakkumist
-              </Link>
-            </div>
-            <p className="mt-4 text-blue-200 text-sm">
-              🛡️ 2 aastat paigaldustele • 1 aasta remonditöödele • 24/7 hädaabi
-            </p>
-          </div>
-
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1]">
+            Võtke Meiega<br/><span className="text-emerald-400">Ühendust</span>
+          </h1>
+          <p className="text-lg text-slate-300 max-w-xl mx-auto">
+            Vajad boileri abi? Helistage, kirjutage WhatsApp'is või saatke e-mail — vastame kiirelt!
+          </p>
         </div>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-6 py-20 space-y-20">
+        {/* CONTACT CARDS */}
+        <section className="grid md:grid-cols-3 gap-5">
+          <a href="tel:+37253684587" className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center mx-auto mb-4"><PhoneCall className="w-6 h-6 text-emerald-600" /></div>
+            <h2 className="font-bold text-xl text-gray-900 mb-2">Telefon</h2>
+            <p className="text-2xl font-bold text-emerald-600 group-hover:text-emerald-500 transition-colors">+372 5368 4587</p>
+            <p className="text-sm text-gray-500 mt-2">24/7 kättesaadav</p>
+          </a>
+          <a href="https://wa.me/37253684587" target="_blank" rel="noopener noreferrer" className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4"><span className="text-2xl">💬</span></div>
+            <h2 className="font-bold text-xl text-gray-900 mb-2">WhatsApp</h2>
+            <p className="text-lg font-bold text-green-600 group-hover:text-green-500 transition-colors">Kirjutage meile</p>
+            <p className="text-sm text-gray-500 mt-2">Saatke pilt probleemist</p>
+          </a>
+          <a href="mailto:info@prism.ee" className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mx-auto mb-4"><Mail className="w-6 h-6 text-blue-600" /></div>
+            <h2 className="font-bold text-xl text-gray-900 mb-2">E-mail</h2>
+            <p className="text-lg font-bold text-blue-600 group-hover:text-blue-500 transition-colors">info@prism.ee</p>
+            <p className="text-sm text-gray-500 mt-2">Vastame 1 tunni jooksul</p>
+          </a>
+        </section>
+
+        {/* INFO */}
+        <section className="grid md:grid-cols-2 gap-6">
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2"><Clock className="w-5 h-5 text-slate-600" /> Tööaeg</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between"><span className="text-gray-600">Esmaspäev – Reede</span><span className="font-medium text-gray-900">08:00 – 20:00</span></div>
+              <div className="flex justify-between"><span className="text-gray-600">Laupäev – Pühapäev</span><span className="font-medium text-gray-900">10:00 – 18:00</span></div>
+              <div className="flex justify-between"><span className="text-gray-600">Hädaabi</span><span className="font-medium text-red-600">24/7</span></div>
+            </div>
+          </div>
+          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <h3 className="font-bold text-lg text-gray-900 mb-4 flex items-center gap-2"><MapPin className="w-5 h-5 text-slate-600" /> Asukoht</h3>
+            <p className="text-gray-600 mb-2">Tallinn, Harjumaa, Eesti</p>
+            <p className="text-sm text-gray-500 mb-4">NB! Tegemist on väljasõiduteenusega — meil puudub füüsiline esindus klientidele.</p>
+            <div className="flex items-center gap-2 text-emerald-600 font-medium"><ShieldCheck className="w-4 h-4" /> Prism Hooldus OÜ (reg. 16718539)</div>
+          </div>
+        </section>
+
+        {/* SERVICE AREA */}
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Teeninduspiirkond</h2>
+          <p className="text-lg text-gray-600 mb-6">Teenindame kogu Tallinnat ja Harjumaad.</p>
+          <div className="flex flex-wrap gap-2">
+            {AREAS.map(a => <span key={a} className="bg-slate-100 px-4 py-2 rounded-xl text-sm font-medium text-gray-700">{a}</span>)}
+          </div>
+        </section>
+
+        {/* WHY US */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Miks Valida Meid?</h2>
+          <div className="grid md:grid-cols-4 gap-4">
+            {[
+              { icon: <Clock className="w-5 h-5" />, title: '1–2h kohaletulek', desc: 'Kiire reageerimine Tallinnas' },
+              { icon: <ShieldCheck className="w-5 h-5" />, title: 'Töögarantii', desc: 'Kõikidele töödele garantii' },
+              { icon: <Star className="w-5 h-5" />, title: '4.9/5.0 hinnang', desc: '430+ rahulolev klient' },
+              { icon: <Wrench className="w-5 h-5" />, title: 'Kõik brändid', desc: 'Telia, Electrolux, Gorenje jt' },
+            ].map(item => (
+              <div key={item.title} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm text-center">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center mx-auto mb-3 text-emerald-600">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-500">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
-    </>
+
+      {/* CTA */}
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Vajad Abi?</h2>
+              <p className="text-lg text-emerald-100 mb-8">Helistage kohe — meister on kohal 1–2 tunni jooksul!</p>
+              <a href="tel:+37253684587" className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-emerald-700 font-bold py-4 px-10 rounded-xl text-xl shadow-lg transition-all">
+                <PhoneCall className="w-5 h-5" /> +372 5368 4587
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -37,386 +37,167 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function Page() {
+  const SERVICES = [
+    { title: 'Boileri Paigaldus', price: '150–300', unit: '€', desc: 'Uue boileri professionaalne paigaldamine koos ühenduste ja seadistusega', items: ['Elektri ühendused ja maandus', 'Torustiku ühendamine', 'Ohutusseadmete paigaldus'], color: 'blue', href: '/paigaldus' },
+    { title: 'Boileri Hooldus', price: '60–120', unit: '€', desc: 'Põhjalik hooldus katlakivi eemaldamisega, anoodi kontroll ja süsteemi ülevaatus', items: ['Katlakivi eemaldamine', 'Anoodi kontroll ja vahetus', 'Ohutusseadmete testimine'], color: 'green', href: '/hooldus' },
+    { title: 'Boileri Remont', price: '80–200', unit: '€', desc: 'Kiire rikke tuvastamine ja kvaliteetne parandamine kõikide brändide mudeleid', items: ['Diagnostika ja rikke tuvastamine', 'Vajalike varuosade vahetus', 'Süsteemi testimine ja käivitamine'], color: 'orange', href: '/remont' },
+    { title: 'Hädaabi 24/7', price: '90–150', unit: '€', desc: 'Kiire reageerimine lekete, lühiste või ohtlike olukordade korral. 24/7 kättesaadavus', items: ['Kiireim reageerimine 1-2h', 'Ohu kiire kõrvaldamine', 'Ajutine lahendus või remont'], color: 'red', href: '/hadaabi' },
+    { title: 'Anoodi Vahetus', price: '30–90', unit: '€', desc: 'Magneesiumanoodi vahetus, mis kaitseb boilerit rooste ja korrosiooni eest', items: ['Anoodi seisukorra kontroll', 'Uue anoodi paigaldus', 'Süsteemi testimine'], color: 'teal', href: '/hooldus' },
+    { title: 'Küttespiraali Vahetus', price: '60–150', unit: '€', desc: 'Vajalik, kui boiler ei kuumuta vett või lülitab kaitset välja', items: ['Vana küttespiraali eemaldamine', 'Uue küttespiraali paigaldus', 'Süsteemi funktsionaalsuse kontroll'], color: 'purple', href: '/remont' },
+  ];
+  const COLORS: Record<string, { bg: string; text: string; border: string; badge: string }> = {
+    blue: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100', badge: 'bg-blue-100' },
+    green: { bg: 'bg-green-50', text: 'text-green-600', border: 'border-green-100', badge: 'bg-green-100' },
+    orange: { bg: 'bg-orange-50', text: 'text-orange-600', border: 'border-orange-100', badge: 'bg-orange-100' },
+    red: { bg: 'bg-red-50', text: 'text-red-600', border: 'border-red-100', badge: 'bg-red-100' },
+    teal: { bg: 'bg-teal-50', text: 'text-teal-600', border: 'border-teal-100', badge: 'bg-teal-100' },
+    purple: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-100', badge: 'bg-purple-100' },
+  };
+  const FAQ = [
+    { q: 'Kas hinnad sisaldavad käibemaksu?', a: 'Jah, kõik meie hinnad on käibemaksuga (20%). Lõpliku hinnapakkumise saate tasuta enne töö alustamist.' },
+    { q: 'Kas pakute soodustusi?', a: 'Jah, pensionäridele ja korduvklientidele pakume soodustusi. Küsi täpsemalt!' },
+    { q: 'Millal pean maksma?', a: 'Tasute tööde lõpetamise järel, kui olete rahul tulemusega. Aktsepteerime sularaha ja pangamakseid.' },
+    { q: 'Mis juhtub, kui hind muutub töö käigus?', a: 'Kõik muudatused arutatakse ja kinnitatakse enne jätkamist. Teie nõusolekuta hindu ei tõsteta.' },
+    { q: 'Kas väljasõidutasu on eraldi?', a: 'Ei, meie hinnad sisaldavad väljasõidutasu Tallinnas. Harjumaal võib lisanduda väike transporditasu.' },
+  ];
+
   return (
-    <>
-      {/* ✅ JSON-LD SCHEMA FOR PRICE INFORMATION */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Boileri Teenuste Hinnad",
-            "description": "Läbipaistvad hinnad boileri paigaldusele, remondile ja hooldusele Tallinnas ja Harjumaal",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "Boileriabi.ee",
-              "telephone": "+37253684587",
-              "priceRange": "€€"
-            },
-            "areaServed": ["Tallinn", "Harjumaa"],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Boileri Teenuste Hinnakiri",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Boileri paigaldus"
-                  },
-                  "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "minPrice": 120,
-                    "maxPrice": 250,
-                    "priceCurrency": "EUR"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Boileri hooldus"
-                  },
-                  "priceSpecification": {
-                    "@type": "PriceSpecification",
-                    "minPrice": 80,
-                    "maxPrice": 150,
-                    "priceCurrency": "EUR"
-                  }
-                }
-              ]
-            }
-          }),
-        }}
-      />
-
-      <div className="w-full flex flex-col items-center py-12 px-4">
-        <div className="w-full max-w-6xl bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-xl border border-gray-200">
-
-          {/* ✅ OPTIMIZED HERO SECTION */}
-          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-center mb-6 text-gray-900">
-            Boileri Teenuste Hinnad 2025
-          </h1>
-
-          {/* Hero Image */}
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-3xl mx-auto">
-            <Image
-              src="/static/images/generated/hero-hinnad.webp"
-              alt="Boileri teenuste hinnad Tallinnas - läbipaistev hinnakiri"
-              width={800}
-              height={533}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
-
-          <p className="md:text-xl text-gray-700 text-center max-w-3xl mx-auto mb-8">
-            <strong>Läbipaistvad hinnad boileri paigaldusele, remondile ja hooldusele.</strong> Kõik tööd teostatakse professionaalselt, kiirelt ja töögarantiiga.
-          </p>
-
-          {/* ✅ TRANSPARENCY BADGES */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
-              <CheckCircle className="w-4 h-4" />
-              <span className="text-sm font-semibold">Läbipaistvad hinnad</span>
+    <div className="w-full min-h-screen bg-white">
+      {/* HERO */}
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.06),transparent_60%)]"></div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+              <Euro className="w-4 h-4" /> Läbipaistvad hinnad 2025
             </div>
-            <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
-              <Shield className="w-4 h-4" />
-              <span className="text-sm font-semibold">Töögarantii</span>
-            </div>
-            <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
-              <Euro className="w-4 h-4" />
-              <span className="text-sm font-semibold">Tasuta hindamine</span>
-            </div>
-            <div className="flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm font-semibold">Kiire kalkulatsioon</span>
-            </div>
-          </div>
-
-          {/* ✅ PRICE GRID */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <Wrench className="w-8 h-8 text-primary-500" />
-                <h2 className="text-xl font-bold text-gray-900">Boileri Paigaldus</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Professionaalne paigaldus uutele ja olemasolevatele süsteemidele. Sisaldab kõiki vajalikke komponente ja seadistusi.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">120–250 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Elektriühendused ja maandus</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Torustiku ühendamine</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Ohutusseadmete paigaldus</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <Droplets className="w-8 h-8 text-blue-500" />
-                <h2 className="text-xl font-bold text-gray-900">Boileri Hooldus</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Põhjalik hooldus katlakivi eemaldamisega, anoodi kontroll ja süsteemi ülevaatus. Säästab elektrit ja pikendab eluiga.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">80–150 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Katlakivi eemaldamine</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Anoodi kontroll ja vahetus</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Ohutusseadmete testimine</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <AlertTriangle className="w-8 h-8 text-red-500" />
-                <h2 className="text-xl font-bold text-gray-900">Boileri Remont</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Kiire rikke tuvastamine ja kvaliteetne parandamine. Remondime kõiki tuntud brände ja mudeleid.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">50–200 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Diagnostika ja rikke tuvastamine</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Vajalike varuosade vahetus</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Süsteemi testimine ja katsetamine</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <AlertTriangle className="w-8 h-8 text-yellow-500" />
-                <h2 className="text-xl font-bold text-gray-900">Hädaabi 24/7</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Kiire reageerimine lekete, lühiste või ohtlike olukordade korral. 24/7 kättesaadavus.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">90–150 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Kiireim reageerimine 1-2h</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Ohu kiire kõrvaldamine</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Ajutine lahendus või remont</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <CheckCircle className="w-8 h-8 text-green-500" />
-                <h2 className="text-xl font-bold text-gray-900">Anoodi Vahetus</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Magneesiumanoodi vahetus, mis kaitseb boilerit rooste ja korrosiooni eest. Eluea pikenemine 2-3x.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">30–90 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Anoodi seisukorra kontroll</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Vajadusel uue anoodi paigaldus</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Süsteemi testimine pärast vahetust</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl shadow-lg p-6 border border-gray-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-4">
-                <Wrench className="w-8 h-8 text-primary-700" />
-                <h2 className="text-xl font-bold text-gray-900">Küttespiraali Vahetus</h2>
-              </div>
-              <p className="text-gray-700 mb-4 text-sm">
-                Vajalik, kui boiler ei kuumuta vett või lülitab kaitse välja. Kasutame kvaliteetseid varuosasid.
-              </p>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-2xl font-bold text-primary-600">60–150 €</span>
-                <span className="text-gray-500 text-sm">alates</span>
-              </div>
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Vana küttespiraali eemaldamine</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Uue küttespiraali paigaldus</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <span>Süsteemi funktsionaalsuse kontroll</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* ✅ PRICE FACTORS SECTION */}
-          <div className="bg-blue-50 rounded-2xl p-8 mb-12 border border-blue-200">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Mis Mõjutab Boileri Teenuse Hinda?</h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-blue-800 mb-4">Peamised hinnamõjutajad:</h3>
-                <ul className="space-y-3 text-blue-700">
-                  <li className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Boileri tüüp ja mudel</strong> - erinevad mudelid nõuavad erinevaid varuosasid</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Paigalduskoha keerukus</strong> - ligipääsetavus ja ruumitingimused</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Vajalike varuosade hind</strong> - kvaliteetsed originaalvaruosad</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Tööaja kestus</strong> - keerukamad remondid võtavad rohkem aega</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-green-800 mb-4">Meie hinnaeelised:</h3>
-                <ul className="space-y-3 text-green-700">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Tasuta hindamine</strong> - täpne hinnapakkumine enne töö alustamist</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Läbipaistvad hinnad</strong> - puuduvad varjatud kulud</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Töögarantii</strong> - kõikidele töödele anname garanti</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Ausad soovitused</strong> - ei soovita üleliigseid remonte</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* ✅ CTA SECTION */}
-          <div className="text-center bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-8 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Vajad Täpset Hinnapakkumist?
-            </h2>
-            <p className="text-xl mb-6 opacity-90">
-              Saada pilt või kirjelda oma boileri probleemi - anname tasuta täpse hinnapakkumise!
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1]">
+              Boileri Teenuste<br/>
+              <span className="text-emerald-400">Hinnad</span>
+            </h1>
+            <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-lg">
+              Kõik hinnad on läbipaistvad ja sisaldavad käibemaksu. Tasuta hindamine enne töö alustamist — ei mingeid üllatusi.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="tel:+37253684587"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-colors shadow-lg"
-              >
-                <PhoneCall className="w-6 h-6" />
-                Helista: +372 5368 4587
-              </a>
-              <Link
-                href="/kontakt"
-                className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 transition-colors shadow-lg"
-              >
-                📩 Saada päring
-              </Link>
-            </div>
-            <p className="mt-4 text-primary-200 text-sm">
-              ⚡ Tasuta hindamine • Täpne kalkulatsioon • Läbipaistvad hinnad
-            </p>
-          </div>
-
-          {/* ✅ FAQ SECTION */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Korduma Kippuvad Küsimused Hindade Kohta</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Kas hinnad sisaldavad käibemaksu?</h3>
-                <p className="text-gray-700">Jah, kõik meie hinnad on käibemaksuga (20%). Lõpliku hinnapakkumise saate tasuta enne töö alustamist.</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Kas pakute soodustusi?</h3>
-                <p className="text-gray-700">Jah, pensionäridele ja korduvatele klientidele pakume soodustusi. Küsi täpsemalt!</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Millal pean maksma?</h3>
-                <p className="text-gray-700">Tasute tööde lõpetamise järel, kui olete rahul tulemusega. Aktsepteerime sularaha ja pangamakseid.</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Mis juhtub, kui hind muutub töö käigus?</h3>
-                <p className="text-gray-700">Kõik muudatused arutatakse ja kinnitatakse enne jätkamist. Teie nõusolekuta hindu ei tõsteta.</p>
-              </div>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl"><CheckCircle className="w-4 h-4 text-emerald-400" /> Tasuta hindamine</div>
+              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl"><Shield className="w-4 h-4 text-emerald-400" /> Töögarantii</div>
+              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl"><Clock className="w-4 h-4 text-emerald-400" /> Kiire kalkulatsioon</div>
             </div>
           </div>
-
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+              <Image src="/static/images/generated/hero-hinnad.webp" alt="Boileri teenuste hinnad" width={800} height={800} className="w-full h-auto object-cover" priority />
+            </div>
+          </div>
         </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-6 py-20 space-y-20">
+        {/* PRICING CARDS */}
+        <section>
+          <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Teenuste Hinnad</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {SERVICES.map(s => {
+              const c = COLORS[s.color];
+              return (
+                <Link href={s.href} key={s.title} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 overflow-hidden">
+                  <div className={`px-6 pt-6 pb-4 ${c.bg}`}>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">{s.title}</h3>
+                    <div className="flex items-baseline gap-1">
+                      <span className={`text-3xl font-bold ${c.text}`}>{s.price}</span>
+                      <span className="text-gray-500 text-sm">{s.unit}</span>
+                    </div>
+                  </div>
+                  <div className="px-6 py-4">
+                    <p className="text-sm text-gray-500 mb-3">{s.desc}</p>
+                    <div className="space-y-2">
+                      {s.items.map(item => (
+                        <div key={item} className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle className={`w-3.5 h-3.5 ${c.text} flex-shrink-0`} /> {item}
+                        </div>
+                      ))}
+                    </div>
+                    <div className={`mt-4 text-sm font-medium ${c.text} group-hover:underline`}>Loe rohkem →</div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* WHAT AFFECTS PRICE */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Mis Mõjutab Hinda?</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+              <h3 className="font-bold text-gray-900 mb-4">Peamised hinnamõjutajad</h3>
+              <div className="space-y-3">
+                {[
+                  { t: 'Boileri tüüp ja mudel', d: 'erinevad mudelid nõuavad erinevaid varuosasid' },
+                  { t: 'Paigalduskoha keerukus', d: 'ligipääsetavus ja ruumitingimused' },
+                  { t: 'Vajalike varuosade hind', d: 'kvaliteetsed originaalvaruosad' },
+                  { t: 'Tööaja kestus', d: 'keerukamad remondid võtavad rohkem aega' },
+                ].map(item => (
+                  <div key={item.t} className="flex items-start gap-2"><Info className="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0" /><div><span className="font-medium text-gray-900">{item.t}</span><span className="text-gray-500"> — {item.d}</span></div></div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+              <h3 className="font-bold text-gray-900 mb-4">Meie hinnaeelised</h3>
+              <div className="space-y-3">
+                {[
+                  { t: 'Tasuta hindamine', d: 'täpne hinnapakkumine enne töö alustamist' },
+                  { t: 'Läbipaistvad hinnad', d: 'puuduvad varjatud kulud' },
+                  { t: 'Töögarantii', d: 'kõikidele töödele anname garanti' },
+                  { t: 'Ausad soovitused', d: 'ei soovita üleliigseid remonte' },
+                ].map(item => (
+                  <div key={item.t} className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" /><div><span className="font-medium text-gray-900">{item.t}</span><span className="text-gray-500"> — {item.d}</span></div></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Korduma Kippuvad Küsimused Hindade Kohta</h2>
+          <div className="space-y-3">
+            {FAQ.map((item, i) => (
+              <details key={i} className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-emerald-600 transition-colors">
+                  {item.q}
+                  <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl ml-4 flex-shrink-0">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-gray-600">{item.a}</div>
+              </details>
+            ))}
+          </div>
+        </section>
       </div>
-    </>
+
+      {/* CTA */}
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.08),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Vajad Täpset Hinnapakkumist?</h2>
+              <p className="text-lg text-slate-300 mb-8">Saada pilt või kirjelda oma boileri probleemi — anname tasuta täpse hinnapakkumise!</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="tel:+37253684587" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition-all">
+                  <PhoneCall className="w-5 h-5" /> +372 5368 4587
+                </a>
+                <a href="https://wa.me/37253684587" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-xl text-lg border border-white/20 transition-all">
+                  💬 Saada päring WhatsApp
+                </a>
+              </div>
+              <p className="mt-6 text-slate-400 text-sm">✓ Tasuta hindamine · ✓ Täpne kalkulatsioon · ✓ Läbipaistvad hinnad</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
