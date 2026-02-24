@@ -1,181 +1,79 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import type { Metadata } from 'next'
+import { PhoneCall, CheckCircle, Clock, Shield, MapPin, Droplets } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Boileri Hooldus Tallinna Piirkonnas",
-  description: "Professionaalne boileri hooldus Tallinna piirkonnas. Ennetav hooldus, pikaajaline garantii, energia kokkuhoid. Tasuta hindamine!",
-  keywords: "boileri hooldus tallinnas, boileri serviseerimine, ennetav hooldus, boileri puhastamine, tallinna boileriteenindus",
-  openGraph: {
-    title: "Boileri Hooldus Tallinna Piirkonnas",
-    description: "Professionaalne boileri hooldus kogu Tallinna piirkonnas. Ennetage rikkeid ja säästke raha!",
-    type: "website",
-    locale: "et_EE",
-    url: "https://www.boileriabi.ee/boileri-hooldus-tallinna-piirkonnas",
-  },
-  alternates: {
-    canonical: "https://www.boileriabi.ee/boileri-hooldus-tallinna-piirkonnas",
-  },
-}
+  description: "Professionaalne boileri hooldus Tallinna piirkonnas. Katlakivi eemaldamine, anoodi vahetus, süsteemi kontroll. Helista +372 5368 4587",
+  keywords: "boileri hooldus tallinnas, boileri puhastus, katlakivi eemaldamine, anoodi vahetus tallinn",
+  openGraph: { title: "Boileri Hooldus Tallinna Piirkonnas", description: "Professionaalne boileri hooldus kogu Tallinna piirkonnas.", type: "website", locale: "et_EE", url: "https://www.boileriabi.ee/boileri-hooldus-tallinna-piirkonnas" },
+  alternates: { canonical: "https://www.boileriabi.ee/boileri-hooldus-tallinna-piirkonnas" },
+};
 
-export default function BoileriHooldusTallinnaPiirkonnas() {
+export default function Page() {
+  const AREAS = ['Kesklinn','Mustamäe','Lasnamäe','Õismäe','Nõmme','Pirita','Haabersti','Kristiine','Põhja-Tallinn','Viimsi','Rae','Saue','Saku','Harku','Jüri','Keila'];
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
-      {/* Hero Section */}
-      <section className="py-20 px-4 max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Boileri <span className="text-green-600">Hooldus</span> Tallinnas
-          </h1>
-
-          {/* Hero Image */}
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
-            <Image
-              src="/static/images/generated/hero-hooldus.webp"
-              alt="Boileri hooldus Tallinna piirkonnas - ennetav hooldusteenus"
-              width={800}
-              height={533}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
-
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professionaalne boileri hooldus, mis säästab teie aega ja raha. 
-            Ennetav hooldus väldib kulukaid remonte ja pikendab boileri eluiga.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="/vorm" 
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Broneeri Hooldus
-            </Link>
-            <a 
-              href="tel:+37253684587" 
-              className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
-            >
-              📞 5368 4587
-            </a>
-          </div>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 text-center">
+    <div className="w-full min-h-screen bg-white">
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-green-600 via-emerald-700 to-emerald-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_60%)]"></div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <div className="text-3xl font-bold text-green-600">-30%</div>
-            <div className="text-gray-600">Energiakulu</div>
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20"><Droplets className="w-4 h-4" /> Ennetav hooldus</div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">Boileri Hooldus<br/><span className="text-emerald-200">Tallinna Piirkonnas</span></h1>
+            <p className="text-lg text-emerald-100 mb-8 max-w-lg">Ennetav hooldus pikendab boileri eluiga 2–3 korda ja vähendab elektrikulu kuni 20%. Katlakivi eemaldamine, anoodi vahetus ja süsteemi kontroll.</p>
+            <a href="tel:+37253684587" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-emerald-700 font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition-all"><PhoneCall className="w-5 h-5" /> +372 5368 4587</a>
+            <div className="flex flex-wrap gap-4 mt-6 text-sm text-emerald-200">
+              <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> 1–2 tundi</div>
+              <div className="flex items-center gap-2"><Shield className="w-4 h-4" /> 6 kuud garantii</div>
+            </div>
           </div>
-          <div>
-            <div className="text-3xl font-bold text-green-600">+5a</div>
-            <div className="text-gray-600">Pikem eluiga</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-green-600">-80%</div>
-            <div className="text-gray-600">Vähem remonte</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-green-600">100%</div>
-            <div className="text-gray-600">Rahu meel</div>
-          </div>
+          <div className="relative"><div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20"><Image src="/static/images/generated/hero-hooldus.webp" alt="Boileri hooldus Tallinnas" width={800} height={800} className="w-full h-auto object-cover" priority /></div><div className="absolute -bottom-3 -left-3 bg-white text-emerald-700 font-bold px-4 py-2 rounded-xl shadow-lg text-lg">60–120€</div></div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Meie Hooldusteenused
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-green-50 p-8 rounded-xl border border-green-200">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Põhihooldus</h3>
-              <p className="text-gray-600 mb-4">Põhjalik puhastus ja seadistamine</p>
-              <div className="text-2xl font-bold text-green-600">60-120€</div>
-            </div>
-            <div className="bg-emerald-50 p-8 rounded-xl border border-emerald-200">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Täishooldus</h3>
-              <p className="text-gray-600 mb-4">Täielik hooldus koos komponentide kontrolliga</p>
-              <div className="text-2xl font-bold text-green-600">100-180€</div>
-            </div>
-            <div className="bg-green-50 p-8 rounded-xl border border-green-200">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Hooldusleping</h3>
-              <p className="text-gray-600 mb-4">Korrapärane hooldus fikseeritud hinnaga</p>
-              <div className="text-2xl font-bold text-green-600">Alates 150€/a</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="max-w-5xl mx-auto px-6 py-20 space-y-16">
+        <section className="prose prose-lg max-w-none">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Professionaalne Boileri Hooldus Tallinnas</h2>
+          <p className="text-gray-600 leading-relaxed">Regulaarne hooldus on kõige olulisem samm boileri pikaajalise töö tagamiseks. Katlakivi kogunemine vähendab boileri efektiivsust, suurendab elektrikulu ja lühendab seadme eluiga. Soovitame teha hooldust vähemalt kord aastas.</p>
+          <p className="text-gray-600 leading-relaxed">Meie hooldus sisaldab katlakivi eemaldamist, anoodi kontrolli ja vajadusel vahetust, tihendite kontrolli, ohutusseadmete testimist ja süsteemi seadistamist.</p>
+        </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-gradient-to-r from-green-500 to-emerald-500 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Hoolduse Eelised</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Kulude Kokkuhoid</h3>
-              <p className="opacity-90">Ennetav hooldus väldib kulukaid remonte ja säästab energiat</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Pikem Eluiga</h3>
-              <p className="opacity-90">Korralik hooldus pikendab boileri eluiga 5-7 aastat</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Ohutus</h3>
-              <p className="opacity-90">Regulaarne hooldus tagab ohutuse ja töökindluse</p>
-            </div>
-            <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-3">Garantii</h3>
-              <p className="opacity-90">Hooldusleping laiendab garantiiaega</p>
-            </div>
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Hoolduse Eelised</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              { title: '-20% elektrikulu', desc: 'Puhas boiler tarbib oluliselt vähem elektrit' },
+              { title: '2–3× pikem eluiga', desc: 'Regulaarne hooldus pikendab seadme eluiga märkimisväärselt' },
+              { title: 'Puhas veekvaliteet', desc: 'Katlakivi ja setete eemaldamine tagab puhta vee' },
+              { title: 'Ennetab rikkeid', desc: 'Varajane probleemide tuvastamine hoiab ära kulukaid remonte' },
+            ].map(b => (
+              <div key={b.title} className="bg-green-50 p-5 rounded-xl border border-green-100">
+                <h3 className="font-bold text-gray-900 mb-1">{b.title}</h3>
+                <p className="text-sm text-gray-500">{b.desc}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Coverage Area */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8 text-gray-900">Teeninduspiirkond</h2>
-          <p className="text-xl mb-8 text-gray-600">
-            Pakume hooldusteenust kogu Tallinna piirkonnas
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-lg text-gray-700">
-            <div>Kesklinna hooldus</div>
-            <div>Lasnamäe hooldus</div>
-            <div>Mustamäe hooldus</div>
-            <div>Pirita hooldus</div>
-            <div>Nõmme hooldus</div>
-            <div>Haabersti hooldus</div>
-            <div>Õismäe hooldus</div>
-            <div>Viimsi hooldus</div>
-          </div>
-        </div>
-      </section>
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Teeninduspiirkond</h2>
+          <div className="flex flex-wrap gap-2">{AREAS.map(a => <span key={a} className="bg-slate-100 px-4 py-2 rounded-xl text-sm font-medium text-gray-700">{a}</span>)}</div>
+        </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ära Oota Rikkeid!</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Broneeri ennetav hooldus ja säästa raha
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="/vorm" 
-              className="inline-block bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-lg text-xl font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              Broneeri Hooldus
-            </Link>
-            <a 
-              href="tel:+37253684587" 
-              className="inline-block border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-8 py-4 rounded-lg text-xl font-semibold transition-all duration-300"
-            >
-              📞 5368 4587
-            </a>
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Broneeri Hooldus</h2>
+              <p className="text-lg text-emerald-100 mb-8">Helistage ja lepime kokku sobiva aja!</p>
+              <a href="tel:+37253684587" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-emerald-700 font-bold py-4 px-10 rounded-xl text-xl shadow-lg transition-all"><PhoneCall className="w-5 h-5" /> +372 5368 4587</a>
+            </div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
-

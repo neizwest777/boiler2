@@ -1,265 +1,71 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import type { Metadata } from 'next'
+import { PhoneCall, CheckCircle, Clock, Shield, MapPin, Wrench } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Boileri Paigaldus Tallinna Piirkonnas",
-  description: "Professionaalne boileri paigaldus Tallinna piirkonnas odava hinnaga. Kiire paigaldus, 2 aastat garantii, tasuta konsultatsioon. Helista +372 5368 4587",
-  keywords: "boileri paigaldus tallinnas, boileri paigaldamine tallinnas, boileri montaaž, odav boileri paigaldus, tallinna boileriteenused, boileri hind tallinnas",
-  openGraph: {
-    title: "Boileri Paigaldus Tallinna Piirkonnas",
-    description: "Professionaalne boileri paigaldus kogu Tallinna piirkonnas odava hinnaga. Kiire ja kvaliteetne teenus.",
-    type: "website",
-    locale: "et_EE",
-    url: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
-  },
-  alternates: {
-    canonical: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas",
-  },
-}
+  description: "Professionaalne boileri paigaldus Tallinna piirkonnas. Kiire paigaldus, 2 aastat garantii, tasuta konsultatsioon. Helista +372 5368 4587",
+  keywords: "boileri paigaldus tallinnas, boileri paigaldamine tallinnas, boileri montaaž, odav boileri paigaldus",
+  openGraph: { title: "Boileri Paigaldus Tallinna Piirkonnas", description: "Professionaalne boileri paigaldus kogu Tallinna piirkonnas.", type: "website", locale: "et_EE", url: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas" },
+  alternates: { canonical: "https://www.boileriabi.ee/boileri-paigaldus-tallinna-piirkonnas" },
+};
 
-export default function BoileriPaigaldusTallinnaPiirkonnas() {
+export default function Page() {
+  const AREAS = ['Kesklinn','Mustamäe','Lasnamäe','Õismäe','Nõmme','Pirita','Haabersti','Kristiine','Põhja-Tallinn','Viimsi','Rae','Saue','Saku','Harku','Jüri','Keila'];
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
-      {/* Hero Section */}
-      <section className="py-16 px-4 max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <nav className="text-sm text-gray-600 mb-6">
-            <Link href="/" className="hover:text-blue-600">Avaleht</Link> / <span>Boileri Paigaldus Tallinnas</span>
-          </nav>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Boileri <span className="text-blue-600">Paigaldus Tallinnas</span> - Odavalt & Kiirelt
-          </h1>
-          
-          {/* Hero Image */}
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
-            <Image
-              src="/static/images/generated/hero-paigaldus.webp"
-              alt="Boileri paigaldus Tallinna piirkonnas - kiire ja soodne teenus"
-              width={800}
-              height={533}
-              className="w-full h-auto object-cover"
-              priority
-            />
+    <div className="w-full min-h-screen bg-white">
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_60%)]"></div>
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20"><MapPin className="w-4 h-4" /> Tallinn ja Harjumaa</div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-[1.1]">Boileri Paigaldus<br/><span className="text-blue-200">Tallinna Piirkonnas</span></h1>
+            <p className="text-lg text-blue-100 mb-8 max-w-lg">Professionaalne boileri paigaldus kõikidele brändidele. Kiire kohaletulek, 2 aasta garantii ja tasuta hindamine.</p>
+            <a href="tel:+37253684587" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-700 font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition-all"><PhoneCall className="w-5 h-5" /> +372 5368 4587</a>
+            <div className="flex flex-wrap gap-4 mt-6 text-sm text-blue-200">
+              <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> Sama päeva teenus</div>
+              <div className="flex items-center gap-2"><Shield className="w-4 h-4" /> 2 aastat garantii</div>
+            </div>
           </div>
-          
-          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Professionaalne <strong>boileri paigaldus kogu Tallinna piirkonnas</strong> odava hinnaga. 
-            Pakume kiiret paigaldust, <strong>2 aastat garantii</strong> ja tasuta esmast konsultatsiooni. 
-            Oleme paigaldanud üle 500 boileri Tallinnas.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <a 
-              href="tel:+37253684587"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              📞 Helista: 5368 4587
-            </a>
-            <Link 
-              href="/vorm" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 border-2 border-blue-600"
-            >
-              📝 Tasuta hindamine
-            </Link>
-          </div>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center">
-          <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm">
-            <div className="text-2xl font-bold text-blue-600">150-300€</div>
-            <div className="text-gray-600">Paigalduse hind</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-green-200 shadow-sm">
-            <div className="text-2xl font-bold text-green-600">2-4h</div>
-            <div className="text-gray-600">Paigaldusaeg</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-purple-200 shadow-sm">
-            <div className="text-2xl font-bold text-purple-600">2 a</div>
-            <div className="text-gray-600">Töögarantii</div>
-          </div>
-          <div className="bg-white p-6 rounded-xl border border-orange-200 shadow-sm">
-            <div className="text-2xl font-bold text-orange-600">500+</div>
-            <div className="text-gray-600">Paigaldatud boilerit</div>
-          </div>
+          <div className="relative"><div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20"><Image src="/static/images/generated/hero-paigaldus.webp" alt="Boileri paigaldus Tallinnas" width={800} height={800} className="w-full h-auto object-cover" priority /></div><div className="absolute -bottom-3 -left-3 bg-white text-blue-700 font-bold px-4 py-2 rounded-xl shadow-lg text-lg">150–300€</div></div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Professionaalne Boileri Paigaldus Tallinnas
-              </h2>
-              
-              <p className="text-lg text-gray-700 mb-6">
-                Oleme spetsialiseerunud <strong>boilerite paigaldusele Tallinna piirkonnas</strong> üle 10 aasta kogemusega. 
-                Meie kogenud torumehed paigaldavad teie boileri kiirelt ja professionaalselt, järgides kõiki ohutusstandardeid.
-              </p>
+      <div className="max-w-5xl mx-auto px-6 py-20 space-y-16">
+        <section className="prose prose-lg max-w-none">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Professionaalne Boileri Paigaldus Tallinnas</h2>
+          <p className="text-gray-600 leading-relaxed">Pakume professionaalset boileri paigaldust kogu Tallinna piirkonnas ja Harjumaal. Meie kogenud meistrid paigaldavad kõiki populaarseid brände — Electrolux, Gorenje, Ariston, Bosch, Atlantic, Thermex ja paljud teised. Iga paigaldus sisaldab elektriühendusi, torustiku ühendamist, ohutusseadmete kontrolli ja süsteemi seadistamist.</p>
+          <p className="text-gray-600 leading-relaxed">Kõikidele paigaldustöödele anname 2 aasta garantii. Enne töö alustamist saate tasuta hinnapakkumise — ilma üllatusteta.</p>
+        </section>
 
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Miks Valida Meid?</h3>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span><strong>Odav hind</strong> - konkurentsivõimelised hinnad ilma kvaliteedi ohverdamiseta</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span><strong>Kiire paigaldus</strong> - sama päeva teenus vajadusel</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span><strong>2 aastat garantii</strong> - kõikidele paigaldustöödele</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-600 mr-3">✓</span>
-                  <span><strong>Tasuta konsultatsioon</strong> - enne paigaldustööde algust</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-blue-50 p-8 rounded-xl border border-blue-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Paigalduse Hinnakiri</h3>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center pb-4 border-b border-blue-200">
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Standard boileri paigaldus</h4>
-                    <p className="text-sm text-gray-600">Täielik paigaldus koos materjalidega</p>
-                  </div>
-                  <div className="text-xl font-bold text-blue-600">150-300€</div>
-                </div>
-                
-                <div className="flex justify-between items-center pb-4 border-b border-blue-200">
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Kiirpaigaldus</h4>
-                    <p className="text-sm text-gray-600">Sama päeva teenus</p>
-                  </div>
-                  <div className="text-xl font-bold text-blue-600">+50€</div>
-                </div>
-                
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Kompleksteenus</h4>
-                    <p className="text-sm text-gray-600">Paigaldus + hoolduslepingu</p>
-                  </div>
-                  <div className="text-xl font-bold text-blue-600">Pakkumise alusel</div>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-800 text-sm">
-                  <strong>NB!</strong> Lõplik hind sõltub boileri tüübist ja paigalduskeskkonnast. 
-                  Pakume tasuta hindamist enne tööde algust.
-                </p>
-              </div>
-            </div>
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Paigaldus Sisaldab</h2>
+          <div className="grid md:grid-cols-2 gap-3">
+            {['Vana boileri demonteerimine','Uue boileri paigaldamine seinale','Elektriühendused ja maandus','Torustiku ühendamine','Ohutusseadmete paigaldus ja kontroll','Süsteemi seadistamine ja testimine','Kliendi juhendamine','2 aasta töögarantii'].map(item => (
+              <div key={item} className="flex items-center gap-2 text-gray-700 bg-blue-50 px-4 py-3 rounded-xl"><CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" /> {item}</div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Coverage Area */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Teeninduspiirkond - Boileri Paigaldus Tallinnas</h2>
-          
-          <div className="text-center mb-8">
-            <p className="text-xl opacity-90">
-              Teenindame kogu <strong>Tallinna ja Harjumaa piirkonda</strong> kiire ja kvaliteetse boileri paigaldusega
-            </p>
-          </div>
+        <section>
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Teeninduspiirkond</h2>
+          <div className="flex flex-wrap gap-2">{AREAS.map(a => <span key={a} className="bg-slate-100 px-4 py-2 rounded-xl text-sm font-medium text-gray-700">{a}</span>)}</div>
+        </section>
+      </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Kesklinna paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Lasnamäe paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Mustamäe paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Pirita paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Nõmme paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Haabersti paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Õismäe paigaldus</div>
-            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">Viimsi paigaldus</div>
-          </div>
-
-          <div className="text-center mt-8">
-            <p className="text-lg opacity-90">
-              <strong>Harjumaa:</strong> Saue, Rae, Saku, Kiili, Kose, Anija jt.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Korduma Kippuvad Küsimused</h2>
-          
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Kui kaua aega võtab boileri paigaldus Tallinnas?
-              </h3>
-              <p className="text-gray-600">
-                Tavaline <strong>boileri paigaldus Tallinnas</strong> võtab <strong>2-4 tundi</strong>. 
-                Ajaline kestus sõltub boileri tüübist, paigalduskeskkonnast ja vajalikest ettevalmistustöödest. 
-                Kiirpaigalduse korral saame töö valmis sama päeva jooksul.
-              </p>
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Vajad Boileri Paigaldust?</h2>
+              <p className="text-lg text-blue-100 mb-8">Helistage ja meister on kohal juba täna!</p>
+              <a href="tel:+37253684587" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-700 font-bold py-4 px-10 rounded-xl text-xl shadow-lg transition-all"><PhoneCall className="w-5 h-5" /> +372 5368 4587</a>
             </div>
-
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Milline on boileri paigalduse hind Tallinnas?
-              </h3>
-              <p className="text-gray-600">
-                <strong>Boileri paigalduse hind Tallinnas</strong> jääb tavaliselt <strong>150-300€</strong> vahemikku. 
-                Lõplik hind sõltub boileri tüübist, paigalduskeskkonna keerukusest ja vajalikest lisamaterjalidest. 
-                Pakume alati tasuta hindamist enne tööde algust.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Kas pakute garantii boileri paigaldusele?
-              </h3>
-              <p className="text-gray-600">
-                Jah, pakume <strong>2 aastat garantii</strong> kõikidele paigaldustöödele. 
-                Garantii hõlmab nii paigaldustöid kui ka kasutatud materjale. 
-                Oleme valmis kiiresti reageerima igasuguste probleemide korral.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Valmis Boileri Paigalduseks Tallinnas?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Võtke ühendust juba täna ja saage tasuta hindamine meie professionaalsetelt torumeestelt
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="tel:+37253684587"
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
-            >
-              📞 Helista: 5368 4587
-            </a>
-            
-            <Link
-              href="/vorm"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 border-2 border-blue-500"
-            >
-              📩 Tasuta hindamine
-            </Link>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
-
