@@ -207,363 +207,271 @@ export default function Paigaldus() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen items-center fancy-overlay">
-      {/* JSON-LD SCHEMA */}
+    <div className="w-full min-h-screen bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="w-full flex flex-col items-center my-12">
-        <section className="w-full p-6 container-narrow">
-          {/* H1 */}
-          <h1 className="text-4xl md:text-6xl fancy-heading font-semibold text-gray-900">
-            Boileri Paigaldus Tallinnas | Professionaalne Teenus
-          </h1>
-
-          {/* Hero Image */}
-          <div className="mt-8 rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/static/images/generated/hero-paigaldus.webp"
-              alt="Professionaalne boileri paigaldus Tallinnas - kogenud torumees paigaldab boilerit"
-              width={800}
-              height={533}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
-
-          <p className="mt-6 md:text-xl text-gray-800 leading-relaxed">
-            <strong>Professionaalne boileri paigaldus Tallinnas ja Harjumaal</strong> – Boileriabi.ee
-            pakub kvaliteetset ja kiiret boilerite <strong>paigaldust</strong>, <strong>hooldust</strong>,{" "}
-            <strong>remonti</strong> ja <strong>vahetust</strong>. Teostame ka{" "}
-            <strong>boileri küttekeha vahetust</strong> ning <strong>boileri termostaadi vahetust</strong>.
-          </p>
-
-          {/* BENEFITS */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-green-600" />
-                <span className="font-semibold text-green-800">Kiire montaaž</span>
-              </div>
-              <p className="text-sm text-green-700">1–2 tunni jooksul</p>
+      {/* HERO - Split Layout */}
+      <section className="w-full pt-24 pb-16 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Wrench className="w-4 h-4" />
+              Professionaalne teenus
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-blue-600" />
-                <span className="font-semibold text-blue-800">Töögarantii</span>
-              </div>
-              <p className="text-sm text-blue-700">2 aastat paigaldustele</p>
-            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.1]">
+              Boileri Paigaldus Tallinnas
+            </h1>
 
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle className="w-5 h-5 text-purple-600" />
-                <span className="font-semibold text-purple-800">Tasuta hindamine</span>
-              </div>
-              <p className="text-sm text-purple-700">Enne töö alustamist</p>
-            </div>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              Professionaalne boileri paigaldus, vahetus, remont ja hooldus Tallinnas ja Harjumaal. 
+              Kiire kohaletulek, tasuta hindamine ja 2 aastat garantii.
+            </p>
 
-            <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-5 h-5 text-orange-600" />
-                <span className="font-semibold text-orange-800">Kogu Harjumaa</span>
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100">
+                <Clock className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <div><div className="text-sm font-semibold text-gray-900">1–2 tundi</div><div className="text-xs text-gray-500">Paigaldusaeg</div></div>
               </div>
-              <p className="text-sm text-orange-700">Tallinn ja ümbrus</p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-10 p-6 bg-blue-50 border border-blue-200 rounded-xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <Wrench className="text-blue-600 w-8 h-8" />
-              <div>
-                <p className="text-lg font-semibold text-blue-900">
-                  Vajate boileri paigaldust, remonti, hooldust või vahetust?
-                </p>
-                <p className="text-blue-700">Tasuta hindamine ja kiire kohaletulek Tallinnas</p>
+              <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100">
+                <Shield className="w-5 h-5 text-green-600 flex-shrink-0" />
+                <div><div className="text-sm font-semibold text-gray-900">2 aastat</div><div className="text-xs text-gray-500">Töögarantii</div></div>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100">
+                <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
+                <div><div className="text-sm font-semibold text-gray-900">Tasuta</div><div className="text-xs text-gray-500">Hindamine</div></div>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100">
+                <MapPin className="w-5 h-5 text-orange-600 flex-shrink-0" />
+                <div><div className="text-sm font-semibold text-gray-900">Tallinn</div><div className="text-xs text-gray-500">& Harjumaa</div></div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={`tel:${PHONE_E164}`}
-                className="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition text-lg font-semibold flex items-center gap-2"
-                aria-label={`Helista: ${PHONE_HUMAN}`}
-              >
-                <PhoneCall className="w-5 h-5" />
-                Helista: {PHONE_HUMAN}
+              <a href={`tel:${PHONE_E164}`} className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-xl text-lg shadow-lg shadow-green-600/25 transition-all">
+                <PhoneCall className="w-5 h-5" /> {PHONE_HUMAN}
               </a>
-
-              <Link
-                href="/kontakt"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition text-lg font-semibold flex items-center gap-2"
-              >
+              <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-semibold py-4 px-8 rounded-xl text-lg border-2 border-gray-200 hover:border-blue-300 shadow-sm transition-all">
                 📝 Tasuta hindamine
               </Link>
             </div>
           </div>
 
-          {/* MAIN CONTENT */}
-          <div className="mt-12 space-y-16 text-lg text-gray-800 leading-relaxed">
-            {/* INSTALLATION */}
-            <section id="paigaldus">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <Layers className="w-7 h-7 text-blue-500" />
-                Professionaalne Boileri Paigaldus Tallinnas
-              </h2>
-
-              <p>
-                Korralik <strong>boileri paigaldus Tallinnas</strong> tagab seadme pika eluea ja madalama
-                energiakulu. Paigaldame elektriboilereid, mahuboilereid (kogumisboiler), läbivooluboilereid,
-                soojuspumba boilereid ja päikeseboilereid.
-              </p>
-
-              <div className="bg-gray-50 p-4 rounded-lg mt-4">
-                <h3 className="text-xl font-semibold mb-2">Paigalduse käigus teostame:</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Seina kandevõime kontroll</li>
-                  <li>Elektri ja torustiku testimine</li>
-                  <li>Ohutusseadmete kontroll</li>
-                  <li>Tühjenduskraani lisamine</li>
-                  <li>Lõplik testimine ja kasutusjuhend</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* VAHETUS */}
-            <section id="vahetus">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <Wrench className="w-7 h-7 text-purple-600" />
-                Boileri Vahetus (Tallinnas ja Harjumaal)
-              </h2>
-
-              <p>
-                <strong>Boileri vahetus</strong> on vajalik, kui vana boiler lekib, ei kuumuta korralikult,
-                tarbib liiga palju elektrit või on üle 12–15 aasta vana. Pakume kiiret boileri vahetust ning
-                aitame valida sobiva mudeli ja mahu (nt 30L, 50L, 80L, 100L, 120L, 150L, 200L).
-              </p>
-
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 mt-4">
-                <h3 className="text-xl font-semibold mb-2">Populaarsed otsingufraasid:</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>boileri vahetus</li>
-                  <li>boileri vahetus tallinnas</li>
-                  <li>boileri paigaldus, vahetus</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* HOOLDUS */}
-            <section id="hooldus">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <GaugeCircle className="w-7 h-7 text-green-600" />
-                Boileri Hooldus – Katlakivi Ennetamine
-              </h2>
-
-              <p>
-                <strong>Boileri hooldus</strong> aitab vältida rikkeid, vähendada elektrikulu ja pikendada
-                seadme eluiga. Eesti vesi on lubjarikas — seepärast tekib katlakivi kiiresti. Hooldus sisaldab
-                katlakivi eemaldust, anoodi kontrolli/vahetust ja elektri-ohutuse kontrolli.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-6 mt-6">
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <h3 className="text-xl font-semibold mb-2">Hooldus sisaldab:</h3>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Anoodi kontroll ja vajadusel vahetus</li>
-                    <li>Katlakivi eemaldus</li>
-                    <li>Küttespiraali kontroll</li>
-                    <li>Termostaadi testimine</li>
-                  </ul>
-                </div>
-
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <h3 className="text-xl font-semibold mb-2">Soovitused:</h3>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Hooldus iga 1–2 aasta tagant</li>
-                    <li>Kuni 15% elektrisääst</li>
-                    <li>Eluea pikenemine 2–3×</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {/* REMONT + küttekeha/termostaat */}
-            <section id="remont">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <Flame className="w-7 h-7 text-orange-500" />
-                Boileri Remont, Küttekeha Vahetus ja Termostaadi Vahetus
-              </h2>
-
-              <p>
-                Kui boiler ei kuumuta, lekib või teeb müra — teostame <strong>boileri remonti Tallinnas</strong> ning
-                pakume hädaabi. Levinud tööd: <strong>boileri küttekeha vahetus</strong>,{" "}
-                <strong>boileri termostaadi vahetus</strong>, anoodi vahetus ja lekkekohtade parandamine.
-              </p>
-
-              <div className="bg-orange-50 p-4 rounded-lg mt-4">
-                <h3 className="text-xl font-semibold mb-2">Otsingufraasid, mida katame:</h3>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>boileri küttekeha vahetus</li>
-                  <li>boileri küttekeha vahetus tallinnas</li>
-                  <li>ariston boileri küttekeha vahetus</li>
-                  <li>boileri termostaadi vahetus</li>
-                  <li>boileri remont</li>
-                </ul>
-              </div>
-
-              <div className="bg-orange-50 p-4 rounded-lg mt-6">
-                <h3 className="text-xl font-semibold mb-2">Remondime ja hooldame erinevaid brände:</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  {BOILER_BRANDS_FULL.map((b) => (
-                    <div key={b}>{b}</div>
-                  ))}
-                </div>
-              </div>
-
-              <p id="hadaabi" className="mt-4">
-                <strong>Hädaabi Tallinnas:</strong> vajadusel kohale 1–2 tunni jooksul.
-              </p>
-            </section>
-
-            {/* TYPES */}
-            <section id="tuuBid">
-              <h2 className="text-3xl font-bold mb-6">Paigaldame Kõiki Boileritüüpe</h2>
-
-              <div className="space-y-6">
-                {BOILER_TYPES.map((t) => (
-                  <div key={t.title} className="border-l-4 border-blue-500 pl-4">
-                    <h3 className="text-xl font-semibold">{t.title}</h3>
-                    <p>{t.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* PRICING */}
-            <section id="hinnad">
-              <h2 className="text-3xl font-bold mb-6">Boileri Paigalduse Hinnad</h2>
-
-              <p>
-                Hind sõltub boileri tüübist, mahust ja paigalduskohast. Pakume tasuta hindamist enne töö
-                alustamist.
-              </p>
-
-              <div className="bg-gray-50 p-4 rounded-lg mt-3">
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Boileri tüüp ja maht</li>
-                  <li>Paigalduskoha keerukus</li>
-                  <li>Lisatarvikud</li>
-                  <li>Vana boileri eemaldus</li>
-                </ul>
-              </div>
-            </section>
-
-            {/* AREA */}
-            <section id="piirkond">
-              <h2 className="text-3xl font-bold mb-6">Teeninduspiirkond: Tallinn ja Harjumaa</h2>
-
-              <p>
-                Teenindame kogu Harjumaad: korterid, eramajad, äripinnad. Kõige sagedamini: Tallinn, Viimsi,
-                Rae, Saue, Saku, Maardu, Keila, Laagri.
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4">
-                {SERVICE_AREAS.map((a) => (
-                  <div key={a} className="bg-gray-100 p-2 rounded text-center">
-                    {a}
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* FAQ */}
-            <section id="faq">
-              <h2 className="text-3xl font-bold mb-6">Korduma Kippuvad Küsimused</h2>
-
-              <div className="space-y-6">
-                {FAQ.map((item, i) => (
-                  <div key={i} className="bg-white border border-gray-200 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold mb-3">{item.q}</h3>
-                    <p>{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
+              <Image
+                src="/static/images/generated/hero-paigaldus.webp"
+                alt="Professionaalne boileri paigaldus Tallinnas"
+                width={800} height={800}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+            <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div className="text-2xl font-bold text-blue-600">150–300€</div>
+              <div className="text-xs text-gray-500">Paigalduse hind</div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* FINAL CTA */}
-          <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Valmis boileri paigalduseks?</h2>
-            <p className="text-xl mb-6 opacity-90">
-              Paigaldus • Remont • Hooldus • Vahetus • Küttekeha vahetus • Termostaadi vahetus
-            </p>
+      {/* MAIN CONTENT */}
+      <div className="max-w-5xl mx-auto px-6 py-20 space-y-20">
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href={`tel:${PHONE_E164}`}
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 shadow-lg"
-                aria-label={`Helista: ${PHONE_HUMAN}`}
-              >
-                <PhoneCall className="w-6 h-6" />
-                Helista: {PHONE_HUMAN}
-              </a>
-
-              <Link
-                href="/kontakt"
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-xl font-bold flex items-center gap-3 shadow-lg"
-              >
-                📩 Saada päring
-              </Link>
+        {/* PAIGALDUS */}
+        <section id="paigaldus">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+            <Layers className="w-7 h-7 text-blue-500" />
+            Professionaalne Boileri Paigaldus
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            Korralik boileri paigaldus tagab seadme pika eluea ja madalama energiakulu. 
+            Paigaldame elektriboilereid, mahuboilereid, läbivooluboilereid, soojuspumba boilereid ja päikeseboilereid.
+          </p>
+          <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900">Paigalduse käigus teostame:</h3>
+            <div className="grid md:grid-cols-2 gap-3">
+              {['Seina kandevõime kontroll', 'Elektri ja torustiku testimine', 'Ohutusseadmete kontroll', 'Tühjenduskraani lisamine', 'Lõplik testimine ja kasutusjuhend'].map(item => (
+                <div key={item} className="flex items-center gap-2 text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <p className="mt-4 text-blue-200 text-sm">⚡ Hädaabi: Kohal 1–2 tunni jooksul Tallinnas</p>
-          </section>
+        {/* VAHETUS */}
+        <section id="vahetus">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+            <Wrench className="w-7 h-7 text-purple-600" />
+            Boileri Vahetus
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Boileri vahetus on vajalik, kui vana boiler lekib, ei kuumuta korralikult, tarbib liiga palju elektrit 
+            või on üle 12–15 aasta vana. Aitame valida sobiva mudeli ja mahu (30L–200L).
+          </p>
+        </section>
 
-          {/* RELATED SERVICES (оставляем как у тебя, чтобы ничего не ломать) */}
-          <section className="mt-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">Seotud Teenused</h2>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link
-                href="/remont"
-                className="bg-orange-50 p-6 rounded-lg border border-orange-200 hover:shadow-lg transition"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <Flame className="w-6 h-6 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-orange-800">Boileri Remont</h3>
-                </div>
-                <p className="text-orange-700">Kiire ja kvaliteetne boileri remont Tallinnas</p>
-              </Link>
-
-              <Link
-                href="/hooldus"
-                className="bg-green-50 p-6 rounded-lg border border-green-200 hover:shadow-lg transition"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <GaugeCircle className="w-6 h-6 text-green-600" />
-                  <h3 className="text-xl font-semibold text-green-800">Boileri Hooldus</h3>
-                </div>
-                <p className="text-green-700">Regulaarne hooldus katlakivi ennetamiseks</p>
-              </Link>
-
-              <Link
-                href="/hadaabi"
-                className="bg-red-50 p-6 rounded-lg border border-red-200 hover:shadow-lg transition"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <Wrench className="w-6 h-6 text-red-600" />
-                  <h3 className="text-xl font-semibold text-red-800">Hädaabi</h3>
-                </div>
-                <p className="text-red-700">24/7 hädaabi boileri rikete korral</p>
-              </Link>
+        {/* HOOLDUS */}
+        <section id="hooldus">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+            <GaugeCircle className="w-7 h-7 text-green-600" />
+            Boileri Hooldus – Katlakivi Ennetamine
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            Boileri hooldus aitab vältida rikkeid, vähendada elektrikulu ja pikendada seadme eluiga. 
+            Eesti vesi on lubjarikas — seepärast tekib katlakivi kiiresti.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-green-50 p-5 rounded-2xl border border-green-100">
+              <h3 className="font-semibold mb-3 text-green-900">Hooldus sisaldab:</h3>
+              <div className="space-y-2">
+                {['Anoodi kontroll ja vahetus', 'Katlakivi eemaldus', 'Küttespiraali kontroll', 'Termostaadi testimine'].map(item => (
+                  <div key={item} className="flex items-center gap-2 text-green-800 text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
+            <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100">
+              <h3 className="font-semibold mb-3 text-blue-900">Kasu:</h3>
+              <div className="space-y-2">
+                {['Hooldus iga 1–2 aasta tagant', 'Kuni 15% elektrisääst', 'Eluea pikenemine 2–3×'].map(item => (
+                  <div key={item} className="flex items-center gap-2 text-blue-800 text-sm">
+                    <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* REMONT */}
+        <section id="remont">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+            <Flame className="w-7 h-7 text-orange-500" />
+            Boileri Remont ja Küttekeha Vahetus
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            Kui boiler ei kuumuta, lekib või teeb müra — teostame boileri remonti Tallinnas ning pakume hädaabi. 
+            Levinud tööd: küttekeha vahetus, termostaadi vahetus, anoodi vahetus ja lekkekohtade parandamine.
+          </p>
+          <div className="bg-orange-50 p-5 rounded-2xl border border-orange-100">
+            <h3 className="font-semibold mb-3 text-orange-900">Remondime kõiki brände:</h3>
+            <div className="flex flex-wrap gap-2">
+              {BOILER_BRANDS_FULL.slice(0, 15).map(b => (
+                <span key={b} className="bg-white px-3 py-1 rounded-full text-sm text-orange-800 border border-orange-200">{b}</span>
+              ))}
+              <span className="bg-white px-3 py-1 rounded-full text-sm text-orange-600 border border-orange-200 font-medium">+ {BOILER_BRANDS_FULL.length - 15} muud</span>
+            </div>
+          </div>
+          <p className="mt-4 text-gray-600">
+            <strong>Hädaabi Tallinnas:</strong> vajadusel kohal 1–2 tunni jooksul.
+          </p>
+        </section>
+
+        {/* BOILER TYPES */}
+        <section id="tuuBid">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Paigaldame Kõiki Boileritüüpe</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {BOILER_TYPES.map(t => (
+              <div key={t.title} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="font-semibold text-gray-900 mb-1">{t.title}</h3>
+                <p className="text-sm text-gray-500">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SERVICE AREA */}
+        <section id="piirkond">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">Teeninduspiirkond</h2>
+          <p className="text-lg text-gray-600 mb-6">
+            Teenindame kogu Harjumaad: korterid, eramajad, äripinnad.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {SERVICE_AREAS.map(a => (
+              <span key={a} className="bg-slate-100 px-4 py-2 rounded-xl text-sm font-medium text-gray-700">{a}</span>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq">
+          <h2 className="text-3xl font-bold mb-8 text-gray-900">Korduma Kippuvad Küsimused</h2>
+          <div className="space-y-3">
+            {FAQ.map((item, i) => (
+              <details key={i} className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+                <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                  {item.q}
+                  <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl ml-4 flex-shrink-0">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-gray-600">{item.a}</div>
+              </details>
+            ))}
+          </div>
         </section>
       </div>
+
+      {/* FINAL CTA */}
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Valmis boileri paigalduseks?</h2>
+              <p className="text-lg text-blue-100 mb-8">
+                Paigaldus · Remont · Hooldus · Vahetus · Küttekeha vahetus
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href={`tel:${PHONE_E164}`} className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 font-bold py-4 px-8 rounded-xl text-lg hover:bg-blue-50 shadow-lg transition-all">
+                  <PhoneCall className="w-5 h-5" /> {PHONE_HUMAN}
+                </a>
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-semibold py-4 px-8 rounded-xl text-lg border border-white/30 transition-all">
+                  📩 Saada päring
+                </Link>
+              </div>
+              <p className="mt-6 text-blue-200 text-sm">⚡ Hädaabi: Kohal 1–2 tunni jooksul</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RELATED SERVICES */}
+      <section className="w-full pb-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Seotud Teenused</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link href="/remont" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><Flame className="w-5 h-5 text-orange-600" /></div>
+                <h3 className="font-bold text-gray-900 group-hover:text-orange-600 transition-colors">Boileri Remont</h3>
+              </div>
+              <p className="text-sm text-gray-500">Kiire ja kvaliteetne boileri remont Tallinnas</p>
+            </Link>
+            <Link href="/hooldus" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><GaugeCircle className="w-5 h-5 text-green-600" /></div>
+                <h3 className="font-bold text-gray-900 group-hover:text-green-600 transition-colors">Boileri Hooldus</h3>
+              </div>
+              <p className="text-sm text-gray-500">Regulaarne hooldus katlakivi ennetamiseks</p>
+            </Link>
+            <Link href="/hadaabi" className="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><Wrench className="w-5 h-5 text-red-600" /></div>
+                <h3 className="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Hädaabi 24/7</h3>
+              </div>
+              <p className="text-sm text-gray-500">Ööpäevaringne hädaabi boileri rikete korral</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
