@@ -122,10 +122,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* GA4 (lazy) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
 
-        <Script id="ga-config" strategy="lazyOnload">
+        <Script id="ga-config" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){ dataLayer.push(arguments); }
@@ -135,7 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        <Script id="conversions" strategy="lazyOnload">
+        <Script id="conversions" strategy="afterInteractive">
           {`
             function gtag_report_conversion(url, sendTo) {
               var callback = function () {
