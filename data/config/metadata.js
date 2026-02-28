@@ -2,10 +2,10 @@ const metadata = {
   // ✅ SEO-ОПТИМИЗИРОВАННЫЕ МЕТАДАННЫЕ
   title: 'Boileri Paigaldus, Remont ja Hooldus Tallinnas | Boileriabi',
   description: 'Kogenud torumehed boileri paigalduseks, remondiks ja hoolduseks Tallinnas. Kiire 24/7 hädaabi, töögarantii ja tasuta hindamine. Helista: +37253684587',
-  domain: 'boileriabi.ee',
+  domain: 'www.boileriabi.ee',
   logoTitle: 'Boileriabi - Boileriteenused Tallinnas',
   businessName: 'Boileriabi',
-  siteUrl: 'https://boileriabi.ee', // ✅ БЕЗ СЛЕША В КОНЦЕ
+  siteUrl: 'https://www.boileriabi.ee', // ✅ БЕЗ СЛЕША В КОНЦЕ
   siteRepo: '',
   socialBanner: '/api/og',
   supportEmail: 'info@boileriabi.ee',
