@@ -11,6 +11,7 @@ import { AnalyticsWrapper } from '@/components/shared/Analytics';
 import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer'; // ✅ ДОБАВЛЕН ИМПОРТ ФУТЕРА
 import CookieConsent from "@/components/shared/CookieConsent";
+import FloatingButtons from "@/components/shared/FloatingButtons";
 
 /* ==========================
    ШРИФТЫ
@@ -205,6 +206,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* ✅ ДОБАВЛЕН ФУТЕР */}
           <Footer />
 
+          <FloatingButtons />
         </ThemeProviders>
 
       </body>
