@@ -7,21 +7,32 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' 'unsafe-inline'
     https://www.googletagmanager.com
     https://www.google-analytics.com
+    https://*.googleads.g.doubleclick.net
+    https://*.googlesyndication.com
     https://analytics.ahrefs.com
     *.vercel-analytics.com
     *.vercel-scripts.com
     *.cloudflareinsights.com;
-    
+
   connect-src 'self'
     https://www.google-analytics.com
     https://region1.google-analytics.com
     https://www.googletagmanager.com
+    https://*.googleads.g.doubleclick.net
+    https://*.doubleclick.net
+    https://*.google.com
     https://analytics.ahrefs.com
     *;
+
+  frame-src 'self'
+    https://www.googletagmanager.com
+    https://*.doubleclick.net;
 
   img-src 'self' data: blob:
     https://www.google-analytics.com
     https://www.googletagmanager.com
+    https://*.googleads.g.doubleclick.net
+    https://*.google.com
     *.supabase.co *;
 
   style-src 'self' 'unsafe-inline';
