@@ -7,6 +7,8 @@ export type CookieConsent = {
 // Добавляем глобальные типы, чтобы TS не ругался
 declare global {
   interface Window {
+    gtag?: (...args: unknown[]) => void;
+    gtag_report_conversion?: (url: string, sendTo: string) => boolean;
     __updateConsent?: (consent: Record<string, string>) => void;
     sendGAEvent?: (action: string, params?: Record<string, string | number>) => void;
   }

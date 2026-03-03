@@ -119,20 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className="bg-white text-slate-900 antialiased min-h-screen flex flex-col w-full">
 
-        {/* Consent Mode v2 default — MUST be before gtag.js */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){ dataLayer.push(arguments); }
-          window.gtag = gtag;
-          gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied'
-          });
-        `}} />
-
-        {/* GA4 */}
+        {/* GA4 (lazy) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6BZJEP1SLG"
           strategy="afterInteractive"
@@ -141,25 +128,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="ga-config" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            if (!window.gtag) {
-              function gtag(){ dataLayer.push(arguments); }
-              window.gtag = gtag;
-            }
-            window.gtag('js', new Date());
-            window.gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
-            window.gtag('config', 'AW-17959368156');
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-6BZJEP1SLG', { anonymize_ip: true });
+            gtag('config', 'AW-17959368156');
           `}
         </Script>
 
         <Script id="conversions" strategy="afterInteractive">
           {`
-            window.gtag_report_conversion = function(url, sendTo) {
+            function gtag_report_conversion(url, sendTo) {
               var callback = function () {
                 if (typeof(url) != 'undefined') {
                   window.location = url;
                 }
               };
-              window.gtag('event', 'conversion', {
+              gtag('event', 'conversion', {
                 'send_to': sendTo,
                 'value': 1.0,
                 'currency': 'EUR',
@@ -171,30 +155,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               var el;
               // WhatsApp
               el = e.target.closest('a[href*="wa.me"]');
-              if (el && typeof window.gtag === 'function') {
+              if (el && typeof gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC');
+                gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC');
                 return;
               }
               // Phone
               el = e.target.closest('a[href^="tel:"]');
-              if (el && typeof window.gtag === 'function') {
+              if (el && typeof gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC');
+                gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC');
                 return;
               }
               // Viber
               el = e.target.closest('a[href*="viber"]');
-              if (el && typeof window.gtag === 'function') {
+              if (el && typeof gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC');
+                gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC');
                 return;
               }
             });
             // Form submit conversion
             document.addEventListener('submit', function(e) {
-              if (typeof window.gtag === 'function') {
-                window.gtag('event', 'conversion', {
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
                   'send_to': 'AW-17959368156/we1OCNqynPwbENzr2PNC',
                   'value': 1.0,
                   'currency': 'EUR'
