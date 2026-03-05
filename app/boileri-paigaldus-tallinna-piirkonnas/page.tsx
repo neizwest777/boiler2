@@ -1,4 +1,5 @@
 import { PhoneCall, CheckCircle, Clock, Shield, MapPin, Wrench } from "lucide-react";
+import BookingForm from '@/components/BookingForm';
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,6 +65,13 @@ export default function Page() {
               <a href="tel:+37253684587" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-700 font-bold py-4 px-10 rounded-xl text-xl shadow-lg transition-all"><PhoneCall className="w-5 h-5" /> +372 5368 4587</a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== BOOKING FORM ===== */}
+      <section className="w-full py-16 bg-gradient-to-r from-blue-700 to-cyan-600">
+        <div className="max-w-4xl mx-auto px-6">
+          <BookingForm source="page-cta" />
         </div>
       </section>
     </div>

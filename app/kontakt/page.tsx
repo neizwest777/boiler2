@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BookingForm from '@/components/BookingForm';
 import Link from "next/link";
 import { PhoneCall, Mail, MapPin, Clock, ShieldCheck, Star, Wrench } from "lucide-react";
 import type { Metadata } from "next";
@@ -148,6 +149,13 @@ export default function Page() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== BOOKING FORM ===== */}
+      <section className="w-full py-16 bg-gradient-to-r from-blue-700 to-cyan-600">
+        <div className="max-w-4xl mx-auto px-6">
+          <BookingForm source="page-cta" />
         </div>
       </section>
     </div>

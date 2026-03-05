@@ -1,4 +1,5 @@
 import { ShieldCheck, CheckCircle, BadgeCheck, Wrench, Clock, PhoneCall, AlertTriangle, FileText } from "lucide-react";
+import BookingForm from '@/components/BookingForm';
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -167,6 +168,13 @@ export default function Garantii() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== BOOKING FORM ===== */}
+      <section className="w-full py-16 bg-gradient-to-r from-blue-700 to-cyan-600">
+        <div className="max-w-4xl mx-auto px-6">
+          <BookingForm source="page-cta" />
         </div>
       </section>
     </div>
