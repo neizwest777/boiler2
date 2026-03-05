@@ -203,7 +203,7 @@ export const Footer = ({ className }: { className?: string }) => {
               <Link href="/privaatsuspoliitika" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Privaatsuspoliitika
               </Link>
-              <Link href="/tingimused" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Kasutingimused
               </Link>
               <a
