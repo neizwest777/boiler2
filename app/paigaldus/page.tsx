@@ -1,5 +1,4 @@
 import {
-import BookingForm from '@/components/BookingForm';
   Wrench,
   Flame,
   Layers,
@@ -10,6 +9,7 @@ import BookingForm from '@/components/BookingForm';
   Shield,
   MapPin,
 } from "lucide-react";
+import BookingForm from '@/components/BookingForm';
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
