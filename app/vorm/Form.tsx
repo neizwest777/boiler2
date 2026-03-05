@@ -41,8 +41,8 @@ export default function FormComponent() {
       }
 
       // Google Ads conversion
-      if (typeof window.sendFormConversion === 'function') {
-        window.sendFormConversion();
+      if (typeof (window as any).sendFormConversion === 'function') {
+        (window as any).sendFormConversion();
       }
 
       setSuccess(true);
