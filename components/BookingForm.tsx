@@ -34,13 +34,9 @@ export default function BookingForm({ source = "main-form" }: { source?: string 
 
       if (!res.ok) throw new Error("Server error");
 
-      // Google Ads conversion
-      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-17959368156/we1OCNqynPwbENzr2PNC",
-          value: 10.0,
-          currency: "EUR",
-        });
+      // Google Ads conversion — вызываем глобальный метод из layout.tsx
+      if (typeof window !== "undefined" && typeof (window as any).sendFormConversion === "function") {
+        (window as any).sendFormConversion();
       }
 
       setSuccess(true);

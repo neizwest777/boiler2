@@ -40,12 +40,9 @@ export default function FormComponent() {
         });
       }
 
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-17959368156/we1OCNqynPwbENzr2PNC',
-          'value': 1.0,
-          'currency': 'EUR'
-        });
+      // Google Ads conversion
+      if (typeof window.sendFormConversion === 'function') {
+        window.sendFormConversion();
       }
 
       setSuccess(true);

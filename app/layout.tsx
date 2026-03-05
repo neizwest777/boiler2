@@ -153,54 +153,58 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Script id="conversions" strategy="afterInteractive">
           {`
-            window.gtag_report_conversion = function(url, sendTo) {
+            // ====== GOOGLE ADS CONVERSION HELPER ======
+            window.gtag_report_conversion = function(url, sendTo, value) {
+              var redirectDone = false;
               var callback = function () {
-                if (typeof(url) != 'undefined') {
+                if (!redirectDone && typeof url !== 'undefined') {
+                  redirectDone = true;
                   window.location = url;
                 }
               };
               window.gtag('event', 'conversion', {
                 'send_to': sendTo,
-                'value': 1.0,
+                'value': value || 1.0,
                 'currency': 'EUR',
                 'event_callback': callback
               });
+              setTimeout(callback, 1500);
               return false;
-            }
+            };
+
+            // ====== CLICK TRACKING: Phone / WhatsApp / Viber ======
             document.addEventListener('click', function(e) {
               var el;
-              // WhatsApp
-              el = e.target.closest('a[href*="wa.me"]');
-              if (el && typeof window.gtag === 'function') {
-                e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC');
-                return;
-              }
-              // Phone
               el = e.target.closest('a[href^="tel:"]');
               if (el && typeof window.gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC');
+                window.gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC', 5.0);
                 return;
               }
-              // Viber
+              el = e.target.closest('a[href*="wa.me"]');
+              if (el && typeof window.gtag === 'function') {
+                e.preventDefault();
+                window.gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC', 3.0);
+                return;
+              }
               el = e.target.closest('a[href*="viber"]');
               if (el && typeof window.gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC');
+                window.gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC', 3.0);
                 return;
               }
             });
-            // Form submit conversion
-            document.addEventListener('submit', function(e) {
+
+            // ====== FORM CONVERSION: вызывается из React после успешного ответа ======
+            window.sendFormConversion = function() {
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'conversion', {
                   'send_to': 'AW-17959368156/we1OCNqynPwbENzr2PNC',
-                  'value': 1.0,
+                  'value': 10.0,
                   'currency': 'EUR'
                 });
               }
-            });
+            };
           `}
         </Script>
 
