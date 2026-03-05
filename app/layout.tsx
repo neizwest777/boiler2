@@ -178,19 +178,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               el = e.target.closest('a[href^="tel:"]');
               if (el && typeof window.gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC', 5.0);
+                window.gtag_report_conversion(el.href, 'AW-17959368156/t09xCNnonfwbENzr2PNC', 25.0);
                 return;
               }
               el = e.target.closest('a[href*="wa.me"]');
               if (el && typeof window.gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC', 3.0);
+                window.gtag_report_conversion(el.href, 'AW-17959368156/ACk8CLSNm_wbENzr2PNC', 15.0);
                 return;
               }
               el = e.target.closest('a[href*="viber"]');
               if (el && typeof window.gtag === 'function') {
                 e.preventDefault();
-                window.gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC', 3.0);
+                window.gtag_report_conversion(el.href, 'AW-17959368156/oVtzCMiTnvwbENzr2PNC', 15.0);
                 return;
               }
             });
@@ -200,7 +200,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               if (typeof window.gtag === 'function') {
                 window.gtag('event', 'conversion', {
                   'send_to': 'AW-17959368156/we1OCNqynPwbENzr2PNC',
-                  'value': 10.0,
+                  'value': 25.0,
                   'currency': 'EUR'
                 });
               }
