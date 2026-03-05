@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+const TG_TOKEN = "8438798461:AAES14z77ON73qffcS1QZTBEggLKUHUAZPY";
+const TG_CHAT = "-1003717549010";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, message } = await req.json();
+    const { name, email, phone, message, service, address } = await req.json();
 
     if (!name || !phone || !message) {
       return NextResponse.json(
@@ -14,25 +14,33 @@ export async function POST(req: Request) {
       );
     }
 
-    await resend.emails.send({
-      from: process.env.CONTACT_FROM_EMAIL || "BoileriABI <onboarding@resend.dev>",
-      to: process.env.CONTACT_TO_EMAIL || "prismestonia@gmail.com",
-      subject: "Uus päring Boileriabi.ee",
-      replyTo: email || undefined,
-      html: `
-        <h2>Uus päring kodulehelt</h2>
-        <p><b>Nimi:</b> ${name}</p>
-        <p><b>E-post:</b> ${email || "-"}</p>
-        <p><b>Telefon:</b> ${phone}</p>
-        <p><b>Sõnum:</b><br/>${message.replace(/\n/g, "<br/>")}</p>
-      `,
+    const serviceLabel = service || "—";
+    const addressLabel = address || "—";
+
+    const text =
+      `🔧 <b>Uus tellimus boileriabi.ee</b>\n\n` +
+      `👤 Nimi: ${name}\n` +
+      `📞 Tel: ${phone}\n` +
+      (email ? `📧 E-post: ${email}\n` : "") +
+      `📍 Aadress: ${addressLabel}\n` +
+      `🛠 Teenus: ${serviceLabel}\n` +
+      `📝 Kirjeldus: ${message}`;
+
+    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        chat_id: TG_CHAT,
+        text,
+        parse_mode: "HTML",
+      }),
     });
 
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error(e);
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send" },
       { status: 500 }
     );
   }

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/shared/ui/button';
 import ConsultationModal from '@/components/ConsultationModal';
+import BookingForm from '@/components/BookingForm';
 
 /* ===========================================================
    ✅ GA4 tracking
@@ -144,6 +145,16 @@ export default function Page() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 📋 BOOKING FORM */}
+      <section className="w-full py-10 bg-gradient-to-r from-blue-700 to-cyan-600">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-white text-center text-xl font-bold mb-5">
+            📋 Jäta päring – helistame tagasi 5 minuti jooksul!
+          </h2>
+          <BookingForm source="homepage-main" />
         </div>
       </section>
 
