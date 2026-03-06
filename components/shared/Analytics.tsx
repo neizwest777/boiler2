@@ -1,22 +1,25 @@
-// ✅ ИСПРАВЛЕНО: добавлен экспорт для типа
-export type CookieConsent = {
-  analytics?: boolean;
-  necessary?: boolean;
-};
-
-// Добавляем глобальные типы, чтобы TS не ругался
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    gtag_report_conversion?: (url: string, sendTo: string) => boolean;
-    __updateConsent?: (consent: Record<string, string>) => void;
-    sendGAEvent?: (action: string, params?: Record<string, string | number>) => void;
-  }
-}
-
 "use client";
 
 import { useEffect, useState } from "react";
+
+// Type for cookie preferences
+export type CookieConsent = {
+  analytics?: boolean;
+  marketing?: boolean;
+  essential?: boolean;
+  necessary?: boolean;
+};
+
+// Global type declarations
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    gtag_report_conversion?: (url: string, sendTo: string, value?: number) => boolean;
+    __updateConsent?: (consent: Record<string, string>) => void;
+    sendGAEvent?: (action: string, params?: Record<string, string | number>) => void;
+    sendFormConversion?: () => void;
+  }
+}
 
 export function AnalyticsWrapper() {
   const [allowed, setAllowed] = useState(false);
@@ -31,23 +34,22 @@ export function AnalyticsWrapper() {
         const enabled = prefs.analytics === true;
         setAllowed(enabled);
 
-        // ✅ ИСПРАВЛЕНО: выражение теперь является вызовом функции
-        if (enabled && typeof window.__updateConsent === "function") {
-          window.__updateConsent({
-            analytics_storage: "granted",
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            ad_personalization: "denied"
+        // Update Google Consent Mode based on stored preferences
+        if (typeof window.gtag === "function") {
+          window.gtag("consent", "update", {
+            analytics_storage: prefs.analytics ? "granted" : "denied",
+            ad_storage: prefs.marketing ? "granted" : "denied",
+            ad_user_data: prefs.marketing ? "granted" : "denied",
+            ad_personalization: prefs.marketing ? "granted" : "denied",
           });
         }
       } catch (error) {
-        // ✅ Улучшенная обработка ошибок
         console.error("Error reading cookie preferences:", error);
       }
     };
 
     updateConsent();
-    
+
     const handleCookieUpdate = () => updateConsent();
     window.addEventListener("cookie_preferences_updated", handleCookieUpdate);
 
@@ -56,12 +58,12 @@ export function AnalyticsWrapper() {
     };
   }, []);
 
-  // ✅ ДОБАВЛЕНО: использование состояния allowed для отладки
+  // Debug in development
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Analytics allowed:', allowed);
+    if (process.env.NODE_ENV === "development") {
+      console.log("Analytics allowed:", allowed);
     }
   }, [allowed]);
 
-  return null; // Ничего не рендерим — GA подключён в layout.tsx
+  return null;
 }

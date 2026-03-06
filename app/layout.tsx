@@ -120,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-slate-900 antialiased min-h-screen flex flex-col w-full">
 
         {/* Consent Mode v2 default — MUST be before gtag.js */}
+        {/* GDPR: default = denied until user gives consent */}
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){ dataLayer.push(arguments); }

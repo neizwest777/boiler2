@@ -35,8 +35,8 @@ export default function BookingForm({ source = "main-form" }: { source?: string 
       if (!res.ok) throw new Error("Server error");
 
       // Google Ads conversion — вызываем глобальный метод из layout.tsx
-      if (typeof window !== "undefined" && typeof (window as any).sendFormConversion === "function") {
-        (window as any).sendFormConversion();
+      if (typeof window !== "undefined" && typeof window.sendFormConversion === "function") {
+        window.sendFormConversion();
       }
 
       setSuccess(true);

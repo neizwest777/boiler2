@@ -8,11 +8,11 @@ export default function NotFound() {
       </h1>
 
       <p className="mt-4 text-xl font-bold">
-        Vabandust, seda lehekülge ei leitud.
+        Kahjuks seda lehekülge ei leitud.
       </p>
 
       <p className="mt-2 text-gray-600 dark:text-gray-300">
-        Soovitud lehekülge ei eksisteeri. Palun minge tagasi avalehele.
+        Leht, mida otsite, on teisaldatud või ei ole enam saadaval.
       </p>
 
       <NextLink

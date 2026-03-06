@@ -159,7 +159,7 @@ export default function Page() {
       </section>
 
       {/* 🎯 SERVICES WITH IMAGES */}
-      <section className="w-full py-20 bg-white">
+      <section className="w-full py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -238,7 +238,7 @@ export default function Page() {
       </section>
 
       {/* 📍 SERVICE AREA - MODERN */}
-      <section className="w-full py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+      <section className="w-full py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.15),transparent_60%)]"></div>
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
@@ -263,8 +263,8 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ✅ FAQ Schema JSON-LD */}
-      <Script id="faq-json-ld" type="application/ld+json" strategy="beforeInteractive">
+      {/* ❓ FAQ - WITH SCHEMA MARKUP */}
+      <Script id="faq-schema" type="application/ld+json" strategy="beforeInteractive">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -295,33 +295,32 @@ export default function Page() {
             },
             {
               "@type": "Question",
-              "name": "Mis brände te paigaldate ja remondite?",
+              "name": "Kui palju maksab boileri remont?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Paigaldame ja remondime kõiki levinumaid boileribrände: Ariston, Baxi, Bosch, Buderus, Vaillant, Viessmann, Dražice, Electrolux ja teised. Kasutame originaalvaruosi."
+                "text": "Boileri remondi hind algab 80 eurost. Täpne hind sõltub rikke iseloomust ja vajalikest varuosadest. Diagnostika ja hindamine on tasuta."
               }
             },
             {
               "@type": "Question",
-              "name": "Kas pakute garantiid tehtud töödele?",
+              "name": "Milliste brändide boilereid te teenindate?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Jah, anname kõigile tehtud töödele 2 aastat garantiid. See hõlmab nii paigaldust, remonti kui ka hooldust. Garantii kehtib ka kasutatud varuosadele."
+                "text": "Teenindame kõiki levinumaid boileribrände: Ariston, Electrolux, Gorenje, Bosch, Baxi, Vaillant, Atlantic, Thermex ja paljud teised. Meie meistrid on koolitatud töötama erinevate tootjate seadmetega."
               }
             },
             {
               "@type": "Question",
-              "name": "Kui kiiresti saate kohale tulla hädaolukorras?",
+              "name": "Kas te pakute tööle garantiid?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Hädaabi korral (veeleke, gaasilekkide kahtlus) tuleme kohale 1–2 tunni jooksul üle kogu Tallinna ja Harjumaa piirkonna. Töötame 24/7, ka pühade ajal."
+                "text": "Jah, kõigile meie paigaldus- ja remonditöödele kehtib 2 aasta garantii. See hõlmab nii tööd kui ka kasutatud varuosi."
               }
             }
           ]
         })}
       </Script>
 
-      {/* ❓ FAQ - CLEAN */}
       <section className="w-full py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -367,34 +366,34 @@ export default function Page() {
 
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
-                Mis brände te paigaldate ja remondite?
+                Kui palju maksab boileri remont?
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Paigaldame ja remondime kõiki levinumaid boileribrände: <strong>Ariston, Baxi, Bosch, Buderus, Vaillant, Viessmann, Dražice, Electrolux</strong> ja teised.
-                Kasutame originaalvaruosi.
+                Boileri remondi hind algab <strong>80 eurost</strong>. Täpne hind sõltub rikke iseloomust ja vajalikest varuosadest.
+                <strong>Diagnostika ja hindamine on tasuta</strong> — helistage ja meister annab esialgse hinnahinnangu juba telefoni teel.
               </div>
             </details>
 
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
-                Kas pakute garantiid tehtud töödele?
+                Milliste brändide boilereid te teenindate?
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Jah, anname kõigile tehtud töödele <strong>2 aastat garantiid</strong>. See hõlmab nii paigaldust, remonti kui ka hooldust.
-                Garantii kehtib ka kasutatud varuosadele.
+                Teenindame kõiki levinumaid boileribrände: <strong>Ariston, Electrolux, Gorenje, Bosch, Baxi, Vaillant, Atlantic, Thermex</strong> ja paljud teised.
+                Meie meistrid on koolitatud töötama erinevate tootjate seadmetega.
               </div>
             </details>
 
             <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
-                Kui kiiresti saate kohale tulla hädaolukorras?
+                Kas te pakute tööle garantiid?
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Hädaabi korral (veeleke, gaasilekkide kahtlus) tuleme kohale <strong>1–2 tunni jooksul</strong> üle kogu Tallinna ja Harjumaa piirkonna.
-                Töötame 24/7, ka pühade ajal.
+                Jah, kõigile meie paigaldus- ja remonditöödele kehtib <strong>2 aasta garantii</strong>.
+                See hõlmab nii tööd kui ka kasutatud varuosi. Garantiijuhtumi korral tuleme kohale tasuta.
               </div>
             </details>
           </div>
@@ -402,7 +401,7 @@ export default function Page() {
       </section>
 
       {/* 📞 FINAL CTA */}
-      <section className="w-full py-20 bg-white">
+      <section className="w-full py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)]"></div>
