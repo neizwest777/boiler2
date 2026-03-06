@@ -45,7 +45,7 @@ export default function Page() {
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Boileriabi.ee",
-        "telephone": "+37253684587", "email": "info@prism.ee", "url": "https://www.boileriabi.ee",
+        "telephone": "+37253684587", "email": "info@boileriabi.ee", "url": "https://www.boileriabi.ee",
         "address": { "@type": "PostalAddress", "addressLocality": "Tallinn", "addressRegion": "Harjumaa", "addressCountry": "EE" },
         "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
       }) }} />
@@ -81,10 +81,10 @@ export default function Page() {
             <p className="text-lg font-bold text-green-600 group-hover:text-green-500 transition-colors">Kirjutage meile</p>
             <p className="text-sm text-gray-500 mt-2">Saatke pilt probleemist</p>
           </a>
-          <a href="mailto:info@prism.ee" className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-center">
+          <a href="mailto:info@boileriabi.ee" className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-center">
             <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mx-auto mb-4"><Mail className="w-6 h-6 text-blue-600" /></div>
             <h2 className="font-bold text-xl text-gray-900 mb-2">E-mail</h2>
-            <p className="text-lg font-bold text-blue-600 group-hover:text-blue-500 transition-colors">info@prism.ee</p>
+            <p className="text-lg font-bold text-blue-600 group-hover:text-blue-500 transition-colors">info@boileriabi.ee</p>
             <p className="text-sm text-gray-500 mt-2">Vastame 1 tunni jooksul</p>
           </a>
         </section>

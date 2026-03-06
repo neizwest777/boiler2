@@ -8,18 +8,18 @@ export default function NotFound() {
       </h1>
 
       <p className="mt-4 text-xl font-bold">
-        Sorry, we couldn't find this page.
+        Vabandust, seda lehekülge ei leitud.
       </p>
 
       <p className="mt-2 text-gray-600 dark:text-gray-300">
-        Please return to the homepage.
+        Soovitud lehekülge ei eksisteeri. Palun minge tagasi avalehele.
       </p>
 
       <NextLink
         href="/"
         className="mt-6 inline-block rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
       >
-        Back to homepage
+        Tagasi avalehele
       </NextLink>
     </div>
   );

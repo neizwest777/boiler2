@@ -59,8 +59,8 @@ export const Footer = ({ className }: { className?: string }) => {
             <div className="flex space-x-3">
               {[
                 { href: "https://www.facebook.com/boileriabi.ee", icon: "📘", label: "Facebook" },
-                { href: "https://www.instagram.com/the.vzglyad_/", icon: "📷", label: "Instagram" },
-                { href: "https://www.tiktok.com/@the.vzglyad_", icon: "🎵", label: "TikTok" }
+                { href: "https://www.instagram.com/boileriabi.ee/", icon: "📷", label: "Instagram" },
+                { href: "https://www.tiktok.com/@boileriabi.ee", icon: "🎵", label: "TikTok" }
               ].map((social) => (
                 <a
                   key={social.href}
@@ -159,11 +159,11 @@ export const Footer = ({ className }: { className?: string }) => {
                   <span className="text-blue-400">✉️</span>
                 </div>
                 <a
-                  href="mailto:info@prism.ee"
+                  href="mailto:info@boileriabi.ee"
                   onClick={() => track("click_email_footer", "Footer Email")}
                   className="text-white hover:text-blue-300 transition-colors"
                 >
-                  info@prism.ee
+                  info@boileriabi.ee
                 </a>
               </div>
 

@@ -125,11 +125,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           function gtag(){ dataLayer.push(arguments); }
           window.gtag = gtag;
           gtag('consent', 'default', {
-            'ad_storage': 'granted',
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted',
-            'analytics_storage': 'granted'
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
           });
+
+          // Restore consent from localStorage if user already accepted
+          try {
+            var saved = localStorage.getItem('cookie_preferences');
+            if (saved) {
+              var prefs = JSON.parse(saved);
+              gtag('consent', 'update', {
+                'ad_storage': prefs.marketing ? 'granted' : 'denied',
+                'ad_user_data': prefs.marketing ? 'granted' : 'denied',
+                'ad_personalization': prefs.marketing ? 'granted' : 'denied',
+                'analytics_storage': prefs.analytics ? 'granted' : 'denied'
+              });
+            }
+          } catch(e) {}
         `}} />
 
         {/* GA4 */}

@@ -263,8 +263,66 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ✅ FAQ Schema JSON-LD */}
+      <Script id="faq-json-ld" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Kui kaua aega võtab boileri paigaldus?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tavaline boileri paigaldus võtab 2–4 tundi, olenevalt boileri tüübist ja paigalduskeskkonnast. Kiirpaigalduse korral saame töö valmis sama päeva jooksul."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Millised on boileri remondi levinumad põhjused?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enim esinevad rikked on veelekked, termostaadi probleemid, katlakivi kogunemine ja tsirkulatsioonipumba rikked. Enamiku neist saame parandada kohapeal."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Kui sageli peaksin boilerit hooldama?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Soovitame korra aastas teha põhjaliku boileri hoolduse. See pikendab seadme eluiga 5–7 aastat ja vähendab energiakulusid kuni 30%."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mis brände te paigaldate ja remondite?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Paigaldame ja remondime kõiki levinumaid boileribrände: Ariston, Baxi, Bosch, Buderus, Vaillant, Viessmann, Dražice, Electrolux ja teised. Kasutame originaalvaruosi."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Kas pakute garantiid tehtud töödele?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Jah, anname kõigile tehtud töödele 2 aastat garantiid. See hõlmab nii paigaldust, remonti kui ka hooldust. Garantii kehtib ka kasutatud varuosadele."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Kui kiiresti saate kohale tulla hädaolukorras?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hädaabi korral (veeleke, gaasilekkide kahtlus) tuleme kohale 1–2 tunni jooksul üle kogu Tallinna ja Harjumaa piirkonna. Töötame 24/7, ka pühade ajal."
+              }
+            }
+          ]
+        })}
+      </Script>
+
       {/* ❓ FAQ - CLEAN */}
-      <section className="w-full py-20 bg-gray-50">
+      <section className="w-full py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -280,7 +338,7 @@ export default function Page() {
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Tavaline boileri paigaldus võtab <strong>2–4 tundi</strong>, olenevalt boileri tüübist ja paigalduskeskkonnast. 
+                Tavaline boileri paigaldus võtab <strong>2–4 tundi</strong>, olenevalt boileri tüübist ja paigalduskeskkonnast.
                 Kiirpaigalduse korral saame töö valmis sama päeva jooksul.
               </div>
             </details>
@@ -291,7 +349,7 @@ export default function Page() {
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Enim esinevad rikked on <strong>veelekked, termostaadi probleemid, katlakivi kogunemine</strong> ja 
+                Enim esinevad rikked on <strong>veelekked, termostaadi probleemid, katlakivi kogunemine</strong> ja
                 <strong> tsirkulatsioonipumba rikked</strong>. Enamiku neist saame parandada kohapeal.
               </div>
             </details>
@@ -302,8 +360,41 @@ export default function Page() {
                 <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
               </summary>
               <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                Soovitame <strong>korra aastas</strong> teha põhjaliku boileri hoolduse. 
+                Soovitame <strong>korra aastas</strong> teha põhjaliku boileri hoolduse.
                 See pikendab seadme eluiga 5–7 aastat ja vähendab energiakulusid kuni 30%.
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                Mis brände te paigaldate ja remondite?
+                <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                Paigaldame ja remondime kõiki levinumaid boileribrände: <strong>Ariston, Baxi, Bosch, Buderus, Vaillant, Viessmann, Dražice, Electrolux</strong> ja teised.
+                Kasutame originaalvaruosi.
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                Kas pakute garantiid tehtud töödele?
+                <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                Jah, anname kõigile tehtud töödele <strong>2 aastat garantiid</strong>. See hõlmab nii paigaldust, remonti kui ka hooldust.
+                Garantii kehtib ka kasutatud varuosadele.
+              </div>
+            </details>
+
+            <details className="group bg-white rounded-xl border border-gray-200 overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+                Kui kiiresti saate kohale tulla hädaolukorras?
+                <span className="text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
+              </summary>
+              <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                Hädaabi korral (veeleke, gaasilekkide kahtlus) tuleme kohale <strong>1–2 tunni jooksul</strong> üle kogu Tallinna ja Harjumaa piirkonna.
+                Töötame 24/7, ka pühade ajal.
               </div>
             </details>
           </div>
